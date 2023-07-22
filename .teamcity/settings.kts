@@ -1,7 +1,11 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
-import jetbrains.buildServer.configs.kotlin.buildSteps.nodeJS
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.nodeJS
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.pullRequests
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.PullRequests
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.commitStatusPublisher
+import jetbrains.buildServer.configs.kotlin.v2018_2.buildFeatures.perfmon
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -38,7 +42,6 @@ object Build : BuildType({
     vcs {
         root(DslContext.settingsRoot)
     }
-
     steps {
         nodeJS {
             shellScript = """
@@ -46,7 +49,7 @@ object Build : BuildType({
                 npm run test
             """.trimIndent()
         }
-    }
+}
 
     triggers {
         vcs {
@@ -55,6 +58,22 @@ object Build : BuildType({
 
     features {
         perfmon {
+        }
+        pullRequests {
+            provider = github {
+                authType = vcsRoot()
+                filterAuthorRole = PullRequests.GitHubRoleFilter.MEMBER
+                ignoreDrafts = true
+            }
+        }
+        commitStatusPublisher {
+            publisher = github {
+                githubUrl = "https://api.github.com"
+                authType = personalToken {
+                    token = "******"
+                }
+            }
+            param("github_oauth_user", "Cavonstavant")
         }
     }
 })
