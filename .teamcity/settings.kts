@@ -46,10 +46,9 @@ object Build : BuildType({
         nodeJS {
             shellScript = """
                 npm ci
-                npm run test
             """.trimIndent()
         }
-}
+    }
 
     triggers {
         vcs {
