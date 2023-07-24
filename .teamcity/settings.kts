@@ -41,6 +41,7 @@ object Build : BuildType({
 
     steps {
         nodeJS {
+            name = "Build"
             shellScript = "npm ci"
         }
     }
