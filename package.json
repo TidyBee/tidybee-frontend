@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "yarn": "^1.22.19"
   }
 }
