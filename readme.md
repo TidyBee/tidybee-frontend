@@ -1,3 +1,3 @@
 ## Introduction : 
-TidyBee se veut être un outil d'analyse d'espaces partagés d'un serveur windows, permettant de montrer les dysfonctionnements de son organisation interne.
-A l'aide d'une notation basée sur les critères choisis par l'utilisateur, TidyBee permet aux utilisateurs finaux d'adapter leurs modifications de fichiers pour une parfaite harmonie
+TidyBee is a tool for analyzing the shared spaces of a Windows server, showing where its internal organization is malfunctioning.
+Using a rating system based on criteria chosen by the user, TidyBee enables end users to adapt their file modifications for perfect harmony.
