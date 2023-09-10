@@ -14,6 +14,10 @@ export default {
     apiUrl: {
       type: String,
       required: true
+    },
+    queryParams: {
+      type: Object,
+      default: () => ({}),
     }
   },
   data() {
@@ -30,7 +34,14 @@ export default {
     loadData() {
       this.isLoading = true;
 
-      fetch(this.apiUrl)
+      // Build the URL with query parameters
+      const url = new URL(this.apiUrl);
+      Object.keys(this.queryParams).forEach(key => {
+        url.searchParams.append(key, this.queryParams[key]);
+      });
+
+      // Fetch data from the constructed URL
+      fetch(url)
         .then(response => response.json())
         .then(data => {
           this.apiData = data;
