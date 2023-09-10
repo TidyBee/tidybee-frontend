@@ -1,3 +1,24 @@
-## Introduction : 
-TidyBee is a tool for analyzing the shared spaces of a Windows server, showing where its internal organization is malfunctioning.
-Using a rating system based on criteria chosen by the user, TidyBee enables end users to adapt their file modifications for perfect harmony.
+# tidybee-frontend
+
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
