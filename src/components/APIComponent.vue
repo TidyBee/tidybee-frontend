@@ -34,7 +34,6 @@ export default {
         .then(response => response.json())
         .then(data => {
           this.apiData = data;
-          console.log(this.apiData);
           this.isLoading = false;
         })
         .catch(error => {
