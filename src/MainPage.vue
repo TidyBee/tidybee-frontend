@@ -1,29 +1,46 @@
 '<template>
     <div>
       <NavBar_Components />
-      <div class="widget-container">
-<!--
+      <!-- <div class="widget-container">
         <sortByWidget
             :files="filesData.files"
             :top="filesData.top"
             :sortBy="filesData.sortBy"
             :widgetName="filesData.widgetName"
         />
--->
-      </div>
+      </div> -->
+      <APIWorldTime :apiUrl="apiWorldTimeUrl">
+        <template v-slot="{ data }">
+          <div>
+            <p>Timezone: {{ data.timezone }}</p>
+            <p>Current Time: {{ data.datetime }}</p>
+            <p>Day of the Week: {{ data.day_of_week }}</p>
+          </div>
+        </template>
+      </APIWorldTime>
     </div>
 </template>
   
 <script>
+import dotenv from 'dotenv'
 import NavBar_Components from '@/components/NavBar.vue'
+import APIWorldTime from "./components/APIWorldTime.vue"
 //import sortByWidget from './components/widgets/sortByWidget.vue'
   
 export default {
     name: 'MainPage',
     components: {
         NavBar_Components,
+        APIWorldTime,
 //        sortByWidget
     },
+    data() {
+        dotenv.config();
+        console.log(process.env.API_WORLD_TIME)
+        return {
+            apiWorldTimeUrl: process.env.API_WORLD_TIME
+        };
+    }
 };
 </script>
 
