@@ -22,7 +22,6 @@
 </template>
   
 <script>
-import dotenv from 'dotenv'
 import NavBar_Components from '@/components/NavBar.vue'
 import APIWorldTime from "./components/APIWorldTime.vue"
 //import sortByWidget from './components/widgets/sortByWidget.vue'
@@ -35,10 +34,8 @@ export default {
 //        sortByWidget
     },
     data() {
-        dotenv.config();
-        console.log(process.env.API_WORLD_TIME)
         return {
-            apiWorldTimeUrl: process.env.API_WORLD_TIME
+            apiWorldTimeUrl: process.env.VUE_APP_API
         };
     }
 };
