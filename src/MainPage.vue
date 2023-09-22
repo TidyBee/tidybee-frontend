@@ -9,7 +9,7 @@
             :widgetName="filesData.widgetName"
         />
       </div> -->
-      <APIWorldTime :apiUrl="apiWorldTimeUrl">
+      <APIComponent :apiUrl="apiWorldTimeUrl">
         <template v-slot="{ data }">
           <div>
             <p>Timezone: {{ data.timezone }}</p>
@@ -17,20 +17,20 @@
             <p>Day of the Week: {{ data.day_of_week }}</p>
           </div>
         </template>
-      </APIWorldTime>
+      </APIComponent>
     </div>
 </template>
   
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-import APIWorldTime from "./components/APIWorldTime.vue"
+import APIComponent from "./components/APIComponent.vue"
 //import sortByWidget from './components/widgets/sortByWidget.vue'
   
 export default {
     name: 'MainPage',
     components: {
         NavBar_Components,
-        APIWorldTime,
+        APIComponent,
 //        sortByWidget
     },
     data() {
