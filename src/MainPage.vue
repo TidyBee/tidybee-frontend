@@ -1,28 +1,17 @@
 '<template>
-    <div>
-      <NavBar_Components />
-      <div class="widget-container">
-<!--
-        <sortByWidget
-            :files="filesData.files"
-            :top="filesData.top"
-            :sortBy="filesData.sortBy"
-            :widgetName="filesData.widgetName"
-        />
--->
-      </div>
-    </div>
+  <div>
+    <NavBar_Components />
+    <div class="widget-container" />
+  </div>
 </template>
-  
+
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-//import sortByWidget from './components/widgets/sortByWidget.vue'
-  
+
 export default {
     name: 'MainPage',
     components: {
         NavBar_Components,
-//        sortByWidget
     },
 };
 </script>

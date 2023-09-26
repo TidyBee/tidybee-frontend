@@ -1,36 +1,42 @@
 <template>
-    <div class="incorrectly-named-files">
-        <div class="header">
-            <h4>{{ widgetName }}</h4>
-        </div>
-        <div class="file-list" :style="{ maxHeight: fileListMaxHeight }">
-            <ul>
-                <li
-                    v-for="(file, index) in files.slice(0, top)"
-                    :key="index"
-                    @mouseover="hoveredIndex = index"
-                    @mouseleave="hoveredIndex = -1"
-                >
-                    <div class="file-item">
-                        <span class="file-name" :class="{ 'file-hovered': hoveredIndex === index }">{{ file.name }}</span>
-                        <span class="file-value">{{ file.value }}</span>
-                        <span class="file-sort-by">{{ sortBy }}</span>
-                        <img
-                            src="@/assets/redirectIcon.png"
-                            alt="Redirect Icon"
-                            class="redirect-icon"
-                            v-show="hoveredIndex === index"
-                        />
-                    </div>
-                </li>
-            </ul>
-        </div>
+  <div class="incorrectly-named-files">
+    <div class="header">
+      <h4>{{ widgetName }}</h4>
     </div>
+    <div
+      class="file-list"
+      :style="{ maxHeight: fileListMaxHeight }"
+    >
+      <ul>
+        <li
+          v-for="(file, index) in files.slice(0, top)"
+          :key="index"
+          @mouseover="hoveredIndex = index"
+          @mouseleave="hoveredIndex = -1"
+        >
+          <div class="file-item">
+            <span
+              class="file-name"
+              :class="{ 'file-hovered': hoveredIndex === index }"
+            >{{ file.name }}</span>
+            <span class="file-value">{{ file.value }}</span>
+            <span class="file-sort-by">{{ sortBy }}</span>
+            <img
+              v-show="hoveredIndex === index"
+              src="@/assets/redirectIcon.png"
+              alt="Redirect Icon"
+              class="redirect-icon"
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'sortByWidget',
+    name: 'SortByWidget',
     props: {
         files: {
             type: Array,
@@ -51,7 +57,7 @@ export default {
     },
     data() {
         return {
-            hoveredIndex: -1 
+            hoveredIndex: -1
         };
     },
     computed: {
@@ -66,14 +72,14 @@ export default {
 
 <style scoped>
 .incorrectly-named-files {
-    width: 250px; 
+    width: 250px;
     height: 250px;
-    margin: 20px; 
+    margin: 20px;
     border-radius: 17px;
     background: #ffffff;
-    box-shadow: 9px 9px 18px #d9d9d9, -9px -9px 18px #ffffff; 
+    box-shadow: 9px 9px 18px #d9d9d9, -9px -9px 18px #ffffff;
     margin-top: 60px;
-    overflow-y: auto; 
+    overflow-y: auto;
     }
 
 .header {
@@ -89,7 +95,7 @@ export default {
 }
 
 .file-list {
-    padding: 10px; 
+    padding: 10px;
 }
 
 .file-list ul {
@@ -105,7 +111,7 @@ export default {
 
 .file-item {
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
 .file-name,
@@ -116,9 +122,9 @@ export default {
 
 .redirect-icon {
     width: 16px;
-    height: 16px; 
-    margin-left: 5px; 
-    display: none; 
+    height: 16px;
+    margin-left: 5px;
+    display: none;
 }
 
 .file-name.file-hovered {
@@ -129,4 +135,3 @@ export default {
     display: inline-block;
 }
 </style>
-  
