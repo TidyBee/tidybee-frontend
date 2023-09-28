@@ -1,29 +1,43 @@
 '<template>
     <div>
       <NavBar_Components />
-      <div class="widget-container">
-<!--
+      <!-- <div class="widget-container">
         <sortByWidget
             :files="filesData.files"
             :top="filesData.top"
             :sortBy="filesData.sortBy"
             :widgetName="filesData.widgetName"
         />
--->
-      </div>
+      </div> -->
+      <APIComponent :apiUrl="apiWorldTimeUrl">
+        <template v-slot="{ data }">
+          <div>
+            <p>Timezone: {{ data.timezone }}</p>
+            <p>Current Time: {{ data.datetime }}</p>
+            <p>Day of the Week: {{ data.day_of_week }}</p>
+          </div>
+        </template>
+      </APIComponent>
     </div>
 </template>
   
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
+import APIComponent from "./components/APIComponent.vue"
 //import sortByWidget from './components/widgets/sortByWidget.vue'
   
 export default {
     name: 'MainPage',
     components: {
         NavBar_Components,
+        APIComponent,
 //        sortByWidget
     },
+    data() {
+        return {
+            apiWorldTimeUrl: process.env.VUE_APP_API
+        };
+    }
 };
 </script>
 
