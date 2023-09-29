@@ -7,12 +7,19 @@
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-
+import APIComponent from "./components/APIComponent.vue"
+  
 export default {
     name: 'MainPage',
     components: {
         NavBar_Components,
+        APIComponent,
     },
+    data() {
+        return {
+            apiWorldTimeUrl: process.env.VUE_APP_API
+        };
+    }
 };
 </script>
 
