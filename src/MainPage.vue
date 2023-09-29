@@ -1,14 +1,24 @@
-'<template>
+<template>
   <div>
     <NavBar_Components />
-    <div class="widget-container" />
+    <div>
+      <APIComponent :api-url="apiWorldTimeUrl">
+        <template #default="{ data }">
+          <div>
+            <p>Timezone: {{ data.timezone }}</p>
+            <p>Current Time: {{ data.datetime }}</p>
+            <p>Day of the Week: {{ data.day_of_week }}</p>
+          </div>
+        </template>
+      </APIComponent>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
 import APIComponent from "./components/APIComponent.vue"
-  
+
 export default {
     name: 'MainPage',
     components: {

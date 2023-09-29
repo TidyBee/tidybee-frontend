@@ -1,9 +1,13 @@
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-    <div v-else-if="hasError">Error loading data</div>
+    <div v-if="isLoading">
+      Loading...
+    </div>
+    <div v-else-if="hasError">
+      Error loading data
+    </div>
     <div v-else>
-      <slot :data="apiData"></slot>
+      <slot :data="apiData" /> 
     </div>
   </div>
 </template>
