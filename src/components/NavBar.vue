@@ -1,22 +1,31 @@
 <template>
-    <div class="NavBar_Components">
-      <div class="logo">
-        <img src="@/assets/tidybeelogo.png" alt="TidyBeeLogo">
-        <h2 class="nav-item">TidyBee</h2>
-      </div>
-      <div class="menu-items">
-        <h3 class="nav-item">Configuration</h3>
-        <h3 class="nav-item">À Propos</h3>
-      </div>
+  <div class="NavBar_Components">
+    <div class="logo">
+      <img
+        src="@/assets/tidybeelogo.png"
+        alt="TidyBeeLogo"
+      >
+      <h2 class="nav-item">
+        TidyBee
+      </h2>
     </div>
+    <div class="menu-items">
+      <h3 class="nav-item">
+        Configuration
+      </h3>
+      <h3 class="nav-item">
+        À Propos
+      </h3>
+    </div>
+  </div>
 </template>
-  
+
 <script>
 export default {
-    name: 'NavBar_Components'
+    name: 'NavBarComponents'
 }
 </script>
-  
+
 <style scoped>
 .NavBar_Components {
     width: 60%;
@@ -28,17 +37,17 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
-  
+
 .logo {
     display: flex;
     align-items: center;
 }
-  
+
 img {
     height: 40px;
     margin-left: 10px;
 }
-  
+
 .menu-items {
     display: flex;
     align-items: center;
@@ -49,9 +58,8 @@ img {
     margin-right: 10px;
     transition: color 0.3s;
 }
-  
+
 .nav-item:hover {
     color: #ffee00;
 }
 </style>
-  
