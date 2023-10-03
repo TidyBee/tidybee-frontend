@@ -1,36 +1,32 @@
 <template>
   <div>
     <NavBar_Components />
-    <div>
-      <APIComponent :api-url="apiWorldTimeUrl">
-        <template #default="{ data }">
-          <div>
-            <p>Timezone: {{ data.timezone }}</p>
-            <p>Current Time: {{ data.datetime }}</p>
-            <p>Day of the Week: {{ data.day_of_week }}</p>
-          </div>
-        </template>
-      </APIComponent>
-    </div>
   </div>
 </template>
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-import APIComponent from "./components/APIComponent.vue"
+
+// import APIComponent from "./components/APIComponent.vue"
 
 export default {
     name: 'MainPage',
     components: {
         NavBar_Components,
-        APIComponent,
+        // APIComponent,
     },
-    data() {
-        return {
-            apiWorldTimeUrl: process.env.VUE_APP_API
-        };
-    }
 };
+
+const axios = require('axios').default;
+getFileInfo();
+async function getFileInfo() {
+  try {
+    const response = await axios.get('https://localhost:7114/api/Dashboard/top-heaviest-files');
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
 </script>
 
 <style scoped>
