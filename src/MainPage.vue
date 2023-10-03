@@ -1,30 +1,49 @@
 <template>
   <div>
     <NavBar_Components />
+    <div class="file-info">
+      <h2>Informations sur les fichiers</h2>
+      <ul>
+        <li
+          v-for="file in filesInfos" 
+          :key="file.id"
+        > 
+          {{ file }}
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-
+import axios from 'axios'
 // import APIComponent from "./components/APIComponent.vue"
 
 export default {
-    name: 'MainPage',
-    components: {
-        NavBar_Components,
-        // APIComponent,
-    },
-};
-
-const axios = require('axios').default;
-getFileInfo();
-async function getFileInfo() {
-  try {
-    const response = await axios.get('https://localhost:7114/api/Dashboard/top-heaviest-files');
-    console.log(response.data);
-  } catch (error) {
-    console.error(error);
+  name: 'MainPage',
+  components: {
+      NavBar_Components,
+      // APIComponent,
+  },  
+  data() {
+    return {
+      filesInfos: []
+    };
+  },
+  mounted() {
+    this.getFilesInfos();
+  },
+  methods: {
+    async getFilesInfos() {
+      try {
+        const response = await axios.get('https://localhost:7114/api/Dashboard/top-heaviest-files');
+        console.log(response.data);
+        this.filesInfos = response.data;
+      } catch (error) {
+        console.error(error);
+      }
+    }
   }
 }
 </script>
@@ -43,5 +62,9 @@ async function getFileInfo() {
     margin-left: 300px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.file-info {
+  margin-top: 20px;
 }
 </style>
