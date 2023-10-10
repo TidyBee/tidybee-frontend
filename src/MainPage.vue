@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar_Components />
-    <APIComponent :api-url="tidyHubApi + 'api/Dashboard/top-heaviest-files'">
+    <APIComponent :api-url="'https://localhost:7114/api/Dashboard/top-heaviest-files'">
       <template #default="{ data }">
         <div class="file-info">
           <h2>Informations sur les fichiers</h2>
@@ -16,26 +16,26 @@
         </div>
       </template>
     </APIComponent>
+    <triggerbtn />
   </div>
 </template>
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
 import APIComponent from "./components/APIComponent.vue"
+import triggerbtn from "./components/widgets/triggerButton.vue"
 
 export default {
   name: 'MainPage',
   components: {
       NavBar_Components,
-      APIComponent
+      APIComponent,
+      triggerbtn
   },  
   data() {
     return {
       filesInfos: [],
-      tidyHubApi: process.env.VUE_APP_HUB
     };
-  },
-  async mounted() {
   },
 }
 </script>

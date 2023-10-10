@@ -12,6 +12,7 @@ export async function getData(url) {
 
 export async function sendData(url, data) {
     try {
+      console.log("HERE");
       const response = await axios.post(url, data);
       console.log("send data", response.data);
     } catch (error) {
