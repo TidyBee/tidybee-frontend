@@ -1,36 +1,30 @@
 <template>
   <div>
     <NavBar_Components />
-    <div>
-      <APIComponent :api-url="apiWorldTimeUrl">
-        <template #default="{ data }">
-          <div>
-            <p>Timezone: {{ data.timezone }}</p>
-            <p>Current Time: {{ data.datetime }}</p>
-            <p>Day of the Week: {{ data.day_of_week }}</p>
-          </div>
-        </template>
-      </APIComponent>
-    </div>
+    <topHeaviestFiles
+      :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
+      :widget-name="'Top Heaviest Files'"
+    />
   </div>
 </template>
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-import APIComponent from "./components/APIComponent.vue"
+import topHeaviestFiles from "./components/widgets/topHeaviestFiles.vue"
 
 export default {
-    name: 'MainPage',
-    components: {
-        NavBar_Components,
-        APIComponent,
-    },
-    data() {
-        return {
-            apiWorldTimeUrl: process.env.VUE_APP_API
-        };
-    }
-};
+  name: 'MainPage',
+  components: {
+      NavBar_Components,
+      topHeaviestFiles
+  },  
+  data() {
+    return {
+      filesInfos: [],
+      tidyHubApi: process.env.VUE_APP_HUB
+    };
+  }
+}
 </script>
 
 <style scoped>
@@ -47,5 +41,9 @@ export default {
     margin-left: 300px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.file-info {
+  margin-top: 20px;
 }
 </style>
