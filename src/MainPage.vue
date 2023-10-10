@@ -17,34 +17,25 @@
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-import axios from 'axios'
-// import APIComponent from "./components/APIComponent.vue"
+import {getData} from './communication/communication.js'
 
 export default {
   name: 'MainPage',
   components: {
       NavBar_Components,
-      // APIComponent,
   },  
   data() {
     return {
       filesInfos: []
     };
   },
-  mounted() {
-    this.getFilesInfos();
-  },
-  methods: {
-    async getFilesInfos() {
-      try {
-        const response = await axios.get('https://localhost:7114/api/Dashboard/top-heaviest-files');
-        console.log(response.data);
-        this.filesInfos = response.data;
-      } catch (error) {
-        console.error(error);
-      }
+  async mounted() {
+    try {
+      this.filesInfos = await getData(process.env.URL_HUB_API);
+    } catch (error) {
+      console.error(error);
     }
-  }
+  },
 }
 </script>
 
