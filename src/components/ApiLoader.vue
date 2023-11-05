@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {getData} from '../communication/communication.js'
+import {fetchData} from '../communication/communication.js'
 
 export default {
   props: {
@@ -40,7 +40,7 @@ export default {
     async loadData() {
       this.isLoading = true;
       try {
-        this.apiData = await getData(this.apiUrl);
+        this.apiData = await fetchData(this.apiUrl);
       } catch (error) {
         this.hasError = true;
         this.isLoading = false;

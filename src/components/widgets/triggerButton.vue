@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import { sendData } from '../../communication/communication.js';
+import { postData } from '../../communication/communication.js';
 
 export default {
     methods: {
         triggerbtn() {
-          sendData();
+          postData('https://localhost:5000/', {fileName: 'test'});
         },
     },
 }
