@@ -22,15 +22,23 @@
 
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
+<<<<<<< HEAD
 import APIComponent from "./components/APIComponent.vue"
 import triggerbtn from "./components/widgets/triggerButton.vue"
+=======
+import FileList from "@/components/widgets/fileList.vue"
+>>>>>>> main
 
 export default {
   name: 'MainPage',
   components: {
       NavBar_Components,
+<<<<<<< HEAD
       APIComponent,
       triggerbtn
+=======
+      FileList
+>>>>>>> main
   },  
   data() {
     return {
