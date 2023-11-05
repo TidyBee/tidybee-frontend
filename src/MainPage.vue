@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavBar />
-    <APIComponent :api-url="'https://localhost:7114/api/Dashboard/top-heaviest-files'">
+    <ApiLoader :api-url="'https://localhost:7114/api/Dashboard/top-heaviest-files'">
       <template #default="{ data }">
         <div class="file-info">
           <h2>Informations sur les fichiers</h2>
@@ -15,21 +15,21 @@
           </ul>
         </div>
       </template>
-    </APIComponent>
+    </ApiLoader>
     <triggerbtn />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import APIComponent from "./components/APIComponent.vue"
+import ApiLoader from "./components/ApiLoader.vue"
 import triggerbtn from "./components/widgets/triggerButton.vue"
 
 export default {
   name: 'MainPage',
   components: {
       NavBar,
-      APIComponent,
+      ApiLoader,
       triggerbtn
   },  
   data() {

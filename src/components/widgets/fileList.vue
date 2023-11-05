@@ -1,5 +1,5 @@
 <template>
-  <APIComponent :api-url="tidyHubApi">
+  <ApiLoader :api-url="tidyHubApi">
     <template #default="{ data }">
       <div class="file_list">
         <div class="header">
@@ -17,17 +17,17 @@
         </div>
       </div>
     </template>
-  </APIComponent>
+  </ApiLoader>
 </template>
 
 <script>
-import APIComponent from "@/components/APIComponent.vue"
+import ApiLoader from "@/components/ApiLoader.vue"
 import FileItem from "@/components/fileItem.vue"
 
   export default {
       name: 'FileList',
       components : {
-          APIComponent,
+          ApiLoader,
           FileItem,
       },
       props: {
