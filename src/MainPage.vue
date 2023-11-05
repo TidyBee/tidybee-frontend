@@ -1,36 +1,23 @@
 <template>
   <div>
     <NavBar />
-    <ApiLoader :api-url="'https://localhost:7114/api/Dashboard/top-heaviest-files'">
-      <template #default="{ data }">
-        <div class="file-info">
-          <h2>Informations sur les fichiers</h2>
-          <ul>
-            <li
-              v-for="file in data" 
-              :key="file.id"
-            > 
-              {{ file }}
-            </li>
-          </ul>
-        </div>
-      </template>
-    </ApiLoader>
+    <FileList
+      :tidy-hub-api="'https://localhost:7114/api/Dashboard/top-heaviest-files'"
+      :widget-name="'Top Heaviest Files'"
+    />
     <triggerbtn />
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import ApiLoader from "./components/ApiLoader.vue"
-import triggerbtn from "./components/widgets/triggerButton.vue"
+import FileList from "@/components/widgets/fileList.vue"
 
 export default {
   name: 'MainPage',
   components: {
       NavBar,
-      ApiLoader,
-      triggerbtn
+      FileList,
   },  
   data() {
     return {
