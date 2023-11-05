@@ -1,5 +1,5 @@
 <template>
-  <div class="NavBar_Components">
+  <div class="NavBar">
     <div class="logo">
       <img
         src="@/assets/tidybeelogo.png"
@@ -22,12 +22,12 @@
 
 <script>
 export default {
-    name: 'NavBarComponents'
+    name: 'NavBar'
 }
 </script>
 
 <style scoped>
-.NavBar_Components {
+.NavBar {
     width: 60%;
     margin: 0 auto;
     border-radius: 17px;

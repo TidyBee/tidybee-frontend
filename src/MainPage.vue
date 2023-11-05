@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar_Components />
+    <NavBar />
     <APIComponent :api-url="'https://localhost:7114/api/Dashboard/top-heaviest-files'">
       <template #default="{ data }">
         <div class="file-info">
@@ -21,14 +21,14 @@
 </template>
 
 <script>
-import NavBar_Components from '@/components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue'
 import APIComponent from "./components/APIComponent.vue"
 import triggerbtn from "./components/widgets/triggerButton.vue"
 
 export default {
   name: 'MainPage',
   components: {
-      NavBar_Components,
+      NavBar,
       APIComponent,
       triggerbtn
   },  
