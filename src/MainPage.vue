@@ -19,11 +19,6 @@ export default {
       NavBar,
       FileList,
   },  
-  data() {
-    return {
-      filesInfos: [],
-    };
-  },
 }
 </script>
 
