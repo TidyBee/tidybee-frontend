@@ -1,6 +1,9 @@
 <template>
   <div class="NavBar_Components">
-    <div class="logo">
+    <div
+      class="logo"
+      @click="redirectToRoute('Home')"
+    >
       <img
         src="@/assets/tidybeelogo.png"
         alt="TidyBeeLogo"
@@ -10,7 +13,10 @@
       </h2>
     </div>
     <div class="menu-items">
-      <h3 class="nav-item">
+      <h3
+        class="nav-item"
+        @click="redirectToRoute('Configuration')"
+      >
         Configuration
       </h3>
       <h3 class="nav-item">
@@ -22,7 +28,12 @@
 
 <script>
 export default {
-    name: 'NavBarComponents'
+    name: 'NavBarComponents',
+    methods: {
+      redirectToRoute(routeName) {
+        this.$router.push({name: routeName});
+      },
+    },
 }
 </script>
 

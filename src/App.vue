@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-    <MainPage />
+    <router-view />
   </div>
 </template>
 
 <script>
-import MainPage from '@/MainPage.vue'
-
 export default {
   name: 'App',
   components: {
-    MainPage,
   }
 }
 </script>
