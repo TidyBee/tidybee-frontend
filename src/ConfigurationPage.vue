@@ -76,7 +76,7 @@
   
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-import json from "@/assets/configuration.json"
+import json from "@/assets/configurationExample.json"
 import { ref } from 'vue';
 
 export default {
@@ -106,24 +106,5 @@ export default {
 }
 </script>
   
-<style scoped>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-
-.widget-container {
-    margin-left: 300px;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.file-info {
-    margin-top: 20px;
-}
-</style>
+<style src="./css/ConfigurationPage.css" scoped></style>
   
