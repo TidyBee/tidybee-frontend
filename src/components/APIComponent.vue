@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import {getData} from '../communication/communication.js'
+
 export default {
   props: {
     apiUrl: {
@@ -35,27 +37,16 @@ export default {
     this.loadData();
   },
   methods: {
-    loadData() {
+    async loadData() {
       this.isLoading = true;
-
-      // Build the URL with query parameters
-      const url = new URL(this.apiUrl);
-      Object.keys(this.queryParams).forEach(key => {
-        url.searchParams.append(key, this.queryParams[key]);
-      });
-
-      // Fetch data from the constructed URL
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          this.apiData = data;
-          this.isLoading = false;
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-          this.hasError = true;
-          this.isLoading = false;
-        });
+      try {
+        this.apiData = await getData(this.apiUrl);
+      } catch (error) {
+        this.hasError = true;
+        this.isLoading = false;
+        console.error(error);
+      }
+      this.isLoading = false;
     }
   }
 }
