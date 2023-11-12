@@ -3,5 +3,5 @@ WORKDIR /app/
 COPY *.json *.js yarn.lock ./
 COPY public/ public/
 COPY src/ src/
-RUN yarn install && echo VUE_APP_HUB=https://localhost:5001/ > .env
+RUN yarn install && echo VUE_APP_HUB=http://localhost:5002/ > .env
 CMD ["yarn", "serve"]
