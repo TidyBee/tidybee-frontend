@@ -1,30 +1,28 @@
 <template>
   <div>
-    <NavBar_Components />
+    <NavBar />
     <FileList
-      :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
+      :tidy-hub-api="'https://localhost:7114/api/Dashboard/top-heaviest-files'"
       :widget-name="'Top Heaviest Files'"
     />
+    <triggerbtn />
   </div>
 </template>
 
 <script>
-import NavBar_Components from '@/components/NavBar.vue'
+import NavBar from '@/components/NavBar.vue'
 import FileList from "@/components/widgets/fileList.vue"
 
 export default {
   name: 'MainPage',
   components: {
-      NavBar_Components,
-      FileList
+      NavBar,
+      FileList,
   },  
   data() {
     return {
       filesInfos: [],
-      tidyHubApi: process.env.VUE_APP_HUB
     };
-  },
-    async mounted() {
   },
 }
 </script>
