@@ -6,20 +6,41 @@
       :widget-name="'Top Heaviest Files'"
     />
     <triggerbtn />
+    <HelpButton @open="isOpen = !isOpen"/>
+    <BaseModal
+      :open="isOpen"
+      @close="isOpen = !isOpen"
+    >
+      <p>
+        This is where I would put the tutorial for tidyBee<br>
+        Once its written
+      </p>
+    </BaseModal>
   </div>
 </template>
 
 <script>
 import NavBar from '@/components/NavBar.vue'
 import FileList from "@/components/widgets/fileList.vue"
+import HelpButton from "@/components/HelpButton.vue"
+import BaseModal from '@/components/BaseModal.vue'
+import { ref } from 'vue';
 
 export default {
   name: 'MainPage',
   components: {
       NavBar,
       FileList,
-  },  
+      BaseModal,
+      HelpButton
+  },
+  setup() {
+      const isOpen = ref(false)
+
+      return { isOpen }
+  },
   data() {
+    
     return {
       filesInfos: [],
     };
