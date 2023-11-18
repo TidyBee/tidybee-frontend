@@ -1,17 +1,11 @@
 <template>
   <div>
-    <NavBar_Components />
-    <div>
-      <APIComponent :api-url="apiWorldTimeUrl">
-        <template #default="{ data }">
-          <div>
-            <p>Timezone: {{ data.timezone }}</p>
-            <p>Current Time: {{ data.datetime }}</p>
-            <p>Day of the Week: {{ data.day_of_week }}</p>
-          </div>
-        </template>
-      </APIComponent>
-    </div>
+    <NavBar />
+    <FileList
+      :tidy-hub-api="'https://localhost:7114/api/Dashboard/top-heaviest-files'"
+      :widget-name="'Top Heaviest Files'"
+    />
+    <triggerbtn />
     <HelpButton @open="isOpen = !isOpen"/>
     <BaseModal
       :open="isOpen"
@@ -26,31 +20,32 @@
 </template>
 
 <script>
-import NavBar_Components from '@/components/NavBar.vue'
-import APIComponent from "./components/APIComponent.vue"
+import NavBar from '@/components/NavBar.vue'
+import FileList from "@/components/widgets/fileList.vue"
 import HelpButton from "@/components/HelpButton.vue"
-import BaseModal from '@/components/BaseModal.vue';
+import BaseModal from '@/components/BaseModal.vue'
 import { ref } from 'vue';
 
 export default {
-    name: 'MainPage',
-    components: {
-        NavBar_Components,
-        APIComponent,
-        BaseModal,
-        HelpButton
-    },
-    setup() {
+  name: 'MainPage',
+  components: {
+      NavBar,
+      FileList,
+      BaseModal,
+      HelpButton
+  },
+  setup() {
       const isOpen = ref(false)
 
       return { isOpen }
-    },
-    data() {
-        return {
-            apiWorldTimeUrl: process.env.VUE_APP_HUB
-        };
-    }
-};
+  },
+  data() {
+    
+    return {
+      filesInfos: [],
+    };
+  },
+}
 </script>
 
 <style scoped>
@@ -67,5 +62,9 @@ export default {
     margin-left: 300px;
     display: flex;
     flex-wrap: wrap;
+}
+
+.file-info {
+  margin-top: 20px;
 }
 </style>
