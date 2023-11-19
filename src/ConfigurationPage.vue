@@ -6,19 +6,10 @@
         v-for="option in getConfigTypes('Slider')"
         :key="option.name"
       >
-        {{ option.name }} <br>
-        <input
-          v-model="option.value"
-          type="range"
-          min="0"
-          max="100"
-          class="slider"
-        >
-        <br>
-        <input
-          v-model="option.value"
-          type="number"
-        >
+        <SliderOption
+          :option="option"
+          @configInput="(n) => option.value = n"
+        />
       </li>
       <li
         v-for="option in getConfigTypes('MultipleChoice')"
@@ -76,19 +67,19 @@
   
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
+import SliderOption from './components/SliderOption.vue';
 import json from "@/assets/configurationExample.json"
-import { ref } from 'vue';
 
 export default {
     name: 'ConfigurationPage',
     components: {
         NavBar_Components,
+        SliderOption,
     },
     data() {
         return {
             filesInfos: [],
             tidyHubApi: process.env.VUE_APP_HUB,
-            sliderValue: ref(50),
             myConfig: json,
         };
     },
