@@ -2,10 +2,9 @@
   <div>
     <NavBar />
     <FileList
-      :tidy-hub-api="'https://localhost:7114/api/Dashboard/top-heaviest-files'"
+      :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
       :widget-name="'Top Heaviest Files'"
     />
-    <triggerbtn />
   </div>
 </template>
 
@@ -18,7 +17,12 @@ export default {
   components: {
       NavBar,
       FileList,
-  },  
+  },
+  data() {
+     return {
+      tidyHubApi: process.env.VUE_APP_HUB
+     };
+  },
 }
 </script>
 
