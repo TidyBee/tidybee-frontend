@@ -11,10 +11,10 @@
     </div>
     <div class="menu-items">
       <h3 class="nav-item">
-        Configuration
+        {{ $t("navbar.configuration")}}
       </h3>
       <h3 class="nav-item">
-        À Propos
+        {{ $t("navbar.about")}}
       </h3>
     </div>
   </div>
