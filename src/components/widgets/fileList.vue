@@ -22,7 +22,7 @@
 
 <script>
 import ApiLoader from "@/components/ApiLoader.vue"
-import FileItem from "@/components/FileItem.vue"
+import FileItem from "@/components/fileItem.vue"
 
   export default {
       name: 'FileList',
