@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { sendData } from '../../communication/communication.js';
+import { sendData } from '@/communication/communication.js';
 
 export default {
     methods: {
