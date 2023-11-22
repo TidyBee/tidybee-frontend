@@ -8,55 +8,35 @@
       >
         <SliderOption
           :option="option"
-          @configInput="(n) => option.value = n"
+          @config-input="(n) => option.value = n"
         />
       </li>
       <li
         v-for="option in getConfigTypes('MultipleChoice')"
         :key="option.name"
       >
-        <ul>
-          <li
-            v-for="choices in option.value"
-            :key="choices.name"
-          >
-            {{ choices.name }}
-            <input
-              v-model="choices.checked"
-              type="checkbox"
-            >
-          </li>
-        </ul>
+        <MultipleOption
+          :option="option"
+          @config-input="(n) => option.value = n"
+        />
       </li>
       <li
         v-for="option in getConfigTypes('Input')"
         :key="option.name"
       >
-        {{ option.name }} <br>
-        <input
-          v-model="option.value"
-          type="number"
-        >
+        <InputOption
+          :option="option"
+          @config-input="(n) => option.value = n"
+        />
       </li>
       <li
         v-for="option in getConfigTypes('Dropdown')"
         :key="option.name"
       >
-        {{ option.name }} <br>
-        <select v-model="option.value">
-          <option
-            disabled
-            value=""
-          >
-            Please select one
-          </option>
-          <option
-            v-for="choice in option.choices"
-            :key="choice"
-          >
-            {{ choice }}
-          </option>
-        </select>
+        <DropdownOption
+          :option="option"
+          @config-input="(n) => option.value = n"
+        />
       </li>
     </ul>
     <button @click="saveConfig()">
@@ -67,7 +47,10 @@
   
 <script>
 import NavBar_Components from '@/components/NavBar.vue'
-import SliderOption from './components/SliderOption.vue';
+import SliderOption from '@/components/SliderOption.vue';
+import InputOption from '@/components/InputOption.vue'
+import MultipleOption from '@/components/MultipleOption.vue'
+import DropdownOption from '@/components/DropdownOption.vue'
 import json from "@/assets/configurationExample.json"
 
 export default {
@@ -75,6 +58,9 @@ export default {
     components: {
         NavBar_Components,
         SliderOption,
+        InputOption,
+        MultipleOption,
+        DropdownOption
     },
     data() {
         return {
