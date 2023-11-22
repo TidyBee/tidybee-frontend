@@ -8,6 +8,16 @@
     <triggerbtn
       :tidy-hub-api="tidyHubApi"
     />
+    <HelpButton @open="isOpen = !isOpen" />
+    <BaseModal
+      :open="isOpen"
+      @close="isOpen = !isOpen"
+    >
+      <p>
+        This is where I would put the tutorial for tidyBee<br>
+        Once its written
+      </p>
+    </BaseModal>
   </div>
 </template>
 
