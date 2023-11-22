@@ -7,7 +7,7 @@ import fr from '@/assets/fr.json'
 import en from '@/assets/en.json'
 
 const i18n = createI18n({
-    locale: "en",
+    locale: "fr",
     fallbackLocale: "fr",
     messages: { fr, en},
 });

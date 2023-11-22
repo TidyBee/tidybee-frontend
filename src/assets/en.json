@@ -2,5 +2,9 @@
     "navbar": {
         "configuration": "Settings",
         "about" : "About"
-      }
+      },
+    "help": {
+        "helpText1" : "This is where I would put the tutorial for tidyBee",
+        "helpText2" : "Once its written"
+    }
 }

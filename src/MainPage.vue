@@ -12,8 +12,8 @@
       @close="isOpen = !isOpen"
     >
       <p>
-        This is where I would put the tutorial for tidyBee<br>
-        Once its written
+        {{ $t("help.helpText1") }} <br>
+        {{ $t("help.helpText2") }}
       </p>
     </BaseModal>
   </div>
