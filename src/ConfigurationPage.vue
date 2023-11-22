@@ -3,37 +3,26 @@
     <NavBar_Components />
     <ul>
       <li
-        v-for="option in getConfigTypes('Slider')"
+        v-for="option in myConfig"
         :key="option.name"
       >
         <SliderOption
+          v-if="option.type == 'Slider'"
           :option="option"
           @config-input="(n) => option.value = n"
         />
-      </li>
-      <li
-        v-for="option in getConfigTypes('MultipleChoice')"
-        :key="option.name"
-      >
         <MultipleOption
+          v-if="option.type == 'MultipleChoice'"
           :option="option"
           @config-input="(n) => option.value = n"
         />
-      </li>
-      <li
-        v-for="option in getConfigTypes('Input')"
-        :key="option.name"
-      >
         <InputOption
+          v-if="option.type == 'Input'"
           :option="option"
           @config-input="(n) => option.value = n"
         />
-      </li>
-      <li
-        v-for="option in getConfigTypes('Dropdown')"
-        :key="option.name"
-      >
         <DropdownOption
+          v-if="option.type == 'Dropdown'"
           :option="option"
           @config-input="(n) => option.value = n"
         />
@@ -72,9 +61,6 @@ export default {
     async mounted() {
     },
     methods: {
-        getConfigTypes(configType) {
-            return this.myConfig.filter(option => option.type == configType);
-        },
         saveConfig() {
             let data = JSON.stringify(this.myConfig);
             console.log(data);
