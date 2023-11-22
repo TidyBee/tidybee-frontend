@@ -13,7 +13,7 @@
 import NavBar from '@/components/NavBar.vue'
 import FileList from "@/components/widgets/fileList.vue"
 import triggerbtn from '@/components/widgets/triggerButton.vue'
-
+import { ref } from 'vue';
 
 export default {
   name: 'MainPage',
