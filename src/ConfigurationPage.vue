@@ -6,23 +6,8 @@
         v-for="option in myConfig"
         :key="option.name"
       >
-        <SliderOption
-          v-if="option.type == 'Slider'"
-          :option="option"
-          @config-input="(n) => option.value = n"
-        />
-        <MultipleOption
-          v-if="option.type == 'MultipleChoice'"
-          :option="option"
-          @config-input="(n) => option.value = n"
-        />
-        <InputOption
-          v-if="option.type == 'Input'"
-          :option="option"
-          @config-input="(n) => option.value = n"
-        />
-        <DropdownOption
-          v-if="option.type == 'Dropdown'"
+        <component
+          :is="getOptionType(option)"
           :option="option"
           @config-input="(n) => option.value = n"
         />
@@ -61,10 +46,24 @@ export default {
     async mounted() {
     },
     methods: {
-        saveConfig() {
-            let data = JSON.stringify(this.myConfig);
-            console.log(data);
-        }
+      getOptionType(option) {
+      switch (option.type) {
+        case 'Slider':
+          return 'SliderOption';
+        case 'MultipleChoice':
+          return 'MultipleOption';
+        case 'Input':
+          return 'InputOption';
+        case 'Dropdown':
+          return 'DropdownOption';
+        default:
+          return 'Input';
+      }
+    },
+      saveConfig() {
+          let data = JSON.stringify(this.myConfig);
+          console.log(data);
+      }
     },
 }
 </script>
