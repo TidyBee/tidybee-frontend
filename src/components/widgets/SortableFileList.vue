@@ -36,7 +36,7 @@
 
 <script>
 export default {
-    name: 'SortByWidget',
+    name: 'SortableFileList',
     props: {
         files: {
             type: Array,

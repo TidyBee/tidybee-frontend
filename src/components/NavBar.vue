@@ -1,5 +1,5 @@
 <template>
-  <div class="NavBar_Components">
+  <div class="NavBar">
     <div
       class="logo"
       @click="redirectToRoute('Home')"
@@ -28,7 +28,7 @@
 
 <script>
 export default {
-    name: 'NavBarComponents',
+    name: 'NavBar',
     methods: {
       redirectToRoute(routeName) {
         this.$router.push({name: routeName});
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style scoped>
-.NavBar_Components {
+.NavBar {
     width: 60%;
     margin: 0 auto;
     border-radius: 17px;
