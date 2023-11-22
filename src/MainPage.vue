@@ -6,7 +6,7 @@
       :widget-name="'Top Heaviest Files'"
     />
     <triggerbtn />
-    <HelpButton @open="isOpen = !isOpen"/>
+    <HelpButton @open="isOpen = !isOpen" />
     <BaseModal
       :open="isOpen"
       @close="isOpen = !isOpen"
@@ -21,7 +21,7 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import FileList from "@/components/widgets/fileList.vue"
+import FileList from "@/components/widgets/FileList.vue"
 import HelpButton from "@/components/HelpButton.vue"
 import BaseModal from '@/components/BaseModal.vue'
 import { ref } from 'vue';
