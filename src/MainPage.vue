@@ -21,9 +21,8 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import FileList from "@/components/widgets/FileList.vue"
-import HelpButton from "@/components/HelpButton.vue"
-import BaseModal from '@/components/BaseModal.vue'
+import FileList from "@/components/widgets/fileList.vue"
+import triggerbtn from '@/components/widgets/triggerButton.vue'
 import { ref } from 'vue';
 
 export default {
@@ -31,9 +30,8 @@ export default {
   components: {
       NavBar,
       FileList,
-      BaseModal,
-      HelpButton
-  },
+      triggerbtn,
+  },  
   setup() {
       const isOpen = ref(false)
 
@@ -43,6 +41,7 @@ export default {
     
     return {
       filesInfos: [],
+      tidyHubApi: process.env.VUE_APP_HUB,
     };
   },
 }
