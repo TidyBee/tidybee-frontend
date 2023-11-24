@@ -10,10 +10,17 @@
 import { postData } from '../../communication/communication.js';
 
 export default {
-    methods: {
-        triggerbtn() {
-          postData('https://localhost:5000/', {fileName: 'test'});
-        },
-    },
+  name: 'TriggerButton',
+  props: {
+    tidyHubApiPost: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+      triggerbtn() {
+        postData(this.tidyHubApiPost, {fileName: 'test'});
+      },
+  }
 }
 </script>
