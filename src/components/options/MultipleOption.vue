@@ -4,6 +4,7 @@
     <li
       v-for="choices in value"
       :key="choices.name"
+      class="multichoice-list"
     >
       {{ choices.name }}
       <input
@@ -41,3 +42,4 @@
   }
   </script>
   
+  <style src="./css/MultipleOption.css" scoped />

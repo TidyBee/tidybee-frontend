@@ -16,3 +16,7 @@
 .file-info {
     margin-top: 20px;
 }
+
+.option-list {
+    list-style-type: none;
+}
