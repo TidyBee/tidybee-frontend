@@ -27,6 +27,7 @@ import FileList from "@/components/widgets/FileList.vue"
 import triggerbtn from '@/components/widgets/TriggerButton.vue'
 import HelpButton from '@/components/HelpButton.vue'
 import BaseModal from './components/BaseModal.vue'
+import { ref } from 'vue'
 
 export default {
   name: 'MainPage',
@@ -37,10 +38,16 @@ export default {
       HelpButton,
       BaseModal
   }, 
+  setup() {
+    const isOpen = ref(false);
+
+    return { isOpen };
+  },
   data() {
     return {
       filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
+
     };
   },
 }
