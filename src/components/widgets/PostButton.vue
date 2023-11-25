@@ -10,7 +10,7 @@
 import { postData } from '@/communication/communication.js';
 
 export default {
-  name: 'TriggerButton',
+  name: 'PostButton',
   props: {
     tidyHubApi: {
       type: String,

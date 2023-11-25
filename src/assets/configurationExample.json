@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Option1",
+        "type": "Slider",
+        "value": "34"
+    },
+    {
+        "name": "Option2",
+        "type": "MultipleChoice",
+        "value" : [{"name": "choice1", "checked" : false}, {"name": "choice2", "checked" : true}, {"name": "choice3", "checked" : false}]
+    },
+    {
+        "name": "Option3",
+        "type": "Input",
+        "value": "34"
+    },
+    {
+        "name": "Option4",
+        "type": "Dropdown",
+        "choices" : ["choice1", "choice2", "choice3"],
+        "value": "choice1"
+    }
+]
