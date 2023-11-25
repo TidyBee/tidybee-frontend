@@ -2,13 +2,13 @@
   {{ option.name }} <br>
   <ul>
     <li
-      v-for="choices in choices"
-      :key="choices.name"
+      v-for="choice in choices"
+      :key="choice.name"
       class="multichoice-list"
     >
-      {{ choices.name }}
+      {{ choice.name }}
       <input
-        v-model="choices.checked"
+        v-model="choice.checked"
         type="checkbox"
         @input="updateValue"
       >
