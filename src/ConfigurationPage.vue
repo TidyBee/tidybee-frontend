@@ -3,7 +3,7 @@
     <NavBar />
     <ul class="option-list">
       <li
-        v-for="option in myConfig"
+        v-for="option in options"
         :key="option.name"
       >
         <component
@@ -25,7 +25,6 @@ import SliderOption from '@/components/options/SliderOption.vue'
 import InputOption from '@/components/options/InputOption.vue'
 import MultipleOption from '@/components/options/MultipleOption.vue'
 import DropdownOption from '@/components/options/DropdownOption.vue'
-import json from "@/assets/configurationExample.json"
 
 export default {
     name: 'ConfigurationPage',
@@ -40,10 +39,15 @@ export default {
         return {
             filesInfos: [],
             tidyHubApi: process.env.VUE_APP_HUB,
-            myConfig: json,
+            options: null,
         };
     },
     async mounted() {
+      try {
+        this.options = require('@/assets/configurationExample.json');
+      } catch(error) {
+        console.error('Error loading JSON data:', error);
+      }
     },
     methods: {
       getOptionType(option) {
@@ -61,7 +65,7 @@ export default {
       }
     },
       saveConfig() {
-          let data = JSON.stringify(this.myConfig);
+          let data = JSON.stringify(this.options);
           console.log(data);
       }
     },
