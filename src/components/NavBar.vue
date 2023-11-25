@@ -1,5 +1,20 @@
 <template>
-  <div class="NavBar">
+  <v-app-bar class="px-3" flat density="compact">
+    <v-app-bar-icon>
+      <v-icon> </v-icon>
+    </v-app-bar-icon>
+    <v-spacer></v-spacer>
+    <v-tabs centered color="grey-darken-2">
+      <v-tab
+        v-for="link in links"
+        :key="link"
+        :text="link"
+        @click="redirectToRoute(link)"
+      ></v-tab>
+    </v-tabs>
+    <v-spacer></v-spacer>
+  </v-app-bar>
+  <!-- <div class="NavBar">
     <div class="logo" @click="redirectToRoute('Home')">
       <img src="@/assets/tidybeelogo.png" alt="TidyBeeLogo" />
       <h2 class="nav-item">TidyBee</h2>
@@ -20,31 +35,16 @@
         {{ $t("navbar.about") }}
       </h3>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <script>
 import VueCookies from "vue-cookies";
 
 export default {
-  name: "NavBar",
-  setup() {
-    if (!VueCookies.get(["locale"])) {
-      VueCookies.set("locale", "en");
-    }
-    const locale = VueCookies.get(["locale"]);
-    return {
-      locale,
-    };
-  },
-  data() {
-    return {
-      availableLocales: [""],
-    };
-  },
-  mounted() {
-    this.availableLocales = this.$i18n.availableLocales;
-  },
+  data: () => ({
+    links: ["Home", "Configuration", "About"],
+  }),
   methods: {
     switchLang() {
       VueCookies.set("locale", this.locale);
@@ -56,5 +56,3 @@ export default {
   },
 };
 </script>
-
-<style src="./css/NavBar.css" scoped></style>

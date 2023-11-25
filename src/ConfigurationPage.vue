@@ -1,6 +1,5 @@
 <template>
   <div>
-    <NavBar />
     <ul class="option-list">
       <li v-for="option in options" :key="option.name">
         <component
@@ -15,7 +14,6 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
 import SliderOption from "@/components/options/SliderOption.vue";
 import InputOption from "@/components/options/InputOption.vue";
 import MultipleOption from "@/components/options/MultipleOption.vue";
@@ -24,7 +22,6 @@ import DropdownOption from "@/components/options/DropdownOption.vue";
 export default {
   name: "ConfigurationPage",
   components: {
-    NavBar,
     SliderOption,
     InputOption,
     MultipleOption,
