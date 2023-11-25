@@ -1,6 +1,9 @@
 <template>
   <div class="NavBar">
-    <div class="logo">
+    <div
+      class="logo"
+      @click="redirectToRoute('Home')"
+    >
       <img
         src="@/assets/tidybeelogo.png"
         alt="TidyBeeLogo"
@@ -9,8 +12,10 @@
         TidyBee
       </h2>
     </div>
-    <select v-model="locale"
-    @change="switchLang">
+    <select
+      v-model="locale"
+      @change="switchLang"
+    >
       LANG :
       <option>
         en
@@ -20,11 +25,14 @@
       </option>
     </select>
     <div class="menu-items">
-      <h3 class="nav-item">
-        {{ $t("navbar.configuration")}}
+      <h3
+        class="nav-item"
+        @click="redirectToRoute('Configuration')"
+      >
+        {{ $t("navbar.configuration") }}
       </h3>
       <h3 class="nav-item">
-        {{ $t("navbar.about")}}
+        {{ $t("navbar.about") }}
       </h3>
     </div>
   </div>
@@ -53,45 +61,12 @@ export default {
       switchLang() {
         VueCookies.set('locale', this.locale);
         this.$i18n.locale = this.locale;
-      }
-    }
+      },
+      redirectToRoute(routeName) {
+        this.$router.push({name: routeName});
+      },
+    },
 }
 </script>
 
-<style scoped>
-.NavBar {
-    width: 60%;
-    margin: 0 auto;
-    border-radius: 17px;
-    background: #ffffff;
-    box-shadow: 9px 9px 18px #d9d9d9, -9px -9px 18px #ffffff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-img {
-    height: 40px;
-    margin-left: 10px;
-}
-
-.menu-items {
-    display: flex;
-    align-items: center;
-}
-
-.nav-item {
-    margin-left: 10px;
-    margin-right: 10px;
-    transition: color 0.3s;
-}
-
-.nav-item:hover {
-    color: #ffee00;
-}
-</style>
+<style src="./css/NavBar.css" scoped></style>

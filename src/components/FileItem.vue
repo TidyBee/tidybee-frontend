@@ -57,3 +57,5 @@ export default {
   }
 }
 </script>
+
+<style src="./css/FileItem.css" scoped></style>

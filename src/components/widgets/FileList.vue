@@ -54,3 +54,4 @@ import FileItem from "@/components/FileItem.vue"
   };
   </script>
   
+  <style src="./css/FileList.css" scoped></style>
