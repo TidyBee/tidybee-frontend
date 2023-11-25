@@ -12,14 +12,14 @@ import { postData } from '@/communication/communication.js';
 export default {
   name: 'TriggerButton',
   props: {
-    tidyHubApiPost: {
+    tidyHubApi: {
       type: String,
       required: true
     }
   },
   methods: {
       triggerbtn() {
-        postData(this.tidyHubApiPost, {fileName: 'test'});
+        postData(this.tidyHubApi, {fileName: 'test'});
       },
   }
 }

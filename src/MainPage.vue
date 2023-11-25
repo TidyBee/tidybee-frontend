@@ -6,7 +6,7 @@
       :widget-name="'Top Heaviest Files'"
     />
     <triggerbtn
-      :tidy-hub-api-post="tidyHubApiPost"
+      :tidy-hub-api="tidyHubApi"
     />
   </div>
 </template>
@@ -27,7 +27,6 @@ export default {
     return {
       filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
-      tidyHubApiPost: process.env.VUE_APP_HUB_POST,
     };
   },
 }
