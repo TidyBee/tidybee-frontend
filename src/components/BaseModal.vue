@@ -3,7 +3,9 @@
     <div class="vue-modal-inner">
       <div class="vue-modal-content">
         <slot />
-        <button type="button" @click="$emit('close')">Close</button>
+        <button type="button" @click="$emit('close')">
+          {{ $t("common.close") }}
+        </button>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="triggerbtn">Send data</button>
+    <button @click="triggerbtn">{{ $t("postButton.sendData") }}</button>
   </div>
 </template>
 

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-    <div v-else-if="hasError">Error loading data</div>
+    <div v-if="isLoading">{{ $t("common.loading") }}</div>
+    <div v-else-if="hasError">{{ $t("apiLoader.errorLoading") }}</div>
     <div v-else>
       <slot :data="apiData" />
     </div>

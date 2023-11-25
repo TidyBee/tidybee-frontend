@@ -5,9 +5,12 @@
       <h2 class="nav-item">TidyBee</h2>
     </div>
     <select v-model="locale" @change="switchLang">
-      LANG :
-      <option>en</option>
-      <option>fr</option>
+      <option
+        v-for="availableLocale in availableLocales"
+        :key="availableLocale"
+      >
+        {{ availableLocale }}
+      </option>
     </select>
     <div class="menu-items">
       <h3 class="nav-item" @click="redirectToRoute('Configuration')">
@@ -36,8 +39,11 @@ export default {
   },
   data() {
     return {
-      lang: "en",
+      availableLocales: [""],
     };
+  },
+  mounted() {
+    this.availableLocales = this.$i18n.availableLocales;
   },
   methods: {
     switchLang() {

@@ -11,7 +11,7 @@ const handleSuccess = (response) => {
       : "Invalid data received";
 
   console[isDataValid ? "log" : "error"](
-    isDataValid ? "Data fetched successfully" : errorMessage
+    isDataValid ? "Data fetched successfully" : errorMessage,
   );
 
   return isDataValid ? response.data : null;
