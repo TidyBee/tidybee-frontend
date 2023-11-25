@@ -2,7 +2,7 @@
   {{ option.name }} <br>
   <ul>
     <li
-      v-for="choices in value"
+      v-for="choices in choices"
       :key="choices.name"
       class="multichoice-list"
     >
@@ -28,15 +28,15 @@
     emits: ['configInput'],
     data() {
       return {
-          value: [''],
+          choices: [''],
       }
     },
     async mounted() {
-      this.value = this.option.value;
+      this.choices = this.option.value;
     },
     methods: {
       updateValue() {
-        this.$emit("configInput", this.value);
+        this.$emit("configInput", this.choices);
       },
     }
   }
