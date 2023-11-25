@@ -12,50 +12,54 @@
 
 <script>
 export default {
-  name : "FileItem",
+  name: "FileItem",
   props: {
     file: {
       type: Object,
-      required: true
+      required: true,
     },
   },
-  methods : {
+  methods: {
     formatFileSize(fileSize) {
       const sizeThresholds = [
-        [1, 'B'],
-        [1024, 'KB'],
-        [Math.pow(1024, 2), 'MB'],
-        [Math.pow(1024, 3), 'GB'] ];
+        [1, "B"],
+        [1024, "KB"],
+        [Math.pow(1024, 2), "MB"],
+        [Math.pow(1024, 3), "GB"],
+      ];
       for (const [threshold, unit] of sizeThresholds) {
         if (fileSize < threshold) {
-          return (fileSize / (threshold / 1024)).toFixed(2) + ' ' + unit;
+          return (fileSize / (threshold / 1024)).toFixed(2) + " " + unit;
         }
       }
-      return (fileSize / (sizeThresholds[sizeThresholds.length - 1][0] / 1024)).toFixed(2) + ' ' + sizeThresholds[sizeThresholds.length - 1][1];
+      return (
+        (
+          fileSize /
+          (sizeThresholds[sizeThresholds.length - 1][0] / 1024)
+        ).toFixed(2) +
+        " " +
+        sizeThresholds[sizeThresholds.length - 1][1]
+      );
     },
     getGrade(tidyScore) {
       let score = 0;
-      const scores = ['A', 'B', 'C', 'D', 'E'];
-      score += (tidyScore.misnamed == true);
-      score += (tidyScore.misplaced == true);
-      score += (tidyScore.unused == true);
-      score += (tidyScore.duplicated == true);
+      const scores = ["A", "B", "C", "D", "E"];
+      score += tidyScore.misnamed == true;
+      score += tidyScore.misplaced == true;
+      score += tidyScore.unused == true;
+      score += tidyScore.duplicated == true;
       return scores[score];
     },
     getGradeTooltip(tidyScore) {
       let string = "";
-      if (tidyScore.misnamed) 
-        string += "Misnamed "
-      if (tidyScore.misplaced)
-        string += "Misplaced "
-      if (tidyScore.unused)
-        string += "Unused "
-      if (tidyScore.duplicated)
-        string += "Duplicate "
+      if (tidyScore.misnamed) string += "Misnamed ";
+      if (tidyScore.misplaced) string += "Misplaced ";
+      if (tidyScore.unused) string += "Unused ";
+      if (tidyScore.duplicated) string += "Duplicate ";
       return string;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style src="./css/FileItem.css" scoped></style>
