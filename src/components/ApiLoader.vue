@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import {fetchData} from '../communication/communication.js'
+import {fetchData} from '@/communication/communication.js'
 
 export default {
   props: {
