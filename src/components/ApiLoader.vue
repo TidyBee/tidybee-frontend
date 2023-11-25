@@ -1,37 +1,33 @@
 <template>
   <div>
-    <div v-if="isLoading">
-      Loading...
-    </div>
-    <div v-else-if="hasError">
-      Error loading data
-    </div>
+    <div v-if="isLoading">Loading...</div>
+    <div v-else-if="hasError">Error loading data</div>
     <div v-else>
-      <slot :data="apiData" /> 
+      <slot :data="apiData" />
     </div>
   </div>
 </template>
 
 <script>
-import {fetchData} from '@/communication/communication.js'
+import { fetchData } from "@/communication/communication.js";
 
 export default {
   props: {
     apiUrl: {
       type: String,
-      required: true
+      required: true,
     },
     queryParams: {
       type: Object,
       default: () => ({}),
-    }
+    },
   },
   data() {
     return {
       apiData: {},
       isLoading: false,
-      hasError: false
-    }
+      hasError: false,
+    };
   },
   created() {
     this.loadData();
@@ -47,8 +43,7 @@ export default {
         console.error(error);
       }
       this.isLoading = false;
-    }
-  }
-}
+    },
+  },
+};
 </script>
-  

@@ -1,16 +1,11 @@
 <template>
-  <button
-    class="help-button"
-    @click="$emit('open')"
-  >
-    ?
-  </button>
+  <button class="help-button" @click="$emit('open')">?</button>
 </template>
 
 <script>
 export default {
-    emits: ['open']
-}
+  emits: ["open"],
+};
 </script>
 
 <style src="./css/HelpButton.css" scoped></style>

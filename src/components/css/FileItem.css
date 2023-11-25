@@ -1,35 +1,37 @@
 .file_list {
-    width: 400px;
-    height: auto;
-    max-height: 400px;
-    margin: 20px;
-    border-radius: 17px;
-    background: #ffffff;
-    box-shadow: 9px 9px 18px #d9d9d9, -9px -9px 18px #ffffff;
-    margin-top: 60px;
-    overflow-y: auto;
-    }
+  width: 400px;
+  height: auto;
+  max-height: 400px;
+  margin: 20px;
+  border-radius: 17px;
+  background: #ffffff;
+  box-shadow:
+    9px 9px 18px #d9d9d9,
+    -9px -9px 18px #ffffff;
+  margin-top: 60px;
+  overflow-y: auto;
+}
 
 .header {
-    background: #ffee00;
-    padding: 15px;
-    border-top-left-radius: 17px;
-    border-top-right-radius: 17px;
+  background: #ffee00;
+  padding: 15px;
+  border-top-left-radius: 17px;
+  border-top-right-radius: 17px;
 }
 
 .header h4 {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .file-list {
-    padding: 0;
+  padding: 0;
 }
 
 .file-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .file-list li:nth-child(even) .file-item {
@@ -37,46 +39,46 @@
 }
 
 .file-list li {
-    position: relative;
+  position: relative;
 }
 
 .file-item {
-    display: flex;
-    padding: 10px 0;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  flex-direction: column;
 }
 
 .file-name {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 }
 
 .redirect-icon {
-    width: 16px;
-    height: 16px;
-    margin-left: 5px;
-    display: none;
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  display: none;
 }
 
 .file-name.file-hovered + .redirect-icon {
-    display: inline-block;
+  display: inline-block;
 }
 
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
 }
 
 .widget-container {
-    margin-left: 300px;
-    display: flex;
-    flex-wrap: wrap;
+  margin-left: 300px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .file-info {
