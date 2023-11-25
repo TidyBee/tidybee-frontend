@@ -13,8 +13,8 @@
 
 <script>
 import NavBar from '@/components/NavBar.vue'
-import FileList from "@/components/widgets/fileList.vue"
-import triggerbtn from '@/components/widgets/triggerButton.vue'
+import FileList from "@/components/widgets/FileList.vue"
+import triggerbtn from '@/components/widgets/TriggerButton.vue'
 
 export default {
   name: 'MainPage',
@@ -33,4 +33,4 @@ export default {
 }
 </script>
 
-<style src="./css/MainPage.css" scoped></style>
+<style src="@/css/MainPage.css" scoped></style>

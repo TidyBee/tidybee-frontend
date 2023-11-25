@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { postData } from '../../communication/communication.js';
+import { postData } from '@/communication/communication.js';
 
 export default {
   name: 'TriggerButton',

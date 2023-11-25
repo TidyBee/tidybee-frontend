@@ -22,7 +22,7 @@
 
 <script>
 import ApiLoader from "@/components/ApiLoader.vue"
-import FileItem from "@/components/fileItem.vue"
+import FileItem from "@/components/FileItem.vue"
 
   export default {
       name: 'FileList',
@@ -54,3 +54,4 @@ import FileItem from "@/components/fileItem.vue"
   };
   </script>
   
+  <style src="./css/FileList.css" scoped></style>
