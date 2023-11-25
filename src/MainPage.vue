@@ -5,7 +5,7 @@
       :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
       :widget-name="'Top Heaviest Files'"
     />
-    <triggerbtn
+    <PostButton
       :tidy-hub-api="tidyHubApi"
     />
     <HelpButton @open="isOpen = !isOpen" />
@@ -24,7 +24,7 @@
 <script>
 import NavBar from '@/components/NavBar.vue'
 import FileList from "@/components/widgets/FileList.vue"
-import triggerbtn from '@/components/widgets/TriggerButton.vue'
+import PostButton from '@/components/widgets/PostButton.vue'
 import HelpButton from '@/components/HelpButton.vue'
 import BaseModal from './components/BaseModal.vue'
 import { ref } from 'vue'
@@ -34,7 +34,7 @@ export default {
   components: {
       NavBar,
       FileList,
-      triggerbtn,
+      PostButton,
       HelpButton,
       BaseModal
   }, 
