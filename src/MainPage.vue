@@ -1,4 +1,32 @@
 <template>
+  <v-app id="inspire">
+    <NavBar />
+
+    <v-main class="bg-grey-lighten-3">
+      <v-container>
+        <v-row>
+          <v-col cols="12" md="2">
+            <v-sheet rounded="lg" min-height="268">
+              <!--  -->
+            </v-sheet>
+          </v-col>
+
+          <v-col cols="12" md="8">
+            <v-sheet min-height="70vh" rounded="lg">
+              <!--  -->
+            </v-sheet>
+          </v-col>
+
+          <v-col cols="12" md="2">
+            <v-sheet rounded="lg" min-height="268">
+              <!--  -->
+            </v-sheet>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
+  <!--
   <div>
     <NavBar />
     <FileList
@@ -14,8 +42,17 @@
       </p>
     </BaseModal>
   </div>
-</template>
+--></template>
 
+<script>
+export default {
+  data: () => ({
+    links: ["Home", "Configuration", "A propos"],
+  }),
+};
+</script>
+
+<!--
 <script>
 import NavBar from "@/components/NavBar.vue";
 import FileList from "@/components/widgets/FileList.vue";
@@ -46,5 +83,5 @@ export default {
   },
 };
 </script>
-
 <style src="@/css/MainPage.css" scoped></style>
+-->

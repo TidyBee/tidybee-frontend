@@ -21,6 +21,7 @@
     "vue-cookies": "^1.8.3",
     "vue-i18n": "9",
     "vue-router": "^4.0.13",
+    "vuetify": "^3.4.3",
     "webpack": "^5.88.2"
   },
   "devDependencies": {
