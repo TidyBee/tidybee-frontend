@@ -1,5 +1,5 @@
 <template>
-  {{ option.name }} <br>
+  {{ option.name }} <br />
   <input
     v-model="value"
     type="range"
@@ -7,13 +7,9 @@
     max="100"
     class="slider"
     @input="updateValue"
-  >
-  <br>
-  <input
-    v-model="value"
-    type="number"
-    @input="updateValue"
-  >
+  />
+  <br />
+  <input v-model="value" type="number" @input="updateValue" />
 </template>
 
 <script>
@@ -25,11 +21,11 @@ export default {
       default: () => ({}),
     },
   },
-  emits: ['configInput'],
+  emits: ["configInput"],
   data() {
     return {
-        value: 50,
-    }
+      value: 50,
+    };
   },
   async mounted() {
     this.value = this.option.value;
@@ -38,6 +34,6 @@ export default {
     updateValue() {
       this.$emit("configInput", this.value);
     },
-  }
-}
+  },
+};
 </script>

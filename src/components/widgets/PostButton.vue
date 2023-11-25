@@ -1,26 +1,24 @@
 <template>
   <div>
-    <button @click="triggerbtn">
-      Send data
-    </button>
+    <button @click="triggerbtn">Send data</button>
   </div>
 </template>
 
 <script>
-import { postData } from '@/communication/communication.js';
+import { postData } from "@/communication/communication.js";
 
 export default {
-  name: 'PostButton',
+  name: "PostButton",
   props: {
     tidyHubApi: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   methods: {
-      triggerbtn() {
-        postData(this.tidyHubApi, {fileName: 'test'});
-      },
-  }
-}
+    triggerbtn() {
+      postData(this.tidyHubApi, { fileName: "test" });
+    },
+  },
+};
 </script>
