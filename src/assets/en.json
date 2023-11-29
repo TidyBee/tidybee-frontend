@@ -4,8 +4,9 @@
         "loading": "Loading..."
     },
     "navbar": {
-        "configuration": "Settings",
-        "about" : "About"
+        "Home": "Home",
+        "Configuration": "Settings",
+        "About" : "About"
     },
     "help": {
         "helpText1" : "This is where I would put the tutorial for tidyBee",
