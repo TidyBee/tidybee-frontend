@@ -1,0 +1,30 @@
+{
+    "common" : {
+        "close": "Close",
+        "loading": "Loading..."
+    },
+    "navbar": {
+        "configuration": "Settings",
+        "about" : "About"
+    },
+    "help": {
+        "helpText1" : "This is where I would put the tutorial for tidyBee",
+        "helpText2" : "Once its written"
+    },
+    "fileItem" : {
+        "lastUsed" : "Last Used: ",
+        "misnamed" : "Misnamed ",
+        "misplaced" : "Misplaced ",
+        "unused" : "Unused ",
+        "duplicate" : "Duplicate "
+    },
+    "dropdownOption" : {
+        "selectText": "Please select one"
+    },
+    "apiLoader" : {
+        "errorLoading": "Error loading data"
+    },
+    "postButton" : {
+        "sendData": "Send data"
+    }
+}

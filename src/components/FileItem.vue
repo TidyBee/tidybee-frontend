@@ -6,7 +6,9 @@
       <span>{{ getGrade(file.tidyScore) }}</span>
     </div>
     <p>{{ getGradeTooltip(file.tidyScore) }}</p>
-    <p><strong>Last used: </strong>{{ file.lastAccess }}</p>
+    <p>
+      <strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}
+    </p>
   </div>
 </template>
 
@@ -52,10 +54,10 @@ export default {
     },
     getGradeTooltip(tidyScore) {
       let string = "";
-      if (tidyScore.misnamed) string += "Misnamed ";
-      if (tidyScore.misplaced) string += "Misplaced ";
-      if (tidyScore.unused) string += "Unused ";
-      if (tidyScore.duplicated) string += "Duplicate ";
+      if (tidyScore.misnamed) string += this.$t("fileItem.misnamed");
+      if (tidyScore.misplaced) string += this.$t("fileItem.misplaced");
+      if (tidyScore.unused) string += this.$t("fileItem.unused");
+      if (tidyScore.duplicated) string += this.$t("fileItem.duplicate");
       return string;
     },
   },

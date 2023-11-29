@@ -1,0 +1,30 @@
+{
+  "common" : {
+    "close": "Fermer",
+    "loading": "Chargement en cours..."
+  },
+  "navbar": {
+    "configuration": "Configuration",
+    "about" : "À Propos"
+  },
+  "help": {
+    "helpText1" : "C'est ici que le tutoriel de TidyBee sera",
+    "helpText2" : "Une fois écrit"
+  },
+  "fileItem" : {
+    "lastUsed" : "Dernière utilisation: ",
+    "misnamed" : "Mal nommé ",
+    "misplaced" : "Mal placé ",
+    "unused" : "Inutilisé ",
+    "duplicate" : "Duplicata "
+  },
+  "dropdownOption" : {
+    "selectText": "Veuillez en choisir un"
+  },
+  "apiLoader" : {
+      "errorLoading": "Erreur lors du chargement"
+  },
+  "postButton" : {
+    "sendData": "Envoyer la donnée"
+  }
+}
