@@ -1,11 +1,13 @@
 <template>
-  {{ option.name }} <br />
-  <ul>
-    <li v-for="choice in choices" :key="choice.name" class="multichoice-list">
+  <v-list-item-title>
+    {{ option.name }}
+  </v-list-item-title>
+  <v-list density="compact">
+    <v-list-item v-for="choice in choices" :key="choice.name">
       {{ choice.name }}
       <input v-model="choice.checked" type="checkbox" @input="updateValue" />
-    </li>
-  </ul>
+    </v-list-item>
+  </v-list>
 </template>
 
 <script>
