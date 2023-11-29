@@ -1,7 +1,7 @@
 <template>
   {{ option.name }} <br />
   <select v-model="value" @change="updateValue">
-    <option disabled value="">Please select one</option>
+    <option disabled value="">{{ $t("dropdownOption.selectText") }}</option>
     <option v-for="choice in option.choices" :key="choice">
       {{ choice }}
     </option>

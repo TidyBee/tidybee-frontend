@@ -29,12 +29,12 @@
       :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
       :widget-name="'Top Heaviest Files'"
     />
-    <PostButton :tidy-hub-api="tidyHubApi" />
+    <PostButton :tidy-hub-api="tidyHubApi + 'proxy/post'" />
     <HelpButton @open="isOpen = !isOpen" />
     <BaseModal :open="isOpen" @close="isOpen = !isOpen">
       <p>
-        This is where I would put the tutorial for tidyBee<br />
-        Once its written
+        {{ $t("help.helpText1") }} <br />
+        {{ $t("help.helpText2") }}
       </p>
     </BaseModal>
   </div>
