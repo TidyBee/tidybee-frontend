@@ -2,10 +2,10 @@
   <ApiLoader :api-url="tidyHubApi">
     <template #default="{ data }">
       <v-list class="file_list">
-          <v-list-title class="header">{{ widgetName }}</v-list-title>
-            <v-list-item v-for="file in sortedFileList(data)" :key="file.path" class="file_item">
-              <FileItem :file="file" />
-            </v-list-item>
+        <v-list-title class="header">{{ widgetName }}</v-list-title>
+        <v-list-item v-for="file in sortedFileList(data)" :key="file.path" class="file_item">
+          <FileItem :file="file" />
+        </v-list-item>
       </v-list>
     </template>
   </ApiLoader>
