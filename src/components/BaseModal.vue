@@ -1,14 +1,14 @@
 <template>
-  <div v-show="open" class="vue-modal">
+  <v-card v-show="open" class="vue-modal">
     <div class="vue-modal-inner">
       <div class="vue-modal-content">
         <slot />
-        <button type="button" @click="$emit('close')">
+        <v-btn type="button" @click="$emit('close')">
           {{ $t("common.close") }}
-        </button>
+        </v-btn>
       </div>
     </div>
-  </div>
+  </v-card>
 </template>
 
 <script>
