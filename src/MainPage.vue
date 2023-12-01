@@ -5,9 +5,9 @@
         <v-col cols="12" md="2">
           <v-sheet rounded="lg">
             <FileList
-      :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
-      :widget-name="'Top Heaviest Files'"
-    />
+              :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
+              :widget-name="'Top Heaviest Files'"
+            />
           </v-sheet>
         </v-col>
 
