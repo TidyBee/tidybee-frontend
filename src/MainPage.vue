@@ -48,4 +48,4 @@ export default {
 </script>
 
 
-<!-- <style src="@/css/MainPage.css" scoped></style> -->
+<style src="@/css/MainPage.css" scoped></style>
