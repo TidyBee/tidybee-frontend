@@ -6,13 +6,19 @@ This directory contains both unit tests and E2E (End-to-End) tests for TidyBee. 
 ### Running tests
 
 1. Unit Tests
+
 To execute unit tests, utilize the following command:
+
 ```npm run test:unit```
+
 This command will execute the unit tests and showcase the results within the console. Unit tests are designed to validate the functionality of individual units or components in isolation
 
 2. End-to-End (E2E) Tests
+
 For running end-to-end (E2E) tests, utilize the following command:
+
 ```npm run test:e2e```
+
 This command will trigger Cypress, allowing the execution of end-to-end tests. E2E tests simulate real user interactions and validate the application's behavior across multiple components, ensuring seamless end-to-end functionality.
 
 ## Test conventions
