@@ -1,21 +1,27 @@
 <template>
   <div>
     <NavBar />
-    <ul class="option-list">
-      <li v-for="option in options" :key="option.name">
-        <component
-          :is="getOptionType(option)"
-          :option="option"
-          @config-input="(n) => (option.value = n)"
-        />
-      </li>
-    </ul>
+    <ApiLoader :api-url="tidyHubApi + 'api/User/getData'">
+      <template #default="{ data }">
+        <ul class="option-list" :data="data">
+          <li v-for="option in options" :key="option.name">
+            <component
+              :is="getOptionType(option)"
+              :option="option"
+              @config-input="(n) => (option.value = n)"
+            />
+          </li>
+        </ul>
+      </template>
+    </ApiLoader>
     <button @click="saveConfig()">Save</button>
   </div>
 </template>
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import ApiLoader from "@/components/ApiLoader.vue"
+import { postData } from "@/communication/communication.js";
 import SliderOption from "@/components/options/SliderOption.vue";
 import InputOption from "@/components/options/InputOption.vue";
 import MultipleOption from "@/components/options/MultipleOption.vue";
@@ -25,6 +31,7 @@ export default {
   name: "ConfigurationPage",
   components: {
     NavBar,
+    ApiLoader,
     SliderOption,
     InputOption,
     MultipleOption,
@@ -61,6 +68,7 @@ export default {
     },
     saveConfig() {
       let data = JSON.stringify(this.options);
+      postData(this.tidyHubApi + 'api/User/setConfig', { data })
       console.log(data);
     },
   },
