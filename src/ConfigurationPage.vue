@@ -2,7 +2,7 @@
   <v-main>
     <v-container class="text-center d-flex align-center">
       <v-spacer />
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <div>
           <v-list>
             <v-list-item v-for="option in options" :key="option.name">
@@ -13,7 +13,7 @@
               />
             </v-list-item>
           </v-list>
-          <v-btn @click="saveConfig()">Save</v-btn>
+          <v-btn @click="saveConfig()">{{ $t("parameters.save") }}</v-btn>
         </div>
       </v-col>
       <v-spacer />
@@ -37,14 +37,13 @@ export default {
   },
   data() {
     return {
-      filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
       options: null,
     };
   },
   async mounted() {
     try {
-      this.options = require("@/assets/configurationExample.json");
+      this.options = require("./configurationFiles/default_parameters.json")
     } catch (error) {
       console.error("Error loading JSON data:", error);
     }
@@ -66,7 +65,6 @@ export default {
     },
     saveConfig() {
       let data = JSON.stringify(this.options);
-      postData(this.tidyHubApi + 'api/User/setConfig', { data })
       console.log(data);
     },
   },
