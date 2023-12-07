@@ -4,8 +4,9 @@
     "loading": "Chargement en cours..."
   },
   "navbar": {
-    "configuration": "Configuration",
-    "about" : "À Propos"
+    "Home": "Accueil",
+    "Configuration": "Configuration",
+    "About" : "À Propos"
   },
   "help": {
     "helpText1" : "C'est ici que le tutoriel de TidyBee sera",

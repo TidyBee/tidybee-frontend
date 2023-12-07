@@ -1,27 +1,27 @@
 <template>
-  <div>
-    <NavBar />
-    <ApiLoader :api-url="tidyHubApi + 'api/User/getData'">
-      <template #default="{ data }">
-        <ul class="option-list" :data="data">
-          <li v-for="option in options" :key="option.name">
-            <component
-              :is="getOptionType(option)"
-              :option="option"
-              @config-input="(n) => (option.value = n)"
-            />
-          </li>
-        </ul>
-      </template>
-    </ApiLoader>
-    <button @click="saveConfig()">Save</button>
-  </div>
+  <v-main>
+    <v-container class="text-center d-flex align-center">
+      <v-spacer />
+      <v-col cols="12" md="4">
+        <div>
+          <v-list>
+            <v-list-item v-for="option in options" :key="option.name">
+              <component
+                :is="getOptionType(option)"
+                :option="option"
+                @config-input="(n) => (option.value = n)"
+              />
+            </v-list-item>
+          </v-list>
+          <v-btn @click="saveConfig()">Save</v-btn>
+        </div>
+      </v-col>
+      <v-spacer />
+    </v-container>
+  </v-main>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import ApiLoader from "@/components/ApiLoader.vue"
-import { postData } from "@/communication/communication.js";
 import SliderOption from "@/components/options/SliderOption.vue";
 import InputOption from "@/components/options/InputOption.vue";
 import MultipleOption from "@/components/options/MultipleOption.vue";
@@ -30,8 +30,6 @@ import DropdownOption from "@/components/options/DropdownOption.vue";
 export default {
   name: "ConfigurationPage",
   components: {
-    NavBar,
-    ApiLoader,
     SliderOption,
     InputOption,
     MultipleOption,

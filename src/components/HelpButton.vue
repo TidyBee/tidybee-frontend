@@ -1,5 +1,5 @@
 <template>
-  <button class="help-button" @click="$emit('open')">?</button>
+  <v-btn class="help-button" @click="$emit('open')">?</v-btn>
 </template>
 
 <script>
