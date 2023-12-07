@@ -40,14 +40,14 @@ describe('handleSuccess function', () => {
         consoleSpy.mockRestore();
     });
 
-    test('should log error message if data is invalid', () => {
+    test('should log error message if url is invalid', () => {
         const response = {
         status: 404,
-        statusText: 'Not Found'
+        statusText: 'Network Error'
         };
         const consoleSpy = jest.spyOn(console, 'error');
         handleSuccess(response);
-        expect(consoleSpy).toHaveBeenCalledWith('Error HTTP: 404 Not Found');
+        expect(consoleSpy).toHaveBeenCalledWith('Error HTTP: 404 Network Error');
         consoleSpy.mockRestore();
     });
 });
