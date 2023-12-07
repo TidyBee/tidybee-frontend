@@ -1,0 +1,41 @@
+[
+    {
+        "name":"top_parameters",
+        "type":"Dropdown",
+        "choices":[3, 5, 10],
+        "value": 5  
+    },
+    {
+        "name":"naming_formats",
+        "type":"Dropdown",
+        "choices":[
+            "XXX_date.pdf",
+            "date_XXX.pdf",
+            "date_XXX_dossier.pdf",
+            "XXX_date_dossier.pdf"
+          ],
+        "value": "XXX_date.pdf" 
+    },
+    {
+        "name":"unused_file_durations",
+        "type":"Dropdown",
+        "choices":[
+            "6 months",
+            "1 year",
+            "3 years",
+            "10 years"
+          ],
+        "value":"1 year"
+    },
+    {
+        "name":"size_thresholds",
+        "type":"Dropdown",
+        "choices":[
+            "1 GB",
+            "5 GB",
+            "10 GB",
+            "50 GB"
+          ],
+        "value":"5 GB"
+    }
+]
