@@ -1,6 +1,6 @@
 <template>
   <v-list-item-title>
-    {{ option.name }}
+    {{ $t(`parameters.${option.name}`) }}
   </v-list-item-title>
   <v-list density="compact">
     <v-list-item v-for="choice in choices" :key="choice.name">

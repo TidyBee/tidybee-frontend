@@ -16,7 +16,6 @@
 
 <script>
 import FileList from "@/components/widgets/FileList.vue";
-
 // import PostButton from "@/components/widgets/PostButton.vue";
 
 export default {
