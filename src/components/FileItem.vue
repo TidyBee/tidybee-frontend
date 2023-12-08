@@ -2,13 +2,13 @@
   <div class="file-item">
     <div class="file-name">
       <p>
-        <strong>{{file.path }}</strong>
+        <strong>{{ file.path }}</strong>
       </p>
       <span>{{ getGrade(file.tidyScore) }}</span>
       <img
         src="../assets/redirectIcon.svg"
-        @click="isOpen = !isOpen"
         style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px;"
+        @click="isOpen = !isOpen"
       />
     </div>
     <span>
@@ -16,9 +16,9 @@
         <v-card>
           <span class="text-center">
             <img
+              v-if="isOpen"
               :src="getGradeSVGPath()"
               alt="SVG Image"
-              v-if="isOpen"
               style="width: 50px; height: 50px; margin-top: 10px;"
             />
           </span>
@@ -41,7 +41,7 @@
             </div>
             <p><strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}</p>
           </div>
-          <v-btn @click="closeDialog"> {{$t("common.close")}} </v-btn>
+          <v-btn @click="closeDialog"> {{ $t("common.close") }} </v-btn>
         </v-card>
       </v-dialog>
     </span>

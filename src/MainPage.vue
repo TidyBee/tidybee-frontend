@@ -11,18 +11,19 @@
       </v-col>
     </v-row>
   </v-container>
+  <PostButton :tidy-hub-api="tidyHubApi + 'proxy/post'" />
 </template>
 
 
 <script>
 import FileList from "@/components/widgets/FileList.vue";
-// import PostButton from "@/components/widgets/PostButton.vue";
+ import PostButton from "@/components/widgets/PostButton.vue";
 
 export default {
   name: "MainPage",
   components: {
     FileList,
-    // PostButton,
+    PostButton,
   },
   data() {
     return {
@@ -32,6 +33,5 @@ export default {
   }
 };
 </script>
-
 
 <style src="@/css/MainPage.css" scoped></style>
