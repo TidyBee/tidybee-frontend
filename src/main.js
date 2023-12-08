@@ -1,19 +1,33 @@
 import { createApp } from "vue";
+import { createI18n } from "vue-i18n";
 import App from "./App.vue";
 import router from "@/routers.js";
-import VueCookies from "vue-cookies";
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
+import VueCookies from "vue-cookies";
+
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-if (!VueCookies.get(["locale"])) {
-  VueCookies.set("locale", "en");
-}
+import fr from "@/assets/fr.json";
+import en from "@/assets/en.json";
+
 
 const vuetify = createVuetify({
   components,
   directives,
 });
 
-createApp(App).use(vuetify).use(router).mount("#app");
+
+if (!VueCookies.get(["locale"])) {
+  VueCookies.set("locale", "en");
+}
+const locale = VueCookies.get(["locale"]);
+
+const i18n = createI18n({
+  locale: locale,
+  fallbackLocale: "fr",
+  messages: { fr, en },
+});
+
+createApp(App).use(i18n).use(vuetify).use(router).mount("#app");
