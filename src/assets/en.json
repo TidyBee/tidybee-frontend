@@ -14,10 +14,10 @@
     },
     "fileItem" : {
         "lastUsed" : "Last Used: ",
-        "misnamed" : "Misnamed ",
-        "misplaced" : "Misplaced ",
-        "unused" : "Unused ",
-        "duplicate" : "Duplicate "
+        "misnamed" : "Misnamed: ",
+        "misplaced" : "Misplaced: ",
+        "unused" : "Unused: ",
+        "duplicated" : "Duplicated: "
     },
     "dropdownOption" : {
         "selectText": "Please select one"

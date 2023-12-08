@@ -14,10 +14,10 @@
   },
   "fileItem" : {
     "lastUsed" : "Dernière utilisation: ",
-    "misnamed" : "Mal nommé ",
-    "misplaced" : "Mal placé ",
-    "unused" : "Inutilisé ",
-    "duplicate" : "Duplicata "
+    "misnamed" : "Mal nommé: ",
+    "misplaced" : "Mal placé: ",
+    "unused" : "Inutilisé: ",
+    "duplicated" : "Duplicata: "
   },
   "dropdownOption" : {
     "selectText": "Veuillez en choisir un"
@@ -27,5 +27,8 @@
   },
   "postButton" : {
     "sendData": "Envoyer la donnée"
+  },
+  "fileView": {
+    "size" : "Tailles du fichier: "
   }
 }

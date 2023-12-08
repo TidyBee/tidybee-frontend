@@ -1,14 +1,50 @@
 <template>
   <div class="file-item">
     <div class="file-name">
-      <span>{{ file.path }}</span>
-      <span>{{ formatFileSize(file.size) }}</span>
+      <p>
+        <strong>{{file.path }}</strong>
+      </p>
       <span>{{ getGrade(file.tidyScore) }}</span>
+      <img
+        src="../assets/redirectIcon.svg"
+        @click="isOpen = !isOpen"
+        style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px;"
+      />
     </div>
-    <p>{{ getGradeTooltip(file.tidyScore) }}</p>
-    <p>
-      <strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}
-    </p>
+    <span>
+      <v-dialog v-model="isOpen" max-width="300px">
+        <v-card>
+          <span class="text-center">
+            <img
+              :src="getGradeSVGPath()"
+              alt="SVG Image"
+              v-if="isOpen"
+              style="width: 50px; height: 50px; margin-top: 10px;"
+            />
+          </span>
+          <p><strong style="display: flex; flex-direction: column; align-items: center;">{{ file.path }}</strong></p>  
+          <div style="margin-left: 10px;">
+            <p>
+              <strong>{{ $t("fileView.size") }}</strong>{{ formatFileSize(file.size) }}
+            </p>
+            <div v-if="file.tidyScore">
+              <div v-for="(value, key) in file.tidyScore" :key="key">
+                <div v-if="value">
+                  <strong>{{ $t(`fileItem.${key}`) }}</strong>
+                  <img src="../assets/false.svg" alt="False Icon" style="width: 20px; height: 20px;" />
+                </div>
+                <div v-else>
+                  <strong>{{ $t(`fileItem.${key}`) }}</strong>
+                  <img src="../assets/true.svg" alt="True Icon" style="width: 20px; height: 20px;" />
+                </div>
+              </div>
+            </div>
+            <p><strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}</p>
+          </div>
+          <v-btn @click="closeDialog"> {{$t("common.close")}} </v-btn>
+        </v-card>
+      </v-dialog>
+    </span>
   </div>
 </template>
 
@@ -21,7 +57,23 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      isOpen: false,
+      gradeSVGPaths: {
+        A: require("../assets/grades/grade-a.svg"),
+        B: require("../assets/grades/grade-b.svg"),
+        C: require("../assets/grades/grade-c.svg"),
+        D: require("../assets/grades/grade-d.svg"),
+        E: require("../assets/grades/grade-e.svg"),
+      },
+    };
+  },
   methods: {
+    getGradeSVGPath() {
+      const grade = this.getGrade(this.file.tidyScore);
+      return this.gradeSVGPaths[grade] || '';
+    },
     formatFileSize(fileSize) {
       const sizeThresholds = [
         [1, "B"],
@@ -59,6 +111,9 @@ export default {
       if (tidyScore.unused) string += this.$t("fileItem.unused");
       if (tidyScore.duplicated) string += this.$t("fileItem.duplicate");
       return string;
+    },
+    closeDialog() {
+      this.isOpen = false; 
     },
   },
 };
