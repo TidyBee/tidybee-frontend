@@ -14,5 +14,19 @@
     "vue/html-self-closing": 0,
     "vue/singleline-html-element-content-newline": 0,
     "vue/max-attributes-per-line": 0
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/__tests__/*.{j,t}s?(x)",
+        "**/tests/unit/**/*.spec.{j,t}s?(x)"
+      ],
+      "env": {
+        "jest": {
+          "collectCoverage": true,
+          "collectCoverageFrom": ["**/*.{js,vue}", "!**/node_modules/**"]
+        }
+      }
+    }
+  ]
 }
