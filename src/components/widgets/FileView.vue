@@ -4,9 +4,8 @@
 
 <script>
 export default {
-    emits: ["open"],
+  emits: ["open"],
 };
 </script>
 
 <style src="./css/FileView.css" scoped></style>
-  

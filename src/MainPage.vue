@@ -14,10 +14,9 @@
   <PostButton :tidy-hub-api="tidyHubApi + 'proxy/post'" />
 </template>
 
-
 <script>
 import FileList from "@/components/widgets/FileList.vue";
- import PostButton from "@/components/widgets/PostButton.vue";
+import PostButton from "@/components/widgets/PostButton.vue";
 
 export default {
   name: "MainPage",
@@ -30,7 +29,7 @@ export default {
       filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
     };
-  }
+  },
 };
 </script>
 
