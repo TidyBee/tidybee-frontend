@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const handleSuccess = (response) => {
+export const handleSuccess = (response) => {
   const isDataValid =
     response?.status === 200 &&
     response?.data &&
