@@ -9,15 +9,11 @@
       />
     </div>
     <p>
-      <strong
-        style="display: flex; flex-direction: column; align-items: center"
-        >{{ file.path }}</strong
-      >
+      <strong style="display: flex; flex-direction: column; align-items: center"> {{ file.path }} </strong>
     </p>
     <div style="margin-left: 10px">
       <p>
-        <strong>{{ $t("fileView.size") }}</strong
-        >{{ formatFileSize(file.size) }}
+        <strong>{{ $t("fileView.size") }}</strong>{{ formatFileSize(file.size) }}
       </p>
       <div v-if="file.tidyScore">
         <div v-for="(value, key) in file.tidyScore" :key="key">
@@ -40,8 +36,7 @@
         </div>
       </div>
       <p>
-        <strong>{{ $t("fileItem.lastUsed") }}</strong
-        >{{ file.lastAccess }}
+        <strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}
       </p>
     </div>
   </div>
