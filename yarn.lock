@@ -8978,6 +8978,8 @@ vue@^3.2.13:
 
 vuetify@^3.4.3:
   version "3.4.3"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-3.4.3.tgz#9316582a811136d32ecff2b214b399f400f4af10"
+  integrity sha512-b8yi87Zv4bn2JbaVkkV9uzSRw0fdY/v3ieWne0OTI29w/CNSyLyfHGBCrmx7eD74i562M1j+AwSSRJCX3wF0+Q==
 
 w3c-hr-time@^1.0.2:
   version "1.0.2"
