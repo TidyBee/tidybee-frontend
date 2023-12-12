@@ -1,6 +1,8 @@
 <template>
-  {{ option.name }} <br />
-  <input v-model="value" type="number" @input="updateValue" />
+  <v-list-item-title>
+    {{ option.name }} <br />
+  </v-list-item-title>
+  <v-text-field v-model="value" :label="option.name" @update:model-value="updateValue" />
 </template>
 
 <script>

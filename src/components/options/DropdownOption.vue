@@ -1,11 +1,8 @@
 <template>
-  {{ option.name }} <br />
-  <select v-model="value" @change="updateValue">
-    <option disabled value="">{{ $t("dropdownOption.selectText") }}</option>
-    <option v-for="choice in option.choices" :key="choice">
-      {{ choice }}
-    </option>
-  </select>
+  <v-list-item-title>
+    {{ option.name }} <br />
+  </v-list-item-title>
+  <v-select v-model="value" :label="option.name" :items="option.choices" @update:model-value="updateValue" />
 </template>
 
 <script>

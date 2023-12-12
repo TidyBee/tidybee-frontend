@@ -1,15 +1,12 @@
 <template>
-  {{ option.name }} <br />
-  <input
-    v-model="value"
-    type="range"
-    min="0"
-    max="100"
-    class="slider"
-    @input="updateValue"
-  />
-  <br />
-  <input v-model="value" type="number" @input="updateValue" />
+  <v-list-item-title>  
+    {{ option.name }}
+  </v-list-item-title>
+  <v-slider v-model="value" max="100" min="0" hide-details step="1" :label="option.name" @update:model-value="updateValue">
+    <template #append>
+      <v-text-field v-model="value" type="number" density="compact" hide-details variant="outlined" style="width: 80px" @update:model-value="updateValue" />
+    </template>
+  </v-slider>
 </template>
 
 <script>
