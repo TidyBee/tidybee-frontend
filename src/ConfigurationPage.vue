@@ -2,7 +2,7 @@
   <v-main>
     <v-container class="text-center d-flex align-center">
       <v-spacer />
-      <v-col cols="12" md="4">
+      <v-col cols="12" md="6">
         <div>
           <v-list>
             <v-list-item v-for="option in options" :key="option.name">
@@ -13,7 +13,7 @@
               />
             </v-list-item>
           </v-list>
-          <v-btn @click="saveConfig()">Save</v-btn>
+          <v-btn @click="saveConfig()">{{ $t("parameters.save") }}</v-btn>
         </div>
       </v-col>
       <v-spacer />
@@ -26,6 +26,7 @@ import SliderOption from "@/components/options/SliderOption.vue";
 import InputOption from "@/components/options/InputOption.vue";
 import MultipleOption from "@/components/options/MultipleOption.vue";
 import DropdownOption from "@/components/options/DropdownOption.vue";
+import { postData, fetchData } from "@/communication/communication.js";
 
 export default {
   name: "ConfigurationPage",
@@ -37,14 +38,19 @@ export default {
   },
   data() {
     return {
-      filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
       options: null,
     };
   },
   async mounted() {
     try {
-      this.options = require("@/assets/configurationExample.json");
+      const response = fetchData(this.tidyHubApi + 'api/settings/get') // exemple
+      if (response.status == 200 && response.data) {
+        this.option = response.data
+      } else {
+        console.log("Error loading data, now loading default parameters")
+        this.options = require("./configurationFiles/default_parameters.json")
+      }
     } catch (error) {
       console.error("Error loading JSON data:", error);
     }
@@ -67,6 +73,7 @@ export default {
     saveConfig() {
       let data = JSON.stringify(this.options);
       console.log(data);
+      postData(this.tidyHubApi + 'api/settings/set', data);
     },
   },
 };

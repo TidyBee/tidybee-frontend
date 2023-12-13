@@ -27,5 +27,12 @@
   },
   "postButton" : {
     "sendData": "Envoyer la donnée"
+  },
+  "parameters" : {
+    "top_parameters": "Affichage du nombre de fichiers dans les Tops",
+    "naming_formats": "Nomenclature",
+    "unused_file_durations" : "À partir de quel moment le fichier est considéré comme inutilisé",
+    "size_thresholds" : "À partir de quelle taille est-il considéré comme trop lourd",
+    "save": "Sauvegarder"
   }
 }
