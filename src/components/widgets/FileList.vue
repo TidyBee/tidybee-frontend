@@ -1,12 +1,8 @@
 <template>
-  <ApiLoader :api-url="tidyHubApi" :style="{ 'min-width': getMinWidth(), 'padding': '10px' }">
-    <template #default="{ data }" >
-      <v-list class="file_list">  
-        <v-list-title class="header">{{ widgetName }}
-          <select v-model="widthPreset" style="background-color: white; border: 0.5px solid black; border-radius: 4px;">
-      <option>1</option>
-      <option>2</option>
-    </select></v-list-title>
+  <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <template #default="{ data }">
+      <v-list class="file_list full-height">  
+        <v-list-title class="header">{{ widgetName }}</v-list-title>
         <v-list-item v-for="file in sortedFileList(data)" :key="file.path" class="file_item">
           <FileItem :file="file" />
         </v-list-item>
@@ -38,17 +34,9 @@ export default {
   data() {
     return {
       hoveredIndex: -1,
-      widthPreset: 1,
     };
   },
   methods: {
-    getMinWidth() {
-      console.log('heyo');
-      if (this.widthPreset == 1) {
-        return '25%';
-      }
-      return '50%';
-    },
     sortedFileList(data) {
       if (data) return data.slice().sort((a, b) => b.size - a.size);
     },
