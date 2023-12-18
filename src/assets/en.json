@@ -28,6 +28,9 @@
     "postButton" : {
         "sendData": "Send data"
     },
+    "fileView": {
+        "size" : "File size: "
+    },
     "parameters": {
         "top_parameters": "Display of the number of files in the Tops",
         "naming_formats": "File Naming Formats",

@@ -29,7 +29,7 @@
     "sendData": "Envoyer la donnée"
   },
   "fileView": {
-    "size" : "Tailles du fichier: "
+    "size" : "Taille du fichier: "
   },
   "parameters" : {
     "top_parameters": "Affichage du nombre de fichiers dans les Tops",
