@@ -22,8 +22,9 @@
         drag-allow-from=".header"
         drag-ignore-from=".file_item"
       >
-        <component class="grid-widget"
+        <component
           :is="item.widgetType"
+          class="grid-widget"
           :tidy-hub-api="tidyHubApi + item.widgetUrl"
           :widget-name="item.widgetName"
         />
