@@ -4,12 +4,13 @@
 
     <v-dialog v-model="dialog1" max-width="400">
       <v-card>
-        <v-card-title>
-          Widget Panel
-        </v-card-title>
+        <v-card-title> Widget Panel </v-card-title>
         <v-card-text>
           <div v-for="(button, index) in buttonTexts" :key="index">
-            <v-btn class="mb-3 elevate" @click="openDialog(2, index + 1), closeDialog(1)">
+            <v-btn
+              class="mb-3 elevate"
+              @click="openDialog(2, index + 1), closeDialog(1)"
+            >
               {{ button }}
             </v-btn>
           </div>
@@ -25,11 +26,16 @@
         <v-card-title>
           {{ buttonTexts[selectedButton - 1] }}
         </v-card-title>
-        <v-btn class="mb-3 elevate" @click="handleToggleWidget(widgetName[selectedButton - 1])">
+        <v-btn
+          class="mb-3 elevate"
+          @click="handleToggleWidget(widgetName[selectedButton - 1])"
+        >
           3x4
         </v-btn>
         <v-card-actions>
-          <v-btn color="primary" @click="closeDialog(2), openDialog(1)">Retour</v-btn>
+          <v-btn color="primary" @click="closeDialog(2), openDialog(1)"
+            >Retour</v-btn
+          >
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -52,14 +58,7 @@ export default {
         "Widget de Tri",
         "Consomation Co2",
       ],
-      widgetName: [
-        "Heaviest",
-        "Unused",
-        "Dashboard",
-        "Badnamed",
-        "Tri",
-        "Co2",
-      ],
+      widgetName: ["Heaviest", "Unused", "Dashboard", "Badnamed", "Tri", "Co2"],
     };
   },
   methods: {

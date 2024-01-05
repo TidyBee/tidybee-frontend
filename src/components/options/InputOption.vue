@@ -2,7 +2,11 @@
   <v-list-item-title>
     {{ $t(`parameters.${option.name}`) }} <br />
   </v-list-item-title>
-  <v-text-field v-model="value" :label="$t(`parameters.${option.name}`)" @update:model-value="updateValue" />
+  <v-text-field
+    v-model="value"
+    :label="$t(`parameters.${option.name}`)"
+    @update:model-value="updateValue"
+  />
 </template>
 
 <script>

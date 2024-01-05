@@ -7,7 +7,8 @@
     </div>
     <p>{{ getGradeTooltip(file.tidyScore) }}</p>
     <p>
-      <strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}
+      <strong>{{ $t("fileItem.lastUsed") }}</strong>
+      {{ file.lastAccess }}
     </p>
   </div>
 </template>
