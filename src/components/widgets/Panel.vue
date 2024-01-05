@@ -33,9 +33,9 @@
           3x4
         </v-btn>
         <v-card-actions>
-          <v-btn color="primary" @click="closeDialog(2), openDialog(1)"
-            >Retour</v-btn
-          >
+          <v-btn color="primary" @click="closeDialog(2), openDialog(1)">
+            Retour
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -45,6 +45,7 @@
 <script>
 export default {
   name: "PanelWidget",
+  emits: ["toggle-widget"],
   data() {
     return {
       dialog1: false,

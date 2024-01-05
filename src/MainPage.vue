@@ -1,32 +1,15 @@
 <template>
   <v-main class="bg-grey-lighten-3">
     <v-container>
-      <v-row>
-        <v-col cols="12" md="2">
-          <v-row>
-            <FileList
-              v-if="Heaviest"
-              :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
-              :widget-name="'Top Heaviest Files'"
-              @click="handleFileListClick('Heaviest')"
-            />
-          </v-row>
-          <v-row>
-            <FileList
-              v-if="Unused"
-              :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
-              :widget-name="'Top Unused Files'"
-              @click="handleFileListClick('Unused')"
-            />
-          </v-row>
-          <v-row>
-            <FileList
-              v-if="Badnamed"
-              :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
-              :widget-name="'Top Badnamed Files'"
-              @click="handleFileListClick('Badnamed')"
-            />
-          </v-row>
+      <v-row align="center">
+        <v-col v-for="widget in visibleWidgets" :key="widget.name" cols="12" md="3">
+          <v-btn icon @click="handleFileListClick(widget.name)">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+          <FileList
+            :tidy-hub-api="tidyHubApi + widget.apiEndpoint"
+            :widget-name="widget.displayName"
+          />
         </v-col>
       </v-row>
       <panel-widget @toggle-widget="handleToggleWidget" />
@@ -48,33 +31,35 @@ export default {
     return {
       filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
-      Heaviest: false,
-      Unused: false,
-      Badnamed: false,
+      widgets: [
+        { name: 'Heaviest', displayName: 'Top Heaviest Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
+        { name: 'Unused', displayName: 'Top Unused Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
+        { name: 'Badnamed', displayName: 'Top Badnamed Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
+      ],
     };
+  },
+  computed: {
+    visibleWidgets() {
+      return this.widgets.filter(widget => widget.show);
+    },
   },
   methods: {
     handleFileListClick(widgetName) {
-      if (widgetName === "Heaviest") {
-        this.Heaviest = false;
-      } else if (widgetName === "Unused") {
-        this.Unused = false;
-      } else if (widgetName === "Badnamed") {
-        this.Badnamed = status;
+      const widget = this.widgets.find(widget => widget.name === widgetName);
+      if (widget) {
+        widget.show = !widget.show;
       }
     },
     handleToggleWidget(status, widgetName) {
-      console.log("HERE");
-      if (widgetName === "Heaviest") {
-        this.Heaviest = status;
-      } else if (widgetName === "Unused") {
-        this.Unused = status;
-      } else if (widgetName === "Badnamed") {
-        this.Badnamed = status;
+      const widget = this.widgets.find(widget => widget.name === widgetName);
+      if (widget) {
+        widget.show = status;
       }
     },
   },
 };
 </script>
 
-<style scoped></style>
+
+<style scoped>
+</style>
