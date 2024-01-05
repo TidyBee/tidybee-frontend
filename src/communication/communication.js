@@ -33,11 +33,12 @@ export async function fetchData(url) {
 
 export async function postData(url, data) {
   try {
-    const isValidInput = url && data && typeof data === "object";
-    if (!isValidInput) throw new Error("Invalid URL or data.");
+    console.log(url, data);
+    // const isValidInput = url && data && typeof data === "object";
+    // if (!isValidInput) throw new Error("Invalid URL or data.");
 
     const response = await axios.post(url, data);
-
+    console.log(response);
     return response.status === 200
       ? handleSuccess(response.data)
       : handleError(response);

@@ -1,48 +1,47 @@
 <template>
   <div class="file-item">
     <div class="file-name">
-      <span>{{ file.path }}</span>
-      <span>{{ formatFileSize(file.size) }}</span>
+      <p>
+        <strong>{{ file.path }}</strong>
+      </p>
       <span>{{ getGrade(file.tidyScore) }}</span>
+      <img
+        src="../assets/redirectIcon.svg"
+        style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px"
+        @click="isOpen = !isOpen"
+      />
     </div>
-    <p>{{ getGradeTooltip(file.tidyScore) }}</p>
-    <p>
-      <strong>{{ $t("fileItem.lastUsed") }}</strong>{{ file.lastAccess }}
-    </p>
+    <span>
+      <v-dialog v-model="isOpen" max-width="300px">
+        <v-card>
+          <TidyScore :file="file" />
+          <v-btn @click="closeDialog"> {{ $t("common.close") }} </v-btn>
+        </v-card>
+      </v-dialog>
+    </span>
   </div>
 </template>
 
 <script>
+import TidyScore from "./widgets/TidyScore.vue";
+
 export default {
   name: "FileItem",
+  components: {
+    TidyScore,
+  },
   props: {
     file: {
       type: Object,
       required: true,
     },
   },
+  data() {
+    return {
+      isOpen: false,
+    };
+  },
   methods: {
-    formatFileSize(fileSize) {
-      const sizeThresholds = [
-        [1, "B"],
-        [1024, "KB"],
-        [Math.pow(1024, 2), "MB"],
-        [Math.pow(1024, 3), "GB"],
-      ];
-      for (const [threshold, unit] of sizeThresholds) {
-        if (fileSize < threshold) {
-          return (fileSize / (threshold / 1024)).toFixed(2) + " " + unit;
-        }
-      }
-      return (
-        (
-          fileSize /
-          (sizeThresholds[sizeThresholds.length - 1][0] / 1024)
-        ).toFixed(2) +
-        " " +
-        sizeThresholds[sizeThresholds.length - 1][1]
-      );
-    },
     getGrade(tidyScore) {
       let score = 0;
       const scores = ["A", "B", "C", "D", "E"];
@@ -52,13 +51,8 @@ export default {
       score += tidyScore.duplicated == true;
       return scores[score];
     },
-    getGradeTooltip(tidyScore) {
-      let string = "";
-      if (tidyScore.misnamed) string += this.$t("fileItem.misnamed");
-      if (tidyScore.misplaced) string += this.$t("fileItem.misplaced");
-      if (tidyScore.unused) string += this.$t("fileItem.unused");
-      if (tidyScore.duplicated) string += this.$t("fileItem.duplicate");
-      return string;
+    closeDialog() {
+      this.isOpen = false;
     },
   },
 };

@@ -1,30 +1,28 @@
 <template>
-  <v-main class="bg-grey-lighten-3">
-    <v-container>
-      <v-row>
-        <v-col cols="12" md="2">
-          <v-sheet rounded="lg">
-            <FileList
-              :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
-              :widget-name="'Top Heaviest Files'"
-            />
-          </v-sheet>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-main>
+  <v-container>
+    <v-row>
+      <v-col cols="12" md="2">
+        <v-sheet rounded="lg">
+          <FileList
+            :tidy-hub-api="tidyHubApi + 'api/Dashboard/top-heaviest-files'"
+            :widget-name="'Top Heaviest Files'"
+          />
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
+  <PostButton :tidy-hub-api="tidyHubApi + 'proxy/post'" />
 </template>
-
 
 <script>
 import FileList from "@/components/widgets/FileList.vue";
-// import PostButton from "@/components/widgets/PostButton.vue";
+import PostButton from "@/components/widgets/PostButton.vue";
 
 export default {
   name: "MainPage",
   components: {
     FileList,
-    // PostButton,
+    PostButton,
   },
   data() {
     return {
@@ -34,6 +32,5 @@ export default {
   },
 };
 </script>
-
 
 <style src="@/css/MainPage.css" scoped></style>
