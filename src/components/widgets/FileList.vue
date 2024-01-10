@@ -1,7 +1,7 @@
 <template>
-  <ApiLoader :api-url="tidyHubApi">
+  <ApiLoader :api-url="tidyHubApi" class="full-height">
     <template #default="{ data }">
-      <v-list class="file_list">
+      <v-list class="file_list full-height">
         <v-list-title class="header">{{ widgetName }}</v-list-title>
         <v-list-item
           v-for="file in sortedFileList(data)"
