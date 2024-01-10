@@ -74,6 +74,22 @@ export default {
         { name: 'Unused', displayName: 'Top Unused Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
         { name: 'Badnamed', displayName: 'Top Badnamed Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
       ],
+      widgetLayout: [
+        {
+          x: 0,
+          y: 0,
+          w: 3,
+          h: 3,
+          i: "0",
+          widgetType: "FileList",
+          widgetUrl: "api/Dashboard/top-heaviest-files",
+          widgetName: "TopHeaviestFiles",
+          static: false,
+        },
+      ],
+      lastI: 0,
+      draggable: true,
+      resizable: true,
     };
   },
   computed: {
@@ -93,25 +109,7 @@ export default {
       if (widget) {
         widget.show = status;
       }
-      widgetLayout: [
-        {
-          x: 0,
-          y: 0,
-          w: 3,
-          h: 3,
-          i: "0",
-          widgetType: "FileList",
-          widgetUrl: "api/Dashboard/top-heaviest-files",
-          widgetName: "TopHeaviestFiles",
-          static: false,
-        },
-      ],
-      lastI: 0,
-      draggable: true,
-      resizable: true,
-    };
-  },
-  methods: {
+    },
     addWidget() {
       this.lastI++;
       this.widgetLayout.push({

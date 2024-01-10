@@ -11,13 +11,6 @@
         @click="isOpen = !isOpen"
       />
     </div>
-<<<<<<< HEAD
-    <p>{{ getGradeTooltip(file.tidyScore) }}</p>
-    <p>
-      <strong>{{ $t("fileItem.lastUsed") }}</strong>
-      {{ file.lastAccess }}
-    </p>
-=======
     <span>
       <v-dialog v-model="isOpen" max-width="300px">
         <v-card>
@@ -26,7 +19,6 @@
         </v-card>
       </v-dialog>
     </span>
->>>>>>> main
   </div>
 </template>
 
