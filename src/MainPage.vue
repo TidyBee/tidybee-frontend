@@ -36,8 +36,8 @@
 
 <script>
 import FileList from "@/components/widgets/FileList.vue";
-import { GridLayout, GridItem } from "vue3-grid-layout-next"
-import AddButton from "@/components/AddButton.vue"
+import { GridLayout, GridItem } from "vue3-grid-layout-next";
+import AddButton from "@/components/AddButton.vue";
 // import PostButton from "@/components/widgets/PostButton.vue";
 
 export default {
@@ -46,7 +46,7 @@ export default {
     FileList,
     GridLayout,
     GridItem,
-    AddButton
+    AddButton,
     // PostButton,
   },
   data() {
@@ -54,7 +54,17 @@ export default {
       filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
       widgetLayout: [
-        {"x":0,"y":0,"w":3,"h":3,"i":"0", "widgetType":"FileList", "widgetUrl":"api/Dashboard/top-heaviest-files", "widgetName":"TopHeaviestFiles", static: false},
+        {
+          x: 0,
+          y: 0,
+          w: 3,
+          h: 3,
+          i: "0",
+          widgetType: "FileList",
+          widgetUrl: "api/Dashboard/top-heaviest-files",
+          widgetName: "TopHeaviestFiles",
+          static: false,
+        },
       ],
       lastI: 0,
       draggable: true,
@@ -64,11 +74,20 @@ export default {
   methods: {
     addWidget() {
       this.lastI++;
-      this.widgetLayout.push({"x":0,"y":0,"w":3,"h":3,"i":(this.lastI).toString(), "widgetType":"FileList", "widgetUrl":"api/Dashboard/top-heaviest-files", "widgetName":"TopHeaviestFiles", static: false})
-    }
-  }
+      this.widgetLayout.push({
+        x: 0,
+        y: 0,
+        w: 3,
+        h: 3,
+        i: this.lastI.toString(),
+        widgetType: "FileList",
+        widgetUrl: "api/Dashboard/top-heaviest-files",
+        widgetName: "TopHeaviestFiles",
+        static: false,
+      });
+    },
+  },
 };
 </script>
-
 
 <style src="@/css/MainPage.css" scoped></style>
