@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div v-if="isLoading">{{ $t("common.loading") }}</div>
-    <div v-else-if="hasError">{{ $t("apiLoader.errorLoading") }}</div>
-    <div v-else>
+    <div v-if="isLoading" class="full-height">{{ $t("common.loading") }}</div>
+    <div v-else-if="hasError" class="full-height">
+      {{ $t("apiLoader.errorLoading") }}
+    </div>
+    <div v-else class="full-height">
       <slot :data="apiData" />
     </div>
   </div>
@@ -47,3 +49,5 @@ export default {
   },
 };
 </script>
+
+<style src="./css/ApiLoader.css" />

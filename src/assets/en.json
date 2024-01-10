@@ -4,7 +4,7 @@
         "loading": "Loading..."
     },
     "navbar": {
-        "Home": "Home",
+        "Home": "TidyBee",
         "Configuration": "Settings",
         "About" : "About"
     },
@@ -14,10 +14,10 @@
     },
     "fileItem" : {
         "lastUsed" : "Last Used: ",
-        "misnamed" : "Misnamed ",
-        "misplaced" : "Misplaced ",
-        "unused" : "Unused ",
-        "duplicate" : "Duplicate "
+        "misnamed" : "Misnamed: ",
+        "misplaced" : "Misplaced: ",
+        "unused" : "Unused: ",
+        "duplicated" : "Duplicated: "
     },
     "dropdownOption" : {
         "selectText": "Please select one"
@@ -27,6 +27,9 @@
     },
     "postButton" : {
         "sendData": "Send data"
+    },
+    "fileView": {
+        "size" : "File size: "
     },
     "parameters": {
         "top_parameters": "Display of the number of files in the Tops",
