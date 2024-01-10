@@ -34,7 +34,6 @@
   </v-main>
 </template>
 
-
 <script>
 import FileList from "@/components/widgets/FileList.vue";
 import { GridLayout, GridItem } from "vue3-grid-layout-next"

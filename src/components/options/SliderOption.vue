@@ -1,10 +1,26 @@
 <template>
-  <v-list-item-title>  
+  <v-list-item-title>
     {{ $t(`parameters.${option.name}`) }}
   </v-list-item-title>
-  <v-slider v-model="value" max="100" min="0" hide-details step="1" :label="$t(`parameters.${option.name}`)" @update:model-value="updateValue">
+  <v-slider
+    v-model="value"
+    max="100"
+    min="0"
+    hide-details
+    step="1"
+    :label="$t(`parameters.${option.name}`)"
+    @update:model-value="updateValue"
+  >
     <template #append>
-      <v-text-field v-model="value" type="number" density="compact" hide-details variant="outlined" style="width: 80px" @update:model-value="updateValue" />
+      <v-text-field
+        v-model="value"
+        type="number"
+        density="compact"
+        hide-details
+        variant="outlined"
+        style="width: 80px"
+        @update:model-value="updateValue"
+      />
     </template>
   </v-slider>
 </template>

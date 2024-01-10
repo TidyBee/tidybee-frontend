@@ -1,0 +1,10 @@
+.FileView {
+  background-image: url("../../../assets/redirectIcon.png");
+  background-size: cover;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  font-size: larger;
+  cursor: pointer;
+  border: none;
+}

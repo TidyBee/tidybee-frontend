@@ -12,12 +12,10 @@ import * as directives from "vuetify/directives";
 import fr from "@/assets/fr.json";
 import en from "@/assets/en.json";
 
-
 const vuetify = createVuetify({
   components,
   directives,
 });
-
 
 if (!VueCookies.get(["locale"])) {
   VueCookies.set("locale", "en");
