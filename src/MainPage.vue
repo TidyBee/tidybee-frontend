@@ -3,7 +3,12 @@
     <div @click="cancelLongPress">
       <v-container>
         <v-row align="center">
-          <v-col v-for="widget in visibleWidgets" :key="widget.name" cols="12" md="3">
+          <v-col
+            v-for="widget in visibleWidgets"
+            :key="widget.name"
+            cols="12"
+            md="3"
+          >
             <v-btn icon @click="addSpecificWidget(widget.name)">
               <v-icon>mdi-close</v-icon>
             </v-btn>
@@ -48,7 +53,9 @@
           <v-dialog v-model="dialog1" max-width="400">
             <v-card>
               <v-card-title> Supprimer le widget ? </v-card-title>
-              <v-btn color="primary" @click="removeWidget(), closeDialog()">Oui</v-btn>
+              <v-btn color="primary" @click="removeWidget(), closeDialog()"
+                >Oui</v-btn
+              >
               <v-btn color="primary" @click="closeDialog()">Non</v-btn>
             </v-card>
           </v-dialog>
@@ -78,9 +85,24 @@ export default {
       filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
       widgets: [
-        { name: 'Heaviest', displayName: 'Top Heaviest Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
-        { name: 'Unused', displayName: 'Top Unused Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
-        { name: 'Missnamed', displayName: 'Top missnamed Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
+        {
+          name: "Heaviest",
+          displayName: "Top Heaviest Files",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          show: false,
+        },
+        {
+          name: "Unused",
+          displayName: "Top Unused Files",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          show: false,
+        },
+        {
+          name: "Missnamed",
+          displayName: "Top missnamed Files",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          show: false,
+        },
       ],
       widgetLayout: [
         {
@@ -101,7 +123,7 @@ export default {
   },
   computed: {
     visibleWidgets() {
-      return this.widgets.filter(widget => widget.show);
+      return this.widgets.filter((widget) => widget.show);
     },
   },
   methods: {
@@ -114,7 +136,7 @@ export default {
     },
     removeWidget() {
       this.widgetLayout = this.widgetLayout.filter(
-        (item) => item.i !== this.dialogItemIndex
+        (item) => item.i !== this.dialogItemIndex,
       );
       this.showDeleteButton = null;
     },

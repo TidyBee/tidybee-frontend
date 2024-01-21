@@ -28,13 +28,17 @@
         </v-card-title>
         <v-btn
           class="mb-3 elevate"
-          @click="handleToggleWidget(widgetName[selectedButton - 1], { x: 3, y: 3 })"
+          @click="
+            handleToggleWidget(widgetName[selectedButton - 1], { x: 3, y: 3 })
+          "
         >
           3x3
         </v-btn>
         <v-btn
           class="mb-3 elevate"
-          @click="handleToggleWidget(widgetName[selectedButton - 1], { x: 6, y: 6 })"
+          @click="
+            handleToggleWidget(widgetName[selectedButton - 1], { x: 6, y: 6 })
+          "
         >
           6x6
         </v-btn>
@@ -67,10 +71,10 @@ export default {
       ],
       widgetName: [
         "Heaviest",
-         "Unused", 
-        //  "Dashboard", 
-         "Missnamed", 
-        //  "Tri", 
+        "Unused",
+        //  "Dashboard",
+        "Missnamed",
+        //  "Tri",
         //  "Co2"
       ],
     };
