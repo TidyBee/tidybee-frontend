@@ -1,50 +1,60 @@
 <template>
   <v-main class="bg-grey-lighten-3">
-    <v-container>
-      <v-row align="center">
-        <v-col v-for="widget in visibleWidgets" :key="widget.name" cols="12" md="3">
-          <v-btn icon @click="handleFileListClick(widget.name)">
-            <v-icon>mdi-close</v-icon>
-          </v-btn>
-          <FileList
-            :tidy-hub-api="tidyHubApi + widget.apiEndpoint"
-            :widget-name="widget.displayName"
-          />
-        </v-col>
-      </v-row>
-      <panel-widget @toggle-widget="handleToggleWidget" />
-    </v-container>
-    <grid-layout
-      v-model:layout="widgetLayout"
-      :col-num="12"
-      :row-height="75"
-      :is-draggable="draggable"
-      :is-resizable="resizable"
-      :responsive="true"
-      :vertical-compact="false"
-      :use-css-transforms="true"
-    >
-      <grid-item
-        v-for="item in widgetLayout"
-        :key="item.index"
-        :static="item.static"
-        :x="item.x"
-        :y="item.y"
-        :w="item.w"
-        :h="item.h"
-        :i="item.i"
-        drag-allow-from=".header"
-        drag-ignore-from=".file_item"
+    <div @click="cancelLongPress">
+      <v-container>
+        <v-row align="center">
+          <v-col v-for="widget in visibleWidgets" :key="widget.name" cols="12" md="3">
+            <v-btn icon @click="addSpecificWidget(widget.name)">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <FileList
+              :tidy-hub-api="tidyHubApi + widget.apiEndpoint"
+              :widget-name="widget.displayName"
+            />
+          </v-col>
+        </v-row>
+        <panel-widget @toggle-widget="handleToggleWidget" />
+      </v-container>
+      <grid-layout
+        v-model:layout="widgetLayout"
+        :col-num="12"
+        :row-height="75"
+        :is-draggable="draggable"
+        :is-resizable="resizable"
+        :responsive="true"
+        :vertical-compact="false"
+        :use-css-transforms="true"
       >
-        <component
-          :is="item.widgetType"
-          class="grid-widget"
-          :tidy-hub-api="tidyHubApi + item.widgetUrl"
-          :widget-name="item.widgetName"
-        />
-      </grid-item>
-    </grid-layout>
-    <AddButton @click="addWidget()" />
+        <grid-item
+          v-for="item in widgetLayout"
+          :key="item.index"
+          :static="item.static"
+          :x="item.x"
+          :y="item.y"
+          :w="item.w"
+          :h="item.h"
+          :i="item.i"
+          drag-allow-from=".header"
+          drag-ignore-from=".file_item"
+          @mousedown="startLongPress(item.i)"
+        >
+          <component
+            :is="item.widgetType"
+            class="grid-widget"
+            :tidy-hub-api="tidyHubApi + item.widgetUrl"
+            :widget-name="item.widgetName"
+          />
+          <!-- suppression -->
+          <v-dialog v-model="dialog1" max-width="400">
+            <v-card>
+              <v-card-title> Supprimer le widget ? </v-card-title>
+              <v-btn color="primary" @click="removeWidget(), closeDialog()">Oui</v-btn>
+              <v-btn color="primary" @click="closeDialog()">Non</v-btn>
+            </v-card>
+          </v-dialog>
+        </grid-item>
+      </grid-layout>
+    </div>
   </v-main>
 </template>
 
@@ -53,7 +63,6 @@ import PanelWidget from "@/components/widgets/Panel.vue";
 import FileList from "@/components/widgets/FileList.vue";
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
 import AddButton from "@/components/AddButton.vue";
-// import PostButton from "@/components/widgets/PostButton.vue";
 
 export default {
   name: "MainPage",
@@ -63,7 +72,6 @@ export default {
     GridLayout,
     GridItem,
     AddButton,
-    // PostButton,
   },
   data() {
     return {
@@ -72,24 +80,23 @@ export default {
       widgets: [
         { name: 'Heaviest', displayName: 'Top Heaviest Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
         { name: 'Unused', displayName: 'Top Unused Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
-        { name: 'Badnamed', displayName: 'Top Badnamed Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
+        { name: 'Missnamed', displayName: 'Top missnamed Files', apiEndpoint: 'api/Dashboard/top-heaviest-files', show: false },
       ],
       widgetLayout: [
         {
           x: 0,
           y: 0,
-          w: 3,
-          h: 3,
+          w: 0,
+          h: 0,
           i: "0",
-          widgetType: "FileList",
-          widgetUrl: "api/Dashboard/top-heaviest-files",
-          widgetName: "TopHeaviestFiles",
-          static: false,
         },
       ],
       lastI: 0,
       draggable: true,
       resizable: true,
+      showDeleteButton: null,
+      longPressTimeout: null,
+      dialog1: false,
     };
   },
   computed: {
@@ -98,31 +105,35 @@ export default {
     },
   },
   methods: {
-    handleFileListClick(widgetName) {
-      const widget = this.widgets.find(widget => widget.name === widgetName);
-      if (widget) {
-        widget.show = !widget.show;
-      }
+    startLongPress(widgetIndex) {
+      this.showDeleteButton = widgetIndex;
+      this.dialogItemIndex = widgetIndex;
+      this.longPressTimeout = setTimeout(() => {
+        this.dialog1 = true;
+      }, 1000);
     },
-    handleToggleWidget(status, widgetName) {
-      const widget = this.widgets.find(widget => widget.name === widgetName);
-      if (widget) {
-        widget.show = status;
-      }
+    removeWidget() {
+      this.widgetLayout = this.widgetLayout.filter(
+        (item) => item.i !== this.dialogItemIndex
+      );
+      this.showDeleteButton = null;
     },
-    addWidget() {
+    handleToggleWidget(widgetName, size) {
       this.lastI++;
       this.widgetLayout.push({
         x: 0,
         y: 0,
-        w: 3,
-        h: 3,
+        w: size.x,
+        h: size.y,
         i: this.lastI.toString(),
         widgetType: "FileList",
         widgetUrl: "api/Dashboard/top-heaviest-files",
-        widgetName: "TopHeaviestFiles",
+        widgetName: widgetName,
         static: false,
       });
+    },
+    closeDialog() {
+      this.dialog1 = false;
     },
   },
 };

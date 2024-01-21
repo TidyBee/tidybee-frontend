@@ -28,9 +28,15 @@
         </v-card-title>
         <v-btn
           class="mb-3 elevate"
-          @click="handleToggleWidget(widgetName[selectedButton - 1])"
+          @click="handleToggleWidget(widgetName[selectedButton - 1], { x: 3, y: 3 })"
         >
-          3x4
+          3x3
+        </v-btn>
+        <v-btn
+          class="mb-3 elevate"
+          @click="handleToggleWidget(widgetName[selectedButton - 1], { x: 6, y: 6 })"
+        >
+          6x6
         </v-btn>
         <v-card-actions>
           <v-btn color="primary" @click="closeDialog(2), openDialog(1)">
@@ -53,13 +59,20 @@ export default {
       selectedButton: null,
       buttonTexts: [
         "Top Heaviest File",
-        "Top Unused",
-        "Dashboard Dossier",
-        "Top Bad Named",
-        "Widget de Tri",
-        "Consomation Co2",
+        "Top Unused File",
+        // "Dashboard Dossier",
+        "Top Missnamed File",
+        // "Widget de Tri",
+        // "Consomation Co2",
       ],
-      widgetName: ["Heaviest", "Unused", "Dashboard", "Badnamed", "Tri", "Co2"],
+      widgetName: [
+        "Heaviest",
+         "Unused", 
+        //  "Dashboard", 
+         "Missnamed", 
+        //  "Tri", 
+        //  "Co2"
+      ],
     };
   },
   methods: {
@@ -79,8 +92,8 @@ export default {
         this.dialog2 = false;
       }
     },
-    handleToggleWidget(widgetName) {
-      this.$emit("toggle-widget", true, widgetName);
+    handleToggleWidget(widgetName, size) {
+      this.$emit("toggle-widget", widgetName, size);
       this.dialog1 = false;
       this.dialog2 = false;
     },
