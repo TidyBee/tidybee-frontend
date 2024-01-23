@@ -74,7 +74,7 @@ export default {
           h: 3,
           i: "1",
           widgetType: "FolderWidget",
-          widgetUrl: "api/Dashboard/top-heaviest-files",
+          widgetUrl: "api/Dashboard/files?nbFiles=20",
           widgetName: "FOLDER",
           static: false,
         },
