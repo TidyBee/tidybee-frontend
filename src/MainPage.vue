@@ -61,7 +61,7 @@ export default {
           h: 3,
           i: "0",
           widgetType: "FileList",
-          widgetUrl: "proxy/get_files/4/sorted_by/size",
+          widgetUrl: "/proxy/get_files?amount=5&sort_by=size",
           widgetName: "TopHeaviestFiles",
           static: false,
         },
@@ -81,7 +81,7 @@ export default {
         h: 3,
         i: this.lastI.toString(),
         widgetType: "FileList",
-        widgetUrl: "proxy/get_files/4/sorted_by/size",
+        widgetUrl: "/proxy/get_files?amount=5&sort_by=size",
         widgetName: "TopHeaviestFiles",
         static: false,
       });
