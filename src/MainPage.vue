@@ -49,14 +49,21 @@
             :tidy-hub-api="tidyHubApi + item.widgetUrl"
             :widget-name="item.widgetName"
           />
-          <!-- suppression -->
-          <v-dialog v-model="dialog1" max-width="400">
+          <v-dialog v-model="dialog1" max-width="300">
             <v-card>
-              <v-card-title> Supprimer le widget ? </v-card-title>
-              <v-btn color="primary" @click="removeWidget(), closeDialog()"
-                >Oui</v-btn
+              <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
+              <v-btn 
+                class="mb-3 elevate" 
+                @click="removeWidget(), closeDialog()"
               >
-              <v-btn color="primary" @click="closeDialog()">Non</v-btn>
+                {{ $t("widgetPanel.yes") }}
+              </v-btn>
+              <v-btn 
+                class="mb-3 elevate" 
+                @click="closeDialog()"
+              >
+                {{ $t("widgetPanel.no") }}
+              </v-btn>
             </v-card>
           </v-dialog>
         </grid-item>
@@ -89,19 +96,19 @@ export default {
           name: "Heaviest",
           displayName: "Top Heaviest Files",
           apiEndpoint: "api/Dashboard/top-heaviest-files",
-          show: false,
+          widgetType: "FileList",
         },
         {
           name: "Unused",
           displayName: "Top Unused Files",
           apiEndpoint: "api/Dashboard/top-heaviest-files",
-          show: false,
+          widgetType: "FileList",
         },
         {
           name: "Missnamed",
           displayName: "Top missnamed Files",
           apiEndpoint: "api/Dashboard/top-heaviest-files",
-          show: false,
+          widgetType: "FileList",
         },
       ],
       widgetLayout: [
@@ -141,17 +148,21 @@ export default {
       this.showDeleteButton = null;
     },
     handleToggleWidget(widgetName, size) {
-      this.lastI++;
-      this.widgetLayout.push({
-        x: 0,
-        y: 0,
-        w: size.x,
-        h: size.y,
-        i: this.lastI.toString(),
-        widgetType: "FileList",
-        widgetUrl: "api/Dashboard/top-heaviest-files",
-        widgetName: widgetName,
-        static: false,
+      this.widgets.forEach(widget => {      
+        if (widgetName === widget.name) {
+          this.lastI++;
+          this.widgetLayout.push({
+            x: 0,
+            y: 0,
+            w: size.x,
+            h: size.y,
+            i: this.lastI.toString(),
+            widgetType: widget.widgetType,
+            widgetUrl: widget.apiEndpoint,
+            widgetName: widget.displayName,
+            static: false,
+          });
+        }
       });
     },
     closeDialog() {
