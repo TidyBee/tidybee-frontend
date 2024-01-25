@@ -11,15 +11,12 @@
               class="mb-3 elevate"
               @click="openDialog(2, index + 1), closeDialog(1)"
             >
-              {{ $t('widgetPanel.' + widgetName) }}
+              {{ $t("widgetPanel." + widgetName) }}
             </v-btn>
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn 
-            color="primary" 
-            @click="closeDialog(1)"
-          >
+          <v-btn color="primary" @click="closeDialog(1)">
             {{ $t("widgetPanel.close") }}
           </v-btn>
         </v-card-actions>
@@ -29,17 +26,21 @@
     <v-dialog v-model="dialog2" max-width="500">
       <v-card>
         <v-card-title>
-          {{ $t('widgetPanel.' + widgetNames[selectedButton - 1]) }}
+          {{ $t("widgetPanel." + widgetNames[selectedButton - 1]) }}
         </v-card-title>
         <v-btn
           class="mb-3 elevate"
-          @click="handleToggleWidget(widgetNames[selectedButton - 1], { x: 3, y: 3 })"
+          @click="
+            handleToggleWidget(widgetNames[selectedButton - 1], { x: 3, y: 3 })
+          "
         >
           {{ smallsize[selectedButton - 1] }}
         </v-btn>
         <v-btn
           class="mb-3 elevate"
-          @click="handleToggleWidget(widgetNames[selectedButton - 1], { x: 6, y: 6 })"
+          @click="
+            handleToggleWidget(widgetNames[selectedButton - 1], { x: 6, y: 6 })
+          "
         >
           {{ largesize[selectedButton - 1] }}
         </v-btn>
@@ -80,10 +81,10 @@ export default {
       ],
       widgetNames: [
         "Heaviest",
-         "Unused", 
-        //  "Dashboard", 
-         "Missnamed", 
-        //  "Tri", 
+        "Unused",
+        //  "Dashboard",
+        "Missnamed",
+        //  "Tri",
         //  "Co2"
       ],
     };

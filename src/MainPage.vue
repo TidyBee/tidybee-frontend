@@ -52,16 +52,13 @@
           <v-dialog v-model="dialog1" max-width="300">
             <v-card>
               <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
-              <v-btn 
-                class="mb-3 elevate" 
+              <v-btn
+                class="mb-3 elevate"
                 @click="removeWidget(), closeDialog()"
               >
                 {{ $t("widgetPanel.yes") }}
               </v-btn>
-              <v-btn 
-                class="mb-3 elevate" 
-                @click="closeDialog()"
-              >
+              <v-btn class="mb-3 elevate" @click="closeDialog()">
                 {{ $t("widgetPanel.no") }}
               </v-btn>
             </v-card>
@@ -148,7 +145,7 @@ export default {
       this.showDeleteButton = null;
     },
     handleToggleWidget(widgetName, size) {
-      this.widgets.forEach(widget => {      
+      this.widgets.forEach((widget) => {
         if (widgetName === widget.name) {
           this.lastI++;
           this.widgetLayout.push({
