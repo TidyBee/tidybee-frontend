@@ -62,18 +62,22 @@ export default {
   },
   methods: {
     async loadConfigForSelectedType() {
-  try {
-    console.log("Selected Type Load:", this.selectedType);
-    const newOptions = JSON.parse(JSON.stringify(require(`./configurationFiles/${this.selectedType}.json`)));
+      try {
+        console.log("Selected Type Load:", this.selectedType);
+        const newOptions = JSON.parse(
+          JSON.stringify(
+            require(`./configurationFiles/${this.selectedType}.json`),
+          ),
+        );
 
-    this.options = newOptions;
+        this.options = newOptions;
 
-    console.log('option:', this.options);
-    console.log('newOptions[1].value:', this.options[1].value);
-  } catch (error) {
-    console.error("Error loading JSON data:", error);
-  }
-},
+        console.log("option:", this.options);
+        console.log("newOptions[1].value:", this.options[1].value);
+      } catch (error) {
+        console.error("Error loading JSON data:", error);
+      }
+    },
     getOptionType(option) {
       switch (option.type) {
         case "Slider":
