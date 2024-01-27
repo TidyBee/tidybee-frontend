@@ -36,6 +36,7 @@
 
 <script>
 import FileList from "@/components/widgets/FileList.vue";
+import FolderWidget from "@/components/widgets/FolderWidget.vue";
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
 import AddButton from "@/components/AddButton.vue";
 // import PostButton from "@/components/widgets/PostButton.vue";
@@ -44,6 +45,7 @@ export default {
   name: "MainPage",
   components: {
     FileList,
+    FolderWidget,
     GridLayout,
     GridItem,
     AddButton,
@@ -63,6 +65,17 @@ export default {
           widgetType: "FileList",
           widgetUrl: "/proxy/get_files?amount=5&sort_by=size",
           widgetName: "TopHeaviestFiles",
+          static: false,
+        },
+        {
+          x: 0,
+          y: 0,
+          w: 3,
+          h: 3,
+          i: "1",
+          widgetType: "FolderWidget",
+          widgetUrl: "api/Dashboard/files?nbFiles=20",
+          widgetName: "FOLDER",
           static: false,
         },
       ],
