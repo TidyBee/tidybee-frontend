@@ -1,19 +1,28 @@
 <template>
   <v-main>
+    <v-tabs v-model="selectedType" centered color="grey-darken-2">
+      <v-spacer />
+      <v-tab v-for="type in types" :key="type" :text="type"></v-tab>
+      <v-spacer />
+    </v-tabs>
     <v-container class="text-center d-flex align-center">
       <v-spacer />
       <v-col cols="12" md="6">
         <div>
           <v-list>
-            <v-list-item v-for="option in options" :key="option.name">
-              <component
-                :is="getOptionType(option)"
-                :option="option"
-                @config-input="(n) => (option.value = n)"
+            <v-list-item v-for="(option, index) in options" :key="index">
+              <v-list-item-title>
+                {{ $t(`parameters.${option.name}`) }} <br />
+              </v-list-item-title>
+              <v-select
+                v-model="value"
+                :label="option.value"
+                @disabled="true"
+                @update:model-value="updateValue"
               />
             </v-list-item>
           </v-list>
-          <v-btn @click="saveConfig()">{{ $t("parameters.save") }}</v-btn>
+          <v-btn @click="saveConfig">{{ $t("parameters.save") }}</v-btn>
         </div>
       </v-col>
       <v-spacer />
@@ -22,40 +31,49 @@
 </template>
 
 <script>
-import SliderOption from "@/components/options/SliderOption.vue";
-import InputOption from "@/components/options/InputOption.vue";
-import MultipleOption from "@/components/options/MultipleOption.vue";
-import DropdownOption from "@/components/options/DropdownOption.vue";
 import { postData, fetchData } from "@/communication/communication.js";
 
 export default {
   name: "ConfigurationPage",
-  components: {
-    SliderOption,
-    InputOption,
-    MultipleOption,
-    DropdownOption,
-  },
   data() {
     return {
       tidyHubApi: process.env.VUE_APP_HUB,
-      options: null,
+      options: {},
+      types: ["Flexible", "Normal", "Strict"],
+      selectedType: "Flexible",
     };
+  },
+  watch: {
+    selectedType: "loadConfigForSelectedType",
   },
   async mounted() {
     try {
-      const response = fetchData(this.tidyHubApi + "api/settings/get"); // exemple
-      if (response.status == 200 && response.data) {
-        this.option = response.data;
+      const response = await fetchData(this.tidyHubApi + "api/settings/get");
+      if (response.status === 200 && response.data) {
+        this.options = response.data;
       } else {
+        console.log("Selected Type:", this.selectedType);
         console.log("Error loading data, now loading default parameters");
-        this.options = require("./configurationFiles/default_parameters.json");
+        await this.loadConfigForSelectedType();
       }
     } catch (error) {
       console.error("Error loading JSON data:", error);
     }
   },
   methods: {
+    async loadConfigForSelectedType() {
+  try {
+    console.log("Selected Type Load:", this.selectedType);
+    const newOptions = JSON.parse(JSON.stringify(require(`./configurationFiles/${this.selectedType}.json`)));
+
+    this.options = newOptions;
+
+    console.log('option:', this.options);
+    console.log('newOptions[1].value:', this.options[1].value);
+  } catch (error) {
+    console.error("Error loading JSON data:", error);
+  }
+},
     getOptionType(option) {
       switch (option.type) {
         case "Slider":
