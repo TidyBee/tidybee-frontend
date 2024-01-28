@@ -1,0 +1,26 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - 68-cicdadd-basics-tests
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 19.4.0
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Build
+        run: yarn build
