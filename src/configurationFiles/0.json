@@ -19,9 +19,9 @@
         "name":"unused_file_durations",
         "type":"Dropdown",
         "choices":[
-            "3 year"
+            "3 years"
         ],
-        "value":"3 year"
+        "value":"3 years"
     },
     {
         "name":"size_thresholds",
