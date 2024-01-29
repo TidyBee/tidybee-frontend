@@ -2,7 +2,12 @@
   <v-main>
     <v-tabs v-model="selectedType" centered color="grey-darken-2">
       <v-spacer />
-      <v-tab v-for="type in types" :key="type" :text="type" :data-cy="$t(type)"></v-tab>
+      <v-tab
+        v-for="type in types"
+        :key="type"
+        :text="type"
+        :data-cy="$t(type)"
+      ></v-tab>
       <v-spacer />
     </v-tabs>
     <v-container class="text-center d-flex align-center">
@@ -10,7 +15,7 @@
       <v-col cols="12" md="6">
         <div>
           <v-list>
-            <v-list-item v-for="(option, index) in options" :key="index" >
+            <v-list-item v-for="(option, index) in options" :key="index">
               <v-list-item-title :data-cy="$t(option.name + '-title')">
                 {{ $t(`parameters.${option.name}`) }} <br />
               </v-list-item-title>
@@ -23,7 +28,9 @@
               />
             </v-list-item>
           </v-list>
-          <v-btn @click="saveConfig" :data-cy="$t('save')" >{{ $t("parameters.save") }}</v-btn>
+          <v-btn @click="saveConfig" :data-cy="$t('save')">{{
+            $t("parameters.save")
+          }}</v-btn>
         </div>
       </v-col>
       <v-spacer />
