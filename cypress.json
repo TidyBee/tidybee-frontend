@@ -1,5 +1,10 @@
 {
-  "pluginsFile": "tests/e2e/plugins/index.js"
+  "baseUrl": "http://localhost:8080",
+  "integrationFolder": "tests/e2e",
+  "testFiles": "**/*.spec.js",
+  "viewportWidth": 1920,
+  "viewportHeight": 1080,
+  "pluginsFile": "tests/e2e/plugins/index.js",
   "video": false,
   "env": {
     "CI": "true"
