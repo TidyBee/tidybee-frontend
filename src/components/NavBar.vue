@@ -9,6 +9,7 @@
         v-for="link in links"
         :key="link"
         :text="$t('navbar.' + link)"
+        :data-cy="$t(link)"
         @click="redirectToRoute(link)"
       ></v-tab>
     </v-tabs>
