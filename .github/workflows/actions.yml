@@ -37,40 +37,40 @@ jobs:
     runs-on: macos-latest
     needs: build
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Install Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 19.4.0
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 19.4.0
 
-    - name: Install Dependencies
-      run: yarn install
+      - name: Install Dependencies
+        run: yarn install
 
-    - name: Run Unit Tests on macOS
-      run: yarn test:unit
+      - name: Run Unit Tests on macOS
+        run: yarn test:unit
 
-    - name: Run E2E Tests on macOS
-      run: yarn test:e2e
+      - name: Run E2E Tests on macOS
+        run: yarn test:e2e
 
   test-windows:
     runs-on: windows-latest
     needs: build
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v2
 
-    - name: Install Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 19.4.0
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 19.4.0
 
-    - name: Install Dependencies
-      run: yarn install
+      - name: Install Dependencies
+        run: yarn install
 
-    - name: Run Unit Tests on Windows
-      run: yarn test:unit
+      - name: Run Unit Tests on Windows
+        run: yarn test:unit
 
-    - name: Run E2E Tests on Windows
-      run: yarn test:e2e
+      - name: Run E2E Tests on Windows
+        run: yarn test:e2e
