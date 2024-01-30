@@ -24,7 +24,7 @@
 
 <script>
 import TidyScore from "./widgets/TidyScore.vue";
-import { getGrade } from "@/utils"
+import { getGrade } from "@/utils";
 
 export default {
   name: "FileItem",

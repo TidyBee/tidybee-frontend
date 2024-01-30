@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { getGrade } from "@/utils"
+import { getGrade } from "@/utils";
 
 export default {
   name: "TidyScore",
