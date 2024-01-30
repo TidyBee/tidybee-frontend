@@ -62,4 +62,22 @@ describe("getGrade function", () => {
         const result = getGrade(tidyScore);
         expect(result).toEqual("A");
     });
+
+    test("should handle undefined and return A", () => {
+        const tidyScore = undefined;
+
+        const result = getGrade(tidyScore);
+        expect(result).toEqual("A");
+    });
+
+    test("should handle undefined arguments and return A", () => {
+        const tidyScore = {
+            misnamed: undefined,
+            misplaced: undefined,
+            unused: undefined,
+            duplicated: undefined,
+        }
+        const result = getGrade(tidyScore);
+        expect(result).toEqual("A");
+    });
 });
