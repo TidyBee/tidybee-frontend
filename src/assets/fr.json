@@ -44,5 +44,16 @@
     "unused_file_durations" : "À partir de quel moment le fichier est considéré comme inutilisé",
     "size_thresholds" : "À partir de quelle taille est-il considéré comme trop lourd",
     "save": "Sauvegarder"
+  },
+  "widgetPanel" : {
+    "delete": "Supprimer le widget ?",
+    "yes": "Oui",
+    "no": "Non",
+    "add": "Menu des widgets",
+    "close": "Fermer",
+    "back": "Retour",
+    "Heaviest": "Classement des fichiers les plus lourds",
+    "Unused": "Classement des fichiers les inutilisés",
+    "Missnamed": "Classement des fichiers mals nommés"
   }
 }
