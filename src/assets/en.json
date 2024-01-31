@@ -41,5 +41,16 @@
         "unused_file_durations": "From which moment is the file considered unused",
         "size_thresholds": "From what size is it considered too heavy",
         "save": "Save"
+    },
+    "widgetPanel" : {
+      "delete": "Delete widget ?",
+      "yes": "yes",
+      "no": "no",
+      "Add": "Widgets panel",
+      "close": "Close",
+      "back" : "Back",
+      "Heaviest": "Top Heaviest Files",
+      "Unused": "Top Unused Files",
+      "Missnamed": "Top Missnamed Files"
     }   
 }

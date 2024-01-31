@@ -28,9 +28,9 @@
               />
             </v-list-item>
           </v-list>
-          <v-btn @click="saveConfig" :data-cy="$t('save')">{{
-            $t("parameters.save")
-          }}</v-btn>
+          <v-btn :data-cy="$t('save')" @click="saveConfig"> 
+            {{ $t("parameters.save") }}
+          </v-btn>
         </div>
       </v-col>
       <v-spacer />
