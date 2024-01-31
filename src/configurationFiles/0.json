@@ -1,0 +1,34 @@
+[
+    {
+        "name":"top_parameters",
+        "type":"Dropdown",
+        "choices":[
+            5
+        ],
+        "value": 5  
+    },
+    {
+        "name":"naming_formats",
+        "type":"Dropdown",
+        "choices":[
+            "XXX.pdf"
+        ],
+        "value": "XXX.pdf" 
+    },
+    {
+        "name":"unused_file_durations",
+        "type":"Dropdown",
+        "choices":[
+            "3 years"
+        ],
+        "value":"3 years"
+    },
+    {
+        "name":"size_thresholds",
+        "type":"Dropdown",
+        "choices":[
+            "10 GB"
+        ],
+        "value":"10 GB"
+    }
+]

@@ -1,7 +1,8 @@
 {
   "common" : {
     "close": "Fermer",
-    "loading": "Chargement en cours..."
+    "loading": "Chargement en cours...",
+    "missingInput": "Une saisie valide est requise"
   },
   "navbar": {
     "Home": "TidyBee",
@@ -30,6 +31,9 @@
   },
   "fileView": {
     "size" : "Taille du fichier: "
+  },
+  "folderWidget": {
+    "folderLocation": "Emplacement du dossier"
   },
   "parameters" : {
     "top_parameters": "Affichage du nombre de fichiers dans les Tops",

@@ -1,0 +1,34 @@
+[
+    {
+        "name":"top_parameters",
+        "type":"Dropdown",
+        "choices":[
+            5
+        ],
+        "value": 5  
+    },
+    {
+        "name":"naming_formats",
+        "type":"Dropdown",
+        "choices":[
+            "XXX_date_directory.pdf"
+        ],
+        "value": "XXX_date_directory.pdf" 
+    },
+    {
+        "name":"unused_file_durations",
+        "type":"Dropdown",
+        "choices":[
+            "6 months"
+        ],
+        "value":"6 months"
+    },
+    {
+        "name":"size_thresholds",
+        "type":"Dropdown",
+        "choices":[
+            "2 GB"
+        ],
+        "value":"2 GB"
+    }
+]

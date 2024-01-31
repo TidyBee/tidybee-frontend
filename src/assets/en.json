@@ -1,7 +1,8 @@
 {
     "common" : {
         "close": "Close",
-        "loading": "Loading..."
+        "loading": "Loading...",
+        "missingInput": "A valid input is required"
     },
     "navbar": {
         "Home": "TidyBee",
@@ -31,6 +32,9 @@
     "fileView": {
         "size" : "File size: "
     },
+    "folderWidget": {
+        "folderLocation": "Folder location"
+    },    
     "parameters": {
         "top_parameters": "Display of the number of files in the Tops",
         "naming_formats": "File Naming Formats",
