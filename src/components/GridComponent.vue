@@ -29,19 +29,16 @@
         :widget-name="item.widgetName"
       />
       <v-dialog v-model="dialog1" max-width="300">
-            <v-card>
-              <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
-              <v-btn
-                class="mb-3 elevate"
-                @click="removeWidget(), closeDialog()"
-              >
-                {{ $t("widgetPanel.yes") }}
-              </v-btn>
-              <v-btn class="mb-3 elevate" @click="closeDialog()">
-                {{ $t("widgetPanel.no") }}
-              </v-btn>
-            </v-card>
-          </v-dialog>
+        <v-card>
+          <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
+          <v-btn class="mb-3 elevate" @click="removeWidget(), closeDialog()">
+            {{ $t("widgetPanel.yes") }}
+          </v-btn>
+          <v-btn class="mb-3 elevate" @click="closeDialog()">
+            {{ $t("widgetPanel.no") }}
+          </v-btn>
+        </v-card>
+      </v-dialog>
     </grid-item>
   </grid-layout>
 </template>
@@ -103,17 +100,17 @@ export default {
   methods: {
     addWidget(widget, size) {
       this.lastI++;
-          this.widgetLayout.push({
-            x: 0,
-            y: 0,
-            w: size.x,
-            h: size.y,
-            i: this.lastI.toString(),
-            widgetType: widget.widgetType,
-            widgetUrl: widget.apiEndpoint,
-            widgetName: widget.displayName,
-            static: false,
-          });
+      this.widgetLayout.push({
+        x: 0,
+        y: 0,
+        w: size.x,
+        h: size.y,
+        i: this.lastI.toString(),
+        widgetType: widget.widgetType,
+        widgetUrl: widget.apiEndpoint,
+        widgetName: widget.displayName,
+        static: false,
+      });
     },
     removeWidget() {
       this.widgetLayout = this.widgetLayout.filter(
