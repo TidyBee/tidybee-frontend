@@ -35,6 +35,9 @@
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"
   },
+  "carbonWidget": {
+    "showEvolution": "Montrer l'évolution"
+  },
   "parameters" : {
     "top_parameters": "Affichage du nombre de fichiers dans les Tops",
     "naming_formats": "Nomenclature",

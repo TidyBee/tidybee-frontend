@@ -37,6 +37,7 @@
 <script>
 import FileList from "@/components/widgets/FileList.vue";
 import FolderWidget from "@/components/widgets/FolderWidget.vue";
+import CarbonWidget from "@/components/widgets/CarbonWidget.vue";
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
 import AddButton from "@/components/AddButton.vue";
 // import PostButton from "@/components/widgets/PostButton.vue";
@@ -49,6 +50,7 @@ export default {
     GridLayout,
     GridItem,
     AddButton,
+    CarbonWidget,
     // PostButton,
   },
   data() {
@@ -76,6 +78,17 @@ export default {
           widgetType: "FolderWidget",
           widgetUrl: "api/Dashboard/files?nbFiles=20",
           widgetName: "FOLDER",
+          static: false,
+        },
+        {
+          x: 0,
+          y: 0,
+          w: 3,
+          h: 3,
+          i: "2",
+          widgetType: "CarbonWidget",
+          widgetUrl: "api/Dashboard/files?nbFiles=20",
+          widgetName: "Carbon Emissions",
           static: false,
         },
       ],

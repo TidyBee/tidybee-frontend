@@ -34,7 +34,10 @@
     },
     "folderWidget": {
         "folderLocation": "Folder location"
-    },    
+    },
+    "carbonWidget": {
+        "showEvolution": "Show evolution"
+    },
     "parameters": {
         "top_parameters": "Display of the number of files in the Tops",
         "naming_formats": "File Naming Formats",
