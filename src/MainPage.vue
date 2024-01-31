@@ -1,30 +1,78 @@
 <template>
   <v-main class="bg-grey-lighten-3">
-    <GridComponent ref="gridRef" :tidy-hub-api="tidyHubApi" />
-    <AddButton @click="addToGrid()" />
+    <!-- <AddButton @click="addToGrid()" /> -->
+    <div @click="cancelLongPress">
+      <v-container>
+        <v-row align="center">
+          <v-col
+            v-for="widget in visibleWidgets"
+            :key="widget.name"
+            cols="12"
+            md="3"
+          >
+            <v-btn icon @click="addSpecificWidget(widget.name)">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+            <FileList
+              :tidy-hub-api="tidyHubApi + widget.apiEndpoint"
+              :widget-name="widget.displayName"
+            />
+          </v-col>
+        </v-row>
+        <panel-widget @toggle-widget="handleToggleWidget" />
+      </v-container>
+      <GridComponent ref="gridRef" :tidy-hub-api="tidyHubApi" />
+    </div>
   </v-main>
 </template>
 
 <script>
-import AddButton from "@/components/AddButton.vue";
 import GridComponent from "@/components/GridComponent.vue";
-// import PostButton from "@/components/widgets/PostButton.vue";
+import PanelWidget from "@/components/widgets/Panel.vue";
 
 export default {
   name: "MainPage",
   components: {
     GridComponent,
-    AddButton,
-    // PostButton,
+    PanelWidget,
   },
   data() {
     return {
       tidyHubApi: process.env.VUE_APP_HUB,
+      widgets: [
+        {
+          name: "Heaviest",
+          displayName: "Top Heaviest Files",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          widgetType: "FileList",
+        },
+        {
+          name: "Unused",
+          displayName: "Top Unused Files",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          widgetType: "FileList",
+        },
+        {
+          name: "Missnamed",
+          displayName: "Top missnamed Files",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          widgetType: "FileList",
+        },
+      ],
     };
   },
+  computed: {
+    visibleWidgets() {
+      return this.widgets.filter((widget) => widget.show);
+    },
+  },
   methods: {
-    addToGrid() {
-      this.$refs.gridRef.addWidget();
+    handleToggleWidget(widgetName, size) {
+      this.widgets.forEach((widget) => {
+        if (widgetName === widget.name) {
+          this.$refs.gridRef.addWidget(widget, size);
+        }
+      });
     },
   },
 };

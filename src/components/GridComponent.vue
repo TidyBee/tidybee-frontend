@@ -20,6 +20,7 @@
       :i="item.i"
       drag-allow-from=".header"
       drag-ignore-from=".file_item"
+      @mousedown="startLongPress(item.i)"
     >
       <component
         :is="item.widgetType"
@@ -27,6 +28,20 @@
         :tidy-hub-api="tidyHubApi + item.widgetUrl"
         :widget-name="item.widgetName"
       />
+      <v-dialog v-model="dialog1" max-width="300">
+            <v-card>
+              <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
+              <v-btn
+                class="mb-3 elevate"
+                @click="removeWidget(), closeDialog()"
+              >
+                {{ $t("widgetPanel.yes") }}
+              </v-btn>
+              <v-btn class="mb-3 elevate" @click="closeDialog()">
+                {{ $t("widgetPanel.no") }}
+              </v-btn>
+            </v-card>
+          </v-dialog>
     </grid-item>
   </grid-layout>
 </template>
@@ -77,25 +92,44 @@ export default {
           static: false,
         },
       ],
-      lastI: 0,
+      lastI: 1,
       draggable: true,
       resizable: true,
+      showDeleteButton: null,
+      longPressTimeout: null,
+      dialog1: false,
     };
   },
   methods: {
-    addWidget() {
+    addWidget(widget, size) {
       this.lastI++;
-      this.widgetLayout.push({
-        x: 0,
-        y: 0,
-        w: 3,
-        h: 3,
-        i: this.lastI.toString(),
-        widgetType: "FileList",
-        widgetUrl: "/proxy/get_files?amount=5&sort_by=size",
-        widgetName: "TopHeaviestFiles",
-        static: false,
-      });
+          this.widgetLayout.push({
+            x: 0,
+            y: 0,
+            w: size.x,
+            h: size.y,
+            i: this.lastI.toString(),
+            widgetType: widget.widgetType,
+            widgetUrl: widget.apiEndpoint,
+            widgetName: widget.displayName,
+            static: false,
+          });
+    },
+    removeWidget() {
+      this.widgetLayout = this.widgetLayout.filter(
+        (item) => item.i !== this.dialogItemIndex,
+      );
+      this.showDeleteButton = null;
+    },
+    startLongPress(widgetIndex) {
+      this.showDeleteButton = widgetIndex;
+      this.dialogItemIndex = widgetIndex;
+      this.longPressTimeout = setTimeout(() => {
+        this.dialog1 = true;
+      }, 1000);
+    },
+    closeDialog() {
+      this.dialog1 = false;
     },
   },
 };
