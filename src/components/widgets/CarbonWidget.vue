@@ -1,7 +1,6 @@
 <template>
   <ApiLoader :api-url="tidyHubApi" class="full-height">
     <template #default="{}">
-      <!-- <template> -->
       <v-list class="file_list full-height">
         <v-list-title class="header">
           {{ widgetName }}
@@ -13,9 +12,6 @@
         </v-list-title>
         <v-list-item class="emission_size"> 502 tCO2e </v-list-item>
         <v-list-item v-if="showEvolution"> + 12% </v-list-item>
-        <!-- <v-list-item class="file_item"> -->
-        <!-- <FileItem :file="file" /> -->
-        <!-- </v-list-item> -->
       </v-list>
     </template>
   </ApiLoader>
@@ -30,7 +26,6 @@
               <input v-model="showEvolution" type="checkbox" />
             </v-list-item>
           </v-list>
-          <!-- <v-file-input webkitdirectory></v-file-input> -->
         </v-form>
         <v-btn type="close" @click="closeDialog">
           {{ $t("common.close") }}
