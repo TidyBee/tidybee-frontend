@@ -53,6 +53,8 @@
 </template>
 
 <script>
+import { getGrade } from "@/utils";
+
 export default {
   name: "TidyScore",
   props: {
@@ -73,18 +75,10 @@ export default {
     };
   },
   methods: {
+    getGrade,
     getGradeSVGPath() {
-      const grade = this.getGrade(this.file.tidyScore);
+      const grade = getGrade(this.file.tidyScore);
       return this.gradeSVGPaths[grade] || "";
-    },
-    getGrade(tidyScore) {
-      let score = 0;
-      const scores = ["A", "B", "C", "D", "E"];
-      score += tidyScore.misnamed == true;
-      score += tidyScore.misplaced == true;
-      score += tidyScore.unused == true;
-      score += tidyScore.duplicated == true;
-      return scores[score];
     },
     formatFileSize(fileSize) {
       const sizeThresholds = [
