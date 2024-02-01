@@ -45,20 +45,22 @@
         >
           <component
             :is="item.widgetType"
+            :data-cy="$t('widget-' + item.widgetName)"
             class="grid-widget"
             :tidy-hub-api="tidyHubApi + item.widgetUrl"
-            :widget-name="item.widgetName"
+            :widget-name="item.widgetDisplayName"
           />
           <v-dialog v-model="dialog1" max-width="300">
             <v-card>
               <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
               <v-btn
+                :data-cy="$t('widget-delete-btn-yes')"
                 class="mb-3 elevate"
                 @click="removeWidget(), closeDialog()"
               >
                 {{ $t("widgetPanel.yes") }}
               </v-btn>
-              <v-btn class="mb-3 elevate" @click="closeDialog()">
+              <v-btn :data-cy="$t('widget-delete-btn-no')" class="mb-3 elevate" @click="closeDialog()">
                 {{ $t("widgetPanel.no") }}
               </v-btn>
             </v-card>
@@ -74,7 +76,6 @@ import PanelWidget from "@/components/widgets/Panel.vue";
 import FileList from "@/components/widgets/FileList.vue";
 import FolderWidget from "@/components/widgets/FolderWidget.vue";
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
-import AddButton from "@/components/AddButton.vue";
 
 export default {
   name: "MainPage",
@@ -84,7 +85,6 @@ export default {
     FolderWidget,
     GridLayout,
     GridItem,
-    AddButton,
   },
   data() {
     return {
@@ -119,18 +119,8 @@ export default {
           i: "0",
           widgetType: "FileList",
           widgetUrl: "/proxy/get_files?amount=5&sort_by=size",
+          widgetDisplayName: "Top Heaviest Files",
           widgetName: "TopHeaviestFiles",
-          static: false,
-        },
-        {
-          x: 0,
-          y: 0,
-          w: 3,
-          h: 3,
-          i: "1",
-          widgetType: "FolderWidget",
-          widgetUrl: "api/Dashboard/files?nbFiles=20",
-          widgetName: "FOLDER",
           static: false,
         },
       ],
@@ -173,7 +163,8 @@ export default {
             i: this.lastI.toString(),
             widgetType: widget.widgetType,
             widgetUrl: widget.apiEndpoint,
-            widgetName: widget.displayName,
+            widgetDisplayName: widget.displayName,
+            widgetName: widget.name,
             static: false,
           });
         }
