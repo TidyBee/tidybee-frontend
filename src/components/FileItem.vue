@@ -24,6 +24,7 @@
 
 <script>
 import TidyScore from "./widgets/TidyScore.vue";
+import { getGrade } from "@/utils";
 
 export default {
   name: "FileItem",
@@ -42,10 +43,7 @@ export default {
     };
   },
   methods: {
-    getGrade(tidyScore) {
-      console.log(tidyScore);
-      return "A";
-    },
+    getGrade,
     closeDialog() {
       this.isOpen = false;
     },
