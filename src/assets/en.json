@@ -54,6 +54,7 @@
       "back" : "Back",
       "Heaviest": "Top Heaviest Files",
       "Unused": "Top Unused Files",
-      "Missnamed": "Top Missnamed Files"
+      "Missnamed": "Top Missnamed Files",
+      "Co2": "Carbon Emissions"
     }   
 }

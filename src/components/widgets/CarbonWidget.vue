@@ -10,8 +10,8 @@
             @click="isOpen = !isOpen"
           />
         </v-list-title>
-        <v-list-item class="emission_size"> 502 tCO2e </v-list-item>
-        <v-list-item v-if="showEvolution"> + 12% </v-list-item>
+        <v-list-item class="emission_size">{{ data.emissions }}</v-list-item>
+        <v-list-item v-if="showEvolution">{{ data.trend }}</v-list-item>
       </v-list>
     </template>
   </ApiLoader>
@@ -66,6 +66,10 @@ export default {
           return this.$t("common.missingInput");
         },
       ],
+      data: {
+        emissions: "502 tCO2e",
+        trend: "+ 12 %"
+      }
     };
   },
   methods: {
