@@ -1,9 +1,12 @@
 <template>
   <div>
-    <v-btn :data-cy="$t('add-widget-btn')" color="grey" @click="openDialog(1)"
-      >+</v-btn
+    <v-btn 
+      :data-cy="$t('add-widget-btn')" 
+      color="grey" 
+      @click="openDialog(1)"
     >
-
+      +
+    </v-btn>
     <v-dialog v-model="dialog1" max-width="500">
       <v-card>
         <v-card-title> {{ $t("widgetPanel.add") }}</v-card-title>
