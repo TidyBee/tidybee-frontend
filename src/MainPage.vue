@@ -60,7 +60,11 @@
               >
                 {{ $t("widgetPanel.yes") }}
               </v-btn>
-              <v-btn :data-cy="$t('widget-delete-btn-no')" class="mb-3 elevate" @click="closeDialog()">
+              <v-btn
+                :data-cy="$t('widget-delete-btn-no')"
+                class="mb-3 elevate"
+                @click="closeDialog()"
+              >
                 {{ $t("widgetPanel.no") }}
               </v-btn>
             </v-card>

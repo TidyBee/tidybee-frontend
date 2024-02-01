@@ -1,6 +1,8 @@
 <template>
   <div>
-    <v-btn :data-cy="$t('add-widget-btn')" color="grey" @click="openDialog(1)">+</v-btn>
+    <v-btn :data-cy="$t('add-widget-btn')" color="grey" @click="openDialog(1)"
+      >+</v-btn
+    >
 
     <v-dialog v-model="dialog1" max-width="500">
       <v-card>
@@ -17,7 +19,11 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn :data-cy="$t('widget-panel-close-btn')" color="primary" @click="closeDialog(1)">
+          <v-btn
+            :data-cy="$t('widget-panel-close-btn')"
+            color="primary"
+            @click="closeDialog(1)"
+          >
             {{ $t("widgetPanel.close") }}
           </v-btn>
         </v-card-actions>
@@ -48,7 +54,11 @@
           {{ largesize[selectedButton - 1] }}
         </v-btn>
         <v-card-actions>
-          <v-btn :data-cy="$t('widget-panel-back-btn')" color="primary" @click="closeDialog(2), openDialog(1)">
+          <v-btn
+            :data-cy="$t('widget-panel-back-btn')"
+            color="primary"
+            @click="closeDialog(2), openDialog(1)"
+          >
             {{ $t("widgetPanel.back") }}
           </v-btn>
         </v-card-actions>
