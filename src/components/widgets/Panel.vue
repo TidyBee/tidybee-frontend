@@ -69,7 +69,7 @@ export default {
         // "3x3",
         "3x3",
         // "3x3",
-        // "3x3",
+        "3x3",
       ],
       largesize: [
         "6x6",
@@ -77,7 +77,7 @@ export default {
         // "6x6",
         "6x6",
         // "6x6",
-        // "6x6",
+        "6x6",
       ],
       widgetNames: [
         "Heaviest",
@@ -85,7 +85,7 @@ export default {
         //  "Dashboard",
         "Missnamed",
         //  "Tri",
-        //  "Co2"
+        "Co2"
       ],
     };
   },
