@@ -67,10 +67,23 @@ export default {
         },
       ],
       data: {
-        emissions: "502 tCO2e",
-        trend: "+ 12 %"
+        emissions: "",
+        trend: ""
       }
     };
+  },
+  async mounted() {
+    try {
+      const newData = JSON.parse(
+          JSON.stringify(
+            require(`./exampleData/co2.json`),
+          ),
+      );
+      this.data = newData; 
+    }
+    catch (error) {
+      console.log("Could not find example co2 data");
+    }
   },
   methods: {
     closeDialog() {
