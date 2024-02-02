@@ -86,3 +86,14 @@
   right: 20px;
   position: fixed;
 }
+
+.emission_size {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.evolution_option {
+  display: grid;
+  text-align: center;
+  font-size: large;
+}

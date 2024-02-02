@@ -79,6 +79,7 @@
 import PanelWidget from "@/components/widgets/Panel.vue";
 import FileList from "@/components/widgets/FileList.vue";
 import FolderWidget from "@/components/widgets/FolderWidget.vue";
+import CarbonWidget from "@/components/widgets/CarbonWidget.vue";
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
 
 export default {
@@ -89,6 +90,11 @@ export default {
     FolderWidget,
     GridLayout,
     GridItem,
+<<<<<<< HEAD
+=======
+    AddButton,
+    CarbonWidget,
+>>>>>>> main
   },
   data() {
     return {
@@ -113,18 +119,35 @@ export default {
           apiEndpoint: "api/Dashboard/top-heaviest-files",
           widgetType: "FileList",
         },
+        {
+          name: "Co2",
+          displayName: "Carbon Emissions",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          widgetType: "CarbonWidget",
+        },
       ],
       widgetLayout: [
         {
           x: 0,
           y: 0,
-          w: 0,
-          h: 0,
+          w: 3,
+          h: 3,
           i: "0",
           widgetType: "FileList",
           widgetUrl: "/proxy/get_files?amount=5&sort_by=size",
           widgetDisplayName: "Top Heaviest Files",
           widgetName: "TopHeaviestFiles",
+          static: false,
+        },
+        {
+          x: 3,
+          y: 0,
+          w: 3,
+          h: 3,
+          i: "1",
+          widgetType: "FolderWidget",
+          widgetUrl: "api/Dashboard/files?nbFiles=20",
+          widgetName: "FOLDER",
           static: false,
         },
       ],
