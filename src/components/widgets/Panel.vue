@@ -1,13 +1,15 @@
 <template>
   <div>
-    <v-btn color="grey" @click="openDialog(1)">+</v-btn>
-
+    <v-btn :data-cy="$t('add-widget-btn')" color="grey" @click="openDialog(1)">
+      +
+    </v-btn>
     <v-dialog v-model="dialog1" max-width="500">
       <v-card>
         <v-card-title> {{ $t("widgetPanel.add") }}</v-card-title>
         <v-card-text>
           <div v-for="(widgetName, index) in widgetNames" :key="index">
             <v-btn
+              :data-cy="$t('widgetPanel-' + widgetName + '-btn')"
               class="mb-3 elevate"
               @click="openDialog(2, index + 1), closeDialog(1)"
             >
@@ -16,7 +18,11 @@
           </div>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="primary" @click="closeDialog(1)">
+          <v-btn
+            :data-cy="$t('widget-panel-close-btn')"
+            color="primary"
+            @click="closeDialog(1)"
+          >
             {{ $t("widgetPanel.close") }}
           </v-btn>
         </v-card-actions>
@@ -29,6 +35,7 @@
           {{ $t("widgetPanel." + widgetNames[selectedButton - 1]) }}
         </v-card-title>
         <v-btn
+          :data-cy="$t('widget-small-size-btn')"
           class="mb-3 elevate"
           @click="
             handleToggleWidget(widgetNames[selectedButton - 1], { x: 3, y: 3 })
@@ -37,6 +44,7 @@
           {{ smallsize[selectedButton - 1] }}
         </v-btn>
         <v-btn
+          :data-cy="$t('widget-large-size-btn')"
           class="mb-3 elevate"
           @click="
             handleToggleWidget(widgetNames[selectedButton - 1], { x: 6, y: 6 })
@@ -45,7 +53,11 @@
           {{ largesize[selectedButton - 1] }}
         </v-btn>
         <v-card-actions>
-          <v-btn color="primary" @click="closeDialog(2), openDialog(1)">
+          <v-btn
+            :data-cy="$t('widget-panel-back-btn')"
+            color="primary"
+            @click="closeDialog(2), openDialog(1)"
+          >
             {{ $t("widgetPanel.back") }}
           </v-btn>
         </v-card-actions>
@@ -85,7 +97,7 @@ export default {
         //  "Dashboard",
         "Missnamed",
         //  "Tri",
-        "Co2"
+        "Co2",
       ],
     };
   },
