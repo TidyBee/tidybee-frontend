@@ -68,20 +68,17 @@ export default {
       ],
       data: {
         emissions: "",
-        trend: ""
-      }
+        trend: "",
+      },
     };
   },
   async mounted() {
     try {
       const newData = JSON.parse(
-          JSON.stringify(
-            require(`./exampleData/co2.json`),
-          ),
+        JSON.stringify(require(`./exampleData/co2.json`)),
       );
-      this.data = newData; 
-    }
-    catch (error) {
+      this.data = newData;
+    } catch (error) {
       console.log("Could not find example co2 data");
     }
   },

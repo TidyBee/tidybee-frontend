@@ -90,11 +90,8 @@ export default {
     FolderWidget,
     GridLayout,
     GridItem,
-<<<<<<< HEAD
-=======
     AddButton,
     CarbonWidget,
->>>>>>> main
   },
   data() {
     return {

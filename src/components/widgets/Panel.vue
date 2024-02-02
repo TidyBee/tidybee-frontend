@@ -1,10 +1,6 @@
 <template>
   <div>
-    <v-btn 
-      :data-cy="$t('add-widget-btn')" 
-      color="grey" 
-      @click="openDialog(1)"
-    >
+    <v-btn :data-cy="$t('add-widget-btn')" color="grey" @click="openDialog(1)">
       +
     </v-btn>
     <v-dialog v-model="dialog1" max-width="500">
@@ -101,7 +97,7 @@ export default {
         //  "Dashboard",
         "Missnamed",
         //  "Tri",
-        "Co2"
+        "Co2",
       ],
     };
   },
