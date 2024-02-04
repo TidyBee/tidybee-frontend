@@ -95,7 +95,7 @@ export default {
         "Heaviest",
         "Unused",
         //  "Dashboard",
-        "Missnamed",
+        "Misnamed",
         //  "Tri",
         "Co2",
       ],
