@@ -4,9 +4,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -19,9 +17,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -31,9 +27,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -58,9 +52,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -80,9 +72,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -100,9 +90,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -122,9 +110,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -142,9 +128,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -164,9 +148,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
-    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains(
-      "Top Misnamed Files",
-    );
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
