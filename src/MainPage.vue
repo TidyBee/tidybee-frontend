@@ -58,6 +58,12 @@ export default {
           apiEndpoint: "api/Dashboard/top-heaviest-files",
           widgetType: "FileList",
         },
+        {
+          name: "Co2",
+          displayName: "Carbon Emissions",
+          apiEndpoint: "api/Dashboard/top-heaviest-files",
+          widgetType: "CarbonWidget",
+        },
       ],
     };
   },

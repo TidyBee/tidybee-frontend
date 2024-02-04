@@ -35,6 +35,9 @@
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"
   },
+  "carbonWidget": {
+    "showEvolution": "Montrer l'évolution"
+  },
   "parameters" : {
     "top_parameters": "Affichage du nombre de fichiers dans les Tops",
     "naming_formats": "Nomenclature",
@@ -51,6 +54,7 @@
     "back": "Retour",
     "Heaviest": "Classement des fichiers les plus lourds",
     "Unused": "Classement des fichiers les inutilisés",
-    "Missnamed": "Classement des fichiers mals nommés"
+    "Missnamed": "Classement des fichiers mals nommés",
+    "Co2": "Emissions de carbone"
   }
 }
