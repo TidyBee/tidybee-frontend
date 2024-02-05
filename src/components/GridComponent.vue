@@ -32,20 +32,20 @@
       <v-dialog v-model="dialog1" max-width="300">
         <v-card>
           <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
-            <v-btn
-              :data-cy="$t('widget-delete-btn-yes')"
-              class="mb-3 elevate"
-              @click="removeWidget(), closeDialog()"
-            >
-              {{ $t("widgetPanel.yes") }}
-            </v-btn>
-            <v-btn
-              :data-cy="$t('widget-delete-btn-no')"
-              class="mb-3 elevate"
-              @click="closeDialog()"
-            >
-              {{ $t("widgetPanel.no") }}
-            </v-btn>
+          <v-btn
+            :data-cy="$t('widget-delete-btn-yes')"
+            class="mb-3 elevate"
+            @click="removeWidget(), closeDialog()"
+          >
+            {{ $t("widgetPanel.yes") }}
+          </v-btn>
+          <v-btn
+            :data-cy="$t('widget-delete-btn-no')"
+            class="mb-3 elevate"
+            @click="closeDialog()"
+          >
+            {{ $t("widgetPanel.no") }}
+          </v-btn>
         </v-card>
       </v-dialog>
     </grid-item>
