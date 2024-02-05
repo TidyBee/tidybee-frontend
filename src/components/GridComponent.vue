@@ -8,6 +8,7 @@
     :responsive="true"
     :vertical-compact="false"
     :use-css-transforms="true"
+    @layout-updated="cancelLongPress()"
   >
     <grid-item
       v-for="item in widgetLayout"
