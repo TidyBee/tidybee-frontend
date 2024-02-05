@@ -28,15 +28,19 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widget-Unused]`).contains("Top Unused Files");
 
     longPress(`[data-cy=widget-Heaviest]`);
-    cy.get(`[data-cy=widget-delete-btn-yes]`).contains("yes").click({ force: true });
+    cy.get(`[data-cy=widget-delete-btn-yes]`)
+      .contains("yes")
+      .click({ force: true });
 
     longPress(`[data-cy=widget-Unused]`);
 
-    cy.get(`[data-cy=widget-delete-btn-yes]`).contains("yes").click({ force: true });
+    cy.get(`[data-cy=widget-delete-btn-yes]`)
+      .contains("yes")
+      .click({ force: true });
     cy.get(`[data-cy=widget-Heaviest]`).should("not.exist");
     cy.get(`[data-cy=widget-Unused]`).should("not.exist");
   });
-})
+});
 
 describe("Widget panel usability test", () => {
   it("widgetpanel close & return button works", () => {
