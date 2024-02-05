@@ -1,5 +1,6 @@
 <template>
   <v-main class="bg-grey-lighten-3">
+    <!-- <AddButton @click="addToGrid()" /> -->
     <div @click="cancelLongPress">
       <v-container>
         <v-row align="center">
@@ -20,81 +21,23 @@
         </v-row>
         <panel-widget @toggle-widget="handleToggleWidget" />
       </v-container>
-      <grid-layout
-        v-model:layout="widgetLayout"
-        :col-num="12"
-        :row-height="75"
-        :is-draggable="draggable"
-        :is-resizable="resizable"
-        :responsive="true"
-        :vertical-compact="false"
-        :use-css-transforms="true"
-      >
-        <grid-item
-          v-for="item in widgetLayout"
-          :key="item.index"
-          :static="item.static"
-          :x="item.x"
-          :y="item.y"
-          :w="item.w"
-          :h="item.h"
-          :i="item.i"
-          drag-allow-from=".header"
-          drag-ignore-from=".file_item"
-          @mousedown="startLongPress(item.i)"
-        >
-          <component
-            :is="item.widgetType"
-            :data-cy="$t('widget-' + item.widgetName)"
-            class="grid-widget"
-            :tidy-hub-api="tidyHubApi + item.widgetUrl"
-            :widget-name="item.widgetDisplayName"
-          />
-          <v-dialog v-model="dialog1" max-width="300">
-            <v-card>
-              <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
-              <v-btn
-                :data-cy="$t('widget-delete-btn-yes')"
-                class="mb-3 elevate"
-                @click="removeWidget(), closeDialog()"
-              >
-                {{ $t("widgetPanel.yes") }}
-              </v-btn>
-              <v-btn
-                :data-cy="$t('widget-delete-btn-no')"
-                class="mb-3 elevate"
-                @click="closeDialog()"
-              >
-                {{ $t("widgetPanel.no") }}
-              </v-btn>
-            </v-card>
-          </v-dialog>
-        </grid-item>
-      </grid-layout>
+      <GridComponent ref="gridRef" :tidy-hub-api="tidyHubApi" />
     </div>
   </v-main>
 </template>
 
 <script>
+import GridComponent from "@/components/GridComponent.vue";
 import PanelWidget from "@/components/widgets/Panel.vue";
-import FileList from "@/components/widgets/FileList.vue";
-import FolderWidget from "@/components/widgets/FolderWidget.vue";
-import CarbonWidget from "@/components/widgets/CarbonWidget.vue";
-import { GridLayout, GridItem } from "vue3-grid-layout-next";
 
 export default {
   name: "MainPage",
   components: {
+    GridComponent,
     PanelWidget,
-    FileList,
-    FolderWidget,
-    GridLayout,
-    GridItem,
-    CarbonWidget,
   },
   data() {
     return {
-      filesInfos: [],
       tidyHubApi: process.env.VUE_APP_HUB,
       widgets: [
         {
@@ -122,13 +65,6 @@ export default {
           widgetType: "CarbonWidget",
         },
       ],
-      widgetLayout: [],
-      lastI: 0,
-      draggable: true,
-      resizable: true,
-      showDeleteButton: null,
-      longPressTimeout: null,
-      dialog1: false,
     };
   },
   computed: {
@@ -137,40 +73,12 @@ export default {
     },
   },
   methods: {
-    startLongPress(widgetIndex) {
-      this.showDeleteButton = widgetIndex;
-      this.dialogItemIndex = widgetIndex;
-      this.longPressTimeout = setTimeout(() => {
-        this.dialog1 = true;
-      }, 1000);
-    },
-    removeWidget() {
-      this.widgetLayout = this.widgetLayout.filter(
-        (item) => item.i !== this.dialogItemIndex,
-      );
-      this.showDeleteButton = null;
-    },
     handleToggleWidget(widgetName, size) {
       this.widgets.forEach((widget) => {
         if (widgetName === widget.name) {
-          this.lastI++;
-          this.widgetLayout.push({
-            x: 0,
-            y: 0,
-            w: size.x,
-            h: size.y,
-            i: this.lastI.toString(),
-            widgetType: widget.widgetType,
-            widgetUrl: widget.apiEndpoint,
-            widgetDisplayName: widget.displayName,
-            widgetName: widget.name,
-            static: false,
-          });
+          this.$refs.gridRef.addWidget(widget, size);
         }
       });
-    },
-    closeDialog() {
-      this.dialog1 = false;
     },
   },
 };
