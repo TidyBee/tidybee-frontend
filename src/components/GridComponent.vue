@@ -27,7 +27,7 @@
         :data-cy="$t('widget-' + item.widgetName)"
         class="grid-widget"
         :tidy-hub-api="tidyHubApi + item.widgetUrl"
-        :widget-name="item.widgetName"
+        :widget-name="item.widgetDisplayName"
       />
       <v-dialog v-model="dialog1" max-width="300">
         <v-card>
