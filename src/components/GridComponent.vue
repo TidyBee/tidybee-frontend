@@ -8,6 +8,7 @@
     :responsive="true"
     :vertical-compact="false"
     :use-css-transforms="true"
+    @layout-updated="cancelLongPress()"
   >
     <grid-item
       v-for="item in widgetLayout"
@@ -21,6 +22,7 @@
       drag-allow-from=".header"
       drag-ignore-from=".file_item"
       @mousedown="startLongPress(item.i)"
+      @mouseup="cancelLongPress()"
     >
       <component
         :is="item.widgetType"
@@ -82,6 +84,7 @@ export default {
       resizable: true,
       showDeleteButton: null,
       longPressTimeout: null,
+      longPressCancel: false,
       dialog1: false,
     };
   },
@@ -107,11 +110,17 @@ export default {
       );
       this.showDeleteButton = null;
     },
+    cancelLongPress() {
+      this.longPressCancel = true;
+    },
     startLongPress(widgetIndex) {
       this.showDeleteButton = widgetIndex;
       this.dialogItemIndex = widgetIndex;
+      this.longPressCancel = false;
       this.longPressTimeout = setTimeout(() => {
-        this.dialog1 = true;
+        if (!this.longPressCancel) {
+          this.dialog1 = true;
+        }
       }, 1000);
     },
     closeDialog() {
