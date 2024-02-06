@@ -1,7 +1,7 @@
 const longPress = (selector) => {
-  cy.wait(2000);
+  cy.wait(1000);
   cy.get(selector).trigger("mousedown");
-  cy.wait(2000);
+  cy.wait(1000);
 };
 
 describe("Widget panel usability test", () => {
