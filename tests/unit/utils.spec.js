@@ -1,4 +1,4 @@
-import { getGrade } from "../../src/utils.js";
+import { getGrade, formatFileSize } from "../../src/utils.js";
 
 describe("getGrade function", () => {
   test("should return A", () => {
@@ -78,5 +78,32 @@ describe("getGrade function", () => {
     };
     const result = getGrade(tidyScore);
     expect(result).toEqual("A");
+  });
+});
+
+describe("formatFileSize function", () => {
+  test("test should return in bytes", () => {
+    const result = formatFileSize(353);
+    expect(result).toEqual("353 B");
+  });
+
+  test("test should return in kilobytes", () => {
+    const result = formatFileSize(532212);
+    expect(result).toEqual("519.74 KB");
+  });
+
+  test("test should return in megabytes", () => {
+    const result = formatFileSize(1235412);
+    expect(result).toEqual("1.18 MB");
+  });
+
+  test("test should return in gigabytes", () => {
+    const result = formatFileSize(233453456123);
+    expect(result).toEqual("217.42 GB");
+  });
+
+  test("test should return in gigabytes", () => {
+    const result = formatFileSize("Who knows");
+    expect(result).toEqual("NaN");
   });
 });

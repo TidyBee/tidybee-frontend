@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import { getGrade } from "@/utils";
+import { getGrade, formatFileSize } from "@/utils";
 
 export default {
   name: "TidyScore",
@@ -75,31 +75,11 @@ export default {
     };
   },
   methods: {
+    formatFileSize,
     getGrade,
     getGradeSVGPath() {
       const grade = getGrade(this.file.tidyScore);
       return this.gradeSVGPaths[grade] || "";
-    },
-    formatFileSize(fileSize) {
-      const sizeThresholds = [
-        [1, "B"],
-        [1024, "KB"],
-        [Math.pow(1024, 2), "MB"],
-        [Math.pow(1024, 3), "GB"],
-      ];
-      for (const [threshold, unit] of sizeThresholds) {
-        if (fileSize < threshold) {
-          return (fileSize / (threshold / 1024)).toFixed(2) + " " + unit;
-        }
-      }
-      return (
-        (
-          fileSize /
-          (sizeThresholds[sizeThresholds.length - 1][0] / 1024)
-        ).toFixed(2) +
-        " " +
-        sizeThresholds[sizeThresholds.length - 1][1]
-      );
     },
   },
 };
