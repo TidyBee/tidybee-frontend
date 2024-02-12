@@ -55,6 +55,7 @@
     "Heaviest": "Classement des fichiers les plus lourds",
     "Unused": "Classement des fichiers les inutilisés",
     "Misnamed": "Classement des fichiers mals nommés",
-    "Co2": "Emissions de carbone"
+    "Co2": "Emissions de carbone",
+    "Directory": "Suivi de dossier"
   }
 }

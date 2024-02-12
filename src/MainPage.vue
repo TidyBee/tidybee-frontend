@@ -64,6 +64,12 @@ export default {
           apiEndpoint: "/proxy/get_files?amount=5&sort_by=size",
           widgetType: "CarbonWidget",
         },
+        {
+          name: "Directory",
+          displayName: "Folder tracker",
+          apiEndpoint: "/proxy/get_files?amount=5&sort_by=size",
+          widgetType: "FolderWidget",
+        },
       ],
     };
   },

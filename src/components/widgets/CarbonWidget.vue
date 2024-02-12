@@ -13,26 +13,26 @@
         <v-list-item class="emission_size">{{ data.emissions }}</v-list-item>
         <v-list-item v-if="showEvolution">{{ data.trend }}</v-list-item>
       </v-list>
+      <span>
+        <v-dialog v-model="isOpen" max-width="300px">
+          <v-card>
+            <v-form @submit.prevent>
+              <v-list>
+                <v-list-item class="evolution_option">
+                  {{ $t("carbonWidget.showEvolution") }}
+                  <br />
+                  <input v-model="showEvolution" type="checkbox" />
+                </v-list-item>
+              </v-list>
+            </v-form>
+            <v-btn type="close" @click="closeDialog">
+              {{ $t("common.close") }}
+            </v-btn>
+          </v-card>
+        </v-dialog>
+      </span>
     </template>
   </ApiLoader>
-  <span>
-    <v-dialog v-model="isOpen" max-width="300px">
-      <v-card>
-        <v-form @submit.prevent>
-          <v-list>
-            <v-list-item class="evolution_option">
-              {{ $t("carbonWidget.showEvolution") }}
-              <br />
-              <input v-model="showEvolution" type="checkbox" />
-            </v-list-item>
-          </v-list>
-        </v-form>
-        <v-btn type="close" @click="closeDialog">
-          {{ $t("common.close") }}
-        </v-btn>
-      </v-card>
-    </v-dialog>
-  </span>
 </template>
 
 <script>

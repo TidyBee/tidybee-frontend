@@ -103,6 +103,7 @@ export default {
         widgetName: widget.name,
         static: false,
       });
+      console.log(this.widgetLayout);
     },
     removeWidget() {
       this.widgetLayout = this.widgetLayout.filter(

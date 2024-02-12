@@ -82,6 +82,7 @@ export default {
         "3x3",
         // "3x3",
         "3x3",
+        "3x3",
       ],
       largesize: [
         "6x6",
@@ -89,6 +90,7 @@ export default {
         // "6x6",
         "6x6",
         // "6x6",
+        "6x6",
         "6x6",
       ],
       widgetNames: [
@@ -98,6 +100,7 @@ export default {
         "Misnamed",
         //  "Tri",
         "Co2",
+        "Directory"
       ],
     };
   },
