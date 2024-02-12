@@ -11,6 +11,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -21,6 +23,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -33,6 +37,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -46,6 +52,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -66,6 +74,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -84,6 +94,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -104,6 +116,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -122,6 +136,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -142,6 +158,8 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
     cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
     cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).click();
     cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
     cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
@@ -153,5 +171,89 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widget-delete-btn-no]`).contains("no");
     cy.get(`[data-cy=widget-delete-btn-yes]`).first().click({ force: true });
     cy.get(`[data-cy=widget-Misnamed]`).should("not.exist");
+  });
+  it("Add Co2 widget & don't delete", () => {
+    cy.visit("/");
+    cy.get(`[data-cy=add-widget-btn]`).click();
+    cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
+    cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).click();
+    cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
+    cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
+    cy.get(`[data-cy=widget-small-size-btn]`).click();
+    cy.get(`[data-cy=widget-Co2]`).contains("Carbon Emissions");
+
+    longPress(`[data-cy=widget-Co2]`);
+    cy.get(`[data-cy=widget-delete-btn-yes]`).contains("yes");
+    cy.get(`[data-cy=widget-delete-btn-no]`).contains("no");
+    cy.get(`[data-cy=widget-delete-btn-no]`).first().click({ force: true });
+
+    cy.get(`[data-cy=widget-Co2]`).contains("Carbon Emissions");
+  });
+
+  it("Add Co2 widget & delete", () => {
+    cy.visit("/");
+    cy.get(`[data-cy=add-widget-btn]`).click();
+    cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
+    cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).click();
+    cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
+    cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
+    cy.get(`[data-cy=widget-small-size-btn]`).click();
+    cy.get(`[data-cy=widget-Co2]`).contains("Carbon Emissions");
+
+    longPress(`[data-cy=widget-Co2]`);
+    cy.get(`[data-cy=widget-delete-btn-yes]`).contains("yes");
+    cy.get(`[data-cy=widget-delete-btn-no]`).contains("no");
+    cy.get(`[data-cy=widget-delete-btn-yes]`).first().click({ force: true });
+    cy.get(`[data-cy=widget-Co2]`).should("not.exist");
+  });
+  it("Add Directory widget & don't delete", () => {
+    cy.visit("/");
+    cy.get(`[data-cy=add-widget-btn]`).click();
+    cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
+    cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).click();
+    cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
+    cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
+    cy.get(`[data-cy=widget-small-size-btn]`).click();
+    cy.get(`[data-cy=widget-Directory]`).contains("Folder tracker");
+
+    longPress(`[data-cy=widget-Directory]`);
+    cy.get(`[data-cy=widget-delete-btn-yes]`).contains("yes");
+    cy.get(`[data-cy=widget-delete-btn-no]`).contains("no");
+    cy.get(`[data-cy=widget-delete-btn-no]`).first().click({ force: true });
+
+    cy.get(`[data-cy=widget-Directory]`).contains("Folder tracker");
+  });
+
+  it("Add Directory widget & delete", () => {
+    cy.visit("/");
+    cy.get(`[data-cy=add-widget-btn]`).click();
+    cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
+    cy.get(`[data-cy=widgetPanel-Unused-btn]`).contains("Top Unused Files");
+    cy.get(`[data-cy=widgetPanel-Misnamed-btn]`).contains("Top Misnamed Files");
+    cy.get(`[data-cy=widgetPanel-Co2-btn]`).contains("Carbon Emissions");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).contains("Folder tracker");
+    cy.get(`[data-cy=widgetPanel-Directory-btn]`).click();
+    cy.get(`[data-cy=widget-small-size-btn]`).contains("3x3");
+    cy.get(`[data-cy=widget-large-size-btn]`).contains("6x6");
+    cy.get(`[data-cy=widget-small-size-btn]`).click();
+    cy.get(`[data-cy=widget-Directory]`).contains("Folder tracker");
+
+    longPress(`[data-cy=widget-Directory]`);
+    cy.get(`[data-cy=widget-delete-btn-yes]`).contains("yes");
+    cy.get(`[data-cy=widget-delete-btn-no]`).contains("no");
+    cy.get(`[data-cy=widget-delete-btn-yes]`).first().click({ force: true });
+    cy.get(`[data-cy=widget-Directory]`).should("not.exist");
   });
 });
