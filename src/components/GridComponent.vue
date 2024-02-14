@@ -8,7 +8,7 @@
     :responsive="true"
     :vertical-compact="false"
     :use-css-transforms="true"
-    @layout-updated="cancelLongPress()"
+    @layout-updated="saveNewChanges()"
   >
     <grid-item
       v-for="item in widgetLayout"
@@ -59,6 +59,7 @@ import { GridLayout, GridItem } from "vue3-grid-layout-next";
 import FileList from "@/components/widgets/FileList.vue";
 import FolderWidget from "@/components/widgets/FolderWidget.vue";
 import CarbonWidget from "@/components/widgets/CarbonWidget.vue";
+import VueCookies from "vue-cookies";
 
 export default {
   name: "GridComponent",
@@ -75,6 +76,15 @@ export default {
       required: true,
     },
   },
+  setup() {
+    if (!VueCookies.get(["widgetLayout"])) {
+      VueCookies.set("widgetLayout", []);
+    }
+    const widgetLayoutCookie = VueCookies.get(["widgetLayout"]);
+    return {
+      widgetLayoutCookie,
+    };
+  },
   data() {
     return {
       filesInfos: [],
@@ -87,6 +97,13 @@ export default {
       longPressCancel: false,
       dialog1: false,
     };
+  },
+  mounted() {
+    this.widgetLayout = this.widgetLayoutCookie.map((item, index) => ({
+      ...item,
+      i: (index + 1).toString(),
+    }));
+    this.lastI = Math.max(...this.widgetLayout.map((item) => parseInt(item.i)));
   },
   methods: {
     addWidget(widget, size) {
@@ -109,6 +126,10 @@ export default {
         (item) => item.i !== this.dialogItemIndex,
       );
       this.showDeleteButton = null;
+    },
+    saveNewChanges() {
+      VueCookies.set("widgetLayout", this.widgetLayout);
+      this.cancelLongPress();
     },
     cancelLongPress() {
       this.longPressCancel = true;
