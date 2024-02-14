@@ -99,8 +99,8 @@ export default {
         //  "Dashboard",
         "Misnamed",
         //  "Tri",
-        "Co2",
-        "Directory"
+        "TextWidget",
+        "Directory",
       ],
     };
   },

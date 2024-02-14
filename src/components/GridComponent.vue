@@ -58,7 +58,7 @@
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
 import FileList from "@/components/widgets/FileList.vue";
 import FolderWidget from "@/components/widgets/FolderWidget.vue";
-import CarbonWidget from "@/components/widgets/CarbonWidget.vue";
+import TextWidget from "@/components/widgets/TextWidget.vue";
 
 export default {
   name: "GridComponent",
@@ -67,7 +67,7 @@ export default {
     FolderWidget,
     GridLayout,
     GridItem,
-    CarbonWidget,
+    TextWidget,
   },
   props: {
     tidyHubApi: {
@@ -103,7 +103,6 @@ export default {
         widgetName: widget.name,
         static: false,
       });
-      console.log(this.widgetLayout);
     },
     removeWidget() {
       this.widgetLayout = this.widgetLayout.filter(

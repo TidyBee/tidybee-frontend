@@ -59,10 +59,10 @@ export default {
           widgetType: "FileList",
         },
         {
-          name: "Co2",
-          displayName: "Carbon Emissions",
+          name: "TextWidget",
+          displayName: "Text Widget",
           apiEndpoint: "/proxy/get_files?amount=5&sort_by=size",
-          widgetType: "CarbonWidget",
+          widgetType: "TextWidget",
         },
         {
           name: "Directory",
