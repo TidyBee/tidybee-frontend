@@ -11,7 +11,7 @@
             @click="isOpen = !isOpen"
           />
         </v-list-title>
-        <v-list-item v-for="file in data" :key="file.path" class="file_item">
+        <v-list-item v-for="file in data" :key="file.pretty_path" class="file_item">
           <FileItem :file="file" />
         </v-list-item>
       </v-list>
