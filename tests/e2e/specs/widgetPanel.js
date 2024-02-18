@@ -172,7 +172,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widget-delete-btn-yes]`).first().click({ force: true });
     cy.get(`[data-cy=widget-Misnamed]`).should("not.exist");
   });
-  it("Add Text Widget widget & don't delete", () => {
+  it("Add Text widget & don't delete", () => {
     cy.visit("/");
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
@@ -203,7 +203,7 @@ describe("Widget panel usability test", () => {
     cy.get(`[data-cy=widget-TextWidget]`).contains("Text Widget");
   });
 
-  it("Add Text Widget widget & delete", () => {
+  it("Add Text widget & delete", () => {
     cy.visit("/");
     cy.get(`[data-cy=add-widget-btn]`).click();
     cy.get(`[data-cy=widgetPanel-Heaviest-btn]`).contains("Top Heaviest Files");
