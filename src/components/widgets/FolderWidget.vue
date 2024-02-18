@@ -34,7 +34,9 @@
                 type="submit"
                 block
                 class="mt-2"
-              >Submit</v-btn>
+              >
+                Submit
+              </v-btn>
             </v-form>
             <v-btn
               :data-cy="$t('widget-Directory-btn-close')"
