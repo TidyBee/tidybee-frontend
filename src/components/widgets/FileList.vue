@@ -5,7 +5,7 @@
         <v-list-title class="header">{{ widgetName }}</v-list-title>
         <v-list-item
           v-for="file in sortedFileList(data)"
-          :key="file.path"
+          :key="file.pretty_path"
           class="file_item"
         >
           <FileItem :file="file" />

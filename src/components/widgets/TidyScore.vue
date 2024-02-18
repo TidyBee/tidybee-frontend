@@ -12,7 +12,7 @@
       <strong
         style="display: flex; flex-direction: column; align-items: center"
       >
-        {{ file.path }}
+        {{ file.pretty_path }}
       </strong>
     </p>
     <div style="margin-left: 10px">
