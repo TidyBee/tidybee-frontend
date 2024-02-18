@@ -5,41 +5,62 @@
         <v-list-title class="header">
           {{ widgetName }}
           <img
+            :data-cy="$t('widget-TextWidget-btn-edit')"
             class="edit-icon"
             src="@/assets/editIcon.svg"
             @click="isOpen = !isOpen"
           />
         </v-list-title>
         <v-list-item class="emission_size">{{ data.emissions }}</v-list-item>
-        <v-list-item v-if="showEvolution">{{ data.trend }}</v-list-item>
+        <v-list-item
+          v-if="data?.showEvolution"
+          :data-cy="$t('widget-TextWidget-evolution')"
+        >
+          {{ data.trend }}
+        </v-list-item>
       </v-list>
+      <span>
+        <v-dialog
+          v-model="isOpen"
+          max-width="300px"
+          :data-cy="$t('widget-TextWidget-settings')"
+        >
+          <v-card>
+            <v-form @submit.prevent>
+              <v-list>
+                <v-list-item
+                  v-if="data.hasOwnProperty('showEvolution')"
+                  class="evolution_option"
+                >
+                  {{ $t("carbonWidget.showEvolution") }}
+                  <br />
+                  <input
+                    v-model="data.showEvolution"
+                    :data-cy="$t('widget-TextWidget-btn-evolution')"
+                    type="checkbox"
+                  />
+                </v-list-item>
+              </v-list>
+            </v-form>
+            <v-btn
+              :data-cy="$t('widget-TextWidget-btn-close')"
+              type="close"
+              @click="closeDialog"
+            >
+              {{ $t("common.close") }}
+            </v-btn>
+          </v-card>
+        </v-dialog>
+      </span>
     </template>
   </ApiLoader>
-  <span>
-    <v-dialog v-model="isOpen" max-width="300px">
-      <v-card>
-        <v-form @submit.prevent>
-          <v-list>
-            <v-list-item class="evolution_option">
-              {{ $t("carbonWidget.showEvolution") }}
-              <br />
-              <input v-model="showEvolution" type="checkbox" />
-            </v-list-item>
-          </v-list>
-        </v-form>
-        <v-btn type="close" @click="closeDialog">
-          {{ $t("common.close") }}
-        </v-btn>
-      </v-card>
-    </v-dialog>
-  </span>
 </template>
 
 <script>
 import ApiLoader from "@/components/ApiLoader.vue";
 
 export default {
-  name: "CarbonWidget",
+  name: "TextWidget",
   components: {
     ApiLoader,
   },
@@ -58,7 +79,6 @@ export default {
       hoveredIndex: -1,
       selectedFolder: "",
       isOpen: false,
-      showEvolution: false,
       rules: [
         (value) => {
           if (value) return true;
@@ -69,6 +89,7 @@ export default {
       data: {
         emissions: "",
         trend: "",
+        showEvolution: false,
       },
     };
   },

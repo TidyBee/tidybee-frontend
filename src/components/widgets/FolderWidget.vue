@@ -5,6 +5,7 @@
         <v-list-title class="header">
           {{ widgetName }}
           <img
+            :data-cy="$t('widget-Directory-btn-edit')"
             class="edit-icon"
             src="@/assets/editIcon.svg"
             @click="isOpen = !isOpen"
@@ -14,26 +15,41 @@
           <FileItem :file="file" />
         </v-list-item>
       </v-list>
+      <span>
+        <v-dialog
+          v-model="isOpen"
+          max-width="300px"
+          :data-cy="$t('widget-Directory-settings')"
+        >
+          <v-card>
+            <v-form @submit.prevent>
+              <v-text-field
+                v-model="selectedFolder"
+                :data-cy="$t('widget-Directory-input')"
+                :rules="rules"
+                :label="$t('folderWidget.folderLocation')"
+              ></v-text-field>
+              <v-btn
+                :data-cy="$t('widget-Directory-btn-submit')"
+                type="submit"
+                block
+                class="mt-2"
+              >
+                Submit
+              </v-btn>
+            </v-form>
+            <v-btn
+              :data-cy="$t('widget-Directory-btn-close')"
+              type="close"
+              @click="closeDialog"
+            >
+              {{ $t("common.close") }}
+            </v-btn>
+          </v-card>
+        </v-dialog>
+      </span>
     </template>
   </ApiLoader>
-  <span>
-    <v-dialog v-model="isOpen" max-width="300px">
-      <v-card>
-        <v-form @submit.prevent>
-          <v-text-field
-            v-model="selectedFolder"
-            :rules="rules"
-            :label="$t('folderWidget.folderLocation')"
-          ></v-text-field>
-          <!-- <v-file-input webkitdirectory></v-file-input> -->
-          <v-btn type="submit" block class="mt-2">Submit</v-btn>
-        </v-form>
-        <v-btn type="close" @click="closeDialog">
-          {{ $t("common.close") }}
-        </v-btn>
-      </v-card>
-    </v-dialog>
-  </span>
 </template>
 
 <script>

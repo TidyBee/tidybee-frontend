@@ -55,6 +55,7 @@
       "Heaviest": "Top Heaviest Files",
       "Unused": "Top Unused Files",
       "Misnamed": "Top Misnamed Files",
-      "Co2": "Carbon Emissions"
+      "TextWidget": "Text Widget",
+      "Directory": "Folder tracker"
     }   
 }

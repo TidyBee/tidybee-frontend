@@ -58,7 +58,7 @@
 import { GridLayout, GridItem } from "vue3-grid-layout-next";
 import FileList from "@/components/widgets/FileList.vue";
 import FolderWidget from "@/components/widgets/FolderWidget.vue";
-import CarbonWidget from "@/components/widgets/CarbonWidget.vue";
+import TextWidget from "@/components/widgets/TextWidget.vue";
 import VueCookies from "vue-cookies";
 
 export default {
@@ -68,7 +68,7 @@ export default {
     FolderWidget,
     GridLayout,
     GridItem,
-    CarbonWidget,
+    TextWidget,
   },
   props: {
     tidyHubApi: {
