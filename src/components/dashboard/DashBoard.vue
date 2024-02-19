@@ -1,34 +1,19 @@
 <template>
   <div class="widget-container">
     <TextWidget
-      :title="'badname'"
-      :types="'Number'"
-      :data="{ percentage: '-12', value: '259', status: false }"
+      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetunused'"
     />
     <TextWidget
-      :title="'unused'"
-      :types="'Number'"
-      :data="{ percentage: '+8', value: '377', status: true }"
+      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetbadname'"
     />
     <TextWidget
-      :title="'duplicate'"
-      :types="'Number'"
-      :data="{ percentage: '+19', value: '124', status: true }"
+      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetduplicate'"
     />
     <TextWidget
-      :title="'heavy'"
-      :types="'Number'"
-      :data="{ percentage: '-5', value: '86', status: false }"
+      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetheavy'"
     />
     <TextWidget
-      :title="'storage'"
-      :types="'Graph'"
-      :data="{
-        percentage: '+4',
-        value: '145/512GB',
-        valuePercentage: '28.32',
-        status: true,
-      }"
+      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetstorage'"
     />
   </div>
   <div class="widget-container">
@@ -53,10 +38,6 @@ export default {
   data() {
     return {
       tidyHubApi: process.env.VUE_APP_HUB,
-      data: {
-        percentage: "-12%",
-        value: "236",
-      },
     };
   },
 };
