@@ -57,5 +57,19 @@
       "Misnamed": "Top Misnamed Files",
       "TextWidget": "Text Widget",
       "Directory": "Folder tracker"
-    }   
+    },
+    "dashboard": {
+        "widgets": {
+          "text" :{
+            "title":{
+              "unused": "Number of unused files",
+              "heavy": "Number of heavy files",
+              "badname": "Number of misnamed files",
+              "duplicate": "Number of duplicate files",
+              "storage": "Shared spaces"
+            },
+            "percentage": "% over last month"
+          }
+        }
+      }
 }

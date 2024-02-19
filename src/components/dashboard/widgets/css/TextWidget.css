@@ -1,0 +1,48 @@
+.v-progress-circular {
+  margin: 1rem;
+  margin-top: 27px;
+}
+
+.rounded-rectangle {
+  border-radius: 15px; 
+  background-color: white;
+  height: 160px; 
+  width: 230px;
+  margin-left: 40px;
+}
+
+.widget-title {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  font-size: 12px;
+  color: #515151;
+}
+
+.widget-text-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: red;
+}
+
+.widget-text-bottom {
+  position: absolute;
+  bottom: 5px;
+  left: 8px;
+  font-size: 11px;
+}
+
+.green-text {
+  color: green;
+}
+
+.red-text {
+  color: red;
+}
+
+.grey-text {
+  color: #515151;
+}

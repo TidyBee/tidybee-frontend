@@ -57,5 +57,19 @@
     "Misnamed": "Classement des fichiers mals nommés",
     "TextWidget": "Widget de texte",
     "Directory": "Suivi de dossier"
+  },
+  "dashboard": {
+    "widgets": {
+      "text" :{
+        "title":{
+          "unused": "Nombre de fichiers inutilisés",
+          "heavy": "Nombre de fichier lourds",
+          "badname": "Nombre de fichiers mal nommés",
+          "duplicate": "Nombre de fichiers dupliqués",
+          "storage": "Espaces partagés"
+        },
+        "percentage": "% sur le mois dernier"
+      }
+    }
   }
 }
