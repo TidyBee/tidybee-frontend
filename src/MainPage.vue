@@ -1,6 +1,6 @@
 <template>
   <!-- <v-main class="bg-grey-lighten-3"> -->
-    <!-- <GridComponent ref="gridRef" :tidy-hub-api="tidyHubApi" /> -->
+  <!-- <GridComponent ref="gridRef" :tidy-hub-api="tidyHubApi" /> -->
   <!-- </v-main> -->
   <DashBoard />
 </template>
