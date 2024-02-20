@@ -34,6 +34,7 @@
                 type="submit"
                 block
                 class="mt-2"
+                @click="updateConfig"
               >
                 Submit
               </v-btn>
@@ -72,6 +73,7 @@ export default {
       required: true,
     },
   },
+  emits: [ "update-config" ],
   data() {
     return {
       hoveredIndex: -1,
@@ -90,6 +92,10 @@ export default {
     closeDialog() {
       this.isOpen = false;
     },
+    updateConfig() {
+      this.isOpen = false;
+      this.$emit("update-config", this.selectedFolder);
+    }
   },
 };
 </script>
