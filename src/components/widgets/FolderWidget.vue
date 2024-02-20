@@ -11,9 +11,16 @@
             @click="isOpen = !isOpen"
           />
         </v-list-title>
-        <v-list-item v-for="file in data" :key="file.pretty_path" class="file_item">
-          <FileItem :file="file" />
-        </v-list-item>
+        <div v-if="isEnoughFiles(data)">
+          <v-list-item v-for="(file, index) in data" :key="file.pretty_path" class="file_item">
+            <FileItem :file="file" :data-cy="'file-' + index" />
+          </v-list-item>
+        </div>
+        <div v-else>
+          <v-list-item v-for="n in Number(widget.extra)" :key="n">
+            <FileItem :file="getNextFile(data, n)" :data-cy="'file-' + (n-1)" />
+          </v-list-item>
+        </div>
       </v-list>
       <span>
         <v-dialog
@@ -72,6 +79,11 @@ export default {
       type: String,
       required: true,
     },
+    widget: {
+      type: Object,
+      required: false,
+      default: () => ({}),
+    }
   },
   emits: [ "update-config" ],
   data() {
@@ -89,6 +101,18 @@ export default {
     };
   },
   methods: {
+    isEnoughFiles(data) {
+      if (!(this.widget?.extra && !isNaN(Number(this.widget?.extra)))) {
+        return true;
+      }
+      if (Number(this.widget?.extra) > data.length) {
+        return false;
+      }
+      return true;
+    },
+    getNextFile(data, n) {
+      return (data[n%data.length]);
+    },
     closeDialog() {
       this.isOpen = false;
     },

@@ -30,6 +30,7 @@
         class="grid-widget"
         :tidy-hub-api="tidyHubApi + item.widgetUrl"
         :widget-name="item.widgetDisplayName"
+        :widget="item"
         @update-config="updateWidget"
       />
       <v-dialog v-model="dialog1" max-width="300">
@@ -124,8 +125,10 @@ export default {
     },
     updateWidget(newConfig) {
       if (Number(newConfig) != "NaN" && Number(newConfig) > 0 ) {
-        this.widgetLayout.find((item) => item.i == this.dialogItemIndex).widgetUrl = "/proxy/get_files?amount=" + newConfig + "&sort_by=size";
+        // this.widgetLayout.find((item) => item.i == this.dialogItemIndex).widgetUrl = "/proxy/get_files?amount=" + newConfig + "&sort_by=size";
+        this.widgetLayout.find((item) => item.i == this.dialogItemIndex).extra = newConfig;
       }
+      console.log(this.widgetLayout.find((item) => item.i == this.dialogItemIndex))
       this.emitter.emit("refresh-widgets", {});
       this.saveNewChanges();
     },
