@@ -112,12 +112,16 @@ export default {
       if (!(this.widget?.extra && !isNaN(Number(this.widget?.extra)))) {
         return true;
       }
-      if (Number(this.widget?.extra) > data.length) {
+      if ((!data && Number(this.widget?.extra)) || Number(this.widget?.extra) > data.length) {
         return false;
       }
       return true;
     },
     getNextFile(data, n) {
+      if (!data) {
+          let testFile = ({"pretty_path": "fake-file", "path": "fake-file", "size": 0});
+          return(testFile);
+      }
       return data[n % data.length];
     },
     closeDialog() {
