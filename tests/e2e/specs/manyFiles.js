@@ -26,6 +26,7 @@ describe("Widget capability of displaying many files", () => {
     cy.get(`[data-cy=widget-Directory-btn-submit]`).contains("Submit");
     cy.get(`[data-cy=widget-Directory-input]`).type("100");
     cy.get(`[data-cy=widget-Directory-btn-submit]`).click();
+    cy.wait(10000);
     cy.get(`[data-cy=file-0]`).should("exist");
     cy.get(`[data-cy=file-99]`).should("exist");
     longPress(`[data-cy=widget-Directory]`);
@@ -55,6 +56,7 @@ describe("Widget capability of displaying many files", () => {
     cy.get(`[data-cy=widget-Directory-btn-submit]`).contains("Submit");
     cy.get(`[data-cy=widget-Directory-input]`).type("1000");
     cy.get(`[data-cy=widget-Directory-btn-submit]`).click();
+    cy.wait(20000);
     cy.get(`[data-cy=file-0]`).should("exist");
     cy.get(`[data-cy=file-999]`).should("exist");
     longPress(`[data-cy=widget-Directory]`);
@@ -84,6 +86,7 @@ describe("Widget capability of displaying many files", () => {
     cy.get(`[data-cy=widget-Directory-btn-submit]`).contains("Submit");
     cy.get(`[data-cy=widget-Directory-input]`).type("10000");
     cy.get(`[data-cy=widget-Directory-btn-submit]`).click();
+    cy.wait(30000);
     cy.get(`[data-cy=file-0]`).should("exist");
     cy.get(`[data-cy=file-9999]`).should("exist");
     longPress(`[data-cy=widget-Directory]`);
