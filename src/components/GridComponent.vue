@@ -125,10 +125,12 @@ export default {
     },
     updateWidget(newConfig) {
       if (Number(newConfig) != "NaN" && Number(newConfig) > 0 ) {
-        // this.widgetLayout.find((item) => item.i == this.dialogItemIndex).widgetUrl = "/proxy/get_files?amount=" + newConfig + "&sort_by=size";
+        this.widgetLayout.find((item) => item.i == this.dialogItemIndex).widgetUrl = "/proxy/get_files?amount=" + newConfig + "&sort_by=size";
         this.widgetLayout.find((item) => item.i == this.dialogItemIndex).extra = newConfig;
+      } else {
+        this.widgetLayout.find((item) => item.i == this.dialogItemIndex).widgetUrl = "/proxy/get_files?amount=5&sort_by=size";
+        this.widgetLayout.find((item) => item.i == this.dialogItemIndex).extra = NaN;
       }
-      console.log(this.widgetLayout.find((item) => item.i == this.dialogItemIndex))
       this.emitter.emit("refresh-widgets", {});
       this.saveNewChanges();
     },
