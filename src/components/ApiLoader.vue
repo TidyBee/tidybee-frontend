@@ -35,8 +35,7 @@ export default {
     this.loadData();
   },
   mounted() {
-    this.emitter.on("refresh-widgets", (data) => 
-    {
+    this.emitter.on("refresh-widgets", (data) => {
       data;
       this.handleRefresh();
     });

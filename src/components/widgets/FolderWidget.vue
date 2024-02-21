@@ -12,13 +12,20 @@
           />
         </v-list-title>
         <div v-if="isEnoughFiles(data)">
-          <v-list-item v-for="(file, index) in data" :key="file.pretty_path" class="file_item">
+          <v-list-item
+            v-for="(file, index) in data"
+            :key="file.pretty_path"
+            class="file_item"
+          >
             <FileItem :file="file" :data-cy="'file-' + index" />
           </v-list-item>
         </div>
         <div v-else>
           <v-list-item v-for="n in Number(widget.extra)" :key="n">
-            <FileItem :file="getNextFile(data, n)" :data-cy="'file-' + (n-1)" />
+            <FileItem
+              :file="getNextFile(data, n)"
+              :data-cy="'file-' + (n - 1)"
+            />
           </v-list-item>
         </div>
       </v-list>
@@ -83,9 +90,9 @@ export default {
       type: Object,
       required: false,
       default: () => ({}),
-    }
+    },
   },
-  emits: [ "update-config" ],
+  emits: ["update-config"],
   data() {
     return {
       hoveredIndex: -1,
@@ -111,7 +118,7 @@ export default {
       return true;
     },
     getNextFile(data, n) {
-      return (data[n%data.length]);
+      return data[n % data.length];
     },
     closeDialog() {
       this.isOpen = false;
@@ -119,7 +126,7 @@ export default {
     updateConfig() {
       this.isOpen = false;
       this.$emit("update-config", this.selectedFolder);
-    }
+    },
   },
 };
 </script>

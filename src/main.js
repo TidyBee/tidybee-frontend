@@ -1,6 +1,6 @@
 import { createApp } from "vue";
 import { createI18n } from "vue-i18n";
-import mitt from 'mitt'
+import mitt from "mitt";
 import App from "./App.vue";
 import router from "@/routers.js";
 import "vuetify/styles";
