@@ -4,7 +4,7 @@
       <p>
         <strong>{{ file.pretty_path }}</strong>
       </p>
-      <span>{{ getGrade(file.tidyScore) }}</span>
+      <span>{{ getGrade(file.tidy_score) }}</span>
       <img
         src="../assets/redirectIcon.svg"
         style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px"

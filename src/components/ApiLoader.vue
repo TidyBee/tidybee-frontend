@@ -34,7 +34,16 @@ export default {
   created() {
     this.loadData();
   },
+  mounted() {
+    this.emitter.on("refresh-widgets", (data) => {
+      data;
+      this.handleRefresh();
+    });
+  },
   methods: {
+    handleRefresh() {
+      this.loadData();
+    },
     async loadData() {
       this.isLoading = true;
       try {

@@ -11,9 +11,23 @@
             @click="isOpen = !isOpen"
           />
         </v-list-title>
-        <v-list-item v-for="file in data" :key="file.pretty_path" class="file_item">
-          <FileItem :file="file" />
-        </v-list-item>
+        <div v-if="isEnoughFiles(data)">
+          <v-list-item
+            v-for="(file, index) in data"
+            :key="file.pretty_path"
+            class="file_item"
+          >
+            <FileItem :file="file" :data-cy="'file-' + index" />
+          </v-list-item>
+        </div>
+        <div v-else>
+          <v-list-item v-for="n in Number(widget.extra)" :key="n">
+            <FileItem
+              :file="getNextFile(data, n)"
+              :data-cy="'file-' + (n - 1)"
+            />
+          </v-list-item>
+        </div>
       </v-list>
       <span>
         <v-dialog
@@ -34,6 +48,7 @@
                 type="submit"
                 block
                 class="mt-2"
+                @click="updateConfig"
               >
                 Submit
               </v-btn>
@@ -71,7 +86,13 @@ export default {
       type: String,
       required: true,
     },
+    widget: {
+      type: Object,
+      required: false,
+      default: () => ({}),
+    },
   },
+  emits: ["update-config"],
   data() {
     return {
       hoveredIndex: -1,
@@ -87,8 +108,28 @@ export default {
     };
   },
   methods: {
+    isEnoughFiles(data) {
+      if (!(this.widget?.extra && !isNaN(Number(this.widget?.extra)))) {
+        return true;
+      }
+      if ((!data && Number(this.widget?.extra)) || Number(this.widget?.extra) > data.length) {
+        return false;
+      }
+      return true;
+    },
+    getNextFile(data, n) {
+      if (!data) {
+          let testFile = ({"pretty_path": "fake-file", "path": "fake-file", "size": 0});
+          return(testFile);
+      }
+      return data[n % data.length];
+    },
     closeDialog() {
       this.isOpen = false;
+    },
+    updateConfig() {
+      this.isOpen = false;
+      this.$emit("update-config", this.selectedFolder);
     },
   },
 };
