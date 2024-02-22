@@ -24,9 +24,9 @@
 </template>
 
 <script>
-import TextWidget from "@/components/dashboard/widgets/TextWidget.vue";
-import GraphWidget from "@/components/dashboard/widgets/GraphWidget.vue";
-import OverViewWidget from "@/components/dashboard/widgets/OverViewWidget.vue";
+import TextWidget from "@/components/dashboard/widgets/Text/TextWidget.vue";
+import GraphWidget from "@/components/dashboard/widgets/Graph/GraphWidget.vue";
+import OverViewWidget from "@/components/dashboard/widgets/OverView/OverViewWidget.vue";
 
 export default {
   name: "DashBoard",

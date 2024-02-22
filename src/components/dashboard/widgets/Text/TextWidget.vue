@@ -60,4 +60,4 @@ export default {
 };
 </script>
 
-<style src="@/components/dashboard/widgets/css/TextWidget.css" scoped></style>
+<style src="@/components/dashboard/widgets/Text/css/TextWidget.css" scoped></style>

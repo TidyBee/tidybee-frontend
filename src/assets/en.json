@@ -16,7 +16,7 @@
     "fileItem" : {
         "lastUsed" : "Last Used: ",
         "misnamed" : "Misnamed: ",
-        "misplaced" : "Misplaced: ",
+        "heavy " : "Heavyest: ",
         "unused" : "Unused: ",
         "duplicated" : "Duplicated: "
     },
@@ -59,17 +59,25 @@
       "Directory": "Folder tracker"
     },
     "dashboard": {
-        "widgets": {
-          "text" :{
-            "title":{
-              "unused": "Number of unused files",
-              "heavy": "Number of heavy files",
-              "badname": "Number of misnamed files",
-              "duplicate": "Number of duplicate files",
-              "storage": "Shared spaces"
-            },
-            "percentage": "% over last month"
+      "widgets": {
+        "text" :{
+          "title":{
+            "unused": "Number of unused files",
+            "heavy": "Number of heavy files",
+            "badname": "Number of misnamed files",
+            "duplicate": "Number of duplicate files",
+            "storage": "Shared spaces"
+          },
+          "percentage": "% over last month"
+        },
+        "overView" :{
+          "title":{
+          "unused": "Unused",
+          "heavy": "Heavy",
+          "misnamed": "Misnamed",
+          "duplicated": "Duplicated"
           }
         }
       }
+    }
 }

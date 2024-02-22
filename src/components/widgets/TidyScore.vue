@@ -12,7 +12,7 @@
       <strong
         style="display: flex; flex-direction: column; align-items: center"
       >
-        {{ file.path }}
+        {{ file.name }}
       </strong>
     </p>
     <div style="margin-left: 10px">
@@ -22,8 +22,8 @@
         </strong>
         {{ formatFileSize(file.size) }}
       </p>
-      <div v-if="file.tidyScore">
-        <div v-for="(value, key) in file.tidyScore" :key="key">
+      <div v-if="file.tidy_score">
+        <div v-for="(value, key) in file.tidy_score" :key="key">
           <div v-if="value">
             <strong>{{ $t(`fileItem.${key}`) }}</strong>
             <img
@@ -46,7 +46,7 @@
         <strong>
           {{ $t("fileItem.lastUsed") }}
         </strong>
-        {{ file.lastAccess }}
+        {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
       </p>
     </div>
   </div>
@@ -78,9 +78,26 @@ export default {
     formatFileSize,
     getGrade,
     getGradeSVGPath() {
-      const grade = getGrade(this.file.tidyScore);
+      const grade = getGrade(this.file.tidy_score);
       return this.gradeSVGPaths[grade] || "";
     },
+    calculateElapsedTime(lastUsed) {
+      const now = new Date();
+      const lastUsedTime = lastUsed * 1000;
+      const timeDifference = now - lastUsedTime;
+
+      const seconds = Math.floor(timeDifference / 1000);
+      const minutes = Math.floor(seconds / 60);
+      const hours = Math.floor(minutes / 60);
+      const days = Math.floor(hours / 24);
+      const years = Math.floor(days / 365);
+
+      if (years > 0) return years + (years > 1 ? " années" : " an");
+      else if (days > 0) return days + (days > 1 ? " jours" : " jour");
+      else if (hours > 0) return hours + (hours > 1 ? " heures" : " heure");
+      else if (minutes > 0) return minutes + (minutes > 1 ? " minutes" : " minute");
+      else return seconds + (seconds > 1 ? " secondes" : " seconde");
+    }
   },
 };
 </script>

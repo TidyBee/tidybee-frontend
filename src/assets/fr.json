@@ -16,7 +16,7 @@
   "fileItem" : {
     "lastUsed" : "Dernière utilisation: ",
     "misnamed" : "Mal nommé: ",
-    "misplaced" : "Mal placé: ",
+    "heavy" : "Trop lourd: ",
     "unused" : "Inutilisé: ",
     "duplicated" : "Duplicata: "
   },
@@ -69,7 +69,21 @@
           "storage": "Espaces partagés"
         },
         "percentage": "% sur le mois dernier"
+      },
+      "overView" :{
+        "title":{
+          "unused": "Inutilisés",
+          "heavy": "Lourds",
+          "misnamed": "Mal nommés",
+          "duplicated": "Dupliqués"
+        }
       }
     }
-  }
+  },
+    "filters": "Filtres",
+    "filterIconAlt": "Icône de filtre",
+    "sortedBy": "Trié par",
+    "tidyScoreAtoE": "TidyScore de A à E",
+    "tidyScoreEtoA": "TidyScore de E à A",
+    "close": "Fermer"
 }

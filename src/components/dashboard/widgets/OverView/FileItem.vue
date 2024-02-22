@@ -1,16 +1,20 @@
 <template>
-  <div class="file-item">
-    <div class="file-name">
-      <p>
-        <strong>{{ file.path }}</strong>
-      </p>
+  <v-row>
+    <v-col cols="10">
+      <div class="text-left">
+        {{ file.name }}
+      </div>
+    </v-col>
+    <v-col cols="1">
       <span>{{ getGrade(file.tidy_score) }}</span>
+    </v-col>
+    <v-col cols="1">
       <img
         src="@/assets/redirectIcon.svg"
         style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px"
         @click="isOpen = !isOpen"
       />
-    </div>
+    </v-col>
     <span>
       <v-dialog v-model="isOpen" max-width="300px">
         <v-card>
@@ -19,11 +23,12 @@
         </v-card>
       </v-dialog>
     </span>
-  </div>
+  </v-row>
+  <v-divider></v-divider>
 </template>
 
 <script>
-import TidyScore from "./widgets/TidyScore.vue";
+import TidyScore from "@/components/widgets/TidyScore.vue";
 import { getGrade } from "@/utils";
 
 export default {
@@ -44,11 +49,19 @@ export default {
   },
   methods: {
     getGrade,
+    openDialog() {
+      this.isOpen = true;
+    },
     closeDialog() {
       this.isOpen = false;
     },
-  },
+  }
 };
 </script>
 
-<style src="./css/FileItem.css" scoped></style>
+<style scoped>
+.file-item {
+  text-align : left;
+  justify-content: space-evenly;
+}
+</style>
