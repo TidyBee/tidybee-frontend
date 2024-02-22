@@ -5,7 +5,7 @@
         <v-list-title class="header">{{ widgetName }}</v-list-title>
         <v-list-item
           v-for="file in sortedFileList(data)"
-          :key="file.pretty_path"
+          :key="file.path"
           class="file_item"
         >
           <FileItem :file="file" />
@@ -41,9 +41,20 @@ export default {
     };
   },
   methods: {
-    sortedFileList(data) {
-      if (data) return data.slice().sort((a, b) => b.size - a.size);
-    },
+    sortedFileList(data) {  
+      let filesData = [];
+      if (data) {
+        data.map(target => {
+          if (target && target.Content) {
+            const contentArray = JSON.parse(target.Content);
+            const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
+            filesData = filesData.concat(sortedContentArray.slice().sort((a, b) => b.size - a.size));
+          }
+        });
+        return filesData;
+      }
+      return null;
+    }
   },
 };
 </script>
