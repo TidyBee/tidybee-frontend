@@ -43,8 +43,8 @@ export default {
   methods: {
     sortedFileList(data) {  
       let filesData = [];
-      if (data) {
-        data.map(target => {
+      if (data && data.Responses) {
+        data.Responses.map(target => {
           if (target && target.Content) {
             const contentArray = JSON.parse(target.Content);
             const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
