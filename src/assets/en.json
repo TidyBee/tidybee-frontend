@@ -76,6 +76,17 @@
           "heavy": "Heavy",
           "misnamed": "Misnamed",
           "duplicated": "Duplicated"
+          },
+          "filters":{
+            "tidyscoreAsc": "TidyScore A to E",
+            "tidyscoreDesc": "TidyScore E to A",
+            "sizeAsc": "Increasing size",
+            "sizeDesc": "Decreasing size",
+            "secsAsc": "Last use increasing",
+            "secsDesc": "Last use decreasing",
+            "sortedByLabel": "Sort by",
+            "filtersLabel": "Filters",
+            "closeButtonLabel": "Close"
           }
         }
       }

@@ -18,9 +18,9 @@
   </div>
   <div class="widget-container">
     <GraphWidget />
-    <OverViewWidget />
+    <OverViewWidget :tidy-hub-api="tidyHubApi"/>
   </div>
-  <v-btn class="refresh-btn" @click="actualiser">Actualiser</v-btn>
+  <v-btn class="refresh-btn" @click="actualiser">Actualiser</v-btn><!-- TRAD -->
 </template>
 
 <script>

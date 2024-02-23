@@ -1,54 +1,57 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="11">
-        <div class="text-left">
-          {{ "Filtres" }}
-        </div>
-      </v-col>
-      <v-col cols="1">
-        <v-icon>
-          <img src="@/assets/filterIcon.svg" alt="Filter Icon" style="width: 20px; height: 20px; text-align: right;" @click="ouvrirFiltreDialog" />
-        </v-icon>
-      </v-col>
-      <v-divider></v-divider>
-    </v-row>
-    <v-row>
-      <v-virtual-scroll :height="340" :items="sortedResponses">
-        <template #default="{ item }">
-          <v-list-item v-if="(sortWithTidyScore(item.tidy_score) == true)" cols="12">
-            <FileItem :file="item" />
-          </v-list-item>
-        </template>
-      </v-virtual-scroll>
-
-      <v-dialog v-model="dialogFiltre" max-width="600px">
-        <v-card>
-          <v-card-title>
-            <span class="headline">Filtres</span>
-          </v-card-title>
-          <v-card-text>
-            <v-select v-model="selectedFilter" :items="filterOptions" label="Trié par">
-            </v-select>
-          </v-card-text>
-          <v-card-actions>
-            <v-btn @click="fermerFiltreDialog">Fermer</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row>
-  </v-container>
+  <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <template #default="{ data }">
+      <v-container>
+        <v-row>
+          <v-col cols="11">
+            <div class="text-left">
+              {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
+            </div>
+          </v-col>
+          <v-col cols="1">
+            <v-icon @click="ouvrirFiltreDialog">
+              <img src="@/assets/filterIcon.svg" alt="Filter Icon" style="width: 20px; height: 20px; cursor: pointer;" />
+            </v-icon>
+          </v-col>
+          <v-divider></v-divider>
+        </v-row>
+        <v-row>
+          <v-virtual-scroll :height="340" :items="sortedFileList(data)">
+            <template #default="{ item }">
+              <v-list-item v-if="sortWithTidyScore(item.tidy_score)" cols="12">
+                <FileItem :file="item" />
+              </v-list-item>
+            </template>
+          </v-virtual-scroll>
+        </v-row>
+        <v-dialog v-model="dialogFiltre" max-width="600px">
+          <v-card>
+            <v-card-title>
+              <span class="headline">{{ $t("dashboard.widgets.overView.filters.filtersLabel") }}</span>
+            </v-card-title>
+            <v-card-text>
+              <v-select v-model="selectedFilter" :items="filterOptions" :label="$t('dashboard.widgets.overView.filters.sortedByLabel')">
+              </v-select>
+            </v-card-text>
+            <v-card-actions>
+              <v-btn @click="fermerFiltreDialog">{{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </v-container>
+    </template>
+  </ApiLoader>
 </template>
 
-
 <script>
-import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
+import ApiLoader from "@/components/ApiLoader.vue";
 import { sortBy } from "@/components/dashboard/widgets/OverView/sortBy";
-
+import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
 export default {
   name: "ListFile",
   components: {
-    FileItem
+    ApiLoader,
+    FileItem,
   },
   props: {
     tidyHubApi: {
@@ -65,312 +68,43 @@ export default {
       selectedFilter: 'TidyScore Asc',
       dialogFiltre: false,
       filterOptions: [
-        'TidyScore Asc',
-        'TidyScore Desc',
-        'Size Asc',
-        'Size Desc',
-        'Secs Asc',
-        'Secs Desc'
+        { title: this.$t('dashboard.widgets.overView.filters.tidyscoreAsc'), value: 'TidyScore Asc' },
+        { title: this.$t('dashboard.widgets.overView.filters.tidyscoreDesc'), value: 'TidyScore Desc' },
+        { title: this.$t('dashboard.widgets.overView.filters.sizeAsc'), value: 'Size Asc' },
+        { title: this.$t('dashboard.widgets.overView.filters.sizeDesc'), value: 'Size Desc' },
+        { title: this.$t('dashboard.widgets.overView.filters.secsAsc'), value: 'Secs Asc' },
+        { title: this.$t('dashboard.widgets.overView.filters.secsDesc'), value: 'Secs Desc' }
       ],
-      "Responses": [
-        {
-          "name": "my_files.rs",
-          "path": "src/my_files.rs",
-          "size": 21782,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": true,
-            "unused": false,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "http_server.rs",
-          "path": "src/http_server.rs",
-          "size": 5452,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": true,
-            "unused": false,
-            "duplicated": false
-            
-          }
-        },
-        {
-          "name": "agent_data.rs",
-          "path": "src/agent_data.rs",
-          "size": 2476,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": true,
-            "unused": false,
-            "duplicated": false
-            
-          }
-        },
-        {
-          "name": "lib.rs",
-          "path": "src/lib.rs",
-          "size": 2406,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": true,
-            "duplicated": true
-            
-          }
-        },
-        {
-          "name": "awesome_code.rs",
-          "path": "src/awesome_code.rs",
-          "size": 54321,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": true,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "cool_module.rs",
-          "path": "src/cool_module.rs",
-          "size": 9876,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": true,
-            "duplicated": true
-          }
-        },
-        {
-          "name": "smart_logic.rs",
-          "path": "src/smart_logic.rs",
-          "size": 3456,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": false,
-            "duplicated": true
-          }
-        },
-        {
-          "name": "neat_feature.rs",
-          "path": "src/neat_feature.rs",
-          "size": 8765,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": false,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "innovative_code.rs",
-          "path": "src/innovative_code.rs",
-          "size": 65432,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": true,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "creative_solution.rs",
-          "path": "src/creative_solution.rs",
-          "size": 5432,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": true,
-            "duplicated": true
-          }
-        },
-        {
-          "name": "efficient_algorithm.rs",
-          "path": "src/efficient_algorithm.rs",
-          "size": 8765,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": false,
-            "duplicated": true
-          }
-        },
-        {
-          "name": "user_friendly.rs",
-          "path": "src/user_friendly.rs",
-          "size": 9876,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": false,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "feature_rich.rs",
-          "path": "src/feature_rich.rs",
-          "size": 7654,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": true,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "next_gen_feature.rs",
-          "path": "src/next_gen_feature.rs",
-          "size": 8765,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": false,
-            "duplicated": true
-          }
-        },
-        {
-          "name": "responsive_code.rs",
-          "path": "src/responsive_code.rs",
-          "size": 5432,
-          "last_modified": {
-            "secs_since_epoch": 17511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": true,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "AI_optimized.rs",
-          "path": "src/AI_optimized.rs",
-          "size": 9876,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": true,
-            "unused": true,
-            "duplicated": true
-          }
-        },
-        {
-          "name": "secure_algorithm.rs",
-          "path": "src/secure_algorithm.rs",
-          "size": 6543,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": false,
-            "heavy": true,
-            "unused": false,
-            "duplicated": false
-          }
-        },
-        {
-          "name": "cloud_integration.rs",
-          "path": "src/cloud_integration.rs",
-          "size": 8765,
-          "last_modified": {
-            "secs_since_epoch": 1706651511,
-            "nanos_since_epoch": 396799014
-          },
-          "tidy_score": {
-            "misnamed": true,
-            "heavy": false,
-            "unused": false,
-            "duplicated": true
-          }
-      }
-      ]
     }
   },
-  computed: {
-    sortedResponses() {
+  methods: {
+    sortedFileList(data) {
+      let filesData = [];
+      if (data) {
+        data.forEach(target => {
+          if (target && target.Content) {
+            const contentArray = JSON.parse(target.Content);
+            const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
+            filesData = filesData.concat(sortedContentArray);
+          }
+        });
+        return this.sortedResponses(filesData);
+      }
+      return null;
+    },
+    sortedResponses(filesData) {
       switch (this.selectedFilter) {
         case 'TidyScore Asc':
-          return sortBy(this.Responses, "tidyScore", "Asc");
         case 'TidyScore Desc':
-          return sortBy(this.Responses, "tidyScore", "Desc");
         case 'Size Asc':
-          return sortBy(this.Responses, "size", "Asc");
         case 'Size Desc':
-          return sortBy(this.Responses, "size", "Decs");
         case 'Secs Asc':
-          return sortBy(this.Responses, "secs", "Asc");
         case 'Secs Desc':
-          return sortBy(this.Responses, "secs", "Desc");
+          return sortBy(filesData, this.selectedFilter.split(' ')[0].toLowerCase(), this.selectedFilter.split(' ')[1]);
         default:
-          return this.Responses;
+          return filesData;
       }
     },
-  },
-  methods: {
-    sortBy,
     sortWithTidyScore(tidyscore) {
       if (this.tab == "misnamed") return tidyscore.misnamed;
       else if (this.tab == "heavy") return tidyscore.heavy;
@@ -383,10 +117,8 @@ export default {
     fermerFiltreDialog() {
       this.dialogFiltre = false;
     },
-  },
+  }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

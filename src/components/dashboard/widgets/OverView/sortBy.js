@@ -6,8 +6,8 @@ export const sortBy = (responses, sortByParam, sortOrder) => {
     secsDesc: sortBySecsDesc,
     sizeAsc: sortBySizeAsc,
     sizeDesc: sortBySizeDesc,
-    tidyScoreAsc: sortByTidyScoreAsc,
-    tidyScoreDesc: sortByTidyScoreDesc,
+    tidyscoreAsc: sortByTidyScoreAsc,
+    tidyscoreDesc: sortByTidyScoreDesc,
   };
 
   const sortKey = `${sortByParam}${sortOrder.charAt(0).toUpperCase() + sortOrder.slice(1)}`;

@@ -1,6 +1,6 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <v-tabs v-model="tab" class="custom-tabs">
+    <v-tabs v-model="tab" class="custom-tabs" :hide-slider="true">
       <v-tab
         v-for="(item, index) in tabs"
         :key="index"
@@ -11,7 +11,7 @@
         {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}
       </v-tab>
     </v-tabs>
-    <ListFile tidy-hub-api="tidyHubApi" :tab="selectedTabLabel" />
+    <ListFile :tidy-hub-api="tidyHubApi + '/Gateway/getWidgetOverView'" :tab="selectedTabLabel" />
   </v-card>
 </template>
 
@@ -22,6 +22,12 @@ export default {
   name: "OverViewWidget",
   components: {
     ListFile
+  },
+  props: {
+    tidyHubApi: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
@@ -61,7 +67,7 @@ export default {
 }
 
 .custom-tabs {
-  display: flex;
+  display: relative;
 }
 
 .active-tab {

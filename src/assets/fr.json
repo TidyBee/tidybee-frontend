@@ -76,14 +76,19 @@
           "heavy": "Lourds",
           "misnamed": "Mal nommés",
           "duplicated": "Dupliqués"
+        },
+        "filters":{
+          "tidyscoreAsc": "TidyScore A à E",
+          "tidyscoreDesc": "TidyScore E à A",
+          "sizeAsc": "Taille croissante",
+          "sizeDesc": "Taille décroissante",
+          "secsAsc": "Dernière utilisation croissante",
+          "secsDesc": "Dernière utilisation décroissante",
+          "sortedByLabel": "Trié par",
+          "filtersLabel": "Filtres",
+          "closeButtonLabel": "Fermer"
         }
       }
     }
-  },
-    "filters": "Filtres",
-    "filterIconAlt": "Icône de filtre",
-    "sortedBy": "Trié par",
-    "tidyScoreAtoE": "TidyScore de A à E",
-    "tidyScoreEtoA": "TidyScore de E à A",
-    "close": "Fermer"
+  }
 }
