@@ -9,8 +9,12 @@
             </div>
           </v-col>
           <v-col cols="1">
-            <v-icon @click="ouvrirFiltreDialog">
-              <img src="@/assets/filterIcon.svg" alt="Filter Icon" style="width: 20px; height: 20px; cursor: pointer;" />
+            <v-icon @click="openFiltreDialog">
+              <img 
+                src="@/assets/filterIcon.svg" 
+                alt="Filter Icon" 
+                style="width: 20px; height: 20px; cursor: pointer;"
+              />
             </v-icon>
           </v-col>
           <v-divider></v-divider>
@@ -27,14 +31,22 @@
         <v-dialog v-model="dialogFiltre" max-width="600px">
           <v-card>
             <v-card-title>
-              <span class="headline">{{ $t("dashboard.widgets.overView.filters.filtersLabel") }}</span>
+              <span class="headline">
+                {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
+              </span>
             </v-card-title>
             <v-card-text>
-              <v-select v-model="selectedFilter" :items="filterOptions" :label="$t('dashboard.widgets.overView.filters.sortedByLabel')">
+              <v-select 
+                v-model="selectedFilter" 
+                :items="filterOptions" 
+                :label="$t('dashboard.widgets.overView.filters.sortedByLabel')"
+              >
               </v-select>
             </v-card-text>
             <v-card-actions>
-              <v-btn @click="fermerFiltreDialog">{{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}</v-btn>
+              <v-btn @click="closeFiltreDialog">
+                {{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}
+              </v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -47,6 +59,8 @@
 import ApiLoader from "@/components/ApiLoader.vue";
 import { sortBy } from "@/components/dashboard/widgets/OverView/sortBy";
 import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
+import VueCookies from "vue-cookies";
+
 export default {
   name: "ListFile",
   components: {
@@ -63,9 +77,19 @@ export default {
       required: true,
     }
   },
+  setup() {
+    if (!VueCookies.get("selectedFilter")) {
+      VueCookies.set("selectedFilter", "TidyScore Asc", "7d");
+    }
+    const selectedFilterCookie = VueCookies.get("selectedFilter");
+    
+    return {
+      selectedFilterCookie,
+    }
+  },
   data() {
     return {
-      selectedFilter: 'TidyScore Asc',
+      selectedFilter: "",
       dialogFiltre: false,
       filterOptions: [
         { title: this.$t('dashboard.widgets.overView.filters.tidyscoreAsc'), value: 'TidyScore Asc' },
@@ -76,6 +100,9 @@ export default {
         { title: this.$t('dashboard.widgets.overView.filters.secsDesc'), value: 'Secs Desc' }
       ],
     }
+  },
+  mounted() {
+     this.selectedFilter = this.selectedFilterCookie;
   },
   methods: {
     sortedFileList(data) {
@@ -111,10 +138,11 @@ export default {
       else if (this.tab == "unused") return tidyscore.unused;
       else if (this.tab == "duplicated") return tidyscore.duplicated;
     },
-    ouvrirFiltreDialog() {
+    openFiltreDialog() {
       this.dialogFiltre = true;
     },
-    fermerFiltreDialog() {
+    closeFiltreDialog() {
+      VueCookies.set("selectedFilter", this.selectedFilter);
       this.dialogFiltre = false;
     },
   }

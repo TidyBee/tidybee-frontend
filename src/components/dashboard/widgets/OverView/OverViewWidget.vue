@@ -17,6 +17,7 @@
 
 <script>
 import ListFile from "@/components/dashboard/widgets/OverView/ListFile.vue";
+import VueCookies from "vue-cookies";
 
 export default {
   name: "OverViewWidget",
@@ -29,11 +30,20 @@ export default {
       required: true,
     },
   },
+  setup() {
+    if (!VueCookies.get("activeTab")) {
+      VueCookies.set("activeTab", "one", "7d");
+    }
+    const tabCookie = VueCookies.get("activeTab");
+    return {
+      tabCookie,
+    }
+  },
   data() {
     return {
       tab: "one",
       selectedTabLabel: "misnamed",
-      activeTab: "one",
+      activeTab: "",
       tabs: [
         { label: "misnamed", value: "one" },
         { label: "duplicated", value: "two" },
@@ -42,12 +52,16 @@ export default {
       ],
     };
   },
+  mounted() {
+     this.activeTab = this.tabCookie;
+  },
   methods: {
     changeTab(value) {
       if (value === this.tab) {
         this.tab = "selectedTab";
         this.activeTab = this.tabs.find((item) => item.value === value).value;
         this.selectedTabLabel = this.tabs.find((item) => item.value === value).label;
+        VueCookies.set("activeTab", this.activeTab);
       } else {
         this.tab = value;
       }
