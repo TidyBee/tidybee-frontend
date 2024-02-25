@@ -43,7 +43,7 @@ export default {
         {
           name: "Heaviest",
           displayName: "Top Heaviest Files",
-          apiEndpoint: "/Gateway/getNewParsing",
+          apiEndpoint: "/proxy/get_files?amount=5&sort_by=size",
           widgetType: "FileList",
         },
         {
