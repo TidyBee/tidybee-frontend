@@ -2,7 +2,7 @@
   <div class="file-item">
     <div class="file-name">
       <p>
-        <strong>{{ file.name }}</strong>
+        <strong>{{ file.pretty_path }}</strong>
       </p>
       <span>{{ getGrade(file.tidy_score) }}</span>
       <img

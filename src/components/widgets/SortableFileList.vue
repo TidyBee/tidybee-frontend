@@ -16,7 +16,7 @@
               class="file-name"
               :class="{ 'file-hovered': hoveredIndex === index }"
             >
-              {{ file.name }}
+              {{ file.pretty_path }}
             </span>
             <span class="file-value">{{ file.value }}</span>
             <span class="file-sort-by">{{ sortBy }}</span>
