@@ -97,7 +97,7 @@ export default {
   height: 460px;
   width: 500px;
   margin-left: 40px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
   
 .centered-container-graph {

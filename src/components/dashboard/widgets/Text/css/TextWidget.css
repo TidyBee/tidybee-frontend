@@ -20,11 +20,18 @@
 }
 
 .widget-text-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  align-content: center !important;
+  justify-content: center !important;
+  margin-top: 20% !important;
   font-size: 50px;
+  color: red;
+}
+
+.widget-graph-center {
+  align-content: center !important;
+  justify-content: center !important;
+  margin-top: -9% !important;
+  font-size: 15px;
   color: red;
 }
 

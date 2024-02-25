@@ -1,26 +1,22 @@
 <template>
-  <div class="widget-container">
-    <TextWidget
-      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetunused'"
-    />
-    <TextWidget
-      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetbadname'"
-    />
-    <TextWidget
-      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetduplicate'"
-    />
-    <TextWidget
-      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetheavy'"
-    />
-    <TextWidget
-      :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetstorage'"
-    />
-  </div>
-  <div class="widget-container">
-    <GraphWidget />
-    <OverViewWidget :tidy-hub-api="tidyHubApi" />
-  </div>
-  <v-btn class="refresh-btn" @click="actualiser">Actualiser</v-btn><!-- TRAD -->
+  <v-container fluid>
+    <v-row justify="center" class="widget-container">
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetunused'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetbadname'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetduplicate'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetheavy'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetstorage'" />
+    </v-row>
+
+    <v-row justify="center" class="widget-container">
+      <GraphWidget />
+      <OverViewWidget :tidy-hub-api="tidyHubApi" />
+    </v-row>
+
+    <v-row justify="center">
+      <v-btn class="refresh-btn" @click="actualiser">Actualiser</v-btn>
+    </v-row>
+  </v-container>
 </template>
 
 <script>

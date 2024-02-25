@@ -77,7 +77,7 @@ export default {
   height: 460px;
   width: 770px;
   margin-left: 40px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .custom-tabs {
