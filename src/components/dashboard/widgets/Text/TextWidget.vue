@@ -19,7 +19,6 @@
             </div>
           </v-progress-circular>
         </div>
-
         <div
           v-else-if="data.types === 'Number' && data.data"
           :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
