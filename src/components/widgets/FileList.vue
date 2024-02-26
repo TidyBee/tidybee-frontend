@@ -43,7 +43,8 @@ export default {
   methods: {
     sortedFileList(data) {  
       let filesData = [];
-      if (data && data.Responses && data.tar) {
+      if (data && data.Responses) {
+        console.log(data)
         data.Responses.map(target => {
           if (target && target.Content) {
             if (target.StatusCode == 200) {
