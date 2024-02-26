@@ -1,29 +1,18 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <div class="widget-title">
-      {{ "Résultat de l'analyse de votre espace de stockage" }}
-    </div>
-    <div class="centered-container-graph">
-      <apexchart
-        width="400"
-        height="220"
-        type="bar"
-        :options="chartOptions"
-        :series="series"
-      >
-      </apexchart>
-    </div>
-    <v-divider></v-divider>
-    <v-row justify="center" class="mt-10">
-      <span class="centered-text" style="font-size: 50px;">
-        {{ "C" }}
-      </span>
+    <v-row>
+      <v-span class="widget-title">
+        Analyse de votre espace de stockage
+      </v-span>
     </v-row>
-    <v-row justify="center" class="mt-2">
-      <span class="centered-text" style="font-size: 20px;">
-        {{ "est la grade de votre espace partagé" }}
-      </span>
-    </v-row>
+    <apexchart 
+    width="500"
+    height="500"
+    class="centered-container-graph"
+    :options="chartOptions"
+    :series="chartOptions.series"
+    >
+    </apexchart>
   </v-card>
 </template>
 
@@ -37,54 +26,67 @@ export default {
   },
   data() {
     return {
-     chartOptions: {
+      chartOptions: {
+        width: '10%',
+        series: [18, 22, 33, 15,12],
+        labels: ['TidyScore A', 'TidyScore B', 'TidyScore C', 'TidyScore D', 'TidyScore E'],
+        colors: ['#2E93fA', '#66DA26', '#FF9800', '#E91E63', '#546E7A'],
+        name: "Test",
         chart: {
-          id: "basic-bar",
-          animations: {
-            speed: 200
-          },
-          toolbar: {
-            show: false,
-          },
-        },
-        legend: {
-          show: false,
+          type: 'donut'
         },
         dataLabels: {
           enabled: true,
-        },
-        plotOptions: {
-          bar: {
-            distributed: true,
-            columnWidth: '50%',
+          formatter: function (val) {
+            return val + "%"
+          },
+          style: {
+            fontSize: '14px'
           }
         },
-        xaxis: {
-          title: {
-            text: "Grade du TidyScore",
-             style: {
-              color: "#515151",
-              fontSize: "12px"
-             }
-          },
-          categories: ["A", "B", "C", "D", "E"]
+        plotOptions: {
+          pie: { 
+            expandOnClick: true, 
+            offsetX: 40,
+            offsetY: -95,
+            customScale: 0.6,
+            donut: {
+              size: '60%',
+              background: 'transparent',
+              labels: {
+                show: true,
+                total: {
+                  show: true,
+                  showAlways: true,
+                  label: 'Total',
+                  fontSize: '16px',
+                  fontWeight: 600,
+                  color: '#515151',
+                  formatter: function (w) {
+                    return w.globals.seriesTotals.reduce((a, b) => {
+                      return a + b
+                    }, 0) + "%";
+                  }
+                }
+              }
+            },
+          }
         },
-        yaxis: {
-          title: {
-            text: "% / 100%",
-             style: {
-              color: "#515151",
-              fontSize: "12px"
-             }
+        legend: {
+          show: true,
+          showForZeroSeries: true,
+          position: 'left',
+          fontSize: '12px',
+          offsetX: -20,
+          offsetY: 30,
+          onItemClick: {
+              toggleDataSeries: true
+          },
+          onItemHover: {
+              highlightDataSeries: true
           },
         }
       },
-      series: [
-        {
-          name: "% du grade / 100%",
-          data: ["22%", "18%", "21%", "31%", "8%"]
-        },
-      ]
     }
   },
 };
@@ -94,38 +96,27 @@ export default {
 .rounded-rectangle {
   border-radius: 15px;
   background-color: white;
-  height: 460px;
+  height: 210px;
   width: 500px;
-  margin-left: 40px;
-  margin-top: 40px;
+  margin-left: 80px;
+  margin-top: 30px;
 }
-  
+
 .centered-container-graph {
-  margin-top: 20px;
-  margin-left: 45px;
+  margin: 10px !important;
 }
-  
+
 .widget-title {
   position: absolute;
   top: 5px;
   left: 8px;
-  font-size: 12px;
+  font-size: 14px;
   color: #515151;
-}
-  
-.centered-container {
-  text-align: center;
 }
 
 .centered-text {
   text-align: center;
+  margin-top: 30px;
 }
 
-.mt-10 {
-  margin-top: 10px;
-}
-
-.mt-2 {
-  margin-top: 2px;
-}
 </style>

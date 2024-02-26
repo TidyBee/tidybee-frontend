@@ -76,8 +76,8 @@ export default {
   background-color: white;
   height: 460px;
   width: 770px;
-  margin-left: 40px;
-  margin-top: 40px;
+  margin-right: 40px;
+  margin-top: 30px;
 }
 
 .custom-tabs {

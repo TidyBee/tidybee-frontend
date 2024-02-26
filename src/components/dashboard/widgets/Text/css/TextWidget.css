@@ -8,6 +8,7 @@
   background-color: white;
   height: 160px;
   width: 230px;
+  margin-top: 20px;
   margin-left: 40px;
 }
 
@@ -15,7 +16,7 @@
   position: absolute;
   top: 5px;
   left: 8px;
-  font-size: 12px;
+  font-size: 14px;
   color: #515151;
 }
 
