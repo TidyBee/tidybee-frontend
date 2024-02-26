@@ -1,44 +1,52 @@
 <template>
-  <v-card class="rounded-rectangle" elevation="10">
-    <v-row>
-      <v-progress-circular
-        :model-value="100"
-        :size="160"
-        :width="20"
-        align="center"
-        class="grade-pos"
-        :style="{ 
-          color: getGradeColor() 
-        }"
-      >
-        <v-row align="center" justify="center">
-          <v-span class="grade">
-            {{ data.grade }}
-          </v-span>
+  <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <template #default="{ data }">
+      <v-card class="rounded-rectangle" elevation="10">
+        <v-row>
+          <v-progress-circular
+            :model-value="100"
+            :size="160"
+            :width="20"
+            align="center"
+            class="grade-pos"
+            :style="{ 
+              color: getGradeColor(data.grade) 
+            }"
+          >
+            <v-row align="center" justify="center">
+              <v-span class="grade">
+                {{ data.grade }}
+              </v-span>
+            </v-row>
+          </v-progress-circular>
         </v-row>
-      </v-progress-circular>
-    </v-row>
-    <v-divider vertical class="divider-pos"></v-divider>
-    <v-row class="grade-text-pos">
-      <v-span> {{ $t(`dashboard.widgets.grade.title`) }} </v-span>
-    </v-row>
-  </v-card>
+        <v-divider vertical class="divider-pos"></v-divider>
+        <v-row class="grade-text-pos">
+          <v-span> {{ $t(`dashboard.widgets.grade.title`) }} </v-span>
+        </v-row>
+      </v-card>
+    </template>
+  </ApiLoader>
 </template>
 
 <script>
 
+import ApiLoader from "@/components/ApiLoader.vue";
+
 export default {
   name: "GradeWidget",
-  data() {
-    return {
-      data: {
-        grade: 'A'
-      }
-    };
+  components: {
+    ApiLoader,
+  },
+  props: {
+    tidyHubApi: {
+      type: String,
+      required: true,
+    },
   },
   methods: {
-    getGradeColor() {
-      switch (this.data.grade) {
+    getGradeColor(grade) {
+      switch (grade) {
         case 'A':
           return '#2E93fA';
         case 'B':

@@ -11,7 +11,7 @@
     <v-row justify="center" class="widget-container">
       <v-col>
         <GraphWidget />
-        <GradeWidget />
+        <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGradeWidget'"/>
       </v-col>
       <v-col>
         <OverViewWidget :tidy-hub-api="tidyHubApi" />
