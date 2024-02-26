@@ -105,6 +105,27 @@ export default {
      this.selectedFilter = this.selectedFilterCookie;
   },
   methods: {
+    //   sortedFileList(data) {  
+    //     let filesData = [];
+    //     console.log(data);
+    //     console.log(data.Responses);
+    //     if (data && data.Responses) {
+    //       data.Responses.map(target => {
+    //         console.log(target);
+    //         if (target && target.Content) {
+    //           if (target.StatusCode == 200) {
+    //             const contentArray = JSON.parse(target.Content);
+    //             const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
+    //             filesData = filesData.concat(sortedContentArray.slice().sort((a, b) => b.size - a.size));
+    //           } else {
+    //             return;
+    //           }
+    //         }
+    //       });
+    //       return filesData;
+    //     }
+    //     return null;
+    // },
     sortedFileList(data) {
       let filesData = [];
       if (data) {

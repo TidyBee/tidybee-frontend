@@ -2,6 +2,7 @@
   <v-row>
     <v-col cols="10">
       <div class="text-left">
+        <!-- {{ parseFileName(file.pretty_path) }} -->
         {{ file.name }}
       </div>
     </v-col>
@@ -55,6 +56,11 @@ export default {
     closeDialog() {
       this.isOpen = false;
     },
+    parseFileName(pretty_path) {
+      const segments = pretty_path.split('/');
+      const fileName = segments[segments.length - 1];
+      return fileName;
+    }
   }
 };
 </script>

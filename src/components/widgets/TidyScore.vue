@@ -12,6 +12,7 @@
       <strong
         style="display: flex; flex-direction: column; align-items: center"
       >
+        <!-- {{ file.pretty_path }} -->
         {{ file.name }}
       </strong>
     </p>

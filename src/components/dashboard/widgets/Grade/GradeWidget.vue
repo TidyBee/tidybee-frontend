@@ -7,16 +7,20 @@
         :width="20"
         align="center"
         class="grade-pos"
-        color=#FF9800
+        :style="{ 
+          color: getGradeColor() 
+        }"
       >
-      <v-row align="center" justify="center">
-        <v-span class="grade">C</v-span>
-      </v-row>
+        <v-row align="center" justify="center">
+          <v-span class="grade">
+            {{ data.grade }}
+          </v-span>
+        </v-row>
       </v-progress-circular>
     </v-row>
     <v-divider vertical class="divider-pos"></v-divider>
     <v-row class="grade-text-pos">
-      <v-span>Le Grade de votre espace partagé a était estimé par Tidybee.</v-span>
+      <v-span> {{ $t(`dashboard.widgets.grade.title`) }} </v-span>
     </v-row>
   </v-card>
 </template>
@@ -25,8 +29,31 @@
 
 export default {
   name: "GradeWidget",
-  components: {
+  data() {
+    return {
+      data: {
+        grade: 'A'
+      }
+    };
   },
+  methods: {
+    getGradeColor() {
+      switch (this.data.grade) {
+        case 'A':
+          return '#2E93fA';
+        case 'B':
+          return '#66DA26';
+        case 'C':
+          return '#FF9800';
+        case 'D':
+          return '#E91E63';
+        case 'E':
+          return '#546E7A';
+        default:
+          return '';
+      }
+    }
+  }
 };
 </script>
 

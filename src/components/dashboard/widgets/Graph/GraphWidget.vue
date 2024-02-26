@@ -2,15 +2,15 @@
   <v-card class="rounded-rectangle" elevation="10">
     <v-row>
       <v-span class="widget-title">
-        Analyse de votre espace de stockage
+        {{ $t(`dashboard.widgets.graph.title`) }}
       </v-span>
     </v-row>
     <apexchart 
-    width="500"
-    height="500"
-    class="centered-container-graph"
-    :options="chartOptions"
-    :series="chartOptions.series"
+      width="500"
+      height="500"
+      class="centered-container-graph"
+      :options="chartOptions"
+      :series="chartOptions.series"
     >
     </apexchart>
   </v-card>
@@ -58,7 +58,7 @@ export default {
                 total: {
                   show: true,
                   showAlways: true,
-                  label: 'Total',
+                  label: this.$t('dashboard.widgets.graph.total'),
                   fontSize: '16px',
                   fontWeight: 600,
                   color: '#515151',

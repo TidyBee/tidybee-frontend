@@ -88,6 +88,13 @@
           "filtersLabel": "Filtres",
           "closeButtonLabel": "Fermer"
         }
+      },
+      "grade": {
+        "title":"Le Grade de votre espace partagé a été estimé par Tidybee."
+      },
+      "graph": {
+        "title":"Analyse de votre espace de stockage",
+        "total":"Total"
       }
     }
   }
