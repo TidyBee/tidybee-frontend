@@ -3,7 +3,10 @@
     <template #default="{ data }">
       <v-card class="rounded-rectangle" elevation="10">
         <v-row>
-          <v-span class="widget-title">
+          <v-span 
+            class="widget-title"
+            :data-cy="$t(`graphwidget-title`)"
+          >
             {{ $t(`dashboard.widgets.graph.title`) }}
           </v-span>
         </v-row>
@@ -13,6 +16,7 @@
           class="centered-container-graph"
           :options="chartOptions"
           :series="data.series"
+          :data-cy="$t(`graphwidget-graph`)"
         >
         </apexchart>
       </v-card>

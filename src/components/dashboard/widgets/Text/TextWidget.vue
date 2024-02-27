@@ -4,12 +4,18 @@
       <v-card class="rounded-rectangle" elevation="10">
         <v-container fluid>
           <v-row>
-            <v-span class="widget-title">
+            <v-span 
+              class="widget-title"
+              :data-cy="$t(`textwidget-title`)"
+            >
               {{ $t(`dashboard.widgets.text.title.${data.title}`) }}
             </v-span>
           </v-row>
 
-          <v-row v-if="data.types === 'Graph' && data.data" class="widget-graph-center">
+          <v-row 
+            v-if="data.types === 'Graph' && data.data" 
+            class="widget-graph-center"
+          >
             <v-span>
               <v-progress-circular
                 :model-value="data.data.valuePercentage"
@@ -17,22 +23,38 @@
                 :width="10"
                 :color="data.data.status ? 'green' : 'red'"
                 class="widget-graph"
+                :data-cy="$t(`textwidget-graph`)"
               >
-                <v-row class="grey-text" align="center">
+                <v-row 
+                  class="grey-text" 
+                  align="center" 
+                  :data-cy="$t(`textwidget-graph-value`)"
+                >
                   {{ data.data.value }}
                 </v-row>
               </v-progress-circular>
             </v-span>
           </v-row>
 
-          <v-row v-else-if="data.types === 'Number' && data.data" class="widget-text-center">
-            <v-span :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }">
+          <v-row 
+            v-else-if="data.types === 'Number' && data.data" 
+            class="widget-text-center"
+          >
+            <v-span 
+              :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
+              :data-cy="$t(`textwidget-number`)"
+            >
               {{ data.data.value }}
             </v-span>
           </v-row>
 
-          <v-row :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }">
-            <v-span class="widget-text-bottom">
+          <v-row 
+            :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
+          >
+            <v-span 
+              class="widget-text-bottom"
+              :data-cy="$t(`textwidget-text-bottom`)"
+            >
               {{
                 data.data && data.data.percentage
                   ? data.data.percentage + $t("dashboard.widgets.text.percentage")

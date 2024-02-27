@@ -1,18 +1,21 @@
 <template>
   <v-row>
     <v-col cols="10">
-      <div class="text-left">
+      <div class="text-left" :data-cy="$t(`overviewwidget-fileitem-filename`)">
         <!-- {{ parseFileName(file.pretty_path) }} -->
         {{ file.name }}
       </div>
     </v-col>
     <v-col cols="1">
-      <span>{{ getGrade(file.tidy_score) }}</span>
+      <span :data-cy="$t(`overviewwidget-fileitem-tidyscore`)">
+        {{ getGrade(file.tidy_score) }}
+      </span>
     </v-col>
     <v-col cols="1">
       <img
         src="@/assets/icons/redirect.svg"
         style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px"
+        :data-cy="$t(`overviewwidget-fileitem-open-tidyscore`)"
         @click="isOpen = !isOpen"
       />
     </v-col>
@@ -20,7 +23,12 @@
       <v-dialog v-model="isOpen" max-width="300px">
         <v-card>
           <TidyScore :file="file" />
-          <v-btn @click="closeDialog"> {{ $t("common.close") }} </v-btn>
+          <v-btn 
+            :data-cy="$t(`overviewwidget-fileitem-close-dialog`)"
+            @click="closeDialog"
+          > 
+            {{ $t("common.close") }}
+          </v-btn>
         </v-card>
       </v-dialog>
     </span>

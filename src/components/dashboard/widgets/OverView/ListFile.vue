@@ -4,7 +4,10 @@
       <v-container>
         <v-row>
           <v-col cols="11">
-            <div class="text-left">
+            <div 
+              class="text-left"
+              :data-cy="$t(`overviewwidget-${tab}-filter`)"
+            >
               {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
             </div>
           </v-col>
@@ -14,6 +17,7 @@
                 src="@/assets/icons/filter.svg" 
                 alt="Filter Icon" 
                 style="width: 20px; height: 20px; cursor: pointer;"
+                :data-cy="$t(`overviewwidget-${tab}-filter-btn`)"
               />
             </v-icon>
           </v-col>
@@ -40,11 +44,15 @@
                 v-model="selectedFilter" 
                 :items="filterOptions" 
                 :label="$t('dashboard.widgets.overView.filters.sortedByLabel')"
+                :data-cy="$t(`overviewwidget-${tab}-filter-open-btn`)"
               >
               </v-select>
             </v-card-text>
             <v-card-actions>
-              <v-btn @click="closeFiltreDialog">
+              <v-btn 
+                :data-cy="$t(`OverViewWidget-${tab}-filter-close-btn`)"
+                @click="closeFiltreDialog"
+              >
                 {{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}
               </v-btn>
             </v-card-actions>

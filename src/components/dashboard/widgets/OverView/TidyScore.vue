@@ -2,6 +2,7 @@
   <div class="TidyScore">
     <div class="text-center">
       <img
+        :data-cy="$t('tidyscore-grade-img')"
         :src="getGradeSVGPath()"
         alt="SVG Image"
         style="width: 50px; height: 50px"
@@ -10,6 +11,7 @@
     </div>
     <p>
       <strong
+        :data-cy="$t('tidyscore-file-name')"
         style="display: flex; flex-direction: column; align-items: center"
       >
         <!-- {{ file.pretty_path }} -->
@@ -17,17 +19,22 @@
       </strong>
     </p>
     <div style="margin-left: 10px">
-      <p>
+      <p :data-cy="$t('tidyscore-file-size')">
         <strong>
           {{ $t("fileView.size") }}
         </strong>
         {{ formatFileSize(file.size) }}
       </p>
       <div v-if="file.tidy_score">
-        <div v-for="(value, key) in file.tidy_score" :key="key">
+        <div 
+          v-for="(value, key) in file.tidy_score" 
+          :key="key"
+          :data-cy="$t(`tidyscore-${value}`)"
+        >
           <div v-if="value">
             <strong>{{ $t(`fileItem.${key}`) }}</strong>
             <img
+              :data-cy="$t(`tidyscore-${value}-false`)"
               src="@/assets/icons/false.svg"
               alt="False Icon"
               style="width: 20px; height: 20px"
@@ -36,6 +43,7 @@
           <div v-else>
             <strong>{{ $t(`fileItem.${key}`) }}</strong>
             <img
+              :data-cy="$t(`tidyscore-${value}-true`)"
               src="@/assets/icons/true.svg"
               alt="True Icon"
               style="width: 20px; height: 20px"
@@ -43,7 +51,7 @@
           </div>
         </div>
       </div>
-      <p>
+      <p :data-cy="$t(`tidyscore-lastused`)">
         <strong>
           {{ $t("fileItem.lastUsed") }}
         </strong>

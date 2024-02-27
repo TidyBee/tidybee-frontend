@@ -10,8 +10,8 @@
 
     <v-row justify="center" class="widget-bottom-container">
       <v-col>
-        <GraphWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGraphWidget'"/>
-        <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGradeWidget'"/>
+        <GraphWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGraphWidget'" />
+        <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGradeWidget'" />
       </v-col>
       <v-col>
         <OverViewWidget :tidy-hub-api="tidyHubApi" />

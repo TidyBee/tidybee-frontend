@@ -6,6 +6,7 @@
         :key="index"
         :value="item.value"
         :class="{ 'active-tab': activeTab === item.value }"
+        :data-cy="$t(`overviewwidget-tabs-${item.value}`)"
         @click="changeTab(item.value)"
       >
         {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}
