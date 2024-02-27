@@ -1,36 +1,49 @@
 <template>
-  <v-card class="rounded-rectangle" elevation="10">
-    <v-row>
-      <v-span class="widget-title">
-        {{ $t(`dashboard.widgets.graph.title`) }}
-      </v-span>
-    </v-row>
-    <apexchart 
-      width="500"
-      height="500"
-      class="centered-container-graph"
-      :options="chartOptions"
-      :series="chartOptions.series"
-    >
-    </apexchart>
-  </v-card>
+  <ApiLoader :api-url="tidyHubApi">
+    <template #default="{ data }">
+      <v-card class="rounded-rectangle" elevation="10">
+        <v-row>
+          <v-span class="widget-title">
+            {{ $t(`dashboard.widgets.graph.title`) }}
+          </v-span>
+        </v-row>
+        <apexchart 
+          width="500"
+          height="500"
+          class="centered-container-graph"
+          :options="chartOptions"
+          :series="data.series"
+        >
+        </apexchart>
+      </v-card>
+    </template>
+  </ApiLoader>
 </template>
 
 <script>
+
 import VueApexCharts from 'vue3-apexcharts';
+import ApiLoader from "@/components/ApiLoader.vue";
+
 
 export default {
   name: "GraphWidget",
   components: {
     apexchart: VueApexCharts,
+    ApiLoader,
+  },
+  props: {
+    tidyHubApi: {
+      type: String,
+      required: true,
+    },
   },
   data() {
     return {
       chartOptions: {
         width: '10%',
-        series: [18, 22, 33, 15,12],
-        labels: ['TidyScore A', 'TidyScore B', 'TidyScore C', 'TidyScore D', 'TidyScore E'],
         colors: ['#2E93fA', '#66DA26', '#FF9800', '#E91E63', '#546E7A'],
+        labels: ['TidyScore A', 'TidyScore B', 'TidyScore C', 'TidyScore D', 'TidyScore E'],
         name: "Test",
         chart: {
           type: 'donut'
@@ -47,9 +60,9 @@ export default {
         plotOptions: {
           pie: { 
             expandOnClick: true, 
-            offsetX: 40,
-            offsetY: -95,
-            customScale: 0.6,
+            offsetX: 50,
+            offsetY: -100,
+            customScale: 0.55,
             donut: {
               size: '60%',
               background: 'transparent',
@@ -99,7 +112,6 @@ export default {
   height: 210px;
   width: 500px;
   margin-left: 80px;
-  margin-top: 30px;
 }
 
 .centered-container-graph {

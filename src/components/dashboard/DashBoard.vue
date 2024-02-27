@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-row justify="center" class="widget-container">
+    <v-row justify="center" class="widget-top-container">
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetunused'" />
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetbadname'" />
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetduplicate'" />
@@ -8,9 +8,9 @@
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/getTextWidgetstorage'" />
     </v-row>
 
-    <v-row justify="center" class="widget-container">
+    <v-row justify="center" class="widget-bottom-container">
       <v-col>
-        <GraphWidget />
+        <GraphWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGraphWidget'"/>
         <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGradeWidget'"/>
       </v-col>
       <v-col>
