@@ -19,7 +19,9 @@
     </v-row>
 
     <v-row justify="center">
-      <v-btn class="refresh-btn" @click="actualiser">Actualiser</v-btn>
+      <v-btn class="refresh-btn" @click="refresh">
+        {{ $t('dashboard.refresh') }}
+      </v-btn>
     </v-row>
   </v-container>
 </template>
@@ -42,6 +44,11 @@ export default {
     return {
       tidyHubApi: process.env.VUE_APP_HUB,
     };
+  },
+  methods: {
+    refresh() {
+      location.reload();
+    },
   },
 };
 </script>

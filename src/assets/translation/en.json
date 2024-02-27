@@ -26,17 +26,11 @@
     "apiLoader" : {
         "errorLoading": "Error loading data"
     },
-    "postButton" : {
-        "sendData": "Send data"
-    },
     "fileView": {
         "size" : "File size: "
     },
     "folderWidget": {
         "folderLocation": "Folder location"
-    },
-    "carbonWidget": {
-        "showEvolution": "Show evolution"
     },
     "parameters": {
         "top_parameters": "Display of the number of files in the Tops",
@@ -45,20 +39,8 @@
         "size_thresholds": "From what size is it considered too heavy",
         "save": "Save"
     },
-    "widgetPanel" : {
-      "delete": "Delete widget ?",
-      "yes": "yes",
-      "no": "no",
-      "Add": "Widgets panel",
-      "close": "Close",
-      "back" : "Back",
-      "Heaviest": "Top Heaviest Files",
-      "Unused": "Top Unused Files",
-      "Misnamed": "Top Misnamed Files",
-      "TextWidget": "Text Widget",
-      "Directory": "Folder tracker"
-    },
     "dashboard": {
+      "refresh" : "Refresh",
       "widgets": {
         "text" :{
           "title":{
