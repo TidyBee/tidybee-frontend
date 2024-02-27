@@ -2,8 +2,7 @@
   <v-row>
     <v-col cols="10">
       <div class="text-left" :data-cy="$t(`overviewwidget-fileitem-filename`)">
-        <!-- {{ parseFileName(file.pretty_path) }} -->
-        {{ file.name }}
+        {{ parseFileName(file.pretty_path) }}
       </div>
     </v-col>
     <v-col cols="1">
@@ -65,9 +64,13 @@ export default {
       this.isOpen = false;
     },
     parseFileName(pretty_path) {
-      const segments = pretty_path.split('/');
-      const fileName = segments[segments.length - 1];
-      return fileName;
+      if (pretty_path.includes('/')) {
+        const segments = pretty_path.split('/');
+        const fileName = segments[segments.length - 1];
+        return fileName;
+      } else {
+        return pretty_path;
+      }
     }
   }
 };

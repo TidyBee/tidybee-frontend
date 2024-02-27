@@ -14,8 +14,7 @@
         :data-cy="$t('tidyscore-file-name')"
         style="display: flex; flex-direction: column; align-items: center"
       >
-        <!-- {{ file.pretty_path }} -->
-        {{ file.name }}
+        {{ file.pretty_path }}
       </strong>
     </p>
     <div style="margin-left: 10px">
