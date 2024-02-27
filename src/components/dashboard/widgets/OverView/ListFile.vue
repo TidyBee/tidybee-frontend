@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import ApiLoader from "@/components/ApiLoader.vue";
+import ApiLoader from "@/components/communication/ApiLoader.vue";
 import { sortBy } from "@/components/dashboard/widgets/OverView/sortBy";
 import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
 import VueCookies from "vue-cookies";

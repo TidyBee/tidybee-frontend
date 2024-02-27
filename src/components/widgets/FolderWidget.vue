@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import ApiLoader from "@/components/ApiLoader.vue";
+import ApiLoader from "@/components/communication/ApiLoader.vue";
 import FileItem from "@/components/FileItem.vue";
 
 export default {

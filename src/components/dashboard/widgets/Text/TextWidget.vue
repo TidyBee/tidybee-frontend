@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import ApiLoader from "@/components/ApiLoader.vue";
+import ApiLoader from "@/components/communication/ApiLoader.vue";
 
 export default {
   name: "TextWidget",
@@ -63,4 +63,4 @@ export default {
 };
 </script>
 
-<style src="@/components/dashboard/widgets/Text/css/TextWidget.css" scoped></style>
+<style src="@/../css/components/dashboard/TextWidget.css" scoped></style>

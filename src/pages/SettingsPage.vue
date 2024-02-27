@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import { postData, fetchData } from "@/communication/communication.js";
+import { postData, fetchData } from "@/components/communication/communication.js";
 
 export default {
-  name: "ConfigurationPage",
+  name: "SettingsPage",
   data() {
     return {
       tidyHubApi: process.env.VUE_APP_HUB,
@@ -74,7 +74,7 @@ export default {
         console.log("Selected Type Load:", this.selectedType);
         const newOptions = JSON.parse(
           JSON.stringify(
-            require(`./configurationFiles/${this.selectedType}.json`),
+            require(`@/configurationFiles/${this.selectedType}.json`),
           ),
         );
 
@@ -109,4 +109,4 @@ export default {
 };
 </script>
 
-<style src="./css/ConfigurationPage.css" scoped></style>
+<style src="@/../css/pages/SettingsPage.css" scoped></style>

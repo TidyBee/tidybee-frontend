@@ -8,4 +8,4 @@ export default {
 };
 </script>
 
-<style src="./css/HelpButton.css" scoped></style>
+<style src="@/../css/components/widgets/HelpButton.css" scoped></style>

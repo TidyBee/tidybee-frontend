@@ -46,4 +46,4 @@ export default {
 };
 </script>
 
-<style src="@/components/dashboard/css/DashBoard.css" scoped></style>
+<style src="@/../css/components/dashboard/DashBoard.css" scoped></style>

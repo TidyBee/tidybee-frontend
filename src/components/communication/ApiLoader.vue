@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { fetchData } from "@/communication/communication.js";
+import { fetchData } from "@/components/communication/communication.js";
 
 export default {
   props: {
@@ -50,4 +50,4 @@ export default {
 };
 </script>
 
-<style src="./css/ApiLoader.css" />
+<style src="@/../css/communication/ApiLoader.css" />

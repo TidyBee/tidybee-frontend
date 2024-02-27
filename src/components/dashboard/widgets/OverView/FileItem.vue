@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import TidyScore from "@/components/widgets/TidyScore.vue";
+import TidyScore from "@/components/dashboard/widgets/OverView/TidyScore.vue";
 import { getGrade } from "@/utils";
 
 export default {
@@ -65,9 +65,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.file-item {
-  text-align : left;
-  justify-content: space-evenly;
-}
-</style>
+<style src="@/../css/components/dashboard/FileItem.css" scoped></style>

@@ -23,7 +23,7 @@
 <script>
 
 import VueApexCharts from 'vue3-apexcharts';
-import ApiLoader from "@/components/ApiLoader.vue";
+import ApiLoader from "@/components/communication/ApiLoader.vue";
 
 
 export default {
@@ -105,30 +105,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.rounded-rectangle {
-  border-radius: 15px;
-  background-color: white;
-  height: 210px;
-  width: 500px;
-  margin-left: 80px;
-}
-
-.centered-container-graph {
-  margin: 10px !important;
-}
-
-.widget-title {
-  position: absolute;
-  top: 5px;
-  left: 8px;
-  font-size: 14px;
-  color: #515151;
-}
-
-.centered-text {
-  text-align: center;
-  margin-top: 30px;
-}
-
-</style>
+<style src="@/../css/components/dashboard/GraphWidget.css" scoped></style>

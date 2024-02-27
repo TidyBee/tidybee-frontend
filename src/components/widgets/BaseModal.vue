@@ -23,4 +23,4 @@ export default {
 };
 </script>
 
-<style src="./css/BaseModal.css" scoped></style>
+<style src="@/../css/components/widgets/BaseModal.css" scoped></style>

@@ -28,7 +28,7 @@
           <div v-if="value">
             <strong>{{ $t(`fileItem.${key}`) }}</strong>
             <img
-              src="../../assets/false.svg"
+              src="@/assets/false.svg"
               alt="False Icon"
               style="width: 20px; height: 20px"
             />
@@ -36,7 +36,7 @@
           <div v-else>
             <strong>{{ $t(`fileItem.${key}`) }}</strong>
             <img
-              src="../../assets/true.svg"
+              src="@/assets/true.svg"
               alt="True Icon"
               style="width: 20px; height: 20px"
             />

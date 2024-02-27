@@ -31,7 +31,7 @@
 
 <script>
 
-import ApiLoader from "@/components/ApiLoader.vue";
+import ApiLoader from "@/components/communication/ApiLoader.vue";
 
 export default {
   name: "GradeWidget",
@@ -65,42 +65,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.rounded-rectangle {
-  border-radius: 15px;
-  background-color: white;
-  height: 210px;
-  width: 500px;
-  margin-left: 80px;
-  margin-top: 40px;
-}
-
-.grade {
-  font-size: 30px;
-  font-weight: bold;
-  color: #515151 !important;
-}
-
-.grade-pos {
-  top: 35px;
-  left: 305px;
-}
-
-.grade-text {
-  font-size: 14px;
-}
-
-.grade-text-pos {
-  position: absolute;
-  top: 35% !important;
-  left: 70px;
-  width: 160px !important;
-  text-align: left;
-}
-
-.divider-pos {
-  top: 0px !important;
-  position: absolute;
-}
-
-</style>
+<style src="@/../css/components/dashboard/GradeWidget.css" scoped></style>
