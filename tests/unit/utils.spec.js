@@ -4,7 +4,7 @@ describe("getGrade function", () => {
   test("should return A", () => {
     const tidyScore = {
       misnamed: false,
-      misplaced: false,
+      heavy: false,
       unused: false,
       duplicated: false,
     };
@@ -15,7 +15,7 @@ describe("getGrade function", () => {
   test("should return B", () => {
     const tidyScore = {
       misnamed: false,
-      misplaced: true,
+      heavy: true,
       unused: false,
       duplicated: false,
     };
@@ -26,7 +26,7 @@ describe("getGrade function", () => {
   test("should return C", () => {
     const tidyScore = {
       misnamed: true,
-      misplaced: false,
+      heavy: false,
       unused: true,
       duplicated: false,
     };
@@ -37,7 +37,7 @@ describe("getGrade function", () => {
   test("should return D", () => {
     const tidyScore = {
       misnamed: false,
-      misplaced: true,
+      heavy: true,
       unused: true,
       duplicated: true,
     };
@@ -48,7 +48,7 @@ describe("getGrade function", () => {
   test("should return E", () => {
     const tidyScore = {
       misnamed: true,
-      misplaced: true,
+      heavy: true,
       unused: true,
       duplicated: true,
     };
@@ -72,7 +72,7 @@ describe("getGrade function", () => {
   test("should handle undefined arguments and return A", () => {
     const tidyScore = {
       misnamed: undefined,
-      misplaced: undefined,
+      heavy: undefined,
       unused: undefined,
       duplicated: undefined,
     };
