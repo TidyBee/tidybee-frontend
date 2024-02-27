@@ -7,7 +7,7 @@
           <img
             :data-cy="$t('widget-Directory-btn-edit')"
             class="edit-icon"
-            src="@/assets/editIcon.svg"
+            src="@/assets/icons/edit.svg"
             @click="isOpen = !isOpen"
           />
         </v-list-title>

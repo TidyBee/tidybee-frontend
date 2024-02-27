@@ -11,7 +11,7 @@
     </v-col>
     <v-col cols="1">
       <img
-        src="@/assets/redirectIcon.svg"
+        src="@/assets/icons/redirect.svg"
         style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px"
         @click="isOpen = !isOpen"
       />

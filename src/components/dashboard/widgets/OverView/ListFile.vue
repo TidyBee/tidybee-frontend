@@ -11,7 +11,7 @@
           <v-col cols="1">
             <v-icon @click="openFiltreDialog">
               <img 
-                src="@/assets/filterIcon.svg" 
+                src="@/assets/icons/filter.svg" 
                 alt="Filter Icon" 
                 style="width: 20px; height: 20px; cursor: pointer;"
               />

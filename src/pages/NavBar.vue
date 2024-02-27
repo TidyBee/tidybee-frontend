@@ -1,7 +1,7 @@
 <template>
   <v-app-bar class="px-3" flat density="compact">
     <v-app-bar-icon>
-      <img src="@/assets/tidybeelogo.png" />
+      <img src="@/assets/tidybee-logo.svg" alt="TidyBee Logo" width="100" height="100"/>
     </v-app-bar-icon>
     <v-spacer />
     <v-tabs centered color="grey-darken-2">
