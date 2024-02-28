@@ -13,7 +13,7 @@
     <v-col cols="1">
       <img
         src="@/assets/icons/redirect.svg"
-        style="cursor: pointer; width: 30px; height: 30px; margin-top: -4px"
+        class="redirect-icon"
         :data-cy="$t(`overviewwidget-fileitem-open-tidyscore`)"
         @click="isOpen = !isOpen"
       />

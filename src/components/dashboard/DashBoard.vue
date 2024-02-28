@@ -14,7 +14,7 @@
         <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/getGradeWidget'" />
       </v-col>
       <v-col>
-        <OverViewWidget :tidy-hub-api="tidyHubApi" />
+        <OverViewWidget :tidy-hub-api="tidyHubApi + '/Gateway/getWidgetOverView'" />
       </v-col>
     </v-row>
 

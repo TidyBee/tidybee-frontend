@@ -16,7 +16,7 @@
               <img 
                 src="@/assets/icons/filter.svg" 
                 alt="Filter Icon" 
-                style="width: 20px; height: 20px; cursor: pointer;"
+                class="filter-icon"
                 :data-cy="$t(`overviewwidget-${tab}-filter-btn`)"
               />
             </v-icon>
@@ -113,27 +113,6 @@ export default {
      this.selectedFilter = this.selectedFilterCookie;
   },
   methods: {
-    //   sortedFileList(data) {  
-    //     let filesData = [];
-    //     console.log(data);
-    //     console.log(data.Responses);
-    //     if (data && data.Responses) {
-    //       data.Responses.map(target => {
-    //         console.log(target);
-    //         if (target && target.Content) {
-    //           if (target.StatusCode == 200) {
-    //             const contentArray = JSON.parse(target.Content);
-    //             const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
-    //             filesData = filesData.concat(sortedContentArray.slice().sort((a, b) => b.size - a.size));
-    //           } else {
-    //             return;
-    //           }
-    //         }
-    //       });
-    //       return filesData;
-    //     }
-    //     return null;
-    // },
     sortedFileList(data) {
       let filesData = [];
       if (data) {
@@ -178,4 +157,4 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style src="@/../css/components/dashboard/ListFile.css" scoped></style>

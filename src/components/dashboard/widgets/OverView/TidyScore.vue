@@ -5,14 +5,13 @@
         :data-cy="$t('tidyscore-grade-img')"
         :src="getGradeSVGPath()"
         alt="SVG Image"
-        style="width: 50px; height: 50px"
-        class="mx-auto d-block"
+        class="tidyscore-img"
       />
     </div>
     <p>
       <strong
         :data-cy="$t('tidyscore-file-name')"
-        style="display: flex; flex-direction: column; align-items: center"
+        class="file-name"
       >
         {{ file.pretty_path }}
       </strong>
@@ -36,7 +35,7 @@
               :data-cy="$t(`tidyscore-${value}-false`)"
               src="@/assets/icons/false.svg"
               alt="False Icon"
-              style="width: 20px; height: 20px"
+              class="icons"
             />
           </div>
           <div v-else>
@@ -45,7 +44,7 @@
               :data-cy="$t(`tidyscore-${value}-true`)"
               src="@/assets/icons/true.svg"
               alt="True Icon"
-              style="width: 20px; height: 20px"
+              class="icons"
             />
           </div>
         </div>
@@ -109,3 +108,5 @@ export default {
   },
 };
 </script>
+
+<style src="@/../css/components/dashboard/TidyScore.css" scoped></style>

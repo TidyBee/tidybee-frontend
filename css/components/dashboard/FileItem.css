@@ -2,3 +2,10 @@
   text-align : left;
   justify-content: space-evenly;
 }
+
+.redirect-icon {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  margin-top: -4px;
+}

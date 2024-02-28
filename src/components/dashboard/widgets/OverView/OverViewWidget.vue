@@ -12,8 +12,7 @@
         {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}
       </v-tab>
     </v-tabs>
-    <!-- <ListFile :tidy-hub-api="tidyHubApi + '/proxy/get_files?amount=10&sort_by=size'" :tab="selectedTabLabel" /> -->
-    <ListFile :tidy-hub-api="tidyHubApi + '/Gateway/getWidgetOverView'" :tab="selectedTabLabel" />
+    <ListFile :tidy-hub-api="tidyHubApi" :tab="selectedTabLabel" />
   </v-card>
 </template>
 

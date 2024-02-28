@@ -16,7 +16,7 @@
     "fileItem" : {
         "lastUsed" : "Last Used: ",
         "misnamed" : "Misnamed: ",
-        "heavy " : "Heavyest: ",
+        "heavy " : "Too heavy: ",
         "unused" : "Unused: ",
         "duplicated" : "Duplicated: "
     },
@@ -64,8 +64,8 @@
             "tidyscoreDesc": "TidyScore E to A",
             "sizeAsc": "Increasing size",
             "sizeDesc": "Decreasing size",
-            "secsAsc": "Last use increasing",
-            "secsDesc": "Last use decreasing",
+            "secsAsc": "Least recent use",
+            "secsDesc": "Most recent use",
             "sortedByLabel": "Sort by",
             "filtersLabel": "Filters",
             "closeButtonLabel": "Close"
