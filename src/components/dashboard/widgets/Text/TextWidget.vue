@@ -4,7 +4,8 @@
       <v-card class="rounded-rectangle" elevation="10">
         <v-container fluid>
           <v-row>
-            <v-span 
+            <v-span
+              v-if="data && data.title" 
               class="widget-title"
               :data-cy="$t(`textwidget-title`)"
             >
@@ -13,11 +14,12 @@
           </v-row>
 
           <v-row 
-            v-if="data.types === 'Graph' && data.data" 
+            v-if="data && data.types === 'Graph' && data.data" 
             class="widget-graph-center"
           >
             <v-span>
               <v-progress-circular
+                v-if="data.data.valuePercentage && data.data.status !== undefined"
                 :model-value="data.data.valuePercentage"
                 :size="110"
                 :width="10"
@@ -37,7 +39,7 @@
           </v-row>
 
           <v-row 
-            v-else-if="data.types === 'Number' && data.data" 
+            v-else-if="data && data.types === 'Number' && data.data" 
             class="widget-text-center"
           >
             <v-span 
@@ -49,17 +51,14 @@
           </v-row>
 
           <v-row 
-            :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
+            :class="{ 'green-text': data && data.data.status, 'red-text': data && !data.data.status }"
           >
             <v-span 
+              v-if="data && data.data && data.data.percentage"
               class="widget-text-bottom"
               :data-cy="$t(`textwidget-text-bottom`)"
             >
-              {{
-                data.data && data.data.percentage
-                  ? data.data.percentage + $t("dashboard.widgets.text.percentage")
-                  : ""
-              }}
+              {{ data.data.percentage + $t("dashboard.widgets.text.percentage") }}
             </v-span>
           </v-row>
         </v-container>
