@@ -2,6 +2,7 @@ FROM node:20.7.0-alpine3.17@sha256:2d808029dd5a1e6a606c06a3c78fbb770f53d2603827e
 WORKDIR /app/
 COPY *.json *.js yarn.lock .env ./
 COPY public/ public/
+COPY css/ css/
 COPY src/ src/
 RUN yarn install
 CMD ["yarn", "serve"]
