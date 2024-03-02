@@ -1,7 +1,7 @@
 <template>
   <ApiLoader :api-url="tidyHubApi">
     <template #default="{ data }">
-      <v-card class="rounded-rectangle" elevation="10">
+      <v-card v-if="data" class="rounded-rectangle" elevation="10">
         <v-row>
           <v-span 
             class="widget-title"

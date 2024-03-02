@@ -110,17 +110,22 @@ export default {
      this.selectedFilter = this.selectedFilterCookie;
   },
   methods: {
-    sortedFileList(data) {
+    sortedFileList(data) {  
       let filesData = [];
-      if (data) {
-        data.forEach(target => {
+      if (data && data.Responses) {
+        console.log(data)
+        data.Responses.map(target => {
           if (target && target.Content) {
-            const contentArray = JSON.parse(target.Content);
-            const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
-            filesData = filesData.concat(sortedContentArray);
+            if (target.StatusCode == 200) {
+              const contentArray = JSON.parse(target.Content);
+              const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
+              filesData = filesData.concat(sortedContentArray.slice().sort((a, b) => b.size - a.size));
+            } else {
+              return;
+            }
           }
         });
-        return this.sortedResponses(filesData);
+        return filesData;
       }
       return null;
     },
