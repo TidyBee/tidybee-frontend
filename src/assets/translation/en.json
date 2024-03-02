@@ -16,7 +16,7 @@
     "fileItem" : {
         "lastUsed" : "Last Used: ",
         "misnamed" : "Misnamed: ",
-        "heavy " : "Too heavy: ",
+        "heavy" : "Too heavy: ",
         "unused" : "Unused: ",
         "duplicated" : "Duplicated: "
     },

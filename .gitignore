@@ -18,3 +18,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+##e2e files
+*js.mp4

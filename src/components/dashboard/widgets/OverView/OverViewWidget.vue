@@ -1,29 +1,41 @@
 <template>
-  <v-card class="rounded-rectangle" elevation="10">
-    <v-tabs v-model="tab" class="custom-tabs" :hide-slider="true">
-      <v-tab
-        v-for="(item, index) in tabs"
-        :key="index"
-        :value="item.value"
-        :class="{ 'active-tab': activeTab === item.value }"
-        :data-cy="$t(`overviewwidget-tabs-${item.value}`)"
-        @click="changeTab(item.value)"
+  <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <template #default="{ data }">
+      <v-card 
+        v-if="data" 
+        class="rounded-rectangle" 
+        elevation="10"
+        :data-cy="$t(`overviewwidget-container`)"
       >
-        {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}
-      </v-tab>
-    </v-tabs>
-    <ListFile :tidy-hub-api="tidyHubApi" :tab="selectedTabLabel" />
-  </v-card>
+        <v-tabs v-model="tab" class="custom-tabs" :hide-slider="true">
+          <v-tab
+            v-for="(item, index) in tabs"
+            :key="index"
+            :value="item.value"
+            :class="{ 'active-tab': activeTab === item.value }"
+            :data-cy="$t(`overviewwidget-tabs-${item.value}`)"
+            @click="changeTab(item.value)"
+          >
+            {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}
+          </v-tab>
+        </v-tabs>
+        <ListFile :fetchdata="data" :tab="selectedTabLabel" />
+      </v-card>
+    </template>
+  </ApiLoader>
 </template>
 
 <script>
+
+import ApiLoader from "@/components/communication/ApiLoader.vue";
 import ListFile from "@/components/dashboard/widgets/OverView/ListFile.vue";
 import VueCookies from "vue-cookies";
 
 export default {
   name: "OverViewWidget",
   components: {
-    ListFile
+    ListFile,
+    ApiLoader,
   },
   props: {
     tidyHubApi: {

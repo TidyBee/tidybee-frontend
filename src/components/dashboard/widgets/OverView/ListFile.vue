@@ -1,70 +1,68 @@
 <template>
-  <ApiLoader :api-url="tidyHubApi" class="full-height">
-    <template #default="{ data }">
-      <v-container>
-        <v-row>
-          <v-col cols="11">
-            <div 
-              class="text-left"
-              :data-cy="$t(`overviewwidget-${tab}-filter`)"
-            >
-              {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
-            </div>
-          </v-col>
-          <v-col cols="1">
-            <v-icon @click="openFiltreDialog">
-              <img 
-                src="@/assets/icons/filter.svg" 
-                alt="Filter Icon" 
-                class="filter-icon"
-                :data-cy="$t(`overviewwidget-${tab}-filter-btn`)"
-              />
-            </v-icon>
-          </v-col>
-          <v-divider></v-divider>
-        </v-row>
-        <v-row>
-          <v-virtual-scroll :height="340" :items="sortedFileList(data)">
-            <template #default="{ item }">
-              <v-list-item v-if="sortWithTidyScore(item.tidy_score)" cols="12">
-                <FileItem :file="item" />
-              </v-list-item>
-            </template>
-          </v-virtual-scroll>
-        </v-row>
-        <v-dialog v-model="dialogFiltre" max-width="600px">
-          <v-card>
-            <v-card-title>
-              <span class="headline">
-                {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
-              </span>
-            </v-card-title>
-            <v-card-text>
-              <v-select 
-                v-model="selectedFilter" 
-                :items="filterOptions" 
-                :label="$t('dashboard.widgets.overView.filters.sortedByLabel')"
-                :data-cy="$t(`overviewwidget-${tab}-filter-open-btn`)"
-              >
-              </v-select>
-            </v-card-text>
-            <v-card-actions>
-              <v-btn 
-                :data-cy="$t(`OverViewWidget-${tab}-filter-close-btn`)"
-                @click="closeFiltreDialog"
-              >
-                {{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}
-              </v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
-      </v-container>
-    </template>
-  </ApiLoader>
+  <v-container>
+    <v-row>
+      <v-col cols="11">
+        <div 
+          class="text-left"
+          :data-cy="$t(`overviewwidget-${tab}-filter`)"
+        >
+          {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
+        </div>
+      </v-col>
+      <v-col cols="1">
+        <v-icon @click="openFiltreDialog">
+          <img 
+            src="@/assets/icons/filter.svg" 
+            alt="Filter Icon" 
+            class="filter-icon"
+            :data-cy="$t(`overviewwidget-${tab}-filter-btn`)"
+          />
+        </v-icon>
+      </v-col>
+      <v-divider></v-divider>
+    </v-row>
+    <v-row>
+      <v-virtual-scroll :height="340" :items="sortedFileList(fetchdata)">
+        <template #default="{ item }">
+          <v-list-item v-if="sortWithTidyScore(item.tidy_score)" cols="12">
+            <FileItem :file="item" />
+          </v-list-item>
+        </template>
+      </v-virtual-scroll>
+    </v-row>
+    <v-dialog v-model="dialogFiltre" max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">
+            {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
+          </span>
+        </v-card-title>
+        <v-card-text>
+          <v-select
+            v-model="selectedFilter"
+            :items="filterOptions"
+            :data-cy="$t(`OverViewWidget-filter-option-change-btn`)"
+          >
+            <v-slot 
+              :item="{ item }"
+              :data-cy="$t(`OverViewWidget-filter-option-${item.title}`)"
+            />
+          </v-select>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn 
+            :data-cy="$t(`OverViewWidget-${tab}-filter-close-btn`)"
+            @click="closeFiltreDialog"
+          >
+            {{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-container>
 </template>
 
 <script>
-import ApiLoader from "@/components/communication/ApiLoader.vue";
 import { sortBy } from "@/components/dashboard/widgets/OverView/sortBy";
 import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
 import VueCookies from "vue-cookies";
@@ -72,12 +70,11 @@ import VueCookies from "vue-cookies";
 export default {
   name: "ListFile",
   components: {
-    ApiLoader,
     FileItem,
   },
   props: {
-    tidyHubApi: {
-      type: String,
+    fetchdata: {
+      type: Object,
       required: true,
     },
     tab: {
@@ -152,7 +149,7 @@ export default {
     closeFiltreDialog() {
       VueCookies.set("selectedFilter", this.selectedFilter);
       this.dialogFiltre = false;
-    },
+    }
   }
 };
 </script>

@@ -27,21 +27,20 @@
         <div 
           v-for="(value, key) in file.tidy_score" 
           :key="key"
-          :data-cy="$t(`tidyscore-${value}`)"
         >
           <div v-if="value">
-            <strong>{{ $t(`fileItem.${key}`) }}</strong>
+            <strong :data-cy="$t(`tidyscore-${key}`)">{{ $t(`fileItem.${key}`) }}</strong>
             <img
-              :data-cy="$t(`tidyscore-${value}-false`)"
+              :data-cy="$t(`tidyscore-${key}-false`)"
               src="@/assets/icons/false.svg"
               alt="False Icon"
               class="icons"
             />
           </div>
           <div v-else>
-            <strong>{{ $t(`fileItem.${key}`) }}</strong>
+            <strong :data-cy="$t(`tidyscore-${key}`)">{{ $t(`fileItem.${key}`) }}</strong>
             <img
-              :data-cy="$t(`tidyscore-${value}-true`)"
+              :data-cy="$t(`tidyscore-${key}-true`)"
               src="@/assets/icons/true.svg"
               alt="True Icon"
               class="icons"
