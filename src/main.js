@@ -10,8 +10,8 @@ import VueCookies from "vue-cookies";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-import fr from "@/assets/fr.json";
-import en from "@/assets/en.json";
+import fr from "@/assets/translation/fr.json";
+import en from "@/assets/translation/en.json";
 
 const vuetify = createVuetify({
   components,

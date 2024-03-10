@@ -1,4 +1,4 @@
-import { handleSuccess } from "../../src/communication/communication.js";
+import { handleSuccess } from "../../src/components/communication/communication.js";
 
 describe("handleSuccess function", () => {
   test("should return data if response status is 200 and data is valid", () => {

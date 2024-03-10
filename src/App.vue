@@ -16,9 +16,9 @@
 </template>
 
 <script>
-import NavBar from "@/components/NavBar.vue";
-import HelpButton from "@/components/HelpButton.vue";
-import BaseModal from "./components/BaseModal.vue";
+import NavBar from "@/pages/NavBar.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
+import BaseModal from "@/components/widgets/BaseModal.vue";
 import { ref } from "vue";
 
 export default {
@@ -36,4 +36,4 @@ export default {
 };
 </script>
 
-<style src="./css/App.css" scoped></style>
+<style src="@/../css/App.css" scoped></style>

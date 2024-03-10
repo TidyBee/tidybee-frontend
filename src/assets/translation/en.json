@@ -1,0 +1,83 @@
+{
+    "common" : {
+        "close": "Close",
+        "loading": "Loading...",
+        "missingInput": "A valid input is required"
+    },
+    "navbar": {
+        "Home": "TidyBee",
+        "Settings": "Settings",
+        "About" : "About"
+    },
+    "help": {
+        "helpText1" : "This is where I would put the tutorial for tidyBee",
+        "helpText2" : "Once its written"
+    },
+    "fileItem" : {
+        "lastUsed" : "Last Used: ",
+        "misnamed" : "Misnamed: ",
+        "heavy" : "Too heavy: ",
+        "unused" : "Unused: ",
+        "duplicated" : "Duplicated: "
+    },
+    "dropdownOption" : {
+        "selectText": "Please select one"
+    },
+    "apiLoader" : {
+        "errorLoading": "Error loading data"
+    },
+    "fileView": {
+        "size" : "File size: "
+    },
+    "folderWidget": {
+        "folderLocation": "Folder location"
+    },
+    "parameters": {
+        "top_parameters": "Display of the number of files in the Tops",
+        "naming_formats": "File Naming Formats",
+        "unused_file_durations": "From which moment is the file considered unused",
+        "size_thresholds": "From what size is it considered too heavy",
+        "save": "Save"
+    },
+    "dashboard": {
+      "refresh" : "Refresh",
+      "widgets": {
+        "text" :{
+          "title":{
+            "unused": "Number of unused files",
+            "heavy": "Number of heavy files",
+            "badname": "Number of misnamed files",
+            "duplicate": "Number of duplicate files",
+            "storage": "Shared spaces"
+          },
+          "percentage": "% over last month"
+        },
+        "overView" :{
+          "title":{
+          "unused": "Unused",
+          "heavy": "Heavy",
+          "misnamed": "Misnamed",
+          "duplicated": "Duplicated"
+          },
+          "filters":{
+            "tidyscoreAsc": "TidyScore A to E",
+            "tidyscoreDesc": "TidyScore E to A",
+            "sizeAsc": "Increasing size",
+            "sizeDesc": "Decreasing size",
+            "secsAsc": "Least recent use",
+            "secsDesc": "Most recent use",
+            "sortedByLabel": "Sort by",
+            "filtersLabel": "Filters",
+            "closeButtonLabel": "Close"
+          }
+        },
+        "grade": {
+          "title":"The Grade of your shared space has been estimated by Tidybee."
+        },
+        "graph": {
+          "title":"Analysis of your storage space",
+          "total":"Total"
+        }
+      }
+    }
+}

@@ -1,5 +1,5 @@
-import MainPage from "@/MainPage.vue";
-import ConfigurationPage from "@/ConfigurationPage.vue";
+import MainPage from "@/pages/MainPage.vue";
+import SettingsPage from "@/pages/SettingsPage.vue";
 
 import { createRouter, createWebHashHistory } from "vue-router";
 
@@ -10,8 +10,8 @@ const routes = [
     path: "",
   },
   {
-    name: "Configuration",
-    component: ConfigurationPage,
+    name: "Settings",
+    component: SettingsPage,
     path: "/settings",
   },
 ];

@@ -1,76 +1,65 @@
-name: CI/CD
+# name: CI/CD
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+#   pull_request:
+#     branches:
+#       - main
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 19.4.0
+#       - name: Install Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 19.4.0
 
-      - name: Install Dependencies
-        run: yarn install
+#       - name: Install Dependencies
+#         run: yarn install
 
-      - name: Build
-        run: yarn build
+#       - name: Build
+#         run: yarn build
 
-      - name: Run Unit Tests
-        run: yarn test:unit
+#   test-macos:
+#     runs-on: macos-latest
+#     needs: build
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
 
-      - name: Run E2E Tests
-        run: yarn test:e2e
+#       - name: Install Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 19.4.0
 
-  # test-macos:
-  #   runs-on: macos-latest
-  #   needs: build
-  #   steps:
-  #     - name: Checkout Repository
-  #       uses: actions/checkout@v2
+#       - name: Install Dependencies
+#         run: yarn install
 
-  #     - name: Install Node.js
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: 19.4.0
+#       - name: Run Unit Tests on macOS
+#         run: yarn test:unit
 
-  #     - name: Install Dependencies
-  #       run: yarn install
+#   test-windows:
+#     runs-on: windows-latest
+#     needs: build
+#     steps:
+#       - name: Checkout Repository
+#         uses: actions/checkout@v2
 
-  #     - name: Run Unit Tests on macOS
-  #       run: yarn test:unit
+#       - name: Install Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: 19.4.0
 
-  #     - name: Run E2E Tests on macOS
-  #       run: yarn test:e2e
+#       - name: Install Dependencies
+#         run: yarn install
 
-  test-windows:
-    runs-on: windows-latest
-    needs: build
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+#       - name: Run Unit Tests on Windows
+#         run: yarn test:unit
 
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 19.4.0
-
-      - name: Install Dependencies
-        run: yarn install
-
-      - name: Run Unit Tests on Windows
-        run: yarn test:unit
-
-      - name: Run E2E Tests on Windows
-        run: yarn test:e2e

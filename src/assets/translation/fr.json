@@ -1,0 +1,83 @@
+{
+  "common" : {
+    "close": "Fermer",
+    "loading": "Chargement en cours...",
+    "missingInput": "Une saisie valide est requise"
+  },
+  "navbar": {
+    "Home": "TidyBee",
+    "Settings": "Configuration",
+    "About" : "À Propos"
+  },
+  "help": {
+    "helpText1" : "C'est ici que le tutoriel de TidyBee sera",
+    "helpText2" : "Une fois écrit"
+  },
+  "fileItem" : {
+    "lastUsed" : "Dernière utilisation: ",
+    "misnamed" : "Mal nommé: ",
+    "heavy" : "Trop lourd: ",
+    "unused" : "Inutilisé: ",
+    "duplicated" : "Duplicata: "
+  },
+  "dropdownOption" : {
+    "selectText": "Veuillez en choisir un"
+  },
+  "apiLoader" : {
+      "errorLoading": "Erreur lors du chargement"
+  },
+  "fileView": {
+    "size" : "Taille du fichier: "
+  },
+  "folderWidget": {
+    "folderLocation": "Emplacement du dossier"
+  },
+  "parameters" : {
+    "top_parameters": "Affichage du nombre de fichiers dans les Tops",
+    "naming_formats": "Nomenclature",
+    "unused_file_durations" : "À partir de quel moment le fichier est considéré comme inutilisé",
+    "size_thresholds" : "À partir de quelle taille est-il considéré comme trop lourd",
+    "save": "Sauvegarder"
+  },
+  "dashboard": {
+    "refresh" : "Actualiser",
+    "widgets": {
+      "text" :{
+        "title":{
+          "unused": "Nombre de fichiers inutilisés",
+          "heavy": "Nombre de fichier lourds",
+          "badname": "Nombre de fichiers mal nommés",
+          "duplicate": "Nombre de fichiers dupliqués",
+          "storage": "Espaces partagés"
+        },
+        "percentage": "% sur le mois dernier"
+      },
+      "overView" :{
+        "title":{
+          "unused": "Inutilisés",
+          "heavy": "Lourds",
+          "misnamed": "Mal nommés",
+          "duplicated": "Dupliqués"
+        },
+        "filters":{
+          "tidyscoreAsc": "TidyScore A à E",
+          "tidyscoreDesc": "TidyScore E à A",
+          "sizeAsc": "Taille croissante",
+          "sizeDesc": "Taille décroissante",
+          "secsAsc": "Dernière utilisation croissante",
+          "secsDesc": "Dernière utilisation décroissante",
+          "sortedByLabel": "Trié par",
+          "filtersLabel": "Filtres",
+          "closeButtonLabel": "Fermer"
+        }
+      },
+      "grade": {
+        "title":"Le Grade de votre espace partagé a été estimé par Tidybee."
+      },
+      "graph": {
+        "title":"Analyse de votre espace de stockage",
+        "total":"Total"
+      }
+    }
+  }
+}

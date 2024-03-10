@@ -1,11 +1,11 @@
 describe("Setting Page Test", () => {
   it("Visits setting Page", () => {
     cy.visit("/");
-    cy.get(`[data-cy=Configuration]`).click();
+    cy.get(`[data-cy=Settings]`).click();
   });
   it("Visits setting Page & Flexible choice", () => {
     cy.visit("/");
-    cy.get(`[data-cy=Configuration]`).click();
+    cy.get(`[data-cy=Settings]`).click();
     cy.get(`[data-cy=Flexible]`).click();
     cy.get(`[data-cy=top_parameters-title]`).contains(
       "Display of the number of files in the Tops",
@@ -26,7 +26,7 @@ describe("Setting Page Test", () => {
 
   it("Visits setting Page & Normal choice", () => {
     cy.visit("/");
-    cy.get(`[data-cy=Configuration]`).click();
+    cy.get(`[data-cy=Settings]`).click();
     cy.get(`[data-cy=Normal]`).click();
     cy.get(`[data-cy=top_parameters-title]`).contains(
       "Display of the number of files in the Tops",
@@ -47,7 +47,7 @@ describe("Setting Page Test", () => {
 
   it("Visits setting Page & Strict choice", () => {
     cy.visit("/");
-    cy.get(`[data-cy=Configuration]`).click();
+    cy.get(`[data-cy=Settings]`).click();
     cy.get(`[data-cy=Strict]`).click();
     cy.get(`[data-cy=top_parameters-title]`).contains(
       "Display of the number of files in the Tops",
@@ -68,14 +68,3 @@ describe("Setting Page Test", () => {
     cy.get(`[data-cy=save]`).click();
   });
 });
-
-// scénario
-// 1 clicker sur la catégorie :
-// 2 vérifier que le nombre de fichier est dispo
-// 3 qu'il correspond bien au chiffre attendu
-// 4 vérifier que le File naming formats est dispo
-// 5 qu'il correspond bien au choix attendu
-// 6 vérifier que la date de péremtions est dispo
-// 7 qu'elle correspond bien au choix attendu
-// 8 vérifier que le poids trop lourds est dispo
-// 9 qu'il correspond bien au choix attendu

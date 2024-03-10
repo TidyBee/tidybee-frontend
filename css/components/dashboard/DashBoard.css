@@ -1,0 +1,16 @@
+.widget-top-container {
+  display: flex;
+  justify-content: center;
+  margin-right: 40px !important;
+}
+
+.widget-bottom-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px !important;
+  margin-right: 40px !important;
+}
+
+.refresh-btn {
+  margin-top: 20px;
+}

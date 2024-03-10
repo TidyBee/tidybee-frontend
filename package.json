@@ -7,10 +7,12 @@
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless --browser electron",
+    "test:e2e-withoutHeadless": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
     "prettify": "prettier . --write"
   },
   "dependencies": {
+    "apexcharts": "^3.46.0",
     "axios": "^1.5.1",
     "core-js": "^3.8.3",
     "crypto": "^1.0.1",
@@ -24,6 +26,7 @@
     "vue-cookies": "^1.8.3",
     "vue-i18n": "9",
     "vue-router": "^4.0.13",
+    "vue3-apexcharts": "^1.5.2",
     "vue3-grid-layout-next": "^1.0.6",
     "vuetify": "^3.4.3",
     "webpack": "^5.88.2"
