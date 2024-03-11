@@ -1,0 +1,13 @@
+/.dockerignore
+/.git
+/.github
+/.gitignore
+/.prettierignore
+/CONTRIBUTING.md
+/Dockerfile
+/README.md
+/cypress.json
+/dist
+/jest.config.js
+/node_modules
+/tests
