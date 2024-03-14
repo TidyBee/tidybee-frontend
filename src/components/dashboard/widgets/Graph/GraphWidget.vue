@@ -5,7 +5,7 @@
         <v-row>
           <v-span 
             class="widget-title"
-            :data-cy="$t(`graphwidget-title`)"
+            :data-cy="`graphwidget-title`"
           >
             {{ $t(`dashboard.widgets.graph.title`) }}
           </v-span>
@@ -16,7 +16,7 @@
           class="centered-container-graph"
           :options="chartOptions"
           :series="data.series"
-          :data-cy="$t(`graphwidget-graph`)"
+          :data-cy="`graphwidget-graph`"
         >
         </apexchart>
       </v-card>

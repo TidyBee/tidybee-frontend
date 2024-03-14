@@ -4,7 +4,7 @@
       <v-col cols="11">
         <div 
           class="text-left"
-          :data-cy="$t(`overviewwidget-${tab}-filter`)"
+          :data-cy="`overviewwidget-${tab}-filter`"
         >
           {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
         </div>
@@ -15,7 +15,7 @@
             src="@/assets/icons/filter.svg" 
             alt="Filter Icon" 
             class="filter-icon"
-            :data-cy="$t(`overviewwidget-${tab}-filter-btn`)"
+            :data-cy="`overviewwidget-${tab}-filter-btn`"
           />
         </v-icon>
       </v-col>
@@ -41,17 +41,17 @@
           <v-select
             v-model="selectedFilter"
             :items="filterOptions"
-            :data-cy="$t(`OverViewWidget-filter-option-change-btn`)"
+            :data-cy="`OverViewWidget-filter-option-change-btn`"
           >
             <v-slot 
               :item="{ item }"
-              :data-cy="$t(`OverViewWidget-filter-option-${item.title}`)"
+              :data-cy="`OverViewWidget-filter-option-${item.title}`"
             />
           </v-select>
         </v-card-text>
         <v-card-actions>
           <v-btn 
-            :data-cy="$t(`OverViewWidget-${tab}-filter-close-btn`)"
+            :data-cy="`OverViewWidget-${tab}-filter-close-btn`"
             @click="closeFiltreDialog"
           >
             {{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}
@@ -113,7 +113,6 @@ export default {
     sortedFileList(data) {  
       let filesData = [];
       if (data && data.Responses) {
-        console.log(data)
         data.Responses.map(target => {
           if (target && target.Content) {
             if (target.StatusCode == 200) {

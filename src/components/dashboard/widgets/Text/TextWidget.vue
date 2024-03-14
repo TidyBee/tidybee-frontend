@@ -7,7 +7,7 @@
             <v-span
               v-if="data && data.title" 
               class="widget-title"
-              :data-cy="$t(`textwidget-title`)"
+              :data-cy="`textwidget-title`"
             >
               {{ $t(`dashboard.widgets.text.title.${data.title}`) }}
             </v-span>
@@ -25,12 +25,12 @@
                 :width="10"
                 :color="data.data.status ? 'green' : 'red'"
                 class="widget-graph"
-                :data-cy="$t(`textwidget-graph`)"
+                :data-cy="`textwidget-graph`"
               >
                 <v-row 
                   class="grey-text" 
                   align="center" 
-                  :data-cy="$t(`textwidget-graph-value`)"
+                  :data-cy="`textwidget-graph-value`"
                 >
                   {{ data.data.value }}
                 </v-row>
@@ -44,7 +44,7 @@
           >
             <v-span 
               :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
-              :data-cy="$t(`textwidget-number`)"
+              :data-cy="`textwidget-number`"
             >
               {{ data.data.value }}
             </v-span>
@@ -56,7 +56,7 @@
             <v-span 
               v-if="data && data.data && data.data.percentage"
               class="widget-text-bottom"
-              :data-cy="$t(`textwidget-text-bottom`)"
+              :data-cy="`textwidget-text-bottom`"
             >
               {{ data.data.percentage + $t("dashboard.widgets.text.percentage") }}
             </v-span>
