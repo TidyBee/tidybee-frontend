@@ -1,12 +1,29 @@
 <template>
   <v-row>
     <v-col cols="10">
-      <div class="text-left" :data-cy="$t(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <div
+        class="text-left"
+        :data-cy="
+          $t(
+            `overviewwidget-fileitem-${replaceSpecificChar(
+              parseFileName(file.pretty_path),
+            )}`,
+          )
+        "
+      >
         {{ parseFileName(file.pretty_path) }}
       </div>
     </v-col>
     <v-col cols="1">
-      <span :data-cy="$t(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <span
+        :data-cy="
+          $t(
+            `overviewwidget-fileitem-tidyscore-${replaceSpecificChar(
+              parseFileName(file.pretty_path),
+            )}`,
+          )
+        "
+      >
         {{ getGrade(file.tidy_score) }}
       </span>
     </v-col>
@@ -14,7 +31,13 @@
       <img
         src="@/assets/icons/redirect.svg"
         class="redirect-icon"
-        :data-cy="$t(`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
+        :data-cy="
+          $t(
+            `overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(
+              parseFileName(file.pretty_path),
+            )}`,
+          )
+        "
         @click="isOpen = !isOpen"
       />
     </v-col>
@@ -22,10 +45,10 @@
       <v-dialog v-model="isOpen" max-width="300px">
         <v-card>
           <TidyScore :file="file" />
-          <v-btn 
+          <v-btn
             :data-cy="$t(`overviewwidget-fileitem-close-dialog`)"
             @click="closeDialog"
-          > 
+          >
             {{ $t("common.close") }}
           </v-btn>
         </v-card>
@@ -64,8 +87,8 @@ export default {
       this.isOpen = false;
     },
     parseFileName(pretty_path) {
-      if (pretty_path.includes('/')) {
-        const segments = pretty_path.split('/');
+      if (pretty_path.includes("/")) {
+        const segments = pretty_path.split("/");
         const fileName = segments[segments.length - 1];
         return fileName;
       } else {
@@ -73,10 +96,10 @@ export default {
       }
     },
     replaceSpecificChar(str) {
-      const replaceStr = str.replace(/[./_]/g, '-');
+      const replaceStr = str.replace(/[./_]/g, "-");
       return replaceStr;
-    }
-  }
+    },
+  },
 };
 </script>
 

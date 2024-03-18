@@ -1,8 +1,18 @@
 <template>
   <div>
-    <div v-if="isLoading" class="full-height">{{ $t("common.loading") }}</div>
-    <div v-else-if="hasError" class="full-height">
+    <div
+      v-if="isLoading"
+      class="full-height d-flex justify-center align-center"
+    >
+      <v-progress-circular
+        indeterminate
+        :size="80"
+        :width="12"
+      ></v-progress-circular>
+    </div>
+    <div v-else-if="hasError" class="full-height boop">
       {{ $t("apiLoader.errorLoading") }}
+      {{ error }}
     </div>
     <div v-else class="full-height">
       <slot :data="apiData" />
@@ -29,6 +39,7 @@ export default {
       apiData: {},
       isLoading: false,
       hasError: false,
+      error: "",
     };
   },
   created() {
@@ -51,7 +62,7 @@ export default {
       } catch (error) {
         this.hasError = true;
         this.isLoading = false;
-        console.error(error);
+        this.error = error.message;
       }
       this.isLoading = false;
     },

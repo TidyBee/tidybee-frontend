@@ -10,7 +10,9 @@ export const sortBy = (responses, sortByParam, sortOrder) => {
     tidyscoreDesc: sortByTidyScoreDesc,
   };
 
-  const sortKey = `${sortByParam}${sortOrder.charAt(0).toUpperCase() + sortOrder.slice(1)}`;
+  const sortKey = `${sortByParam}${
+    sortOrder.charAt(0).toUpperCase() + sortOrder.slice(1)
+  }`;
   const sortFunction = sortFunctions[sortKey];
   if (sortFunction) {
     return sortFunction(responses);
@@ -47,13 +49,19 @@ export const sortBySizeDesc = (responses) => {
 export const sortByTidyScoreAsc = (responses) => {
   const tidyScoreOrder = { A: 1, B: 2, C: 3, D: 4, E: 5 };
   return responses.slice().sort((a, b) => {
-    return tidyScoreOrder[getGrade(a.tidy_score)] - tidyScoreOrder[getGrade(b.tidy_score)];
+    return (
+      tidyScoreOrder[getGrade(a.tidy_score)] -
+      tidyScoreOrder[getGrade(b.tidy_score)]
+    );
   });
 };
 
 export const sortByTidyScoreDesc = (responses) => {
   const tidyScoreOrder = { A: 1, B: 2, C: 3, D: 4, E: 5 };
   return responses.slice().sort((a, b) => {
-    return tidyScoreOrder[getGrade(b.tidy_score)] - tidyScoreOrder[getGrade(a.tidy_score)];
+    return (
+      tidyScoreOrder[getGrade(b.tidy_score)] -
+      tidyScoreOrder[getGrade(a.tidy_score)]
+    );
   });
 };

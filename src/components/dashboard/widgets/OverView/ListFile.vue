@@ -2,18 +2,15 @@
   <v-container>
     <v-row>
       <v-col cols="11">
-        <div 
-          class="text-left"
-          :data-cy="$t(`overviewwidget-${tab}-filter`)"
-        >
+        <div class="text-left" :data-cy="$t(`overviewwidget-${tab}-filter`)">
           {{ $t("dashboard.widgets.overView.filters.filtersLabel") }}
         </div>
       </v-col>
       <v-col cols="1">
         <v-icon @click="openFiltreDialog">
-          <img 
-            src="@/assets/icons/filter.svg" 
-            alt="Filter Icon" 
+          <img
+            src="@/assets/icons/filter.svg"
+            alt="Filter Icon"
             class="filter-icon"
             :data-cy="$t(`overviewwidget-${tab}-filter-btn`)"
           />
@@ -43,18 +40,18 @@
             :items="filterOptions"
             :data-cy="$t(`OverViewWidget-filter-option-change-btn`)"
           >
-            <v-slot 
+            <v-slot
               :item="{ item }"
               :data-cy="$t(`OverViewWidget-filter-option-${item.title}`)"
             />
           </v-select>
         </v-card-text>
         <v-card-actions>
-          <v-btn 
+          <v-btn
             :data-cy="$t(`OverViewWidget-${tab}-filter-close-btn`)"
             @click="closeFiltreDialog"
           >
-            {{ $t('dashboard.widgets.overView.filters.closeButtonLabel') }}
+            {{ $t("dashboard.widgets.overView.filters.closeButtonLabel") }}
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -80,46 +77,68 @@ export default {
     tab: {
       type: String,
       required: true,
-    }
+    },
   },
   setup() {
     if (!VueCookies.get("selectedFilter")) {
       VueCookies.set("selectedFilter", "TidyScore Asc", "7d");
     }
     const selectedFilterCookie = VueCookies.get("selectedFilter");
-    
+
     return {
       selectedFilterCookie,
-    }
+    };
   },
   data() {
     return {
       selectedFilter: "",
       dialogFiltre: false,
       filterOptions: [
-        { title: this.$t('dashboard.widgets.overView.filters.tidyscoreAsc'), value: 'TidyScore Asc' },
-        { title: this.$t('dashboard.widgets.overView.filters.tidyscoreDesc'), value: 'TidyScore Desc' },
-        { title: this.$t('dashboard.widgets.overView.filters.sizeAsc'), value: 'Size Asc' },
-        { title: this.$t('dashboard.widgets.overView.filters.sizeDesc'), value: 'Size Desc' },
-        { title: this.$t('dashboard.widgets.overView.filters.secsAsc'), value: 'Secs Asc' },
-        { title: this.$t('dashboard.widgets.overView.filters.secsDesc'), value: 'Secs Desc' }
+        {
+          title: this.$t("dashboard.widgets.overView.filters.tidyscoreAsc"),
+          value: "TidyScore Asc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.tidyscoreDesc"),
+          value: "TidyScore Desc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.sizeAsc"),
+          value: "Size Asc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.sizeDesc"),
+          value: "Size Desc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.secsAsc"),
+          value: "Secs Asc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.secsDesc"),
+          value: "Secs Desc",
+        },
       ],
-    }
+    };
   },
   mounted() {
-     this.selectedFilter = this.selectedFilterCookie;
+    this.selectedFilter = this.selectedFilterCookie;
   },
   methods: {
-    sortedFileList(data) {  
+    sortedFileList(data) {
       let filesData = [];
       if (data && data.Responses) {
-        console.log(data)
-        data.Responses.map(target => {
+        console.log(data);
+        data.Responses.map((target) => {
           if (target && target.Content) {
             if (target.StatusCode == 200) {
               const contentArray = JSON.parse(target.Content);
-              const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
-              filesData = filesData.concat(sortedContentArray.slice().sort((a, b) => b.size - a.size));
+              const sortedContentArray = contentArray
+                .slice()
+                .sort((a, b) => b.size - a.size);
+              filesData = filesData.concat(
+                sortedContentArray.slice().sort((a, b) => b.size - a.size),
+              );
             } else {
               return;
             }
@@ -131,13 +150,17 @@ export default {
     },
     sortedResponses(filesData) {
       switch (this.selectedFilter) {
-        case 'TidyScore Asc':
-        case 'TidyScore Desc':
-        case 'Size Asc':
-        case 'Size Desc':
-        case 'Secs Asc':
-        case 'Secs Desc':
-          return sortBy(filesData, this.selectedFilter.split(' ')[0].toLowerCase(), this.selectedFilter.split(' ')[1]);
+        case "TidyScore Asc":
+        case "TidyScore Desc":
+        case "Size Asc":
+        case "Size Desc":
+        case "Secs Asc":
+        case "Secs Desc":
+          return sortBy(
+            filesData,
+            this.selectedFilter.split(" ")[0].toLowerCase(),
+            this.selectedFilter.split(" ")[1],
+          );
         default:
           return filesData;
       }
@@ -154,8 +177,8 @@ export default {
     closeFiltreDialog() {
       VueCookies.set("selectedFilter", this.selectedFilter);
       this.dialogFiltre = false;
-    }
-  }
+    },
+  },
 };
 </script>
 

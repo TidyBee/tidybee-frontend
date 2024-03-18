@@ -39,7 +39,10 @@
 </template>
 
 <script>
-import { postData, fetchData } from "@/components/communication/communication.js";
+import {
+  postData,
+  fetchData,
+} from "@/components/communication/communication.js";
 
 export default {
   name: "SettingsPage",

@@ -9,10 +9,7 @@
       />
     </div>
     <p>
-      <strong
-        :data-cy="$t('tidyscore-file-name')"
-        class="file-name"
-      >
+      <strong :data-cy="$t('tidyscore-file-name')" class="file-name">
         {{ file.pretty_path }}
       </strong>
     </p>
@@ -24,12 +21,11 @@
         {{ formatFileSize(file.size) }}
       </p>
       <div v-if="file.tidy_score">
-        <div 
-          v-for="(value, key) in file.tidy_score" 
-          :key="key"
-        >
+        <div v-for="(value, key) in file.tidy_score" :key="key">
           <div v-if="value">
-            <strong :data-cy="$t(`tidyscore-${key}`)">{{ $t(`fileItem.${key}`) }}</strong>
+            <strong :data-cy="$t(`tidyscore-${key}`)">{{
+              $t(`fileItem.${key}`)
+            }}</strong>
             <img
               :data-cy="$t(`tidyscore-${key}-false`)"
               src="@/assets/icons/false.svg"
@@ -38,7 +34,9 @@
             />
           </div>
           <div v-else>
-            <strong :data-cy="$t(`tidyscore-${key}`)">{{ $t(`fileItem.${key}`) }}</strong>
+            <strong :data-cy="$t(`tidyscore-${key}`)">{{
+              $t(`fileItem.${key}`)
+            }}</strong>
             <img
               :data-cy="$t(`tidyscore-${key}-true`)"
               src="@/assets/icons/true.svg"
@@ -101,9 +99,10 @@ export default {
       if (years > 0) return years + (years > 1 ? " années" : " an");
       else if (days > 0) return days + (days > 1 ? " jours" : " jour");
       else if (hours > 0) return hours + (hours > 1 ? " heures" : " heure");
-      else if (minutes > 0) return minutes + (minutes > 1 ? " minutes" : " minute");
+      else if (minutes > 0)
+        return minutes + (minutes > 1 ? " minutes" : " minute");
       else return seconds + (seconds > 1 ? " secondes" : " seconde");
-    }
+    },
   },
 };
 </script>
