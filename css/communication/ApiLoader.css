@@ -1,3 +1,15 @@
 .full-height {
   height: 100%;
 }
+
+.warning-icon {
+  font-size: 6em !important;
+  height: auto !important;
+  width: auto !important;
+  color: #000;
+}
+
+.red-bg {
+  background-color: #ffc6b6;
+  color: dimgray;
+}

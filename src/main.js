@@ -6,6 +6,7 @@ import router from "@/routers.js";
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
 import VueCookies from "vue-cookies";
+import '@mdi/font/css/materialdesignicons.css';
 
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";

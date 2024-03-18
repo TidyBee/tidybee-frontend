@@ -10,9 +10,12 @@
         :width="12"
       ></v-progress-circular>
     </div>
-    <div v-else-if="hasError" class="full-height boop">
-      {{ $t("apiLoader.errorLoading") }}
-      {{ error }}
+    <div v-else-if="hasError" class="full-height d-flex flex-column justify-center align-center red-bg">
+      <v-icon icon="mdi-alert-outline" class="warning-icon"></v-icon>
+      <br>
+      <strong>{{ $t("apiLoader.errorLoading") }}</strong>
+      <br>
+      ({{ error }})
     </div>
     <div v-else class="full-height">
       <slot :data="apiData" />
