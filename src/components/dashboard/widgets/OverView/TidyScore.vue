@@ -1,6 +1,21 @@
 <template>
-  <div class="TidyScore">
-    <div class="text-center">
+    <!-- <div class="TidyScore"> -->
+    <v-col cols="10" class="text-left">
+      <div>
+
+        Général :
+        <br>
+        Type :
+        <br>
+        Type :
+        <br>
+        Type :
+        <br>
+        Type :
+      </div>
+
+    </v-col>
+    <!-- <div class="text-center">
       <img
         :data-cy="$t('tidyscore-grade-img')"
         :src="getGradeSVGPath()"
@@ -54,8 +69,8 @@
         </strong>
         {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
       </p>
-    </div>
-  </div>
+    </div> -->
+    <!-- </div> -->
 </template>
 
 <script>
@@ -87,23 +102,6 @@ export default {
       const grade = getGrade(this.file.tidy_score);
       return this.gradeSVGPaths[grade] || "";
     },
-    calculateElapsedTime(lastUsed) {
-      const now = new Date();
-      const lastUsedTime = lastUsed * 1000;
-      const timeDifference = now - lastUsedTime;
-
-      const seconds = Math.floor(timeDifference / 1000);
-      const minutes = Math.floor(seconds / 60);
-      const hours = Math.floor(minutes / 60);
-      const days = Math.floor(hours / 24);
-      const years = Math.floor(days / 365);
-
-      if (years > 0) return years + (years > 1 ? " années" : " an");
-      else if (days > 0) return days + (days > 1 ? " jours" : " jour");
-      else if (hours > 0) return hours + (hours > 1 ? " heures" : " heure");
-      else if (minutes > 0) return minutes + (minutes > 1 ? " minutes" : " minute");
-      else return seconds + (seconds > 1 ? " secondes" : " seconde");
-    }
   },
 };
 </script>

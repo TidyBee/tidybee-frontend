@@ -9,3 +9,9 @@
   height: 30px;
   margin-top: -4px;
 }
+
+.grade-graph {
+  position: absolute;
+  right: 5%;
+  top: 0;
+}

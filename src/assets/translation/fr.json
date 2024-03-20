@@ -27,7 +27,16 @@
       "errorLoading": "Erreur lors du chargement"
   },
   "fileView": {
-    "size" : "Taille du fichier: "
+    "general" : "Général:",
+    "type" : "Type: ",
+    "size" : "Taille du fichier: ",
+    "lastUsed" : "Dernière utilisation: Il y a ",
+    "placement" : "Emplacement: ",
+    "unused": "Inutilisé",
+    "heavy": "Lourd",
+    "misnamed": "Mal nommé",
+    "duplicated": "Dupliqué",
+    "ago": ""
   },
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"
