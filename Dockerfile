@@ -8,5 +8,6 @@ RUN yarn run build
 
 FROM nginx:1.25.4-alpine3.18@sha256:6a2f8b28e45c4adea04ec207a251fd4a2df03ddc930f782af51e315ebc76e9a9 as production-stage
 WORKDIR /app
+LABEL org.opencontainers.image.source=https://github.com/TidyBee/tidybee-frontend
 COPY --from=build-stage /build/dist /app
 COPY nginx.conf /etc/nginx/nginx.conf
