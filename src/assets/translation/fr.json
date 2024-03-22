@@ -36,7 +36,9 @@
     "heavy": "Lourd",
     "misnamed": "Mal nommé",
     "duplicated": "Dupliqué",
-    "ago": ""
+    "ago": "",
+    "yes": ": Oui",
+    "no": ": Non"
   },
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"

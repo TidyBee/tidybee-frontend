@@ -1,11 +1,13 @@
 <template>
   <v-row>
     <v-col cols="10">
-      <div class="text-left"
-        :data-cy="$t(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <div
+        class="text-left"
+        :data-cy="$t(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
+      >
         {{ parseFileName(file.pretty_path) }}
       </div>
-      <div class="text-left pt-3 text-grey-darken-1" data-cy="tidyscore-information" v-if="isOpen">
+      <div v-if="isOpen" class="text-left pt-3 text-grey-darken-1" data-cy="tidyscore-information">
         {{ $t("fileView.general") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.type") + parseFileType(file.pretty_path) }}
@@ -19,29 +21,37 @@
       </div>
     </v-col>
     <v-col cols="1">
-      <span v-if="!isOpen"
-        :data-cy="$t(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <span
+        v-if="!isOpen"
+        :data-cy="$t(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
+      >
         {{ getGrade(file.tidy_score) }}
       </span>
-      <apexchart v-if="isOpen" width="180" height="180" class="grade-graph" :options="chartOptions" :series="series" />
+      <TidyScore
+        v-if="isOpen" :pie-data="getPieData(file.tidy_score)"
+        :pie-color="getGradeColor(getGrade(file.tidy_score))" :score="getGrade(file.tidy_score)"
+      >
+      </TidyScore>
     </v-col>
     <v-col cols="1">
-      <v-icon class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="isOpen = !isOpen"
-        :data-cy="$t(`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)" />
+      <v-icon
+        class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" :data-cy="$t(`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
+        @click="isOpen = !isOpen"
+      />
     </v-col>
   </v-row>
   <v-divider></v-divider>
 </template>
 
 <script>
-import VueApexCharts from 'vue3-apexcharts';
-import { getGrade, getScoreGraphColors, calculateElapsedTime, formatFileSize } from "@/utils";
+import { getGrade, calculateElapsedTime, formatFileSize, getGradeColor } from "@/utils";
+import TidyScore from './TidyScore.vue';
 
 
 export default {
   name: "FileItem",
   components: {
-    apexchart: VueApexCharts,
+    TidyScore,
   },
   props: {
     file: {
@@ -52,63 +62,20 @@ export default {
   data() {
     return {
       isOpen: false,
-      series: [1, 1, 1, 1],
-      chartOptions: {
-        height: '100%',
-        colors: getScoreGraphColors(this.file.tidy_score),
-        name: getGrade(this.file.tidy_score),
-        dataLabelTranslation: [this.$t('fileView.unused'), this.$t('fileView.heavy'), this.$t('fileView.misnamed'), this.$t('fileView.duplicated')],
-        chart: {
-          type: 'donut'
-        },
-        dataLabels: {
-          enabled: true,
-          formatter: function (value, { seriesIndex, dataPointIndex, w }) {
-            value, dataPointIndex;
-            return w.config.dataLabelTranslation[seriesIndex];
-          },
-          style: {
-            colors: ['#000']
-          },
-          dropShadow: {
-            enabled: false
-          }
-        },
-        plotOptions: {
-          pie: {
-            expandOnClick: true,
-            donut: {
-              background: 'transparent',
-              labels: {
-                show: true,
-                total: {
-                  show: true,
-                  showAlways: true,
-                  label: "Score",
-                  formatter: function (w) {
-                    return w.config.name;
-                  },
-                  fontSize: '24px',
-                  fontWeight: 600,
-                  color: '#515151',
-                }
-              }
-            },
-          }
-        },
-        legend: {
-          display: false,
-          show: false,
-        }
-      },
-
     };
   },
   methods: {
     formatFileSize,
     getGrade,
-    getScoreGraphColors,
+    getGradeColor,
     calculateElapsedTime,
+    getPieData(tidyScore) {
+      const misnamedTitle = this.$t('fileView.misnamed') + (tidyScore?.misnamed ? this.$t('fileView.yes') : this.$t('fileView.no'));
+      const duplicatedTitle = this.$t('fileView.duplicated') + (tidyScore?.duplicated ? this.$t('fileView.yes') : this.$t('fileView.no'));
+      const unusedTitle = this.$t('fileView.unused') + (tidyScore?.unused ? this.$t('fileView.yes') : this.$t('fileView.no'));
+      const heavyTitle = this.$t('fileView.heavy') + (tidyScore?.heavy ? this.$t('fileView.yes') : this.$t('fileView.no'));
+      return ([{ value: 1, name: misnamedTitle, label: { show: false } }, { value: 1, name: duplicatedTitle, label: { show: false } }, { value: 1, name: unusedTitle, label: { show: false } }, { value: 1, name: heavyTitle, label: { show: false } }]);
+    },
     openDialog() {
       this.isOpen = true;
     },

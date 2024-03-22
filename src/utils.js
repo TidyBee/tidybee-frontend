@@ -32,19 +32,6 @@ export const formatFileSize = (fileSize) => {
   );
 };
 
-export const getScoreGraphColors = (tidyScore) => {
-  const GoodColor = "#66DA26";
-  const BadColor = "#E91E63";
-
-  const colors = [
-    tidyScore?.misnamed ? GoodColor : BadColor,
-    tidyScore?.heavy ? GoodColor : BadColor,
-    tidyScore?.unused ? GoodColor : BadColor,
-    tidyScore?.duplicated ? GoodColor : BadColor
-  ];
-  return colors;
-}
-
 export const calculateElapsedTime = (lastUsed) => {
   const now = new Date();
   const lastUsedTime = lastUsed * 1000;
@@ -61,4 +48,21 @@ export const calculateElapsedTime = (lastUsed) => {
   else if (hours > 0) return hours + (hours > 1 ? " heures" : " heure");
   else if (minutes > 0) return minutes + (minutes > 1 ? " minutes" : " minute");
   else return seconds + (seconds > 1 ? " secondes" : " seconde");
+}
+
+export const getGradeColor = (grade) => {
+  switch (grade) {
+    case 'A':
+      return '#2E93fA';
+    case 'B':
+      return '#66DA26';
+    case 'C':
+      return '#FF9800';
+    case 'D':
+      return '#E91E63';
+    case 'E':
+      return '#546E7A';
+    default:
+      return '';
+  }
 }

@@ -36,7 +36,9 @@
         "heavy": "Heavy",
         "misnamed": "Misnamed",
         "duplicated": "Duplicated",
-        "ago": " ago"
+        "ago": " ago",
+        "yes": ": Yes",
+        "no": ": No"
     },
     "folderWidget": {
         "folderLocation": "Folder location"

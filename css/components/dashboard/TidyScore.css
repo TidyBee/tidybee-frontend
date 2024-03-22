@@ -13,3 +13,9 @@
   width: 20px;
   height: 20px;
 }
+
+.grade-graph {
+  position: absolute;
+  right: -35%;
+  top: -2%;
+}
