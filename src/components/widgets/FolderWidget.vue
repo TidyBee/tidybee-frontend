@@ -5,7 +5,7 @@
         <v-list-title class="header">
           {{ widgetName }}
           <img
-            :data-cy="$t('widget-Directory-btn-edit')"
+            :data-cy="'widget-Directory-btn-edit'"
             class="edit-icon"
             src="@/assets/icons/edit.svg"
             @click="isOpen = !isOpen"
@@ -33,18 +33,18 @@
         <v-dialog
           v-model="isOpen"
           max-width="300px"
-          :data-cy="$t('widget-Directory-settings')"
+          :data-cy="'widget-Directory-settings'"
         >
           <v-card>
             <v-form @submit.prevent>
               <v-text-field
                 v-model="selectedFolder"
-                :data-cy="$t('widget-Directory-input')"
+                :data-cy="'widget-Directory-input'"
                 :rules="rules"
                 :label="$t('folderWidget.folderLocation')"
               ></v-text-field>
               <v-btn
-                :data-cy="$t('widget-Directory-btn-submit')"
+                :data-cy="'widget-Directory-btn-submit'"
                 type="submit"
                 block
                 class="mt-2"
@@ -54,7 +54,7 @@
               </v-btn>
             </v-form>
             <v-btn
-              :data-cy="$t('widget-Directory-btn-close')"
+              :data-cy="'widget-Directory-btn-close'"
               type="close"
               @click="closeDialog"
             >

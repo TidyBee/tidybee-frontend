@@ -4,6 +4,11 @@
   height: 210px;
   width: 500px;
   margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .centered-container-graph {

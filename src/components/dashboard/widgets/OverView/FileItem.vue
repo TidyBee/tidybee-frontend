@@ -1,10 +1,7 @@
 <template>
   <v-row>
     <v-col cols="10">
-      <div
-        class="text-left"
-        :data-cy="$t(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
-      >
+      <div class="text-left" :data-cy="`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`">
         {{ parseFileName(file.pretty_path) }}
       </div>
       <div v-if="isOpen" class="text-left pt-3 text-grey-darken-1" data-cy="tidyscore-information">
@@ -21,10 +18,7 @@
       </div>
     </v-col>
     <v-col cols="1">
-      <span
-        v-if="!isOpen"
-        :data-cy="$t(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
-      >
+      <span v-if="!isOpen" :data-cy="`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`">
         {{ getGrade(file.tidy_score) }}
       </span>
       <TidyScore
@@ -35,7 +29,7 @@
     </v-col>
     <v-col cols="1">
       <v-icon
-        class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" :data-cy="$t(`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
+        class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" :data-cy="`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`"
         @click="isOpen = !isOpen"
       />
     </v-col>

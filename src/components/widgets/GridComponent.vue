@@ -26,7 +26,7 @@
     >
       <component
         :is="item.widgetType"
-        :data-cy="$t('widget-' + item.widgetName)"
+        :data-cy="'widget-' + item.widgetName"
         class="grid-widget"
         :tidy-hub-api="tidyHubApi + item.widgetUrl"
         :widget-name="item.widgetDisplayName"
@@ -37,14 +37,14 @@
         <v-card>
           <v-card-title> {{ $t("widgetPanel.delete") }}</v-card-title>
           <v-btn
-            :data-cy="$t('widget-delete-btn-yes')"
+            :data-cy="'widget-delete-btn-yes'"
             class="mb-3 elevate"
             @click="removeWidget(), closeDialog()"
           >
             {{ $t("widgetPanel.yes") }}
           </v-btn>
           <v-btn
-            :data-cy="$t('widget-delete-btn-no')"
+            :data-cy="'widget-delete-btn-no'"
             class="mb-3 elevate"
             @click="closeDialog()"
           >
