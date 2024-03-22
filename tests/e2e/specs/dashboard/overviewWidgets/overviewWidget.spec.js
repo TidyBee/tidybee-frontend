@@ -93,8 +93,11 @@ describe("overview Widget exist", () => {
     cy.get(`[data-cy=overviewwidget-misnamed-filter-btn]`).should("exist");
     cy.get(`[data-cy=overviewwidget-fileitem-creative-solution-rs]`).should("exist").contains("creative_solution.rs");
     cy.get(`[data-cy=overviewwidget-fileitem-tidyscore-creative-solution-rs]`).contains("E");
+    cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-graph]`).should("not.exist");
     cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-creative-solution-rs]`).should("exist").click();
 
-    
+    cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-graph]`).should("exist");
+    cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-creative-solution-rs]`).should("exist").click();
+    cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-graph]`).should("not.exist");
   });
 });

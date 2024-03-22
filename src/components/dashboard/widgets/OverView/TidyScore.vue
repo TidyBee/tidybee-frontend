@@ -1,5 +1,5 @@
 <template>
-  <v-chart class="grade-graph" :option="option"></v-chart>
+  <v-chart data-cy="overviewwidget-fileitem-toggle-tidyscore-graph" class="grade-graph" :option="option"></v-chart>
 </template>
 
 <script setup>
