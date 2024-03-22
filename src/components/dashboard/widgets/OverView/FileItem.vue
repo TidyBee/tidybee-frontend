@@ -29,7 +29,7 @@
     </v-col>
     <v-col cols="1">
       <v-icon
-        class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" :data-cy="`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`"
+        class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'" :data-cy="`overviewwidget-fileitem-toggle-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`"
         @click="isOpen = !isOpen"
       />
     </v-col>

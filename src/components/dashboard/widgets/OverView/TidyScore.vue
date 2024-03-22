@@ -12,7 +12,6 @@ import { ref, defineProps } from 'vue';
 
 use([TitleComponent, TooltipComponent, PieChart, CanvasRenderer]);
 
-// const props = defineProps(['pieData', 'pieColor', 'score']);
 const props = defineProps({
   pieData: {type: Object, required: true, default: () => ({})},
   pieColor: {type: String, required: true, default: '#fff'},
@@ -23,8 +22,11 @@ const option = ref({
   color: [props.pieColor],
   title: {
     text: props.score,
-    left: 'center',
-    top: 'center'
+    right: '13%',
+    top: 'center',
+    textStyle: {
+      fontSize: 30
+    }
   },
   tooltip: {
     trigger: 'item',
@@ -45,6 +47,7 @@ const option = ref({
           shadowColor: 'rgba(0, 0, 0, 0.5)',
         },
       },
+      center: ['85%', '50%']
     },
   ],
 });
