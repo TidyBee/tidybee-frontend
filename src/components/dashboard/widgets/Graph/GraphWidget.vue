@@ -64,8 +64,8 @@ export default {
         plotOptions: {
           pie: { 
             expandOnClick: true, 
-            offsetX: 50,
-            offsetY: -100,
+            offsetX: 55,
+            offsetY: -45,
             customScale: 0.55,
             donut: {
               size: '60%',
@@ -95,7 +95,7 @@ export default {
           position: 'left',
           fontSize: '12px',
           offsetX: -20,
-          offsetY: 30,
+          offsetY: 75,
           onItemClick: {
               toggleDataSeries: true
           },
