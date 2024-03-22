@@ -6,7 +6,7 @@
         v-for="type in types"
         :key="type"
         :text="type"
-        :data-cy="$t(type)"
+        :data-cy="type"
       ></v-tab>
       <v-spacer />
     </v-tabs>
@@ -16,19 +16,19 @@
         <div>
           <v-list>
             <v-list-item v-for="(option, index) in options" :key="index">
-              <v-list-item-title :data-cy="$t(option.name + '-title')">
+              <v-list-item-title :data-cy="option.name + '-title'">
                 {{ $t(`parameters.${option.name}`) }} <br />
               </v-list-item-title>
               <v-select
                 v-model="value"
                 :label="option.value"
-                :data-cy="$t(option.name + '-select')"
+                :data-cy="option.name + '-select'"
                 @disabled="true"
                 @update:model-value="updateValue"
               />
             </v-list-item>
           </v-list>
-          <v-btn :data-cy="$t('save')" @click="saveConfig">
+          <v-btn :data-cy="'save'" @click="saveConfig">
             {{ $t("parameters.save") }}
           </v-btn>
         </div>

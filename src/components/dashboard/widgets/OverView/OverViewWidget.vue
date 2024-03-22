@@ -5,7 +5,7 @@
         v-if="data" 
         class="rounded-rectangle" 
         elevation="10"
-        :data-cy="$t(`overviewwidget-container`)"
+        :data-cy="`overviewwidget-container`"
       >
         <v-tabs v-model="tab" class="custom-tabs" :hide-slider="true">
           <v-tab
@@ -13,7 +13,7 @@
             :key="index"
             :value="item.value"
             :class="{ 'active-tab': activeTab === item.value }"
-            :data-cy="$t(`overviewwidget-tabs-${item.value}`)"
+            :data-cy="`overviewwidget-tabs-${item.value}`"
             @click="changeTab(item.value)"
           >
             {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}

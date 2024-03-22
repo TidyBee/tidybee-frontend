@@ -1,12 +1,12 @@
 <template>
   <v-row>
     <v-col cols="10">
-      <div class="text-left" :data-cy="$t(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <div class="text-left" :data-cy="`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`">
         {{ parseFileName(file.pretty_path) }}
       </div>
     </v-col>
     <v-col cols="1">
-      <span :data-cy="$t(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <span :data-cy="`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`">
         {{ getGrade(file.tidy_score) }}
       </span>
     </v-col>
@@ -14,7 +14,7 @@
       <img
         src="@/assets/icons/redirect.svg"
         class="redirect-icon"
-        :data-cy="$t(`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
+        :data-cy="`overviewwidget-fileitem-open-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`"
         @click="isOpen = !isOpen"
       />
     </v-col>
@@ -23,7 +23,7 @@
         <v-card>
           <TidyScore :file="file" />
           <v-btn 
-            :data-cy="$t(`overviewwidget-fileitem-close-dialog`)"
+            :data-cy="`overviewwidget-fileitem-close-dialog`"
             @click="closeDialog"
           > 
             {{ $t("common.close") }}
