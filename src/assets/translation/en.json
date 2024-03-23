@@ -59,16 +59,11 @@
           "misnamed": "Misnamed",
           "duplicated": "Duplicated"
           },
-          "filters":{
-            "tidyscoreAsc": "TidyScore A to E",
-            "tidyscoreDesc": "TidyScore E to A",
-            "sizeAsc": "Increasing size",
-            "sizeDesc": "Decreasing size",
-            "secsAsc": "Least recent use",
-            "secsDesc": "Most recent use",
-            "sortedByLabel": "Sort by",
-            "filtersLabel": "Filters",
-            "closeButtonLabel": "Close"
+          "filtre" : {
+            "name" : "Name",
+            "size" : "Size",
+            "lastused" : "Last used",
+            "tidyscore" : "TidyScore"
           }
         },
         "grade": {

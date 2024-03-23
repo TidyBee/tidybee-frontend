@@ -1,11 +1,21 @@
 <template>
   <v-row>
-    <v-col cols="10">
+    <v-col cols="3">
       <div class="text-left" :data-cy="$t(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ parseFileName(file.pretty_path) }}
       </div>
     </v-col>
-    <v-col cols="1">
+    <v-col cols="3">
+      <span :data-cy="$t(`overviewwidget-fileitem-size-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+        {{ formatFileSize(file.size) }}
+      </span>
+    </v-col>
+    <v-col cols="3">
+      <span :data-cy="$t(`overviewwidget-fileitem-date-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+        {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
+      </span>
+    </v-col>
+    <v-col cols="2">
       <span :data-cy="$t(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ getGrade(file.tidy_score) }}
       </span>
@@ -37,7 +47,7 @@
 
 <script>
 import TidyScore from "@/components/dashboard/widgets/OverView/TidyScore.vue";
-import { getGrade } from "@/utils";
+import { getGrade, formatFileSize, calculateElapsedTime, parseFileName } from "@/utils";
 
 export default {
   name: "FileItem",
@@ -57,20 +67,14 @@ export default {
   },
   methods: {
     getGrade,
+    calculateElapsedTime,
+    formatFileSize,
+    parseFileName,
     openDialog() {
       this.isOpen = true;
     },
     closeDialog() {
       this.isOpen = false;
-    },
-    parseFileName(pretty_path) {
-      if (pretty_path.includes('/')) {
-        const segments = pretty_path.split('/');
-        const fileName = segments[segments.length - 1];
-        return fileName;
-      } else {
-        return pretty_path;
-      }
     },
     replaceSpecificChar(str) {
       const replaceStr = str.replace(/[./_]/g, '-');
