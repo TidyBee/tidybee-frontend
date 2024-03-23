@@ -3,7 +3,7 @@
     <v-row>
       <v-col cols="3" class="d-flex justify-space-between align-center">
         <div class="text-left">
-          <span :data-cy="$t(`overviewwidget-${tab}-name`)">{{ $t("dashboard.widgets.overView.filtre.name") }}</span>
+          <span :data-cy="(`overviewwidget-${tab}-name`)">{{ $t("dashboard.widgets.overView.filtre.name") }}</span>
         </div>
         <div @click="rotateArrow('isArrowRotatedName')">
           <v-icon>
@@ -19,7 +19,7 @@
       <v-divider vertical></v-divider>
       <v-col cols="3" class="d-flex justify-space-between align-center">
         <div class="text-left">
-          <span :data-cy="$t(`overviewwidget-${tab}-size`)">{{ $t("dashboard.widgets.overView.filtre.size") }}</span>
+          <span :data-cy="(`overviewwidget-${tab}-size`)">{{ $t("dashboard.widgets.overView.filtre.size") }}</span>
         </div>
         <div @click="rotateArrow('isArrowRotatedSize')">
           <v-icon>
@@ -35,7 +35,7 @@
       <v-divider vertical></v-divider>
       <v-col cols="3" class="d-flex justify-space-between align-center">
         <div class="text-left">
-          <span :data-cy="$t(`overviewwidget-${tab}-lastUsed`)">{{ $t("dashboard.widgets.overView.filtre.lastused") }}</span>
+          <span :data-cy="(`overviewwidget-${tab}-lastUsed`)">{{ $t("dashboard.widgets.overView.filtre.lastused") }}</span>
         </div>
         <div @click="rotateArrow('isArrowRotatedLastUsed')">
           <v-icon>
@@ -51,7 +51,7 @@
       <v-divider vertical></v-divider>
       <v-col cols="3" class="d-flex justify-space-between align-center">
         <div class="text-left">
-          <span :data-cy="$t(`overviewwidget-${tab}-tidyscore`)">{{ $t("dashboard.widgets.overView.filtre.tidyscore") }}</span>
+          <span :data-cy="(`overviewwidget-${tab}-tidyscore`)">{{ $t("dashboard.widgets.overView.filtre.tidyscore") }}</span>
         </div>
         <div @click="rotateArrow('isArrowRotatedTidyScore')">
           <v-icon>
@@ -127,7 +127,6 @@ export default {
     sortedFileList(data) {  
       let filesData = [];
       if (data && data.Responses) {
-        console.log(data)
         data.Responses.map(target => {
           if (target && target.Content) {
             if (target.StatusCode == 200) {
