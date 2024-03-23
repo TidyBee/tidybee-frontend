@@ -1,7 +1,7 @@
 <template>
   <v-row>
     <v-col cols="3">
-      <div class="text-left" :data-cy="(`overviewwidget-fileitem-name-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+      <div class="text-left" :data-cy="(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ parseFileName(file.pretty_path) }}
       </div>
     </v-col>
