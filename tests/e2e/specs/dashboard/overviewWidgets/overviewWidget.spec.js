@@ -106,4 +106,12 @@ describe("overview Widget exist", () => {
     cy.get(`[data-cy=tidyscore-duplicated]`).should("exist").contains("Duplicated:");
     cy.get(`[data-cy=tidyscore-duplicated-false]`).should("exist");
   });
+
+  it("Visits MainPage & fails loading overview widget", () => {
+    cy.intercept({method: 'GET', url: '*/get_files*'}, {forceNetworkError: true})
+
+    cy.visit("/");
+    cy.wait(1000);
+    cy.get(`[data-cy=widget-loading-failed]`).should("exist");
+  })
 });

@@ -1,16 +1,20 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <ApiLoader :api-url="tidyHubApi" widget-name="graph.title" class="full-height w-100">
       <template #default="{ data }">
-        <div v-if="data">
+        <div v-if="data" class="full-height">
           <v-row>
             <v-span class="widget-title" :data-cy="`graphwidget-title`">
               {{ $t(`dashboard.widgets.graph.title`) }}
             </v-span>
           </v-row>
           <apexchart
-            width="500" height="500" class="centered-container-graph" :options="chartOptions"
-            :series="data.series" :data-cy="`graphwidget-graph`"
+            width="500"
+            height="500"
+            class="centered-container-graph"
+            :options="chartOptions"
+            :series="data.series"
+            :data-cy="`graphwidget-graph`"
           >
           </apexchart>
         </div>
@@ -58,7 +62,7 @@ export default {
           pie: {
             expandOnClick: true,
             offsetX: 55,
-            offsetY: -45,
+            offsetY: -85,
             customScale: 0.55,
             donut: {
               size: "60%",

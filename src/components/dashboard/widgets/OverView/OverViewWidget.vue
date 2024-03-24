@@ -1,6 +1,6 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10" :data-cy="`overviewwidget-container`">
-    <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <ApiLoader :api-url="tidyHubApi" widget-name="overView.widgetTitle" class="full-height">
       <template #default="{ data }">
         <div v-if="data">
           <v-tabs v-model="tab" class="custom-tabs" :hide-slider="true">

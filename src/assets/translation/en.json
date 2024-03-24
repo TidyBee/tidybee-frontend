@@ -53,6 +53,7 @@
           "percentage": "% over last month"
         },
         "overView" :{
+          "widgetTitle": "Overview widget",
           "title":{
           "unused": "Unused",
           "heavy": "Heavy",
@@ -72,6 +73,7 @@
           }
         },
         "grade": {
+          "widgetTitle": "Shared space grade",
           "title":"The Grade of your shared space has been estimated by Tidybee."
         },
         "graph": {

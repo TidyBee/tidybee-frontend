@@ -1,16 +1,11 @@
 <template>
   <div>
-    <div
-      v-if="isLoading"
-      class="full-height d-flex justify-center align-center"
-    >
-      <v-progress-circular
-        indeterminate
-        :size="80"
-        :width="12"
-      ></v-progress-circular>
+    <div v-if="isLoading" class="full-height d-flex justify-center align-center">
+      <div class="widget-title">{{ $t('dashboard.widgets.' + widgetName) }}</div>
+      <v-progress-circular indeterminate :size="80" :width="12"></v-progress-circular>
     </div>
     <div v-else-if="hasError" class="full-height d-flex flex-column justify-center align-center red-bg">
+      <div :data-cy="`widget-loading-failed`" class="widget-title widget-fail-title">{{ $t('dashboard.widgets.' + widgetName) }}</div>
       <v-icon icon="mdi-alert-outline" class="warning-icon"></v-icon>
       <br>
       <strong>{{ $t("apiLoader.errorLoading") }}</strong>
@@ -28,6 +23,10 @@ import { fetchData } from "@/components/communication/communication.js";
 
 export default {
   props: {
+    widgetName: {
+      type: String,
+      required: true,
+    },
     apiUrl: {
       type: String,
       required: true,

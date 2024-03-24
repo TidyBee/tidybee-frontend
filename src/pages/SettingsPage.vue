@@ -14,8 +14,10 @@
               <v-list-item-title :data-cy="option.name + '-title'">
                 {{ $t(`parameters.${option.name}`) }} <br />
               </v-list-item-title>
-              <v-select v-model="value" :label="option.value" :data-cy="option.name + '-select'" @disabled="true"
-                @update:model-value="updateValue" />
+              <v-select
+                v-model="value" :label="option.value" :data-cy="option.name + '-select'" @disabled="true"
+                @update:model-value="updateValue"
+              />
             </v-list-item>
           </v-list>
           <v-btn :data-cy="'save'" @click="saveConfig">

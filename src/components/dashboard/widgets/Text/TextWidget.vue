@@ -1,9 +1,9 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <ApiLoader :api-url="tidyHubApi" :widget-name="widgetTitle" class="full-height">
       <template #default="{ data }">
-        <div v-if="data">
-          <v-container fluid>
+        <div v-if="data" class="full-height">
+          <v-container fluid class="full-height">
             <v-row>
               <v-span
                 v-if="data && data.title"
@@ -78,6 +78,10 @@ export default {
     ApiLoader,
   },
   props: {
+    widgetTitle: {
+      type: String,
+      required: true,
+    },
     tidyHubApi: {
       type: String,
       required: true,

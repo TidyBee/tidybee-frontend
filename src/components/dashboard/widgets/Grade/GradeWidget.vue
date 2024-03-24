@@ -1,6 +1,6 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <ApiLoader :api-url="tidyHubApi" class="full-height">
+    <ApiLoader :api-url="tidyHubApi" widget-name="grade.widgetTitle" class="full-height">
       <template #default="{ data }">
         <div v-if="data">
           <v-row>
