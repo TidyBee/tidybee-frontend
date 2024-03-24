@@ -13,10 +13,10 @@
               :style="{
                 color: getGradeColor(data.grade),
               }"
-              :data-cy="$t(`gradewidget-grade`)"
+              :data-cy="`gradewidget-grade`"
             >
               <v-row align="center" justify="center">
-                <v-span class="grade" :data-cy="$t(`gradewidget-grade-value`)">
+                <v-span class="grade" :data-cy="`gradewidget-grade-value`">
                   {{ data.grade }}
                 </v-span>
               </v-row>
@@ -24,7 +24,7 @@
           </v-row>
           <v-divider vertical class="divider-pos"></v-divider>
           <v-row class="grade-text-pos">
-            <v-span :data-cy="$t(`gradewidget-text`)">
+            <v-span :data-cy="`gradewidget-text`">
               {{ $t(`dashboard.widgets.grade.title`) }}
             </v-span>
           </v-row>

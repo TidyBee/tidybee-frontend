@@ -1,50 +1,20 @@
 <template>
   <v-container fluid>
     <v-row justify="center" class="widget-top-container">
-      <TextWidget
-        :tidy-hub-api="
-          tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetunused'
-        "
-      />
-      <TextWidget
-        :tidy-hub-api="
-          tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetbadname'
-        "
-      />
-      <TextWidget
-        :tidy-hub-api="
-          tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetduplicate'
-        "
-      />
-      <TextWidget
-        :tidy-hub-api="
-          tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetheavy'
-        "
-      />
-      <TextWidget
-        :tidy-hub-api="
-          tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetstorage'
-        "
-      />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetunused'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetbadname'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetduplicate'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetheavy'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetstorage'" />
     </v-row>
 
     <v-row justify="center" class="widget-bottom-container">
       <v-col>
-        <GraphWidget
-          :tidy-hub-api="
-            tidyHubApi + '/Gateway/dataProcessing/Widget/getGraphWidget'
-          "
-        />
-        <GradeWidget
-          :tidy-hub-api="
-            tidyHubApi + '/Gateway/dataProcessing/Widget/getGradeWidget'
-          "
-        />
+        <GraphWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGraphWidget'" />
+        <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGradeWidget'" />
       </v-col>
       <v-col>
-        <OverViewWidget
-          :tidy-hub-api="tidyHubApi + '/proxy/get_files?amount=5&sort_by=size'"
-        />
+        <OverViewWidget :tidy-hub-api="tidyHubApi + '/proxy/get_files?amount=5&sort_by=size'" />
       </v-col>
     </v-row>
 

@@ -4,17 +4,13 @@
       <template #default="{ data }">
         <div v-if="data">
           <v-row>
-            <v-span class="widget-title" :data-cy="$t(`graphwidget-title`)">
+            <v-span class="widget-title" :data-cy="`graphwidget-title`">
               {{ $t(`dashboard.widgets.graph.title`) }}
             </v-span>
           </v-row>
           <apexchart
-            width="500"
-            height="500"
-            class="centered-container-graph"
-            :options="chartOptions"
-            :series="data.series"
-            :data-cy="$t(`graphwidget-graph`)"
+            width="500" height="500" class="centered-container-graph" :options="chartOptions"
+            :series="data.series" :data-cy="`graphwidget-graph`"
           >
           </apexchart>
         </div>
@@ -44,13 +40,7 @@ export default {
       chartOptions: {
         width: "10%",
         colors: ["#2E93fA", "#66DA26", "#FF9800", "#E91E63", "#546E7A"],
-        labels: [
-          "TidyScore A",
-          "TidyScore B",
-          "TidyScore C",
-          "TidyScore D",
-          "TidyScore E",
-        ],
+        labels: ["TidyScore A", "TidyScore B", "TidyScore C", "TidyScore D", "TidyScore E"],
         name: "Test",
         chart: {
           type: "donut",
@@ -67,8 +57,8 @@ export default {
         plotOptions: {
           pie: {
             expandOnClick: true,
-            offsetX: 50,
-            offsetY: -100,
+            offsetX: 55,
+            offsetY: -45,
             customScale: 0.55,
             donut: {
               size: "60%",
@@ -100,7 +90,7 @@ export default {
           position: "left",
           fontSize: "12px",
           offsetX: -20,
-          offsetY: 30,
+          offsetY: 75,
           onItemClick: {
             toggleDataSeries: true,
           },

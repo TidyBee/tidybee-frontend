@@ -8,7 +8,7 @@
               <v-span
                 v-if="data && data.title"
                 class="widget-title"
-                :data-cy="$t(`textwidget-title`)"
+                :data-cy="`textwidget-title`"
               >
                 {{ $t(`dashboard.widgets.text.title.${data.title}`) }}
               </v-span>
@@ -20,20 +20,18 @@
             >
               <v-span>
                 <v-progress-circular
-                  v-if="
-                    data.data.valuePercentage && data.data.status !== undefined
-                  "
+                  v-if="data.data.valuePercentage && data.data.status !== undefined"
                   :model-value="data.data.valuePercentage"
                   :size="110"
                   :width="10"
                   :color="data.data.status ? 'green' : 'red'"
                   class="widget-graph"
-                  :data-cy="$t(`textwidget-graph`)"
+                  :data-cy="`textwidget-graph`"
                 >
                   <v-row
                     class="grey-text"
                     align="center"
-                    :data-cy="$t(`textwidget-graph-value`)"
+                    :data-cy="`textwidget-graph-value`"
                   >
                     {{ data.data.value }}
                   </v-row>
@@ -46,30 +44,22 @@
               class="widget-text-center"
             >
               <v-span
-                :class="{
-                  'green-text': data.data.status,
-                  'red-text': !data.data.status,
-                }"
-                :data-cy="$t(`textwidget-number`)"
+                :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
+                :data-cy="`textwidget-number`"
               >
                 {{ data.data.value }}
               </v-span>
             </v-row>
 
             <v-row
-              :class="{
-                'green-text': data && data.data.status,
-                'red-text': data && !data.data.status,
-              }"
+              :class="{ 'green-text': data && data.data.status, 'red-text': data && !data.data.status }"
             >
               <v-span
                 v-if="data && data.data && data.data.percentage"
                 class="widget-text-bottom"
-                :data-cy="$t(`textwidget-text-bottom`)"
+                :data-cy="`textwidget-text-bottom`"
               >
-                {{
-                  data.data.percentage + $t("dashboard.widgets.text.percentage")
-                }}
+                {{ data.data.percentage + $t("dashboard.widgets.text.percentage") }}
               </v-span>
             </v-row>
           </v-container>

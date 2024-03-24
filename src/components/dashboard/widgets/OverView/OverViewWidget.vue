@@ -1,9 +1,5 @@
 <template>
-  <v-card
-    class="rounded-rectangle"
-    elevation="10"
-    :data-cy="$t(`overviewwidget-container`)"
-  >
+  <v-card class="rounded-rectangle" elevation="10" :data-cy="`overviewwidget-container`">
     <ApiLoader :api-url="tidyHubApi" class="full-height">
       <template #default="{ data }">
         <div v-if="data">
@@ -13,7 +9,7 @@
               :key="index"
               :value="item.value"
               :class="{ 'active-tab': activeTab === item.value }"
-              :data-cy="$t(`overviewwidget-tabs-${item.value}`)"
+              :data-cy="`overviewwidget-tabs-${item.value}`"
               @click="changeTab(item.value)"
             >
               {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}

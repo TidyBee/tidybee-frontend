@@ -1,12 +1,7 @@
 <template>
   <v-app-bar class="px-3" flat density="compact">
     <v-app-bar-icon>
-      <img
-        src="@/assets/tidybee-logo.svg"
-        alt="TidyBee Logo"
-        width="100"
-        height="100"
-      />
+      <img src="@/assets/tidybee-logo.svg" alt="TidyBee Logo" width="100" height="100" />
     </v-app-bar-icon>
     <v-spacer />
     <v-tabs centered color="grey-darken-2">
@@ -14,7 +9,7 @@
         v-for="link in links"
         :key="link"
         :text="$t('navbar.' + link)"
-        :data-cy="$t(link)"
+        :data-cy="link"
         @click="redirectToRoute(link)"
       ></v-tab>
     </v-tabs>
