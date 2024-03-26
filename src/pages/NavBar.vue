@@ -1,8 +1,8 @@
 <template>
+  <v-app-bar-icon class="logo">
+    <img src="@/assets/tidybee-logo.svg" alt="TidyBee Logo" height="150" />
+  </v-app-bar-icon>
   <v-app-bar class="px-3" flat density="compact">
-    <v-app-bar-icon>
-      <img src="@/assets/tidybee-logo.svg" alt="TidyBee Logo" width="100" height="100" />
-    </v-app-bar-icon>
     <v-spacer />
     <v-tabs centered color="grey-darken-2">
       <v-tab
@@ -59,3 +59,5 @@ export default {
   },
 };
 </script>
+
+<style src="@/../css/pages/NavBar.css"></style>

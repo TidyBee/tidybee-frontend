@@ -12,8 +12,10 @@
 }
 
 .logo {
-  display: flex;
-  align-items: center;
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 10000;
 }
 
 img {
