@@ -1,7 +1,9 @@
-import { getGrade } from "@/utils";
+import { getGrade, parseFileName } from "@/utils";
 
 export const sortBy = (responses, sortByParam, sortOrder) => {
   const sortFunctions = {
+    nameAsc: sortByNameAsc,
+    nameDesc: sortByNameDesc,
     secsAsc: sortBySecsAsc,
     secsDesc: sortBySecsDesc,
     sizeAsc: sortBySizeAsc,
@@ -63,5 +65,21 @@ export const sortByTidyScoreDesc = (responses) => {
       tidyScoreOrder[getGrade(b.tidy_score)] -
       tidyScoreOrder[getGrade(a.tidy_score)]
     );
+  });
+};
+
+export const sortByNameAsc = (responses) => {
+  return responses.slice().sort((a, b) => {
+    const fileNameA = parseFileName(a.pretty_path);
+    const fileNameB = parseFileName(b.pretty_path);
+    return fileNameA.localeCompare(fileNameB, undefined, { numeric: true, sensitivity: 'base' });
+  });
+};
+
+export const sortByNameDesc = (responses) => {
+  return responses.slice().sort((a, b) => {
+    const fileNameA = parseFileName(a.pretty_path);
+    const fileNameB = parseFileName(b.pretty_path);
+    return fileNameB.localeCompare(fileNameA, undefined, { numeric: true, sensitivity: 'base' });
   });
 };
