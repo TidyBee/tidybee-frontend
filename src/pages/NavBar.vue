@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       availableLocales: [""],
-      links: ["Home", "Settings", "About"],
+      links: ["Home", "Settings"],
     };
   },
   mounted() {

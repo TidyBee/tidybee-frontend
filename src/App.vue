@@ -5,28 +5,17 @@
     <div id="app">
       <router-view />
     </div>
-    <HelpButton @open="isOpen = !isOpen" />
-    <BaseModal :open="isOpen" @close="isOpen = !isOpen">
-      <p>
-        {{ $t("help.helpText1") }} <br />
-        {{ $t("help.helpText2") }}
-      </p>
-    </BaseModal>
   </v-app>
 </template>
 
 <script>
 import NavBar from "@/pages/NavBar.vue";
-import HelpButton from "@/components/widgets/HelpButton.vue";
-import BaseModal from "@/components/widgets/BaseModal.vue";
 import { ref } from "vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
-    HelpButton,
-    BaseModal,
   },
   setup() {
     const isOpen = ref(false);
