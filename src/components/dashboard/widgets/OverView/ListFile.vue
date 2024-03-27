@@ -96,16 +96,17 @@ export default {
     tab: {
       type: String,
       required: true,
-    }
+    },
   },
   setup() {
     if (!VueCookies.get("selectedFilter")) {
       VueCookies.set("selectedFilter", "TidyScore Asc", "7d");
     }
     const selectedFilterCookie = VueCookies.get("selectedFilter");
+
     return {
       selectedFilterCookie,
-    }
+    };
   },
   data() {
     return {
@@ -114,11 +115,38 @@ export default {
       isArrowRotatedLastUsed: false,
       isArrowRotatedTidyScore: false,
       selectedFilter: "",
+      dialogFiltre: false,
+      filterOptions: [
+        {
+          title: this.$t("dashboard.widgets.overView.filters.tidyscoreAsc"),
+          value: "TidyScore Asc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.tidyscoreDesc"),
+          value: "TidyScore Desc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.sizeAsc"),
+          value: "Size Asc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.sizeDesc"),
+          value: "Size Desc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.secsAsc"),
+          value: "Secs Asc",
+        },
+        {
+          title: this.$t("dashboard.widgets.overView.filters.secsDesc"),
+          value: "Secs Desc",
+        },
+      ],
       fileList: "",
-    }
+    };
   },
-  mounte() {
-     this.selectedFilter = this.selectedFilterCookie;
+  mounted() {
+    this.selectedFilter = this.selectedFilterCookie;
   },
   methods: {
     arrowRotation(arrow) {
@@ -127,12 +155,16 @@ export default {
     sortedFileList(data) {  
       let filesData = [];
       if (data && data.Responses) {
-        data.Responses.map(target => {
+        data.Responses.map((target) => {
           if (target && target.Content) {
             if (target.StatusCode == 200) {
               const contentArray = JSON.parse(target.Content);
-              const sortedContentArray = contentArray.slice().sort((a, b) => b.size - a.size);
-              filesData = filesData.concat(sortedContentArray.slice().sort((a, b) => b.size - a.size));
+              const sortedContentArray = contentArray
+                .slice()
+                .sort((a, b) => b.size - a.size);
+              filesData = filesData.concat(
+                sortedContentArray.slice().sort((a, b) => b.size - a.size),
+              );
             } else {
               return;
             }

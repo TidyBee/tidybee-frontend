@@ -2,12 +2,7 @@
   <v-main>
     <v-tabs v-model="selectedType" centered color="grey-darken-2">
       <v-spacer />
-      <v-tab
-        v-for="type in types"
-        :key="type"
-        :text="type"
-        :data-cy="type"
-      ></v-tab>
+      <v-tab v-for="type in types" :key="type" :text="type" :data-cy="type"></v-tab>
       <v-spacer />
     </v-tabs>
     <v-container class="text-center d-flex align-center">
@@ -20,10 +15,7 @@
                 {{ $t(`parameters.${option.name}`) }} <br />
               </v-list-item-title>
               <v-select
-                v-model="value"
-                :label="option.value"
-                :data-cy="option.name + '-select'"
-                @disabled="true"
+                v-model="value" :label="option.value" :data-cy="option.name + '-select'" @disabled="true"
                 @update:model-value="updateValue"
               />
             </v-list-item>

@@ -19,16 +19,15 @@ export const handleSuccess = (response) => {
 
 const handleError = (error) => {
   console.error("Data recovery error:", error.message);
-  return null;
+  throw error;
 };
 
 export async function fetchData(url) {
-  try {
-    const response = await axios.get(url);
-    return handleSuccess(response);
-  } catch (error) {
+  const response = await axios.get(url).
+  catch(function (error) {
     return handleError(error);
-  }
+  });
+  return handleSuccess(response);
 }
 
 export async function postData(url, data) {

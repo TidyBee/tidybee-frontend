@@ -35,7 +35,7 @@
           <v-btn 
             :data-cy="(`overviewwidget-fileitem-close-dialog`)"
             @click="closeDialog"
-          > 
+          >
             {{ $t("common.close") }}
           </v-btn>
         </v-card>
@@ -77,10 +77,10 @@ export default {
       this.isOpen = false;
     },
     replaceSpecificChar(str) {
-      const replaceStr = str.replace(/[./_]/g, '-');
+      const replaceStr = str.replace(/[./_]/g, "-");
       return replaceStr;
-    }
-  }
+    },
+  },
 };
 </script>
 

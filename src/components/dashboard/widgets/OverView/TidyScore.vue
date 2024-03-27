@@ -9,10 +9,7 @@
       />
     </div>
     <p>
-      <strong
-        :data-cy="'tidyscore-file-name'"
-        class="file-name"
-      >
+      <strong :data-cy="'tidyscore-file-name'" class="file-name">
         {{ file.pretty_path }}
       </strong>
     </p>
@@ -24,10 +21,7 @@
         {{ formatFileSize(file.size) }}
       </p>
       <div v-if="file.tidy_score">
-        <div 
-          v-for="(value, key) in file.tidy_score" 
-          :key="key"
-        >
+        <div v-for="(value, key) in file.tidy_score" :key="key">
           <div v-if="value">
             <strong :data-cy="`tidyscore-${key}`">{{ $t(`fileItem.${key}`) }}</strong>
             <img
@@ -87,7 +81,7 @@ export default {
     getGradeSVGPath() {
       const grade = getGrade(this.file.tidy_score);
       return this.gradeSVGPaths[grade] || "";
-    }
+    },
   },
 };
 </script>

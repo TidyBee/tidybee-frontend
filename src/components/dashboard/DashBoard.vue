@@ -1,11 +1,11 @@
 <template>
   <v-container fluid>
     <v-row justify="center" class="widget-top-container">
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetunused'" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetbadname'" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetduplicate'" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetheavy'" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetstorage'" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetunused'" widget-title="text.title.unused" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetbadname'" widget-title="text.title.badname" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetduplicate'" widget-title="text.title.duplicate" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetheavy'" widget-title="text.title.heavy" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetstorage'" widget-title="text.title.storage" />
     </v-row>
 
     <v-row justify="center" class="widget-bottom-container">
@@ -20,7 +20,7 @@
 
     <v-row justify="center">
       <v-btn class="refresh-btn" @click="refresh">
-        {{ $t('dashboard.refresh') }}
+        {{ $t("dashboard.refresh") }}
       </v-btn>
     </v-row>
   </v-container>

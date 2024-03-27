@@ -70,12 +70,20 @@ describe("overview Widget exist", () => {
     cy.get(`[data-cy=tidyscore-file-name]`).should("exist").contains("src/creative_solution.rs");
     cy.get(`[data-cy=tidyscore-file-size]`).should("exist").contains("52 B");
     cy.get(`[data-cy=tidyscore-misnamed]`).should("exist").contains("Misnamed:");
-    cy.get(`[data-cy=tidyscore-misnamed-false]`).should("exist")
+    cy.get(`[data-cy=tidyscore-misnamed-false]`).should("exist");
     cy.get(`[data-cy=tidyscore-heavy]`).should("exist").contains("Too heavy:");
-    cy.get(`[data-cy=tidyscore-heavy-false]`).should("exist")
+    cy.get(`[data-cy=tidyscore-heavy-false]`).should("exist");
     cy.get(`[data-cy=tidyscore-unused]`).should("exist").contains("Unused:");
-    cy.get(`[data-cy=tidyscore-unused-false]`).should("exist")
+    cy.get(`[data-cy=tidyscore-unused-false]`).should("exist");
     cy.get(`[data-cy=tidyscore-duplicated]`).should("exist").contains("Duplicated:");
-    cy.get(`[data-cy=tidyscore-duplicated-false]`).should("exist")
+    cy.get(`[data-cy=tidyscore-duplicated-false]`).should("exist");
   });
+
+  it("Visits MainPage & fails loading overview widget", () => {
+    cy.intercept({method: 'GET', url: '*/get_files*'}, {forceNetworkError: true})
+
+    cy.visit("/");
+    cy.wait(1000);
+    cy.get(`[data-cy=widget-loading-failed]`).should("exist");
+  })
 });
