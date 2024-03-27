@@ -48,6 +48,23 @@ export const calculateElapsedTime = (lastUsed) => {
   else if (hours > 0) return hours + (hours > 1 ? " heures" : " heure");
   else if (minutes > 0) return minutes + (minutes > 1 ? " minutes" : " minute");
   else return seconds + (seconds > 1 ? " secondes" : " seconde");
+}
+
+export const getGradeColor = (grade) => {
+  switch (grade) {
+    case 'A':
+      return '#2E93fA';
+    case 'B':
+      return '#66DA26';
+    case 'C':
+      return '#FF9800';
+    case 'D':
+      return '#E91E63';
+    case 'E':
+      return '#546E7A';
+    default:
+      return '';
+  }
 };
 
 export const parseFileName = (pretty_path) => {
