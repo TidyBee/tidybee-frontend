@@ -8,8 +8,8 @@
               {{ $t(`dashboard.widgets.graph.title`) }}
             </v-span>
           </v-row>
-        <GraphChart :pie-data="formatSeries(data.series)" />
-      </div>
+          <GraphChart :pie-data="formatSeries(data.series)" />
+        </div>
       </template>
     </ApiLoader>
   </v-card>
