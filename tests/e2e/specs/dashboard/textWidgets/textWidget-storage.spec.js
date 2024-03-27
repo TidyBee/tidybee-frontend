@@ -7,4 +7,12 @@ describe("Text Widget Storage exist", () => {
     cy.get(`[data-cy=textwidget-graph-value]`).contains("237/512GB");
     cy.get(`[data-cy=textwidget-text-bottom]`).contains("+4% over last month");
   });
+
+  it("Visits MainPage & fails loading storage widget", () => {
+    cy.intercept({method: 'GET', url: '*getTextWidgetstorage'}, {forceNetworkError: true})
+
+    cy.visit("/");
+    cy.wait(1000);
+    cy.get(`[data-cy=widget-loading-failed]`).should("exist");
+  })
 });

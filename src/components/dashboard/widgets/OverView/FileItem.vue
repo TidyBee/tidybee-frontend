@@ -87,7 +87,7 @@ export default {
       this.isOpen = false;
     },
     replaceSpecificChar(str) {
-      const replaceStr = str.replace(/[./_]/g, '-');
+      const replaceStr = str.replace(/[./_]/g, "-");
       return replaceStr;
     },
     parseFileType(pretty_path) {

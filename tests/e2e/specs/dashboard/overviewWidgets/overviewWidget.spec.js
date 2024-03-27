@@ -72,4 +72,12 @@ describe("overview Widget exist", () => {
     cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-creative-solution-rs]`).should("exist").click();
     cy.get(`[data-cy=overviewwidget-fileitem-toggle-tidyscore-graph]`).should("not.exist");
   });
+
+  it("Visits MainPage & fails loading overview widget", () => {
+    cy.intercept({method: 'GET', url: '*/get_files*'}, {forceNetworkError: true})
+
+    cy.visit("/");
+    cy.wait(1000);
+    cy.get(`[data-cy=widget-loading-failed]`).should("exist");
+  })
 });

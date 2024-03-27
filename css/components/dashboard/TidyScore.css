@@ -4,10 +4,10 @@
 }
 
 .file-name {
-  display: flex; 
-  flex-direction: column; 
+  display: flex;
+  flex-direction: column;
   align-items: center;
-} 
+}
 
 .icons {
   width: 20px;

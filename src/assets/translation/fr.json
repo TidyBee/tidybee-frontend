@@ -64,6 +64,7 @@
         "percentage": "% sur le mois dernier"
       },
       "overView" :{
+        "widgetTitle": "Widget aperçu",
         "filtre" : {
           "name" : "Nom",
           "size" : "Taille",
@@ -78,6 +79,7 @@
         }
       },
       "grade": {
+        "widgetTitle": "Le grade de votre espace partagé",
         "title":"Le Grade de votre espace partagé a été estimé par Tidybee."
       },
       "graph": {
