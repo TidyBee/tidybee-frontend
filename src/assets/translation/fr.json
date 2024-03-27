@@ -64,22 +64,17 @@
         "percentage": "% sur le mois dernier"
       },
       "overView" :{
+        "filtre" : {
+          "name" : "Nom",
+          "size" : "Taille",
+          "lastused" : "Utilisation",
+          "tidyscore" : "TidyScore"
+        },
         "title":{
           "unused": "Inutilisés",
           "heavy": "Lourds",
           "misnamed": "Mal nommés",
           "duplicated": "Dupliqués"
-        },
-        "filters":{
-          "tidyscoreAsc": "TidyScore A à E",
-          "tidyscoreDesc": "TidyScore E à A",
-          "sizeAsc": "Taille croissante",
-          "sizeDesc": "Taille décroissante",
-          "secsAsc": "Dernière utilisation croissante",
-          "secsDesc": "Dernière utilisation décroissante",
-          "sortedByLabel": "Trié par",
-          "filtersLabel": "Filtres",
-          "closeButtonLabel": "Fermer"
         }
       },
       "grade": {

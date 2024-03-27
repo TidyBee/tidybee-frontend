@@ -1,10 +1,10 @@
 <template>
   <v-row>
-    <v-col cols="10">
-      <div class="text-left" :data-cy="`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`">
+    <v-col cols="3">
+      <div class="text-left" :data-cy="(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ parseFileName(file.pretty_path) }}
       </div>
-      <div v-if="isOpen" class="text-left pt-3 text-grey-darken-1" data-cy="tidyscore-information">
+      <div v-if="isOpen" class="text-left pt-3 text-grey-darken-1 text-no-wrap" data-cy="tidyscore-information">
         {{ $t("fileView.general") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.type") + parseFileType(file.pretty_path) }}
@@ -17,8 +17,18 @@
         &nbsp;&nbsp;{{ $t("fileView.placement") + parseFilePlace(file.pretty_path) }}
       </div>
     </v-col>
-    <v-col cols="1">
-      <span v-if="!isOpen" :data-cy="`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`">
+    <v-col cols="3">
+      <span :data-cy="(`overviewwidget-fileitem-size-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+        {{ formatFileSize(file.size) }}
+      </span>
+    </v-col>
+    <v-col cols="3">
+      <span :data-cy="(`overviewwidget-fileitem-date-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
+        {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
+      </span>
+    </v-col>
+    <v-col cols="2">
+      <span v-if="!isOpen" :data-cy="(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ getGrade(file.tidy_score) }}
       </span>
       <TidyScore
@@ -38,9 +48,8 @@
 </template>
 
 <script>
-import { getGrade, calculateElapsedTime, formatFileSize, getGradeColor } from "@/utils";
-import TidyScore from './TidyScore.vue';
-
+import TidyScore from "@/components/dashboard/widgets/OverView/TidyScore.vue";
+import { getGrade, formatFileSize, calculateElapsedTime, parseFileName, getGradeColor } from "@/utils";
 
 export default {
   name: "FileItem",
@@ -63,6 +72,7 @@ export default {
     getGrade,
     getGradeColor,
     calculateElapsedTime,
+    parseFileName,
     getPieData(tidyScore) {
       const misnamedTitle = this.$t('fileView.misnamed') + (tidyScore?.misnamed ? this.$t('fileView.yes') : this.$t('fileView.no'));
       const duplicatedTitle = this.$t('fileView.duplicated') + (tidyScore?.duplicated ? this.$t('fileView.yes') : this.$t('fileView.no'));
@@ -75,15 +85,6 @@ export default {
     },
     closeDialog() {
       this.isOpen = false;
-    },
-    parseFileName(pretty_path) {
-      if (pretty_path.includes('/')) {
-        const segments = pretty_path.split('/');
-        const fileName = segments[segments.length - 1];
-        return fileName;
-      } else {
-        return pretty_path;
-      }
     },
     replaceSpecificChar(str) {
       const replaceStr = str.replace(/[./_]/g, '-');

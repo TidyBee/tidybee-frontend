@@ -65,4 +65,14 @@ export const getGradeColor = (grade) => {
     default:
       return '';
   }
-}
+};
+
+export const parseFileName = (pretty_path) => {
+  if (pretty_path.includes('/')) {
+    const segments = pretty_path.split('/');
+    const fileName = segments[segments.length - 1];
+    return fileName;
+  } else {
+    return pretty_path;
+  }
+};
