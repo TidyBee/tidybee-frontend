@@ -1,6 +1,6 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <ApiLoader :api-url="tidyHubApi" :widget-name="widgetTitle" class="full-height">
+    <ApiLoader :api-url="tidyHubApi" :widget-name="widgetTitle" :is-text-widget="true" class="full-height">
       <template #default="{ data }">
         <div v-if="data" class="full-height">
           <v-container fluid class="full-height">
