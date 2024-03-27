@@ -1,5 +1,5 @@
 <template>
-    <v-chart data-cy="graphwidget-graph" class="centered-container-graph" :option="option"></v-chart>
+  <v-chart data-cy="graphwidget-graph" class="centered-container-graph" :option="option"></v-chart>
 </template>
 
 <script setup>

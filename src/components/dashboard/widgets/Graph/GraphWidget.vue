@@ -10,16 +10,7 @@
             {{ $t(`dashboard.widgets.graph.title`) }}
           </v-span>
         </v-row>
-        <GraphChart :pie-data="formatSeries(data.series)"/>
-        <!-- <apexchart 
-          width="500"
-          height="500"
-          class="centered-container-graph"
-          :options="chartOptions"
-          :series="data.series"
-          :data-cy="`graphwidget-graph`"
-        >
-        </apexchart> -->
+        <GraphChart :pie-data="formatSeries(data.series)" />
       </v-card>
     </template>
   </ApiLoader>
