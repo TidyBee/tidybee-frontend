@@ -8,26 +8,25 @@ import { use } from 'echarts/core';
 import { PieChart } from 'echarts/charts';
 import { TooltipComponent, LegendComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
+import { getGradeColor } from '@/utils';
 import VChart from 'vue-echarts';
 
 
 use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer]);
-
-
 
 const props = defineProps({
     pieData: { type: Object, required: true, default: () => ({}) },
 })
 
 const option = ref({
-  color: ['#2E93fA', '#66DA26', '#FF9800', '#E91E63', '#546E7A'],
+  color: [getGradeColor('A'), getGradeColor('B'), getGradeColor('C'), getGradeColor('D'), getGradeColor('E')],
   tooltip: {
     trigger: 'item',
     formatter: '{b}: {c}%',
     position: 'left'
   },
   legend: {
-    top: '20%',
+    top: '30%',
     orient: 'vertical',
     left: 'left'
   },
@@ -47,7 +46,7 @@ const option = ref({
           shadowColor: 'rgba(0, 0, 0, 0.5)'
         }
       },
-      center: ['80%', '55%']
+      center: ['72.5%', '57%']
     }
   ]
 });

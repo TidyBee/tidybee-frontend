@@ -2,7 +2,13 @@
     "common" : {
         "close": "Close",
         "loading": "Loading...",
-        "missingInput": "A valid input is required"
+        "missingInput": "A valid input is required",
+        "year": "year",
+        "years": "years",
+        "day": "day",
+        "hour": "hour",
+        "minute": "minute",
+        "second": "second"
     },
     "navbar": {
         "Home": "TidyBee",

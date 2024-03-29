@@ -13,9 +13,10 @@ import { ref, defineProps } from 'vue';
 use([TitleComponent, TooltipComponent, PieChart, CanvasRenderer]);
 
 const props = defineProps({
-  pieData: {type: Object, required: true, default: () => ({})},
-  pieColor: {type: String, required: true, default: '#fff'},
-  score: {type: String, required: true, defualt: 'A'},
+  pieData: { type: Array, required: true, default: () => ([]) },
+  pieColor: { type: String, required: true, default: '#fff' },
+  score: { type: String, required: true, default: 'A' },
+  t: { type: Function, required: true, }
 })
 
 const option = ref({
@@ -25,12 +26,15 @@ const option = ref({
     right: '13%',
     top: 'center',
     textStyle: {
-      fontSize: 30
+      fontSize: 30,
+      color: '#757575',
     }
   },
   tooltip: {
     trigger: 'item',
-    formatter: '{b}',
+    formatter: function(value) {
+      return props.t(value.name) + ": " + (props.pieData[value.dataIndex] ? props.t('fileView.yes') : props.t('fileView.no'));
+    },
     position: 'left',
   },
   series: [
@@ -39,7 +43,12 @@ const option = ref({
       type: 'pie',
       padAngle: 5,
       radius: ['45%', '80%'],
-      data: props.pieData,
+      data: [
+        { value: 1, name: 'fileView.misnamed', label: { show: false } },
+        { value: 1, name: 'fileView.duplicated', label: { show: false } },
+        { value: 1, name: 'fileView.unused', label: { show: false } },
+        { value: 1, name: 'fileView.heavy', label: { show: false } }
+      ],
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
