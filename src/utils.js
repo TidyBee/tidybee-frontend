@@ -53,13 +53,13 @@ export const calculateElapsedTime = (lastUsed, t) => {
 export const getGradeColor = (grade) => {
   switch (grade) {
     case 'A':
-      return '#2E93fA';
+      return '#2196F3';
     case 'B':
-      return '#66DA26';
+      return '#4CAF50';
     case 'C':
-      return '#FF9800';
+      return '#FAB239';
     case 'D':
-      return '#E91E63';
+      return '#EA4335';
     case 'E':
       return '#546E7A';
     default:

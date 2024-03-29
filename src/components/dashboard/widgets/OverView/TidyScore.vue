@@ -33,7 +33,7 @@ const option = ref({
   tooltip: {
     trigger: 'item',
     formatter: function(value) {
-      return props.t(value.name) + ": " + (props.pieData[value.dataIndex] ? props.t('fileView.yes') : props.t('fileView.no'));
+      return props.t(value.name) + (props.pieData[value.dataIndex] ? props.t('fileView.yes') : props.t('fileView.no'));
     },
     position: 'left',
   },

@@ -7,7 +7,7 @@
       >
         {{ parseFileName(file.pretty_path) }}
       </div>
-      <div v-if="isOpen" class="text-left pt-3 text-grey-darken-1 text-no-wrap" data-cy="tidyscore-information">
+      <div v-if="isOpen" class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption" data-cy="tidyscore-information">
         {{ $t("fileView.general") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.type") + parseFileType(file.pretty_path) }}
@@ -87,11 +87,6 @@ export default {
     calculateElapsedTime,
     parseFileName,
     getPieData(tidyScore) {
-      // const misnamedTitle = this.$t('fileView.misnamed') + (tidyScore?.misnamed ? this.$t('fileView.yes') : this.$t('fileView.no'));
-      // const duplicatedTitle = this.$t('fileView.duplicated') + (tidyScore?.duplicated ? this.$t('fileView.yes') : this.$t('fileView.no'));
-      // const unusedTitle = this.$t('fileView.unused') + (tidyScore?.unused ? this.$t('fileView.yes') : this.$t('fileView.no'));
-      // const heavyTitle = this.$t('fileView.heavy') + (tidyScore?.heavy ? this.$t('fileView.yes') : this.$t('fileView.no'));
-      // return ([{ value: 1, name: misnamedTitle, label: { show: false } }, { value: 1, name: duplicatedTitle, label: { show: false } }, { value: 1, name: unusedTitle, label: { show: false } }, { value: 1, name: heavyTitle, label: { show: false } }]);
       return ([
         tidyScore?.misnamed,
         tidyScore?.duplicated,
