@@ -7,8 +7,6 @@
   background-color: white;
   height: 160px;
   width: 230px;
-  margin-top: 20px;
-  margin-left: 40px;
   display: flex; 
   flex-direction: column;
   justify-content: center;
