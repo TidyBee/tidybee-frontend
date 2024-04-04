@@ -18,6 +18,12 @@
           >
           </apexchart>
         </div>
+        <div>
+          <span class="help-button">?</span>
+          <div class="help-section">
+            {{ $t(`dashboard.widgets.graph.help`) }}
+          </div>
+        </div>
       </template>
     </ApiLoader>
   </v-card>

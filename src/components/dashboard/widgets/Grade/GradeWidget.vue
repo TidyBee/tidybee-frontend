@@ -29,6 +29,12 @@
             </v-span>
           </v-row>
         </div>
+        <div>
+          <span class="help-button">?</span>
+          <div class="help-section">
+            {{ $t(`dashboard.widgets.grade.help`) }}
+          </div>
+        </div>
       </template>
     </ApiLoader>
   </v-card>

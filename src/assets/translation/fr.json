@@ -43,6 +43,13 @@
     "refresh" : "Actualiser",
     "widgets": {
       "text" :{
+        "help": {
+          "unused": "Ce widget affiche le nombre de fichiers inutilisés sur votre espace partagé et son evolution depuis le dernier mois",
+          "heavy": "Ce widget affiche le nombre de fichiers trop lourds sur votre espace partagé et son evolution depuis le dernier mois",
+          "badname": "Ce widget affiche le nombre de fichiers mal nommés sur votre espace partagé et son evolution depuis le dernier mois",
+          "duplicate": "Ce widget affiche le nombre de fichiers dupliqués sur votre espace partagé et son evolution depuis le dernier mois",
+          "storage": "Ce widget affiche l'utilisation total de vos espaces partagés et son evolution depuis le dernier mois"
+        },
         "title":{
           "unused": "Nombre de fichiers inutilisés",
           "heavy": "Nombre de fichier lourds",
@@ -68,10 +75,12 @@
         }
       },
       "grade": {
+        "help": "Ce widget affiche le grade moyen de vos espaces partagés",
         "widgetTitle": "Le grade de votre espace partagé",
         "title":"Le Grade de votre espace partagé a été estimé par Tidybee."
       },
       "graph": {
+        "help": "Ce widget affiche le pourcentage de fichiers de chaque grade disponible sur vos espaces partagés",
         "title":"Analyse de votre espace de stockage",
         "total":"Total"
       }

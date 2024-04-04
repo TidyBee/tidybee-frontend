@@ -61,3 +61,39 @@
 .grey-text {
   color: #515151;
 }
+
+.help-button {
+  position: absolute;
+  transition: all 0.5s ease-out;
+  border-radius: 100%;
+  right: -40px;
+  bottom: 10px;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+  font-size: larger;
+  cursor: help;
+  text-align: center;
+}
+
+.rounded-rectangle:hover .help-button {
+  transform: translate(-150%, 0);
+}
+
+.help-button:hover + .help-section {
+  opacity: 1;
+}
+
+.help-section {
+  transition: all 0.5s ease-out;
+  font-size: smaller;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 12%;
+  background: rgb(56, 56, 56);
+  border-radius: 8px;
+  padding: 2% 3%;
+  color: white;
+}
