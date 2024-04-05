@@ -1,89 +1,65 @@
 <template>
-  <div class="TidyScore">
-    <div class="text-center">
-      <img
-        :data-cy="'tidyscore-grade-img'"
-        :src="getGradeSVGPath()"
-        alt="SVG Image"
-        class="tidyscore-img"
-      />
-    </div>
-    <p>
-      <strong :data-cy="'tidyscore-file-name'" class="file-name">
-        {{ file.pretty_path }}
-      </strong>
-    </p>
-    <div style="margin-left: 10px">
-      <p :data-cy="'tidyscore-file-size'">
-        <strong>
-          {{ $t("fileView.size") }}
-        </strong>
-        {{ formatFileSize(file.size) }}
-      </p>
-      <div v-if="file.tidy_score">
-        <div v-for="(value, key) in file.tidy_score" :key="key">
-          <div v-if="value">
-            <strong :data-cy="`tidyscore-${key}`">{{ $t(`fileItem.${key}`) }}</strong>
-            <img
-              :data-cy="`tidyscore-${key}-false`"
-              src="@/assets/icons/false.svg"
-              alt="False Icon"
-              class="icons"
-            />
-          </div>
-          <div v-else>
-            <strong :data-cy="`tidyscore-${key}`">{{ $t(`fileItem.${key}`) }}</strong>
-            <img
-              :data-cy="`tidyscore-${key}-true`"
-              src="@/assets/icons/true.svg"
-              alt="True Icon"
-              class="icons"
-            />
-          </div>
-        </div>
-      </div>
-      <p :data-cy="`tidyscore-lastused`">
-        <strong>
-          {{ $t("fileItem.lastUsed") }}
-        </strong>
-        {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
-      </p>
-    </div>
-  </div>
+  <v-chart data-cy="overviewwidget-fileitem-toggle-tidyscore-graph" class="grade-graph" :option="option"></v-chart>
 </template>
 
-<script>
-import { getGrade, formatFileSize, calculateElapsedTime } from "@/utils";
+<script setup>
+import { use } from 'echarts/core';
+import { PieChart } from 'echarts/charts';
+import { TitleComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+import VChart from 'vue-echarts';
+import { ref, defineProps } from 'vue';
 
-export default {
-  name: "TidyScore",
-  props: {
-    file: {
-      type: Object,
-      required: true,
-    },
+use([TitleComponent, TooltipComponent, PieChart, CanvasRenderer]);
+
+const props = defineProps({
+  pieData: { type: Array, required: true, default: () => ([]) },
+  pieColor: { type: String, required: true, default: '#fff' },
+  score: { type: String, required: true, default: 'A' },
+  t: { type: Function, required: true, }
+})
+
+const option = ref({
+  color: [props.pieColor],
+  title: {
+    text: props.score,
+    right: '13%',
+    top: 'center',
+    textStyle: {
+      fontSize: 30,
+      color: '#757575',
+    }
   },
-  data() {
-    return {
-      gradeSVGPaths: {
-        A: require("@/assets/grades/grade-a.svg"),
-        B: require("@/assets/grades/grade-b.svg"),
-        C: require("@/assets/grades/grade-c.svg"),
-        D: require("@/assets/grades/grade-d.svg"),
-        E: require("@/assets/grades/grade-e.svg"),
+  tooltip: {
+    trigger: 'item',
+    formatter: function(value) {
+      return props.t(value.name) + (props.pieData[value.dataIndex] ? props.t('fileView.yes') : props.t('fileView.no'));
+    },
+    position: 'left',
+  },
+  series: [
+    {
+      name: 'TidyScore',
+      type: 'pie',
+      padAngle: 5,
+      radius: ['45%', '80%'],
+      data: [
+        { value: 1, name: 'fileView.misnamed', label: { show: false } },
+        { value: 1, name: 'fileView.duplicated', label: { show: false } },
+        { value: 1, name: 'fileView.unused', label: { show: false } },
+        { value: 1, name: 'fileView.heavy', label: { show: false } }
+      ],
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+        },
       },
-    };
-  },
-  methods: {
-    formatFileSize,
-    getGrade,
-    calculateElapsedTime,
-    getGradeSVGPath() {
-      const grade = getGrade(this.file.tidy_score);
-      return this.gradeSVGPaths[grade] || "";
+      center: ['85%', '50%']
     },
-  },
-};
+  ],
+});
 </script>
 
 <style src="@/../css/components/dashboard/TidyScore.css" scoped></style>
