@@ -29,12 +29,7 @@
             </v-span>
           </v-row>
         </div>
-        <div>
-          <span class="help-button">?</span>
-          <div class="help-section">
-            {{ $t(`dashboard.widgets.grade.help`) }}
-          </div>
-        </div>
+        <HelpButton text="dashboard.widgets.grade.help" />
       </template>
     </ApiLoader>
   </v-card>
@@ -42,11 +37,13 @@
 
 <script>
 import ApiLoader from "@/components/communication/ApiLoader.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
 
 export default {
   name: "GradeWidget",
   components: {
     ApiLoader,
+    HelpButton
   },
   props: {
     tidyHubApi: {

@@ -18,12 +18,7 @@
           >
           </apexchart>
         </div>
-        <div>
-          <span class="help-button">?</span>
-          <div class="help-section">
-            {{ $t(`dashboard.widgets.graph.help`) }}
-          </div>
-        </div>
+        <HelpButton text="dashboard.widgets.graph.help" />
       </template>
     </ApiLoader>
   </v-card>
@@ -32,12 +27,14 @@
 <script>
 import VueApexCharts from "vue3-apexcharts";
 import ApiLoader from "@/components/communication/ApiLoader.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
 
 export default {
   name: "GraphWidget",
   components: {
     apexchart: VueApexCharts,
     ApiLoader,
+    HelpButton
   },
   props: {
     tidyHubApi: {

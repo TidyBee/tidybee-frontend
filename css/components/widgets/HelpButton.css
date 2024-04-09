@@ -1,12 +1,34 @@
 .help-button {
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  font-size: larger;
-  cursor: pointer;
-  border: none;
+    position: absolute;
+    transition: all 0.5s ease-out;
+    border-radius: 100%;
+    right: -40px;
+    bottom: 10px;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    font-size: larger;
+    cursor: help;
+    text-align: center;
+}
+
+.rounded-rectangle:hover .help-button {
+    transform: translate(-150%, 0);
+}
+
+.help-button:hover + .help-section {
+    opacity: 1;
+}
+
+.help-section {
+    transition: all 0.5s ease-out;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 15%;
+    background: rgb(56, 56, 56);
+    border-radius: 8px;
+    padding: 2% 5%;
+    color: white;
 }

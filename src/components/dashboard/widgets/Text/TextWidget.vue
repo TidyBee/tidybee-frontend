@@ -64,12 +64,7 @@
             </v-row>
           </v-container>
         </div>
-        <div>
-          <span class="help-button">?</span>
-          <div class="help-section">
-            {{ $t(`dashboard.widgets.text.help.${data.title}`) }}
-          </div>
-        </div>
+        <HelpButton :small="true" :text="`dashboard.widgets.text.help.` + data.title" />
       </template>
     </ApiLoader>
   </v-card>
@@ -77,11 +72,13 @@
 
 <script>
 import ApiLoader from "@/components/communication/ApiLoader.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
 
 export default {
   name: "TextWidget",
   components: {
     ApiLoader,
+    HelpButton
   },
   props: {
     widgetTitle: {
