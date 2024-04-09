@@ -37,3 +37,8 @@ img {
 .nav-item:hover {
   color: #ffee00;
 }
+
+.lang {
+  right: 20px;
+  position: absolute;
+}

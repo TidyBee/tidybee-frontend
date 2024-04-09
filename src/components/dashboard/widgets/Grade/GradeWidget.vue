@@ -38,6 +38,7 @@
 <script>
 import ApiLoader from "@/components/communication/ApiLoader.vue";
 import HelpButton from "@/components/widgets/HelpButton.vue";
+import { getGradeColor } from "@/utils";
 
 export default {
   name: "GradeWidget",
@@ -52,23 +53,8 @@ export default {
     },
   },
   methods: {
-    getGradeColor(grade) {
-      switch (grade) {
-        case "A":
-          return "#2E93fA";
-        case "B":
-          return "#66DA26";
-        case "C":
-          return "#FF9800";
-        case "D":
-          return "#E91E63";
-        case "E":
-          return "#546E7A";
-        default:
-          return "";
-      }
-    },
-  },
+    getGradeColor,
+  }
 };
 </script>
 

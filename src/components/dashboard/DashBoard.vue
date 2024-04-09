@@ -9,11 +9,11 @@
     </v-row>
 
     <v-row justify="center" class="widget-bottom-container">
-      <v-col>
+      <v-col class="no-flex-grow">
         <GraphWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGraphWidget'" />
         <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGradeWidget'" />
       </v-col>
-      <v-col>
+      <v-col class="no-flex-grow">
         <OverViewWidget :tidy-hub-api="tidyHubApi + '/proxy/get_files?amount=5&sort_by=size'" />
       </v-col>
     </v-row>

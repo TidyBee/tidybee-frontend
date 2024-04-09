@@ -8,15 +8,7 @@
               {{ $t(`dashboard.widgets.graph.title`) }}
             </v-span>
           </v-row>
-          <apexchart
-            width="500"
-            height="500"
-            class="centered-container-graph"
-            :options="chartOptions"
-            :series="data.series"
-            :data-cy="`graphwidget-graph`"
-          >
-          </apexchart>
+          <GraphChart :pie-data="formatSeries(data.series)" />
         </div>
         <HelpButton text="dashboard.widgets.graph.help" />
       </template>
@@ -25,14 +17,14 @@
 </template>
 
 <script>
-import VueApexCharts from "vue3-apexcharts";
+import GraphChart from "@/components/dashboard/widgets/Graph/GraphChart.vue"
 import ApiLoader from "@/components/communication/ApiLoader.vue";
 import HelpButton from "@/components/widgets/HelpButton.vue";
 
 export default {
   name: "GraphWidget",
   components: {
-    apexchart: VueApexCharts,
+    GraphChart,
     ApiLoader,
     HelpButton
   },
@@ -108,6 +100,17 @@ export default {
       },
     };
   },
+  methods: {
+    formatSeries(series) {
+      return ([
+        {value: series[0], name: 'TidyScore A'},
+        {value: series[1], name: 'TidyScore B'},
+        {value: series[2], name: 'TidyScore C'},
+        {value: series[3], name: 'TidyScore D'},
+        {value: series[4], name: 'TidyScore E'}
+      ]);
+    },
+  }
 };
 </script>
 

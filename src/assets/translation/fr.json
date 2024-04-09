@@ -2,7 +2,13 @@
   "common" : {
     "close": "Fermer",
     "loading": "Chargement en cours...",
-    "missingInput": "Une saisie valide est requise"
+    "missingInput": "Une saisie valide est requise",
+    "year": "an",
+    "years": "années",
+    "day": "jour",
+    "hour": "heure",
+    "minute": "minute",
+    "second": "seconde"
   },
   "navbar": {
     "Home": "TidyBee",
@@ -27,7 +33,18 @@
       "errorLoading": "Erreur lors du chargement"
   },
   "fileView": {
-    "size" : "Taille du fichier: "
+    "general" : "Général:",
+    "type" : "Type: ",
+    "size" : "Taille du fichier: ",
+    "lastUsed" : "Dernière utilisation: Il y a ",
+    "placement" : "Emplacement: ",
+    "unused": "Inutilisé",
+    "heavy": "Lourd",
+    "misnamed": "Mal nommé",
+    "duplicated": "Dupliqué",
+    "ago": "",
+    "yes": ": Oui",
+    "no": ": Non"
   },
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"

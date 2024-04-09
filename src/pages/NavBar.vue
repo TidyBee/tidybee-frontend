@@ -14,7 +14,7 @@
       ></v-tab>
     </v-tabs>
     <v-spacer />
-    <select v-model="locale" @change="switchLang">
+    <select v-model="locale" class="lang" @change="switchLang">
       <option
         v-for="availableLocale in availableLocales"
         :key="availableLocale"

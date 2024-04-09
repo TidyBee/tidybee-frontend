@@ -2,7 +2,13 @@
     "common" : {
         "close": "Close",
         "loading": "Loading...",
-        "missingInput": "A valid input is required"
+        "missingInput": "A valid input is required",
+        "year": "year",
+        "years": "years",
+        "day": "day",
+        "hour": "hour",
+        "minute": "minute",
+        "second": "second"
     },
     "navbar": {
         "Home": "TidyBee",
@@ -27,7 +33,18 @@
         "errorLoading": "Error loading data"
     },
     "fileView": {
-        "size" : "File size: "
+        "general" : "General:",
+        "type" : "Type: ",
+        "size" : "File size: ",
+        "lastUsed" : "Last Used: ",
+        "placement" : "File placement: ",
+        "unused": "Unused",
+        "heavy": "Heavy",
+        "misnamed": "Misnamed",
+        "duplicated": "Duplicated",
+        "ago": " ago",
+        "yes": ": Yes",
+        "no": ": No"
     },
     "folderWidget": {
         "folderLocation": "Folder location"

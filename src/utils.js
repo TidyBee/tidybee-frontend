@@ -32,7 +32,7 @@ export const formatFileSize = (fileSize) => {
   );
 };
 
-export const calculateElapsedTime = (lastUsed) => {
+export const calculateElapsedTime = (lastUsed, t) => {
   const now = new Date();
   const lastUsedTime = lastUsed * 1000;
   const timeDifference = now - lastUsedTime;
@@ -43,11 +43,28 @@ export const calculateElapsedTime = (lastUsed) => {
   const days = Math.floor(hours / 24);
   const years = Math.floor(days / 365);
 
-  if (years > 0) return years + (years > 1 ? " années" : " an");
-  else if (days > 0) return days + (days > 1 ? " jours" : " jour");
-  else if (hours > 0) return hours + (hours > 1 ? " heures" : " heure");
-  else if (minutes > 0) return minutes + (minutes > 1 ? " minutes" : " minute");
-  else return seconds + (seconds > 1 ? " secondes" : " seconde");
+  if (years > 0) return years + " " + (years > 1 ? t('common.years') : t('common.year'));
+  else if (days > 0) return days + " " + t('common.day') + (days > 1 ? "s" : "");
+  else if (hours > 0) return hours + " " + t('common.hour') + (hours > 1 ? "s" : "");
+  else if (minutes > 0) return minutes + " " + t('common.minute') (minutes > 1 ? "s" : "");
+  else return seconds + " " + t('common.second') + (seconds > 1 ? "s" : "");
+}
+
+export const getGradeColor = (grade) => {
+  switch (grade) {
+    case 'A':
+      return '#2196F3';
+    case 'B':
+      return '#4CAF50';
+    case 'C':
+      return '#FAB239';
+    case 'D':
+      return '#EA4335';
+    case 'E':
+      return '#546E7A';
+    default:
+      return '';
+  }
 };
 
 export const parseFileName = (pretty_path) => {
