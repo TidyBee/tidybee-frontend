@@ -29,6 +29,7 @@
             </v-span>
           </v-row>
         </div>
+        <HelpButton text="dashboard.widgets.grade.help" />
       </template>
     </ApiLoader>
   </v-card>
@@ -36,12 +37,14 @@
 
 <script>
 import ApiLoader from "@/components/communication/ApiLoader.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
 import { getGradeColor } from "@/utils";
 
 export default {
   name: "GradeWidget",
   components: {
     ApiLoader,
+    HelpButton
   },
   props: {
     tidyHubApi: {

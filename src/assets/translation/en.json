@@ -60,6 +60,13 @@
       "refresh" : "Refresh",
       "widgets": {
         "text" :{
+          "help": {
+            "unused": "This widget shows the number of unused files on your shared spaces and its evolution since last month",
+            "heavy": "This widget shows the number of heavy files on your shared spaces and its evolution since last month",
+            "badname": "This widget shows the number of misnammed files on your shared spaces and its evolution since last month",
+            "duplicate": "This widget shows the number of duplicated files on your shared spaces and its evolution since last month",
+            "storage": "This widget shows the current usage of your shared spaces and its evolution since last month"
+          },
           "title":{
             "unused": "Number of unused files",
             "heavy": "Number of heavy files",
@@ -85,10 +92,12 @@
           }
         },
         "grade": {
+          "help": "This widget shows the overall grade of your shared space",
           "widgetTitle": "Shared space grade",
           "title":"The Grade of your shared space has been estimated by Tidybee."
         },
         "graph": {
+          "help": "This widget displays the percentage of files pertaining to each grade of the TidyScore",
           "title":"Analysis of your storage space",
           "total":"Total"
         }

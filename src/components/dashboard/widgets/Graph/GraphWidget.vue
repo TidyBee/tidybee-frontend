@@ -10,6 +10,7 @@
           </v-row>
           <GraphChart :pie-data="formatSeries(data.series)" />
         </div>
+        <HelpButton text="dashboard.widgets.graph.help" />
       </template>
     </ApiLoader>
   </v-card>
@@ -18,12 +19,14 @@
 <script>
 import GraphChart from "@/components/dashboard/widgets/Graph/GraphChart.vue"
 import ApiLoader from "@/components/communication/ApiLoader.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
 
 export default {
   name: "GraphWidget",
   components: {
     GraphChart,
     ApiLoader,
+    HelpButton
   },
   props: {
     tidyHubApi: {
