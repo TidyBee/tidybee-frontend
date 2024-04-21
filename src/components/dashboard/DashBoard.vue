@@ -4,7 +4,7 @@
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetunused'" widget-title="text.title.unused" />
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetbadname'" widget-title="text.title.badname" />
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetduplicate'" widget-title="text.title.duplicate" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetheavy'" widget-title="text.title.heavy" />
+      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTotalMonitored'" widget-title="text.title.total" />
       <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetstorage'" widget-title="text.title.storage" />
     </v-row>
 
