@@ -28,7 +28,8 @@ const option = ref({
   legend: {
     top: '30%',
     orient: 'vertical',
-    left: 'left'
+    selectedMode: false,
+    left: 'left',
   },
   series: [
     {
