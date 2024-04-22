@@ -19,13 +19,17 @@
 
 .grade-text {
   font-size: 14px;
+  height: fit-content;
 }
 
 .grade-text-pos {
   position: absolute;
-  top: 30% !important;
+  height: 100%;
+  top: 0 !important;
   left: 70px;
   width: 160px !important;
+  align-content: center;
+  margin: 0;
   text-align: left;
 }
 
