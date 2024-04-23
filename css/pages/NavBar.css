@@ -11,11 +11,16 @@
   align-items: center;
 }
 
+.tab:hover {
+  background-color: #cecece;
+}
+
 .logo {
   position: fixed;
-  top: 15px;
+  top: 14px;
   left: 20px;
   z-index: 10000;
+  cursor: pointer;
 }
 
 img {
