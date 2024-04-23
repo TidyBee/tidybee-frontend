@@ -41,11 +41,11 @@
         v-if="!isOpen"
         :data-cy="(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
       >
-        {{ getGrade(file.tidy_score) }}
+        {{ file.tidy_score.grade }}
       </span>
       <TidyScore
-        v-if="isOpen" :pie-data="getPieData(file.tidy_score)" :pie-color="getGradeColor(getGrade(file.tidy_score))"
-        :score="getGrade(file.tidy_score)" :t="$t"
+        v-if="isOpen" :pie-data="getPieData(file.tidy_score)" :pie-color="getPieColor(file.tidy_score)"
+        :score="file.tidy_score.grade" :t="$t" :tab="tab"
       >
       </TidyScore>
     </v-col>
@@ -74,6 +74,10 @@ export default {
       type: Object,
       required: true,
     },
+    tab: {
+      type: String,
+      required: true,
+    }
   },
   data() {
     return {
@@ -86,12 +90,18 @@ export default {
     getGradeColor,
     calculateElapsedTime,
     parseFileName,
+    getPieColor(tidyScore) {
+      return ([
+      getGradeColor(tidyScore?.misnamed?.grade),
+      getGradeColor(tidyScore?.duplicated?.grade),
+      getGradeColor(tidyScore?.unused?.grade)
+      ])
+    },
     getPieData(tidyScore) {
       return ([
-        tidyScore?.misnamed,
-        tidyScore?.duplicated,
-        tidyScore?.unused,
-        tidyScore?.heavy
+        tidyScore?.misnamed?.grade,
+        tidyScore?.duplicated?.grade,
+        tidyScore?.unused?.grade
       ])
     },
     openDialog() {

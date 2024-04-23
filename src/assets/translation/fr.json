@@ -86,7 +86,7 @@
         },
         "title":{
           "unused": "Inutilisés",
-          "heavy": "Lourds",
+          "all": "Tout",
           "misnamed": "Mal nommés",
           "duplicated": "Dupliqués"
         }

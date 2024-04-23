@@ -80,7 +80,7 @@
           "widgetTitle": "Overview widget",
           "title":{
           "unused": "Unused",
-          "heavy": "Heavy",
+          "all": "All",
           "misnamed": "Misnamed",
           "duplicated": "Duplicated"
           },

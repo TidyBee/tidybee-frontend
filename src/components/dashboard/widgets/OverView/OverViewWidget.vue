@@ -1,6 +1,6 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10" :data-cy="`overviewwidget-container`">
-    <ApiLoader :api-url="tidyHubApi" widget-name="overView.widgetTitle" class="full-height">
+    <ApiLoader :api-url="tidyHubApi + selectedUrl" widget-name="overView.widgetTitle" class="full-height">
       <template #default="{ data }">
         <div v-if="data">
           <v-tabs v-model="tab" class="custom-tabs" :hide-slider="true">
@@ -51,18 +51,26 @@ export default {
   data() {
     return {
       tab: "one",
-      selectedTabLabel: "misnamed",
+      selectedTabLabel: "all",
+      selectedUrl: "All",
       activeTab: "",
       tabs: [
-        { label: "misnamed", value: "one" },
-        { label: "duplicated", value: "two" },
-        { label: "unused", value: "three" },
-        { label: "heavy", value: "four" },
+        { label: "all", url: "All", value: "one" },
+        { label: "misnamed", url: "Misnamed", value: "two" },
+        { label: "duplicated", url: "Duplicate", value: "three" },
+        { label: "unused", url: "Unused", value: "four" },
       ],
     };
   },
   mounted() {
     this.activeTab = this.tabCookie;
+    this.selectedTabLabel = this.tabs.find(
+          (item) => item.value === this.tabCookie,
+    ).label;
+    this.selectedUrl = this.tabs.find(
+          (item) => item.value === this.tabCookie,
+    ).url;
+    this.changeTab(this.tabCookie);
   },
   methods: {
     changeTab(value) {
@@ -72,10 +80,14 @@ export default {
         this.selectedTabLabel = this.tabs.find(
           (item) => item.value === value,
         ).label;
+        this.selectedUrl = this.tabs.find(
+          (item) => item.value === value,
+        ).url;
         VueCookies.set("activeTab", this.activeTab);
       } else {
         this.tab = value;
       }
+      this.emitter.emit("overView.widgetTitle", {url: this.tidyHubApi + this.selectedUrl});
     },
   },
 };
