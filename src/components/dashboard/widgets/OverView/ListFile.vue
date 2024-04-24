@@ -67,7 +67,7 @@
       <v-divider></v-divider>
     </v-row>
     <v-row>
-      <v-virtual-scroll :height="340" :items="sortedResponses(fetchdata)">
+      <v-virtual-scroll :height="340" :items="sortedResponses(fetchdata)" style="overflow-x: clip;">
         <template #default="{ item }">
           <v-list-item cols="12">
             <FileItem :file="item" :tab="tab" />

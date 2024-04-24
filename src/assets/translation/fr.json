@@ -44,7 +44,9 @@
     "duplicated": "Dupliqué",
     "ago": "",
     "yes": ": Oui",
-    "no": ": Non"
+    "no": ": Non",
+    "help": "Veuillez changer la fenêtre du widget pour avoir les détails sur le tidyScore de ce fichier",
+    "goodFile": "Notre algorithm n'a pas détécté d'erreurs de norme"
   },
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"

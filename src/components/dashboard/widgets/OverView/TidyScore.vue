@@ -14,14 +14,15 @@ use([TitleComponent, TooltipComponent, PieChart, CanvasRenderer]);
 
 const props = defineProps({
   pieData: { type: Array, required: true, default: () => ([]) },
-  pieColor: { type: Array, required: true, default: () => ([]) },
+  pieColor: { type: String, required: true, default: '#fff'  },
+  seriesData: { type: Array, required: true, default: () => ([]) },
   score: { type: String, required: true, default: 'A' },
   t: { type: Function, required: true, },
   tab: { type: String, required: true}
 })
 
 const option = ref({
-  color: props.pieColor,
+  color: [props.pieColor],
   title: {
     text: props.score,
     right: '13%',
@@ -32,7 +33,6 @@ const option = ref({
     }
   },
   tooltip: {
-    show: (props.tab == 'all'),
     trigger: 'item',
     formatter: function(value) {
       return props.t(value.name) + " : " + props.pieData[value.dataIndex];
@@ -45,11 +45,7 @@ const option = ref({
       type: 'pie',
       padAngle: 5,
       radius: ['45%', '80%'],
-      data: [
-        { value: (props.tab == 'all' || props.tab == 'misnamed') , name: 'fileView.misnamed', label: { show: false } },
-        { value: (props.tab == 'all' || props.tab == 'duplicated') , name: 'fileView.duplicated', label: { show: false } },
-        { value: (props.tab == 'all' || props.tab == 'unused') , name: 'fileView.unused', label: { show: false } },
-      ],
+      data: props.seriesData,
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
