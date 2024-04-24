@@ -15,19 +15,25 @@
       ></v-tab>
     </v-tabs>
     <v-spacer />
-    <select v-model="locale" class="lang" @change="switchLang">
+    <div class="lang-button" @click="switchLang">
+      <span class="lang-text">EN</span>
+      <span class="lang-text">FR</span>
+      <div class="lang-slider" :class="{ 'lang-slid' : isFrench }"></div>
+    </div>
+    <!-- <select v-model="locale" class="lang" @change="switchLang">
       <option
         v-for="availableLocale in availableLocales"
         :key="availableLocale"
       >
         {{ availableLocale }}
       </option>
-    </select>
+    </select> -->
   </v-app-bar>
 </template>
 
 <script>
 import VueCookies from "vue-cookies";
+import { ref } from "vue";
 
 export default {
   name: "NavBar",
@@ -36,8 +42,10 @@ export default {
       VueCookies.set("locale", "en");
     }
     const locale = VueCookies.get(["locale"]);
+    const isFrench = ref(locale == 'fr');
     return {
       locale,
+      isFrench
     };
   },
   data() {
@@ -51,6 +59,13 @@ export default {
   },
   methods: {
     switchLang() {
+      if (this.locale == 'en') {
+        this.locale = 'fr';
+        this.isFrench = true;
+      } else {
+        this.locale = 'en';
+        this.isFrench = false;
+      }
       VueCookies.set("locale", this.locale);
       this.$i18n.locale = this.locale;
     },
