@@ -14,8 +14,8 @@
 
 .widget-title {
   position: absolute;
-  top: 5px;
-  left: 8px;
+  top: 10px;
+  left: 12px;
   font-size: 14px;
   color: #515151;
 }
@@ -30,7 +30,7 @@
 }
 
 .widget-text-center {
-  font-size: 50px;
+  font-size: 43px;
   color: red;
 }
 
@@ -43,8 +43,8 @@
 
 .widget-text-bottom {
   position: absolute;
-  bottom: 5px;
-  left: 8px;
+  bottom: 12px;
+  left: 12px;
   font-size: 11px;
 }
 
