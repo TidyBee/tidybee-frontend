@@ -14,7 +14,7 @@
         <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGradeWidget'" />
       </v-col>
       <v-col class="no-flex-grow">
-        <OverViewWidget :tidy-hub-api="tidyHubApi + '/proxy/get_files?amount=5&sort_by=size'" />
+        <OverViewWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getOverview'" />
       </v-col>
     </v-row>
 

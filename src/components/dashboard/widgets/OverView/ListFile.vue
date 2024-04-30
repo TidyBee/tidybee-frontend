@@ -67,10 +67,10 @@
       <v-divider></v-divider>
     </v-row>
     <v-row>
-      <v-virtual-scroll :height="340" :items="sortedResponses(sortedFileList(fetchdata))">
+      <v-virtual-scroll :height="340" :items="sortedResponses(fetchdata)" style="overflow-x: clip;">
         <template #default="{ item }">
-          <v-list-item v-if="sortWithTidyScore(item.tidy_score)" cols="12">
-            <FileItem :file="item" />
+          <v-list-item cols="12">
+            <FileItem :file="item" :tab="tab" />
           </v-list-item>
         </template>
       </v-virtual-scroll>
@@ -118,27 +118,27 @@ export default {
       dialogFiltre: false,
       filterOptions: [
         {
-          title: this.$t("dashboard.widgets.overView.filters.tidyscoreAsc"),
+          title: "dashboard.widgets.overView.filters.tidyscoreAsc",
           value: "TidyScore Asc",
         },
         {
-          title: this.$t("dashboard.widgets.overView.filters.tidyscoreDesc"),
+          title: "dashboard.widgets.overView.filters.tidyscoreDesc",
           value: "TidyScore Desc",
         },
         {
-          title: this.$t("dashboard.widgets.overView.filters.sizeAsc"),
+          title: "dashboard.widgets.overView.filters.sizeAsc",
           value: "Size Asc",
         },
         {
-          title: this.$t("dashboard.widgets.overView.filters.sizeDesc"),
+          title: "dashboard.widgets.overView.filters.sizeDesc",
           value: "Size Desc",
         },
         {
-          title: this.$t("dashboard.widgets.overView.filters.secsAsc"),
+          title: "dashboard.widgets.overView.filters.secsAsc",
           value: "Secs Asc",
         },
         {
-          title: this.$t("dashboard.widgets.overView.filters.secsDesc"),
+          title: "dashboard.widgets.overView.filters.secsDesc",
           value: "Secs Desc",
         },
       ],

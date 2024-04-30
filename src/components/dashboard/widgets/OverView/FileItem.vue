@@ -7,7 +7,10 @@
       >
         {{ parseFileName(file.pretty_path) }}
       </div>
-      <div v-if="isOpen" class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption" data-cy="tidyscore-information">
+      <div
+        v-if="isOpen" class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption"
+        data-cy="tidyscore-information"
+      >
         {{ $t("fileView.general") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.type") + parseFileType(file.pretty_path) }}
@@ -41,11 +44,11 @@
         v-if="!isOpen"
         :data-cy="(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
       >
-        {{ getGrade(file.tidy_score) }}
+        {{ file.tidy_score.grade }}
       </span>
       <TidyScore
-        v-if="isOpen" :pie-data="getPieData(file.tidy_score)" :pie-color="getGradeColor(getGrade(file.tidy_score))"
-        :score="getGrade(file.tidy_score)" :t="$t"
+        v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)" :series-data="getSeriesData(file.tidy_score, tab)"
+        :pie-color="getGradeColor(file?.tidy_score?.grade)" :score="file.tidy_score.grade" :t="$t" :tab="tab"
       >
       </TidyScore>
     </v-col>
@@ -58,22 +61,29 @@
     </v-col>
   </v-row>
   <v-divider></v-divider>
+  <HelpButton v-if="isOpen" :text="getDescriptions(file.tidy_score, tab)" :overview="true" />
 </template>
 
 <script>
 import TidyScore from "@/components/dashboard/widgets/OverView/TidyScore.vue";
+import HelpButton from "@/components/widgets/HelpButton.vue";
 import { getGrade, formatFileSize, calculateElapsedTime, parseFileName, getGradeColor } from "@/utils";
 
 export default {
   name: "FileItem",
   components: {
     TidyScore,
+    HelpButton,
   },
   props: {
     file: {
       type: Object,
       required: true,
     },
+    tab: {
+      type: String,
+      required: true,
+    }
   },
   data() {
     return {
@@ -86,13 +96,60 @@ export default {
     getGradeColor,
     calculateElapsedTime,
     parseFileName,
-    getPieData(tidyScore) {
-      return ([
-        tidyScore?.misnamed,
-        tidyScore?.duplicated,
-        tidyScore?.unused,
-        tidyScore?.heavy
-      ])
+    getConfigurations(tidyScore, tab) {
+      switch (tab) {
+        case 'misnamed':
+          return (tidyScore?.misnamed?.configurations);
+        case 'duplicated':
+          return (tidyScore?.duplicated?.configurations);
+        case 'unused':
+          return (tidyScore?.unused?.configurations);
+        default:
+          return;
+      }
+    },
+    getDescriptions(tidyScore, tab) {
+      if (tab == 'all')
+        return 'fileView.help';
+      let desc = '';
+      const configurations = this.getConfigurations(tidyScore, tab);
+      for (let i = 0; i < configurations.length; i++) {
+        if (configurations[i].description != null)
+          desc += (desc != '' ? '\n' : '') + configurations[i].description;
+      }
+      if (desc == '')
+        desc = 'fileView.goodFile';
+      return desc;
+    },
+    getPieData(tidyScore, tab) {
+      if (tab == 'all') {
+        return ([
+          tidyScore?.misnamed?.grade,
+          tidyScore?.duplicated?.grade,
+          tidyScore?.unused?.grade
+        ])
+      }
+      let data = [];
+      const configurations = this.getConfigurations(tidyScore, tab);
+      for (let i = 0; i < configurations.length; i++) {
+        data.push(configurations[i].grade);
+      }
+      return data;
+    },
+    getSeriesData(tidyScore, tab) {
+      if (tab == 'all') {
+        return ([
+          { value: 1, name: 'fileView.misnamed', label: { show: false } },
+          { value: 1, name: 'fileView.duplicated', label: { show: false } },
+          { value: 1, name: 'fileView.unused', label: { show: false } },
+        ])
+      }
+      let data = [];
+      const configurations = this.getConfigurations(tidyScore, tab);
+      for (let i = 0; i < configurations.length; i++) {
+        data.push({ value: 1, name: configurations[i].name, label: { show: false } });
+      }
+      return data;
     },
     openDialog() {
       this.isOpen = true;

@@ -44,7 +44,9 @@
         "duplicated": "Duplicated",
         "ago": " ago",
         "yes": ": Yes",
-        "no": ": No"
+        "no": ": No",
+        "help": "Check the tabs for specifics concerning this file's tidyScore",
+        "goodFile": "We haven't spotted any errors with this file"
     },
     "folderWidget": {
         "folderLocation": "Folder location"
@@ -80,7 +82,7 @@
           "widgetTitle": "Overview widget",
           "title":{
           "unused": "Unused",
-          "heavy": "Heavy",
+          "all": "All",
           "misnamed": "Misnamed",
           "duplicated": "Duplicated"
           },

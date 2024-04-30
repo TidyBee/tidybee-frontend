@@ -49,22 +49,26 @@ export default {
     };
   },
   created() {
-    this.loadData();
+    this.loadData(this.apiUrl);
   },
   mounted() {
     this.emitter.on("refresh-widgets", (data) => {
       data;
-      this.handleRefresh();
+      this.handleRefresh(this.apiUrl);
     });
+    this.emitter.on(this.widgetName, (data) => {
+      data;
+      this.handleRefresh(data.url);
+    })
   },
   methods: {
-    handleRefresh() {
-      this.loadData();
+    handleRefresh(url) {
+      this.loadData(url);
     },
-    async loadData() {
+    async loadData(url) {
       this.isLoading = true;
       try {
-        this.apiData = await fetchData(this.apiUrl);
+        this.apiData = await fetchData(url);
       } catch (error) {
         this.hasError = true;
         this.isLoading = false;
