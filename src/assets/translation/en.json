@@ -12,7 +12,7 @@
     },
     "navbar": {
         "Home": "TidyBee",
-        "Settings": "Settings",
+        "Settings": "Your Configuration",
         "About" : "About"
     },
     "help": {

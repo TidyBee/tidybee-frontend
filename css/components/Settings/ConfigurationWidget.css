@@ -1,0 +1,20 @@
+.rounded-rectangle {
+  border-radius: 15px;
+  background-color: white;
+  height: 500px;
+  width: 1200px;
+  position: relative; 
+}
+
+.rounded-rectangle-settings-title {
+  height: 500px;
+  width: 200px;
+}
+
+.rounded-rectangle-settings-content {
+  height: 500px;
+  width: 1000px;
+  position: absolute;
+  top: 0;
+  left: 200px; 
+}

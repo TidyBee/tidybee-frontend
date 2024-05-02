@@ -20,3 +20,10 @@
 .option-list {
   list-style-type: none;
 }
+
+.widget-top-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-top: 40px !important;
+}
