@@ -40,6 +40,24 @@ This is where you can use the **tidybee-front** interface to interact with the t
 
 Thank you for your interest in **tidybee-front**!
 
+## Installer
+
+If you wish to build the installer from the source code, follow the installation steps and then do the following :
+
+1. Build the distribution version of the front-end
+
+   ```
+   yarn run build
+   ```
+
+2. Build the installer with electron
+
+   ```
+   yarn run electron:build
+   ```
+
+3. Launch the setup.exe from the **build** folder and open the newly installed application
+
 ## Contributing
 
  Please refer to the CONTRIBUTING.md document for any participation in the project.
