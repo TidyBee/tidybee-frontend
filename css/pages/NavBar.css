@@ -11,11 +11,16 @@
   align-items: center;
 }
 
+.tab:hover {
+  background-color: #cecece;
+}
+
 .logo {
   position: fixed;
-  top: 15px;
+  top: 14px;
   left: 20px;
   z-index: 10000;
+  cursor: pointer;
 }
 
 img {
@@ -41,4 +46,38 @@ img {
 .lang {
   right: 20px;
   position: absolute;
+}
+
+.lang-button {
+  display: flex;
+  gap: 30px;
+  margin-right: 20px;
+  border-radius: 19px;
+  background: #bbb;
+  padding: 7px 13px;
+  position: absolute;
+  right: 0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+.lang-slider {
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  border-radius: 20px;
+  background-color: white;
+  width: 50%;
+  height: 85%;
+  opacity: 0.75;
+  left: 0;
+  top: 0;
+  margin: 3%;
+}
+
+.lang-text {
+  font-weight: 800;
+  z-index: 100;
+}
+
+.lang-slid {
+  transform: translate(90%, 0%);
 }

@@ -44,7 +44,9 @@
         "duplicated": "Duplicated",
         "ago": " ago",
         "yes": ": Yes",
-        "no": ": No"
+        "no": ": No",
+        "help": "Check the tabs for specifics concerning this file's tidyScore",
+        "goodFile": "We haven't spotted any errors with this file"
     },
     "folderWidget": {
         "folderLocation": "Folder location"
@@ -62,16 +64,16 @@
         "text" :{
           "help": {
             "unused": "This widget shows the number of unused files on your shared spaces and its evolution since last month",
-            "heavy": "This widget shows the number of heavy files on your shared spaces and its evolution since last month",
+            "total": "This widget shows the number of files that are being monitored by TidyBee on your shared spaces",
             "badname": "This widget shows the number of misnammed files on your shared spaces and its evolution since last month",
             "duplicate": "This widget shows the number of duplicated files on your shared spaces and its evolution since last month",
             "storage": "This widget shows the current usage of your shared spaces and its evolution since last month"
           },
           "title":{
-            "unused": "Number of unused files",
-            "heavy": "Number of heavy files",
-            "badname": "Number of misnamed files",
-            "duplicate": "Number of duplicate files",
+            "unused": "Unused files",
+            "total": "Files monitored by TidyBee",
+            "badname": "Misnamed files",
+            "duplicate": "Duplicate files",
             "storage": "Shared spaces"
           },
           "percentage": "% over last month"
@@ -80,7 +82,7 @@
           "widgetTitle": "Overview widget",
           "title":{
           "unused": "Unused",
-          "heavy": "Heavy",
+          "all": "All",
           "misnamed": "Misnamed",
           "duplicated": "Duplicated"
           },

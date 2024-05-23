@@ -22,7 +22,7 @@
                 <v-progress-circular
                   v-if="data.data.valuePercentage && data.data.status !== undefined"
                   :model-value="data.data.valuePercentage"
-                  :size="110"
+                  :size="100"
                   :width="10"
                   :color="data.data.status ? 'green' : 'red'"
                   class="widget-graph"

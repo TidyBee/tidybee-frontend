@@ -44,7 +44,9 @@
     "duplicated": "Dupliqué",
     "ago": "",
     "yes": ": Oui",
-    "no": ": Non"
+    "no": ": Non",
+    "help": "Veuillez changer la fenêtre du widget pour avoir les détails sur le tidyScore de ce fichier",
+    "goodFile": "Notre algorithm n'a pas détécté d'erreurs de norme"
   },
   "folderWidget": {
     "folderLocation": "Emplacement du dossier"
@@ -62,16 +64,16 @@
       "text" :{
         "help": {
           "unused": "Ce widget affiche le nombre de fichiers inutilisés sur votre espace partagé et son evolution depuis le dernier mois",
-          "heavy": "Ce widget affiche le nombre de fichiers trop lourds sur votre espace partagé et son evolution depuis le dernier mois",
+          "total": "Ce widget affiche le nombre de fichiers sur votre espace partagé qui sont surveillés par TidyBee",
           "badname": "Ce widget affiche le nombre de fichiers mal nommés sur votre espace partagé et son evolution depuis le dernier mois",
           "duplicate": "Ce widget affiche le nombre de fichiers dupliqués sur votre espace partagé et son evolution depuis le dernier mois",
           "storage": "Ce widget affiche l'utilisation total de vos espaces partagés et son evolution depuis le dernier mois"
         },
         "title":{
-          "unused": "Nombre de fichiers inutilisés",
-          "heavy": "Nombre de fichier lourds",
-          "badname": "Nombre de fichiers mal nommés",
-          "duplicate": "Nombre de fichiers dupliqués",
+          "unused": "Fichiers inutilisés",
+          "total": "Fichier surveillés par TidyBee",
+          "badname": "Fichiers mal nommés",
+          "duplicate": "Fichiers dupliqués",
           "storage": "Espaces partagés"
         },
         "percentage": "% sur le mois dernier"
@@ -86,7 +88,7 @@
         },
         "title":{
           "unused": "Inutilisés",
-          "heavy": "Lourds",
+          "all": "Tout",
           "misnamed": "Mal nommés",
           "duplicated": "Dupliqués"
         }
