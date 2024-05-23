@@ -1,32 +1,27 @@
 <template>
-  <div class="text-center">
-    <v-row class="mb-2 align-center">
-      <v-col cols="10">
-        <div class="text-left" style="font-size: 16px;">{{ config.name }}</div>
-      </v-col>
-      <v-col cols="2">
-        <v-icon
-          class="redirect-icon"
-          :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'"
-          @click="isOpen = !isOpen"
-        />
-      </v-col>
-    </v-row>
-
-    <v-row v-if="isOpen" class="mb-2" style="margin-top: 16px;">
-      <v-col cols="12">
-        <div v-if="config.description != null" class="text-left text-grey-darken-1" style="font-size: 14px;">
-          {{ $t("Description :") }} {{ config.description }}
-        </div>
-        <div v-if="config.regex != null" class="text-left text-grey-darken-1" style="font-size: 14px;">
-          {{ $t("Regex :") }} {{ config.regex }}
-        </div>
-        <div v-if="config.limitISO != null" class="text-left text-grey-darken-1 " style="font-size: 14px;">
-          {{ $t("Date Limite :") }} {{ config.limitISO }}
-        </div>
-      </v-col>
-    </v-row>
-  </div>
+  <v-row>
+    <v-col cols="12">
+      <div
+        class="text-left ml-2"
+        :data-cy="(`config.${config.name}`)"
+      >
+        {{ config.name }}
+      </div>
+      <div class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption ml-2" data-cy="tidyscore-information">
+        {{ $t("Information général :") }}
+        <br v-if="config.description"> &nbsp;&nbsp;
+          <a v-if="config.description"> {{ $t("Description :") + config.description }} </a>
+        <br v-if="config.weight"> &nbsp;&nbsp;
+          <a v-if="config.weight"> {{ $t("Weight :") + config.weight }} </a>
+        <br v-if="config.regex"> &nbsp;&nbsp;
+          <a v-if="config.regex"> {{ $t("Regex :") + config.regex }} </a>
+        <br v-if="config.limitISO"> &nbsp;&nbsp;
+          <a v-if="config.limitISO"> {{ $t("limitISO :") + config.limitISO }} </a>
+        <br v-if="config.limitInt"> &nbsp;&nbsp;
+          <a v-if="config.limitInt"> {{ $t("limitInt :") + config.limitInt }} </a>
+      </div>
+    </v-col>
+  </v-row>
   <v-divider></v-divider>
 </template>
 
@@ -48,11 +43,5 @@ export default {
 </script>
 
 <style scoped>
-.text-center {
-  margin-top: 30px;
-  margin-left: 50px;
-}
-.align-center {
-  align-items: center;
-}
+
 </style>

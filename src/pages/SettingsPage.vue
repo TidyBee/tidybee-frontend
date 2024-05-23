@@ -1,7 +1,8 @@
 <template>
   <v-container fluid>
-    <v-row justify="center" class="widget-top-container">
-      <ConfigurationWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTidyRules'" />
+    <div class="info"> {{ "Ici retrouvez les règles appliqués a votre espace partagé. "}} </div> 
+    <v-row justify="center" >
+      <ConfigurationWidget class="widget-top-container" :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTidyRules'" />
     </v-row> 
   </v-container>
 </template>

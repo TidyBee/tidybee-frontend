@@ -13,11 +13,11 @@
           <v-card class="rounded-rectangle-settings-content" :data-cy="`settings-content-container`">
             <div v-if="selectedRule(data)">
               <v-row>
-                <v-virtual-scroll :height="500" :width="1000" :items="selectedRule(data).configurations">
-                  <template #default="{ item: config, index }">
-                    <div :key="index">
+                <v-virtual-scroll :height="650" style="margin-top: 15px" :items="selectedRule(data).configurations" >
+                  <template #default="{ item: config }" >
+                    <v-list-item cols="12">
                       <SettingItem :config="config" />
-                    </div>
+                    </v-list-item>
                   </template>
                 </v-virtual-scroll>
               </v-row>
@@ -47,7 +47,7 @@ export default {
   },
   data() {
     return {
-      tab: "misnamed", // Initialisez this.tab à une valeur par défaut en minuscules
+      tab: "misnamed",
       selectedTabLabel: "MISNAMED",
     };
   },
