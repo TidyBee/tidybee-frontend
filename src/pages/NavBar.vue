@@ -4,12 +4,7 @@
   </v-app-bar-icon>
   <v-app-bar class="px-3" density="compact" :elevation="5" :height="80">
     <v-spacer />
-    <v-tabs
-      v-model="activeTab"
-      centered
-      color="grey-darken-2"
-      :grow="true"
-    >
+    <v-tabs centered color="grey-darken-2" :grow="true">
       <v-tab
         v-for="link in links"
         :key="link"
@@ -35,40 +30,28 @@ import { ref } from "vue";
 export default {
   name: "NavBar",
   setup() {
-    if (!VueCookies.get("locale")) {
+    if (!VueCookies.get(["locale"])) {
       VueCookies.set("locale", "en");
     }
-    const locale = VueCookies.get("locale");
-    const isFrench = ref(locale === 'fr');
-
-    if (!VueCookies.get("activeTab")) {
-      VueCookies.set("activeTab", "Home");
-    }
-    const activeTab = ref(VueCookies.get("activeTab"));
-
+    const locale = VueCookies.get(["locale"]);
+    const isFrench = ref(locale == 'fr');
     return {
       locale,
-      isFrench,
-      activeTab
+      isFrench
     };
   },
   data() {
     return {
-      availableLocales: [],
+      availableLocales: [""],
       links: ["Home", "Settings"],
     };
-  },
-  watch: {
-    activeTab(newTab) {
-      VueCookies.set("activeTab", newTab);
-    }
   },
   mounted() {
     this.availableLocales = this.$i18n.availableLocales;
   },
   methods: {
     switchLang() {
-      if (this.locale === 'en') {
+      if (this.locale == 'en') {
         this.locale = 'fr';
         this.isFrench = true;
       } else {
@@ -79,7 +62,6 @@ export default {
       this.$i18n.locale = this.locale;
     },
     redirectToRoute(routeName) {
-      this.activeTab = routeName;
       this.$router.push({ name: routeName });
     },
   },
