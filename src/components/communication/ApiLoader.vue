@@ -63,7 +63,7 @@ export default {
   methods: {
     setupWebSocket() {
       this.connection = new signalR.HubConnectionBuilder()
-        .withUrl("http://localhost:80/widgetHub") 
+        .withUrl("http://localhost:7003/widgetHub")
         .build();
 
       this.connection.on("ReceiveMessage", (data) => {
@@ -85,7 +85,7 @@ export default {
         });
     },
     requestWidgetData(url) {
-      this.connection.invoke("SendWidgetData", url).catch(err => {
+      this.connection.invoke(url).catch(err => {
         console.error(err.toString());
       });
     },
