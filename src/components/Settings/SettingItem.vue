@@ -10,15 +10,15 @@
       <div class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption ml-2" data-cy="tidyscore-information">
         {{ $t("Information général :") }}
         <br v-if="config.description"> &nbsp;&nbsp;
-          <a v-if="config.description"> {{ $t("Description :") + config.description }} </a>
+        <a v-if="config.description"> {{ $t(`settings.description`) + config.description }} </a>
         <br v-if="config.weight"> &nbsp;&nbsp;
-          <a v-if="config.weight"> {{ $t("Weight :") + config.weight }} </a>
+        <a v-if="config.weight"> {{ $t(`settings.weight`) + config.weight }} </a>
         <br v-if="config.regex"> &nbsp;&nbsp;
-          <a v-if="config.regex"> {{ $t("Regex :") + config.regex }} </a>
+        <a v-if="config.regex"> {{ $t(`settings.regex`) + config.regex }} </a>
         <br v-if="config.limitISO"> &nbsp;&nbsp;
-          <a v-if="config.limitISO"> {{ $t("limitISO :") + config.limitISO }} </a>
+        <a v-if="config.limitISO"> {{ $t(`settings.limitISO`) + config.limitISO }} </a>
         <br v-if="config.limitInt"> &nbsp;&nbsp;
-          <a v-if="config.limitInt"> {{ $t("limitInt :") + config.limitInt }} </a>
+        <a v-if="config.limitInt"> {{ $t(`settings.limitInt`) + config.limitInt }} </a>
       </div>
     </v-col>
   </v-row>

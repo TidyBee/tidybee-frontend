@@ -10,6 +10,14 @@
         "minute": "minute",
         "second": "second"
     },
+    "settings" : {
+      "title" : "Here you'll find the rules applied to your shared space.",
+      "description" : "Description :",
+      "weight" : "Weight :",
+      "regex" : "Regex :",
+      "limitISO" : "limitISO :",
+      "limitInt" : "limitInt :"
+    },
     "navbar": {
         "Home": "TidyBee",
         "Settings": "Your Configuration",

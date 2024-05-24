@@ -13,8 +13,8 @@
           <v-card class="rounded-rectangle-settings-content" :data-cy="`settings-content-container`">
             <div v-if="selectedRule(data)">
               <v-row>
-                <v-virtual-scroll :height="650" style="margin-top: 15px" :items="selectedRule(data).configurations" >
-                  <template #default="{ item: config }" >
+                <v-virtual-scroll :height="650" style="margin-top: 15px" :items="selectedRule(data).configurations">
+                  <template #default="{ item: config }">
                     <v-list-item cols="12">
                       <SettingItem :config="config" />
                     </v-list-item>
