@@ -2,19 +2,19 @@
   <v-container fluid>
     <v-row justify="center" class="widget-top-container">
       <TextWidget :tidy-hub-api="'SendTextWidgetunused'" widget-title="text.title.unused" />
-      <!-- <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetbadname'" widget-title="text.title.badname" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetduplicate'" widget-title="text.title.duplicate" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTotalMonitored'" widget-title="text.title.total" />
-      <TextWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTextWidgetstorage'" widget-title="text.title.storage" /> -->
+      <TextWidget :tidy-hub-api="'SendTextWidgetbadname'" widget-title="text.title.badname" />
+      <TextWidget :tidy-hub-api="'SendTextWidgetduplicate'" widget-title="text.title.duplicate" />
+      <TextWidget :tidy-hub-api="'SendTotalMonitored'" widget-title="text.title.total" />
+      <TextWidget :tidy-hub-api="'SendOverviewMisnamed'" widget-title="text.title.storage" />
     </v-row>
 
     <!-- <v-row justify="center" class="widget-bottom-container">
       <v-col class="no-flex-grow">
-        <GraphWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGraphWidget'" />
-        <GradeWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getGradeWidget'" />
+        <GraphWidget :tidy-hub-api="'SendGraphWidget'" />
+        <GradeWidget :tidy-hub-api="'SendGradeWidget'" />
       </v-col>
       <v-col class="no-flex-grow">
-        <OverViewWidget :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getOverview'" />
+        <OverViewWidget :tidy-hub-api="'SendOverview'" />
       </v-col>
     </v-row>
 
