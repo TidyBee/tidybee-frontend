@@ -5,7 +5,7 @@
       <TextWidget :tidy-hub-api="'SendTextWidgetbadname'" widget-title="text.title.badname" />
       <TextWidget :tidy-hub-api="'SendTextWidgetduplicate'" widget-title="text.title.duplicate" />
       <TextWidget :tidy-hub-api="'SendTotalMonitored'" widget-title="text.title.total" />
-      <TextWidget :tidy-hub-api="'SendOverviewMisnamed'" widget-title="text.title.storage" />
+      <TextWidget :tidy-hub-api="'SendTextWidgetstorage'" widget-title="text.title.storage" />
     </v-row>
 
     <!-- <v-row justify="center" class="widget-bottom-container">
