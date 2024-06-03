@@ -1,7 +1,10 @@
 {
   "name": "tidybee-frontend",
   "version": "0.1.0",
+  "description": "The front end for the TidyBee software solution",
+  "author": "TidyBee",
   "private": true,
+  "main": "main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -9,7 +12,31 @@
     "test:e2e": "vue-cli-service test:e2e --headless --browser electron",
     "test:e2e-withoutHeadless": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
-    "prettify": "prettier . --write"
+    "prettify": "prettier . --write",
+    "electron:serve": "electron .",
+    "electron:build": "electron-builder"
+  },
+  "build": {
+    "appId": "com.tidybee.id",
+    "files": [
+      "dist/**/*",
+      "main.js"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico"
+    },
+    "directories": {
+      "output": "build"
+    }
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -50,6 +77,8 @@
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.5.1",
+    "electron": "^30.0.6",
+    "electron-builder": "^24.13.3",
     "prettier": "^3.1.0"
   },
   "browserslist": [
