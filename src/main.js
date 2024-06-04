@@ -12,7 +12,6 @@ import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
 import fr from "@/assets/translation/fr.json";
-import en from "@/assets/translation/en.json";
 
 const vuetify = createVuetify({
   components,
@@ -20,14 +19,14 @@ const vuetify = createVuetify({
 });
 
 if (!VueCookies.get(["locale"])) {
-  VueCookies.set("locale", "en");
+  VueCookies.set("locale", "fr");
 }
 const locale = VueCookies.get(["locale"]);
 
 const i18n = createI18n({
   locale: locale,
   fallbackLocale: "fr",
-  messages: { fr, en },
+  messages: { fr },
 });
 
 const emitter = mitt();

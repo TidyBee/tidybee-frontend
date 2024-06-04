@@ -32,7 +32,7 @@ export const formatFileSize = (fileSize) => {
   );
 };
 
-export const calculateElapsedTime = (lastUsed, t) => {
+export const calculateElapsedTime = (lastUsed) => {
   const now = new Date();
   const lastUsedTime = lastUsed * 1000;
   const timeDifference = now - lastUsedTime;
@@ -43,11 +43,11 @@ export const calculateElapsedTime = (lastUsed, t) => {
   const days = Math.floor(hours / 24);
   const years = Math.floor(days / 365);
 
-  if (years > 0) return years + " " + (years > 1 ? t('common.years') : t('common.year'));
-  else if (days > 0) return days + " " + t('common.day') + (days > 1 ? "s" : "");
-  else if (hours > 0) return hours + " " + t('common.hour') + (hours > 1 ? "s" : "");
-  else if (minutes > 0) return minutes + " " + t('common.minute') (minutes > 1 ? "s" : "");
-  else return seconds + " " + t('common.second') + (seconds > 1 ? "s" : "");
+  if (years > 0) return years + " " + (years > 1 ? 'an' : 'années');
+  else if (days > 0) return days + " "  + (days > 1 ? "jours" : "jour");
+  else if (hours > 0) return hours + " " +  (hours > 1 ? "heures" : "heure");
+  else if (minutes > 0) return minutes + " " + (minutes > 1 ? "minutes" : "minute");
+  else return seconds + " " + (seconds > 1 ? "secondes" : "seconde");
 }
 
 export const getGradeColor = (grade) => {
