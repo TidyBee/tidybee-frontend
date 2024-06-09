@@ -17,7 +17,7 @@
         <br>
         &nbsp;&nbsp;{{ $t("fileView.size") + formatFileSize(file.size) }}
         <br>
-        &nbsp;&nbsp;{{ $t("fileView.lastUsed") + calculateElapsedTime(file.last_modified.secs_since_epoch, $t) +
+        &nbsp;&nbsp;{{ $t("fileView.lastUsed") + calculateElapsedTime(file.last_modified.secs_since_epoch) +
           $t("fileView.ago") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.placement") + parseFilePlace(file.pretty_path) }}
@@ -36,7 +36,7 @@
         v-if="!isOpen"
         :data-cy="(`overviewwidget-fileitem-date-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
       >
-        {{ calculateElapsedTime(file.last_modified.secs_since_epoch, $t) }}
+        {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
       </span>
     </v-col>
     <v-col cols="2">
