@@ -20,14 +20,6 @@
       <span class="lang-text">FR</span>
       <div class="lang-slider" :class="{ 'lang-slid' : isFrench }"></div>
     </div>
-    <!-- <select v-model="locale" class="lang" @change="switchLang">
-      <option
-        v-for="availableLocale in availableLocales"
-        :key="availableLocale"
-      >
-        {{ availableLocale }}
-      </option>
-    </select> -->
   </v-app-bar>
 </template>
 
