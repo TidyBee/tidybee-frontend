@@ -4,7 +4,7 @@
       {{ $t(`settings.title`) }} 
     </div> 
     <v-row justify="center">
-      <ConfigurationWidget class="widget-top-container" :tidy-hub-api="tidyHubApi + '/Gateway/dataProcessing/Widget/getTidyRules'" />
+      <ConfigurationWidget class="widget-top-container" :tidy-hub-api="'SendTidyRules'" />
     </v-row> 
   </v-container>
 </template>

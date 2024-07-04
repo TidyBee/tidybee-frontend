@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import { fetchData } from "@/components/communication/communication.js";
+
+import * as signalR from '@microsoft/signalr';
 
 export default {
   props: {
@@ -46,35 +47,54 @@ export default {
       isLoading: false,
       hasError: false,
       error: "",
+      connection: null,
     };
   },
   created() {
-    this.loadData(this.apiUrl);
+    this.setupWebSocket();
   },
   mounted() {
-    this.emitter.on("refresh-widgets", (data) => {
-      data;
+    this.emitter.on("refresh-widgets", () => {
       this.handleRefresh(this.apiUrl);
     });
     this.emitter.on(this.widgetName, (data) => {
-      data;
       this.handleRefresh(data.url);
-    })
+    });
   },
   methods: {
-    handleRefresh(url) {
-      this.loadData(url);
-    },
-    async loadData(url) {
-      this.isLoading = true;
-      try {
-        this.apiData = await fetchData(url);
-      } catch (error) {
-        this.hasError = true;
+    setupWebSocket() {
+      this.connection = new signalR.HubConnectionBuilder()
+      .withUrl("http://localhost:7003/widgetHub")
+      .configureLogging(signalR.LogLevel.Information)
+      .build();
+
+
+      this.connection.on("ReceiveMessage", (data) => {
+        this.apiData = data;
         this.isLoading = false;
-        this.error = error.message;
-      }
-      this.isLoading = false;
+        this.hasError = false;
+      });
+
+      this.connection.start()
+        .then(() => {
+          this.isLoading = true;
+          console.log("tests");
+          this.requestWidgetData(this.apiUrl);
+        })
+        .catch(err => {
+          console.error(err.toString());
+          this.hasError = true;
+          this.isLoading = false;
+          this.error = err.message;
+        });
+    },
+    requestWidgetData(url) {
+      this.connection.invoke(url).catch(err => {
+        console.error(err.toString());
+      });
+    },
+    handleRefresh(url) {
+      this.requestWidgetData(url);
     },
   },
 };

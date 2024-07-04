@@ -11,13 +11,13 @@
               align="center"
               class="grade-pos"
               :style="{
-                color: getGradeColor(data.grade),
+                color: getGradeColor(parseJsonData(data)),
               }"
               :data-cy="`gradewidget-grade`"
             >
               <v-row align="center" justify="center">
                 <v-span class="grade" :data-cy="`gradewidget-grade-value`">
-                  {{ data.grade }}
+                  {{ parseJsonData(data) }}
                 </v-span>
               </v-row>
             </v-progress-circular>
@@ -54,6 +54,15 @@ export default {
   },
   methods: {
     getGradeColor,
+    parseJsonData(data) {
+      try {
+        let parsedData = JSON.parse(data);
+        return parsedData.grade || "";
+      } catch (error) {
+        console.error("Erreur lors du parsing JSON :", error);
+        return null;
+      }
+    },
   }
 };
 </script>

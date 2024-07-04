@@ -8,7 +8,7 @@
               {{ $t(`dashboard.widgets.graph.title`) }}
             </v-span>
           </v-row>
-          <GraphChart :pie-data="formatSeries(data.series)" />
+          <GraphChart :pie-data="formatSeries(data)" />
         </div>
         <HelpButton text="dashboard.widgets.graph.help" />
       </template>
@@ -101,17 +101,24 @@ export default {
     };
   },
   methods: {
-    formatSeries(series) {
-      return ([
-        {value: series[0], name: 'TidyScore A'},
-        {value: series[1], name: 'TidyScore B'},
-        {value: series[2], name: 'TidyScore C'},
-        {value: series[3], name: 'TidyScore D'},
-        {value: series[4], name: 'TidyScore E'}
-      ]);
+    formatSeries(data) {
+      try {
+        const parsedData = JSON.parse(data);
+        return [
+          { value: Math.round(parsedData.series[0]), name: 'TidyScore A' },
+          { value: Math.round(parsedData.series[1]), name: 'TidyScore B' },
+          { value: Math.round(parsedData.series[2]), name: 'TidyScore C' },
+          { value: Math.round(parsedData.series[3]), name: 'TidyScore D' },
+          { value: Math.round(parsedData.series[4]), name: 'TidyScore E' }
+        ];
+      } catch (error) {
+        console.error('Erreur lors du traitement des séries JSON :', error);
+        return [];
+      }
     },
   }
 };
+  
 </script>
 
 <style src="@/../css/components/dashboard/GraphWidget.css" scoped></style>
