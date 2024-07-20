@@ -24,9 +24,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 19.4.0
-      
-      - name: Install Deps
+          
+      - name: Install System Deps
+        if: matrix.os == 'ubuntu-latest'
+        run:
+          sudo snap install snapcraft --classic 
+
+      - name: Install Node Deps
         run: yarn install
+
 
       - name: Build client
         run: yarn run electron:build
