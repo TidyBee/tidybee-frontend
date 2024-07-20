@@ -22,6 +22,9 @@
       "dist/**/*",
       "main.js"
     ],
+    "linux": {
+      "icon": "icon-256x256.png"
+    },
     "win": {
       "target": [
         "nsis"
