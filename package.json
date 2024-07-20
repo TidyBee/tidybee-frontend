@@ -39,7 +39,10 @@
     },
     "directories": {
       "output": "build"
-    }
+    },
+    "publish": [{
+      "provider": "github"
+    }]
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
