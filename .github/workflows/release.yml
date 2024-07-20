@@ -36,4 +36,6 @@ jobs:
 
 
       - name: Build client
+        env:
+            GH_TOKEN: ${{ github.token }}
         run: yarn run electron:build
