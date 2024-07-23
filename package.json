@@ -1,6 +1,6 @@
 {
   "name": "tidybee-frontend",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "description": "The front end for the TidyBee software solution",
   "author": "TidyBee",
   "private": true,
@@ -22,6 +22,9 @@
       "dist/**/*",
       "main.js"
     ],
+    "linux": {
+      "icon": "icon-256x256.png"
+    },
     "win": {
       "target": [
         "nsis"
@@ -36,7 +39,10 @@
     },
     "directories": {
       "output": "build"
-    }
+    },
+    "publish": [{
+      "provider": "github"
+    }]
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
