@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 import * as signalR from '@microsoft/signalr';
 
 export default {
@@ -43,7 +42,7 @@ export default {
   },
   data() {
     return {
-      apiData: {},
+      apiData: [],
       isLoading: false,
       hasError: false,
       error: "",
@@ -64,21 +63,34 @@ export default {
   methods: {
     setupWebSocket() {
       this.connection = new signalR.HubConnectionBuilder()
-      .withUrl("http://localhost:7003/widgetHub")
-      .configureLogging(signalR.LogLevel.Information)
-      .build();
+        .withUrl("http://localhost:7003/widgetHub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
 
-
+      // Utilisation de la fonction fléchée pour préserver le contexte de `this`
       this.connection.on("ReceiveMessage", (data) => {
-        this.apiData = data;
-        this.isLoading = false;
-        this.hasError = false;
+        try {
+          const parsedData = JSON.parse(data);
+          // Vérification si parsedData est un tableau
+          if (parsedData) {
+            console.log("parsedata :", parsedData);
+            this.apiData = parsedData;
+            this.isLoading = false;
+            this.hasError = false;
+          } else {
+            throw new Error("Les données reçues ne sont pas un tableau.");
+          }
+        } catch (error) {
+          console.error(error.toString());
+          this.hasError = true;
+          this.isLoading = false;
+          this.error = error.message;
+        }
       });
 
       this.connection.start()
         .then(() => {
           this.isLoading = true;
-          console.log("tests");
           this.requestWidgetData(this.apiUrl);
         })
         .catch(err => {

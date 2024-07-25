@@ -103,13 +103,12 @@ export default {
   methods: {
     formatSeries(data) {
       try {
-        const parsedData = JSON.parse(data);
         return [
-          { value: Math.round(parsedData.series[0]), name: 'TidyScore A' },
-          { value: Math.round(parsedData.series[1]), name: 'TidyScore B' },
-          { value: Math.round(parsedData.series[2]), name: 'TidyScore C' },
-          { value: Math.round(parsedData.series[3]), name: 'TidyScore D' },
-          { value: Math.round(parsedData.series[4]), name: 'TidyScore E' }
+          { value: Math.round(data.series[0]), name: 'TidyScore A' },
+          { value: Math.round(data.series[1]), name: 'TidyScore B' },
+          { value: Math.round(data.series[2]), name: 'TidyScore C' },
+          { value: Math.round(data.series[3]), name: 'TidyScore D' },
+          { value: Math.round(data.series[4]), name: 'TidyScore E' }
         ];
       } catch (error) {
         console.error('Erreur lors du traitement des séries JSON :', error);
@@ -118,7 +117,6 @@ export default {
     },
   }
 };
-  
 </script>
 
 <style src="@/../css/components/dashboard/GraphWidget.css" scoped></style>

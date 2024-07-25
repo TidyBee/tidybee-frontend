@@ -1,32 +1,30 @@
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    {{ 'tests' }}
     <ApiLoader :api-url="tidyHubApi" :widget-name="widgetTitle" :is-text-widget="true" class="full-height">
       <template #default="{ data }">
         <div v-if="data" class="full-height">
           <v-container fluid class="full-height">
             <v-row>
-              {{ data }}
-              <!-- <v-span
-                v-if="data"
+              <v-span
+                v-if="data && data.title"
                 class="widget-title"
                 :data-cy="`textwidget-title`"
               >
-              {{ $t(`dashboard.widgets.text.title.${parseJsonDataTitle(data)}`) }}
-              </v-span> -->
+                {{ $t(`dashboard.widgets.text.title.${data.title}`) }}
+              </v-span>
             </v-row>
 
-            <!-- <v-row
-              v-if="data && parseJsonDataTypes(data) === 'Graph'"
+            <v-row
+              v-if="data && data.types === 'Graph' && data.data"
               class="widget-graph-center"
             >
               <v-span>
                 <v-progress-circular
-                  v-if="parseJsonDataValue(data) !== undefined && parseJsonDataStatus(data) !== undefined"
-                  :model-value="parseJsonDataValue(data)"
+                  v-if="data.data.valuePercentage && data.data.status !== undefined"
+                  :model-value="data.data.valuePercentage"
                   :size="100"
                   :width="10"
-                  :color="parseJsonDataStatus(data) ? 'green' : 'red'"
+                  :color="data.data.status ? 'green' : 'red'"
                   class="widget-graph"
                   :data-cy="`textwidget-graph`"
                 >
@@ -35,35 +33,35 @@
                     align="center"
                     :data-cy="`textwidget-graph-value`"
                   >
-                    {{ parseJsonDataValue(data) }}
+                    {{ data.data.value }}
                   </v-row>
                 </v-progress-circular>
               </v-span>
             </v-row>
 
             <v-row
-              v-if="data && parseJsonDataTypes(data) === 'Number'"
+              v-else-if="data && data.types === 'Number' && data.data"
               class="widget-text-center"
             >
               <v-span
-                :class="{ 'green-text': parseJsonDataStatus(data), 'red-text': !parseJsonDataStatus(data) }"
+                :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
                 :data-cy="`textwidget-number`"
               >
-                {{ parseJsonDataValue(data) }}
+                {{ data.data.value }}
               </v-span>
             </v-row>
-
+            
             <v-row
-              v-if="data && parseJsonDataPercentage(data) !== undefined"
-              :class="{ 'green-text': parseJsonDataStatus, 'red-text': !parseJsonDataStatus }"
-            >
+              :class="{ 'green-text': data.data && data.data.status, 'red-text': data.data && !data.data.status }"
+            > 
               <v-span
+                v-if="data && data.data && data.data.percentage"
                 class="widget-text-bottom"
                 :data-cy="`textwidget-text-bottom`"
               >
-                {{ parseJsonDataPercentage(data) + $t("dashboard.widgets.text.percentage") }}
+                {{ data.data.percentage + $t("dashboard.widgets.text.percentage") }}
               </v-span>
-            </v-row> -->
+            </v-row>
           </v-container>
         </div>
         <HelpButton :small="true" :text="`dashboard.widgets.text.help.` + data.title" />
@@ -92,55 +90,7 @@ export default {
       required: true,
     },
   },
-  methods: {
-    parseJsonDataTitle(data) {
-      try {
-        let parsedData = JSON.parse(data);
-        return parsedData.title || "";
-      } catch (error) {
-        console.error("Erreur lors du parsing JSON :", error);
-        return null;
-      }
-    },
-    parseJsonDataTypes(data) {
-      try {
-        let parsedData = JSON.parse(data);
-        return parsedData.types || "";
-      } catch (error) {
-        console.error("Erreur lors du parsing JSON :", error);
-        return null;
-      }
-    },
-    parseJsonDataStatus(data) {
-      try {
-        let parsedData = JSON.parse(data);
-        return parsedData.data && parsedData.data.status !== undefined ? parsedData.data.status : false
-      } catch (error) {
-        console.error("Erreur lors du parsing JSON :", error);
-        return null;
-      }
-    },
-    parseJsonDataPercentage(data) {
-      try {
-        let parsedData = JSON.parse(data);
-        return parsedData.data && parsedData.data.percentage ? parsedData.data.percentage : ""
-      } catch (error) {
-        console.error("Erreur lors du parsing JSON :", error);
-        return null;
-      }
-    },
-    parseJsonDataValue(data) {
-      try {
-        let parsedData = JSON.parse(data);
-        return parsedData.data && parsedData.data.value ? parsedData.data.value : 0
-      } catch (error) {
-        console.error("Erreur lors du parsing JSON :", error);
-        return null;
-      }
-    }
-  }
 };
 </script>
-
 
 <style src="@/../css/components/dashboard/TextWidget.css" scoped></style>

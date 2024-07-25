@@ -68,27 +68,26 @@
     </v-row>
     <v-row>
       <v-virtual-scroll :height="340" :items="sortedResponses(fetchdata)" style="overflow-x: clip;">
-        <!-- <template #default="{ item }">
-          {{item}}
+        <template #default="{ item }">
           <v-list-item cols="12">
             <FileItem :file="item" :tab="tab" />
           </v-list-item>
-        </template> -->
+        </template>
       </v-virtual-scroll> 
     </v-row>
   </v-container>
 </template>
 
 <script>
-// import { sortBy } from "@/components/dashboard/widgets/OverView/sortBy";
-// import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
+import { sortBy } from "@/components/dashboard/widgets/OverView/sortBy";
+import FileItem from "@/components/dashboard/widgets/OverView/FileItem.vue";
 import VueCookies from "vue-cookies";
 
 export default {
   name: "ListFile",
-  // components: {
-  //   FileItem,
-  // },
+  components: {
+    FileItem,
+  },
   props: {
     fetchdata: {
       type: Object,
@@ -178,26 +177,26 @@ export default {
     },
     sortedResponses(filesData) {
       console.log("test :", filesData);
-      let parsedData = JSON.parse(filesData);
-      const data = parsedData;
-      console.log("data:", data.length);
-      console.log("data:", data);
-      // if (parsedData) {
-      //   switch (this.selectedFilter) {
-      //     case 'TidyScore Asc':
-      //     case 'TidyScore Desc':
-      //     case 'Size Asc':
-      //     case 'Size Desc':
-      //     case 'Secs Asc':
-      //     case 'Secs Desc':
-      //     case 'Name Asc':
-      //     case 'Name Desc':
-      //       return sortBy(parsedData, this.selectedFilter.split(' ')[0].toLowerCase(), this.selectedFilter.split(' ')[1]);
-      //     default:
-      //       return parsedData;
-      //   }
-      // } 
-      return data;
+      // let parsedData = JSON.parse(filesData);
+      // const data = parsedData;
+      // console.log("data:", data.length);
+      // console.log("data:", data);
+      if (filesData) {
+        switch (this.selectedFilter) {
+          case 'TidyScore Asc':
+          case 'TidyScore Desc':
+          case 'Size Asc':
+          case 'Size Desc':
+          case 'Secs Asc':
+          case 'Secs Desc':
+          case 'Name Asc':
+          case 'Name Desc':
+            return sortBy(filesData, this.selectedFilter.split(' ')[0].toLowerCase(), this.selectedFilter.split(' ')[1]);
+          default:
+            return filesData;
+        }
+      } 
+      return null;
     },
     sortWithTidyScore(tidyscore) {
       if (this.tab == "misnamed") return tidyscore.misnamed;
