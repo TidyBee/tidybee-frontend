@@ -67,11 +67,9 @@ export default {
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-      // Utilisation de la fonction fléchée pour préserver le contexte de `this`
       this.connection.on("ReceiveMessage", (data) => {
         try {
           const parsedData = JSON.parse(data);
-          // Vérification si parsedData est un tableau
           if (parsedData) {
             console.log("parsedata :", parsedData);
             this.apiData = parsedData;
