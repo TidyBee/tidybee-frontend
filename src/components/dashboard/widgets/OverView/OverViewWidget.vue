@@ -14,9 +14,9 @@
             >
               {{ $t(`dashboard.widgets.overView.title.${item.label}`) }}
             </v-tab>
-          </v-tabs>
+          </v-tabs> 
           <ListFile :fetchdata="data" :tab="selectedTabLabel" />
-        </div>
+        </div>  
       </template>
     </ApiLoader>
   </v-card>
@@ -54,6 +54,7 @@ export default {
       selectedTabLabel: "all",
       selectedUrl: "All",
       activeTab: "",
+      // dataParse:[{"pretty_path":"/app/tests/assets/test_folder/test-file-9","size":100,"last_modified":{"secs_since_epoch":1707007046,"nanos_since_epoch":332509000},"tidy_score":{"grade":"D","misnamed":{"grade":"E","configurations":null},"unused":{"grade":"A","configurations":null},"duplicated":{"grade":"E","configurations":null}}},{"pretty_path":"/app/tests/assets/test_folder/test-file-2","size":100,"last_modified":{"secs_since_epoch":1707007046,"nanos_since_epoch":332102000},"tidy_score":{"grade":"D","misnamed":{"grade":"E","configurations":null},"unused":{"grade":"A","configurations":null},"duplicated":{"grade":"E","configurations":null}}},{"pretty_path":"/app/tests/assets/test_folder/test-file-1","size":100,"last_modified":{"secs_since_epoch":1707007046,"nanos_since_epoch":331979000},"tidy_score":{"grade":"D","misnamed":{"grade":"E","configurations":null},"unused":{"grade":"A","configurations":null},"duplicated":{"grade":"F","configurations":null}}},{"pretty_path":"/app/tests/assets/test_folder/test-file-4","size":100,"last_modified":{"secs_since_epoch":1707007046,"nanos_since_epoch":332219000},"tidy_score":{"grade":"D","misnamed":{"grade":"E","configurations":null},"unused":{"grade":"A","configurations":null},"duplicated":{"grade":"E","configurations":null}}},{"pretty_path":"/app/tests/assets/test_folder/test-file-10","size":100,"last_modified":{"secs_since_epoch":1707007046,"nanos_since_epoch":332042000},"tidy_score":{"grade":"D","misnamed":{"grade":"E","configurations":null},"unused":{"grade":"A","configurations":null},"duplicated":{"grade":"E","configurations":null}}},{"pretty_path":"/app/tests/assets/test_folder/test-file-5","size":100,"last_modified":{"secs_since_epoch":1707007046,"nanos_since_epoch":332279000},"tidy_score":{"grade":"D","misnamed":{"grade":"E","configurations":null},"unused":{"grade":"A","configurations":null},"duplicated":{"grade":"E","configurations":null}}}],
       tabs: [
         { label: "all", url: "All", value: "one" },
         { label: "misnamed", url: "Misnamed", value: "two" },
