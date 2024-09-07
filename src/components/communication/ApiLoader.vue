@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { fetchData } from "@/components/communication/communication.js";
+import * as signalR from '@microsoft/signalr';
 
 export default {
   props: {
@@ -42,39 +42,69 @@ export default {
   },
   data() {
     return {
-      apiData: {},
+      apiData: [],
       isLoading: false,
       hasError: false,
       error: "",
+      connection: null,
     };
   },
   created() {
-    this.loadData(this.apiUrl);
+    this.setupWebSocket();
   },
   mounted() {
-    this.emitter.on("refresh-widgets", (data) => {
-      data;
+    this.emitter.on("refresh-widgets", () => {
       this.handleRefresh(this.apiUrl);
     });
     this.emitter.on(this.widgetName, (data) => {
-      data;
       this.handleRefresh(data.url);
-    })
+    });
   },
   methods: {
-    handleRefresh(url) {
-      this.loadData(url);
+    setupWebSocket() {
+      this.connection = new signalR.HubConnectionBuilder()
+        .withUrl("http://localhost:7003/widgetHub")
+        .configureLogging(signalR.LogLevel.Information)
+        .build();
+
+      this.connection.on("ReceiveMessage", (data) => {
+        try {
+          const parsedData = JSON.parse(data);
+          if (parsedData) {
+            console.log("parsedata :", parsedData);
+            this.apiData = parsedData;
+            this.isLoading = false;
+            this.hasError = false;
+          } else {
+            throw new Error("Les données reçues ne sont pas un tableau.");
+          }
+        } catch (error) {
+          console.error(error.toString());
+          this.hasError = true;
+          this.isLoading = false;
+          this.error = error.message;
+        }
+      });
+
+      this.connection.start()
+        .then(() => {
+          this.isLoading = true;
+          this.requestWidgetData(this.apiUrl);
+        })
+        .catch(err => {
+          console.error(err.toString());
+          this.hasError = true;
+          this.isLoading = false;
+          this.error = err.message;
+        });
     },
-    async loadData(url) {
-      this.isLoading = true;
-      try {
-        this.apiData = await fetchData(url);
-      } catch (error) {
-        this.hasError = true;
-        this.isLoading = false;
-        this.error = error.message;
-      }
-      this.isLoading = false;
+    requestWidgetData(url) {
+      this.connection.invoke(url).catch(err => {
+        console.error(err.toString());
+      });
+    },
+    handleRefresh(url) {
+      this.requestWidgetData(url);
     },
   },
 };

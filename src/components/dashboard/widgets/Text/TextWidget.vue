@@ -50,10 +50,10 @@
                 {{ data.data.value }}
               </v-span>
             </v-row>
-
+            
             <v-row
-              :class="{ 'green-text': data && data.data.status, 'red-text': data && !data.data.status }"
-            >
+              :class="{ 'green-text': data.data && data.data.status, 'red-text': data.data && !data.data.status }"
+            > 
               <v-span
                 v-if="data && data.data && data.data.percentage"
                 class="widget-text-bottom"
