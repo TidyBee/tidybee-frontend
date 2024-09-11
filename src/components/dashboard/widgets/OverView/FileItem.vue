@@ -90,6 +90,11 @@ export default {
       isOpen: false,
     };
   },
+  watch: {
+    tab() {
+      this.isOpen = false;
+    }
+  },
   methods: {
     formatFileSize,
     getGrade,
@@ -113,9 +118,11 @@ export default {
         return 'fileView.help';
       let desc = '';
       const configurations = this.getConfigurations(tidyScore, tab);
-      for (let i = 0; i < configurations.length; i++) {
-        if (configurations[i].description != null)
-          desc += (desc != '' ? '\n' : '') + configurations[i].description;
+      if (configurations != null && configurations.length > 0) {
+        for (let i = 0; i < configurations.length; i++) {
+          if (configurations[i].description != null)
+            desc += (desc != '' ? '\n' : '') + configurations[i].description;
+        }
       }
       if (desc == '')
         desc = 'fileView.goodFile';
@@ -131,8 +138,10 @@ export default {
       }
       let data = [];
       const configurations = this.getConfigurations(tidyScore, tab);
-      for (let i = 0; i < configurations.length; i++) {
-        data.push(configurations[i].grade);
+      if (configurations != null && configurations.length > 0) {
+        for (let i = 0; i < configurations.length; i++) {
+          data.push(configurations[i].grade);
+        }
       }
       return data;
     },
@@ -146,8 +155,10 @@ export default {
       }
       let data = [];
       const configurations = this.getConfigurations(tidyScore, tab);
-      for (let i = 0; i < configurations.length; i++) {
-        data.push({ value: 1, name: configurations[i].name, label: { show: false } });
+      if (configurations != null && configurations.length > 0) {
+        for (let i = 0; i < configurations.length; i++) {
+          data.push({ value: 1, name: configurations[i].name, label: { show: false } });
+        }
       }
       return data;
     },
