@@ -71,7 +71,6 @@ export default {
         try {
           const parsedData = JSON.parse(data);
           if (parsedData) {
-            console.log("parsedata :", parsedData);
             this.apiData = parsedData;
             this.isLoading = false;
             this.hasError = false;
