@@ -19,12 +19,12 @@
     "limitInt" : "limiteInt :"
   },
   "navbar": {
-    "Home": "TidyBee",
+    "Home": "Tidybee",
     "Settings": "Votre Configuration",
     "About" : "À Propos"
   },
   "help": {
-    "helpText1" : "C'est ici que le tutoriel de TidyBee sera",
+    "helpText1" : "C'est ici que le tutoriel de Tidybee sera",
     "helpText2" : "Une fois écrit"
   },
   "fileItem" : {
@@ -72,14 +72,14 @@
       "text" :{
         "help": {
           "unused": "Ce widget affiche le nombre de fichiers inutilisés sur votre espace partagé et son evolution depuis le dernier mois",
-          "total": "Ce widget affiche le nombre de fichiers sur votre espace partagé qui sont surveillés par TidyBee",
+          "total": "Ce widget affiche le nombre de fichiers sur votre espace partagé qui sont surveillés par Tidybee",
           "badname": "Ce widget affiche le nombre de fichiers mal nommés sur votre espace partagé et son evolution depuis le dernier mois",
           "duplicate": "Ce widget affiche le nombre de fichiers dupliqués sur votre espace partagé et son evolution depuis le dernier mois",
           "storage": "Ce widget affiche l'utilisation total de vos espaces partagés et son evolution depuis le dernier mois"
         },
         "title":{
           "unused": "Fichiers inutilisés",
-          "total": "Fichier surveillés par TidyBee",
+          "total": "Fichier surveillés par Tidybee",
           "badname": "Fichiers mal nommés",
           "duplicate": "Fichiers dupliqués",
           "storage": "Espaces partagés"
