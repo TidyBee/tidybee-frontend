@@ -73,7 +73,7 @@
             <FileItem :file="item" :tab="tab" />
           </v-list-item>
         </template>
-      </v-virtual-scroll>
+      </v-virtual-scroll> 
     </v-row>
   </v-container>
 </template>
@@ -152,7 +152,7 @@ export default {
     arrowRotation(arrow) {
       return this[arrow] ? 180 : 0; 
     },
-    sortedFileList(data) {  
+    sortedFileList(data) { 
       let filesData = [];
       if (data && data.Responses) {
         data.Responses.map((target) => {
