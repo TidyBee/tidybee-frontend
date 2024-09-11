@@ -1,6 +1,7 @@
 import { getGrade, parseFileName } from "@/utils";
 
 export const sortBy = (responses, sortByParam, sortOrder) => {
+  console.log("reponses:", responses)
   const sortFunctions = {
     nameAsc: sortByNameAsc,
     nameDesc: sortByNameDesc,
@@ -17,6 +18,7 @@ export const sortBy = (responses, sortByParam, sortOrder) => {
   }`;
   const sortFunction = sortFunctions[sortKey];
   if (sortFunction) {
+    console.log("sortFunction(responses):", sortFunction(responses))
     return sortFunction(responses);
   } else {
     console.error("Invalid sortByParam or sortOrder");
