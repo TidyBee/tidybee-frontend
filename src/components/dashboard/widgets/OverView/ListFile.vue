@@ -67,14 +67,23 @@
       <v-divider></v-divider>
     </v-row>
     <v-row>
-      <v-virtual-scroll :height="340" :items="sortedResponses(fetchdata)" style="overflow-x: clip;">
+      <v-virtual-scroll :height="300" :items="paginatedItems" style="overflow-x: clip;">
         <template #default="{ item }">
           <v-list-item cols="12">
             <FileItem :file="item" :tab="tab" />
           </v-list-item>
         </template>
-      </v-virtual-scroll> 
+      </v-virtual-scroll>
     </v-row>
+    <div class="pagination">
+      <button :disabled="currentPage === 1" @click="prevPage">
+        <v-icon>mdi-chevron-left</v-icon>
+      </button>
+      <span>{{ currentPage }} sur {{ pageCount }}</span>
+      <button :disabled="currentPage === pageCount" @click="nextPage">
+        <v-icon>mdi-chevron-right</v-icon>
+      </button>
+    </div>
   </v-container>
 </template>
 
@@ -110,6 +119,8 @@ export default {
   },
   data() {
     return {
+      currentPage: 1,
+      itemsPerPage: 7,
       isArrowRotatedName: false,
       isArrowRotatedSize: false,
       isArrowRotatedLastUsed: false,
@@ -144,6 +155,21 @@ export default {
       ],
       fileList: "",
     };
+  },
+  computed: {
+    paginatedItems() {
+      const start = (this.currentPage - 1) * this.itemsPerPage
+      const end = start + this.itemsPerPage
+      return this.sortedResponses(this.fetchdata).slice(start, end)
+    },
+    pageCount() {
+      return Math.ceil(this.sortedResponses(this.fetchdata).length / this.itemsPerPage)
+    }
+  },
+  watch: {
+    tab() {
+      this.currentPage = 1;
+    },
   },
   mounted() {
     this.selectedFilter = this.selectedFilterCookie;
@@ -222,7 +248,18 @@ export default {
         this.selectedFilter = filterMap[arrow][this[arrow]];
       }
       this.sortedResponses(this.fileList);
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage -= 1
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.pageCount) {
+        this.currentPage += 1
+      }
     }
+
   }
 };
 </script>
