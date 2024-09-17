@@ -1,5 +1,5 @@
 <template>
-    <v-btn block class="rounded-rectangle" href="fill me up">Configurer l'intégration Google Drive</v-btn>
+  <v-btn block class="rounded-rectangle" href="fill me up">Configurer l'intégration Google Drive</v-btn>
 </template>
 
 <script>

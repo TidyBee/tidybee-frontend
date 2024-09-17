@@ -18,19 +18,25 @@ const vuetify = createVuetify({
   directives,
 });
 
-if (!VueCookies.get(["locale"])) {
+if (!VueCookies.get("locale")) {
   VueCookies.set("locale", "fr");
 }
-const locale = VueCookies.get(["locale"]);
+const locale = VueCookies.get("locale");
 
 const i18n = createI18n({
-  locale: locale,
+  locale: locale || "fr",
   fallbackLocale: "fr",
   messages: { fr },
 });
 
 const emitter = mitt();
-const app = createApp(App).use(i18n).use(vuetify).use(router);
+
+const app = createApp(App);
+
+app.use(i18n);
+app.use(vuetify);
+app.use(router);
+app.use(VueCookies);
 
 app.config.globalProperties.emitter = emitter;
 app.mount("#app");
