@@ -1,7 +1,7 @@
 import MainPage from "@/pages/MainPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
@@ -14,11 +14,21 @@ const routes = [
     component: SettingsPage,
     path: "/settings",
   },
+  {
+    name: "Callback",
+    path: "/callback/google",
+    redirect: (to) => {
+      console.log(to);
+      return {
+        path: "/settings"
+      }
+    }
+  }
 ];
 
 const router = createRouter({
   mode: "history",
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 
