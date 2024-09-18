@@ -15,12 +15,8 @@ const routes = [
   },
   {
     name: "Callback",
-    path: "/callback/google",
-    redirect: () => {
-      return {
-        path: "/settings",
-      };
-    },
+    path: "/callback",
+    redirect: "/settings",
   },
 ];
 
