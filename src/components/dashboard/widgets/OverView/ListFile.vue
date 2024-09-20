@@ -153,7 +153,6 @@ export default {
       return this[arrow] ? 180 : 0; 
     },
     sortedFileList(data) { 
-      console.log("data:", data);
       let filesData = [];
       if (data && data.Responses) {
         data.Responses.map((target) => {
@@ -176,11 +175,6 @@ export default {
       return filesData;
     },
     sortedResponses(filesData) {
-      console.log("test :", filesData);
-      // let parsedData = JSON.parse(filesData);
-      // const data = parsedData;
-      // console.log("data:", data.length);
-      // console.log("data:", data);
       if (filesData) {
         switch (this.selectedFilter) {
           case 'TidyScore Asc':
