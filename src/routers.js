@@ -15,7 +15,7 @@ const routes = [
   },
   {
     name: "Callback",
-    path: "/callback",
+    path: "/callback/:provider",
     redirect: "/settings",
   },
 ];
