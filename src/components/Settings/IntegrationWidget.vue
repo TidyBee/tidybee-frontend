@@ -34,8 +34,8 @@
 
 <script>
 // Import gRPC client
-import { NotionSyncClient } from './grpc/notion_sync_grpc_web_pb';
-import { SyncDatabaseRequest } from './grpc/notion_sync_pb';
+import { NotionSyncClient } from '../../grpc/proto/notion_sync_grpc_web_pb';
+import { SyncDatabaseRequest } from '../../grpc/proto/notion_sync_pb';
 
 export default {
   name: "IntegrationWidget",
@@ -48,7 +48,7 @@ export default {
   },
   created() {
     // Initialize the gRPC client
-    this.grpcClient = new NotionSyncClient(process.env.GRPC_HUB, null, null);
+    this.grpcClient = new NotionSyncClient('http://localhost:5057', null, null); /// DID NOT SUCESS TO USE THE .ENV WEIRD
   },
   methods: {
     linkDatabase() {
