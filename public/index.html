@@ -1,17 +1,23 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>icon.png">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="Description de votre application Vue">
+    <meta name="keywords" content="vue, vuetify, vue-router, i18n, web application">
+    <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta property="og:description" content="Description de votre application Vue">
+    <meta property="og:image" content="<%= BASE_URL %>icon.png">
+    <meta property="og:url" content="<%= BASE_URL %>">
+    <meta name="twitter:card" content="summary_large_image">
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>Désolé, mais <%= htmlWebpackPlugin.options.title %> ne fonctionne pas correctement sans JavaScript. Veuillez l'activer pour continuer.</strong>
     </noscript>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
 </html>

@@ -5,17 +5,20 @@
     </div> 
     <v-row justify="center">
       <ConfigurationWidget class="widget-top-container" :tidy-hub-api="'SendTidyRules'" />
-    </v-row> 
+      <IntegrationWidget />
+    </v-row>
   </v-container>
 </template>
 
 <script>
 import ConfigurationWidget from "@/components/Settings/ConfigurationWidget.vue";
+import IntegrationWidget from "@/components/Settings/IntegrationWidget.vue";
 
 export default {
   name: "SettingsPage",
   components: {
     ConfigurationWidget,
+    IntegrationWidget,
   },
   data() {
     return {

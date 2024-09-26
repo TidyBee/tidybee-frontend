@@ -7,6 +7,7 @@
   "main": "main.js",
   "scripts": {
     "serve": "vue-cli-service serve",
+    "start": "node src/server.js",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e --headless --browser electron",
@@ -40,9 +41,11 @@
     "directories": {
       "output": "build"
     },
-    "publish": [{
-      "provider": "github"
-    }]
+    "publish": [
+      {
+        "provider": "github"
+      }
+    ]
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -53,6 +56,7 @@
     "crypto": "^1.0.1",
     "crypto-browserify": "^3.12.0",
     "echarts": "^5.5.0",
+    "express": "^4.21.0",
     "mitt": "^3.0.1",
     "os": "^0.1.2",
     "path": "^0.12.7",
@@ -81,11 +85,11 @@
     "@vue/vue3-jest": "^27.0.0-alpha.1",
     "babel-jest": "^27.5.1",
     "cypress": "^9.7.0",
+    "electron": "^30.0.6",
+    "electron-builder": "^24.13.3",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.5.1",
-    "electron": "^30.0.6",
-    "electron-builder": "^24.13.3",
     "prettier": "^3.1.0"
   },
   "browserslist": [
