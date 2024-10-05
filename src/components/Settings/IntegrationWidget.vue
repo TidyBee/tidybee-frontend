@@ -48,7 +48,7 @@ export default {
   },
   created() {
     // Initialize the gRPC client
-    this.grpcClient = new NotionSyncClient(process.env.VUE_GRPC_HUB, null, null); /// DID NOT SUCESS TO USE THE .ENV WEIRD
+    this.grpcClient = new NotionSyncClient("http://localhost:5057", null, null); /// DID NOT SUCESS TO USE THE .ENV WEIRD
   },
   methods: {
     linkDatabase() {
