@@ -50,7 +50,7 @@ const routes = [
       }
 
       // Redirect the user to the settings page
-      return "/settings";
+      //return "/settings";
     },
   }
 ];
