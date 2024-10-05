@@ -22,11 +22,14 @@ const routes = [
       const { provider } = to.params;
       const { code } = to.query; // assuming the provider returns a 'code' from the query params
 
+      console.log("STARTING");
       // Handle Google Drive provider case
-      if (provider === 'google-drive') {
+      if (provider === 'google') {
+        console.log("GOOGLE");
         const grpcGoogleDriveClient = new GoogleDriveGrpcSyncClient("http://0.0.0.0:8081", null, null); // Initialize GoogleDrive gRPC client
 
         if (code) {
+          console.log("CODE");
           const request = new SyncDriveRequest();
           request.setDriveid(code);  // Use the code from the callback as the Drive ID
 
