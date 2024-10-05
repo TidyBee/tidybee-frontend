@@ -34,10 +34,10 @@ const routes = [
         if (code) {
           console.log("CODE");
           const request = new SyncFilesRequest();
-          request.setDriveid(code);  // Use the code from the callback as the Drive ID
+          request.setOauth2token(code);  // Use the code from the callback as the Drive ID
 
           // Call the gRPC SyncDrive method
-          grpcGoogleDriveClient.syncDrive(request, {}, (err, response) => {
+          grpcGoogleDriveClient.syncFiles(request, {}, (err, response) => {
             if (err) {
               console.error('gRPC Error:', err.message);
               alert('Failed to link Google Drive. Please try again.');
