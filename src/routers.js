@@ -1,8 +1,8 @@
 import MainPage from "@/pages/MainPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
-import { GoogleDriveGrpcSyncClient } from './grpc/proto/notion_sync_grpc_web_pb';
-import { SyncDriveRequest } from './grpc/proto/notion_sync_pb';
+import { GoogleDriveGrpcSyncClient } from './grpc/proto/google_drive_grpc_web_pb';
+import { SyncDriveRequest } from './grpc/proto/google_drive_pb';
 
 const routes = [
   {
