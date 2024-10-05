@@ -12,7 +12,7 @@
       <br>
       ({{ error }})
     </div>
-    <div v-else class="full-height">
+    <div v-else class="full-height" :class="classes">
       <slot :data="apiData" />
     </div>
   </div>
@@ -38,6 +38,11 @@ export default {
     isTextWidget: {
       type: Boolean,
       default: false,
+    },
+    classes: {
+      type: String,
+      default: '',
+      required: false
     }
   },
   data() {
