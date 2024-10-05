@@ -23,7 +23,7 @@ const routes = [
 
       // Handle Google Drive provider case
       if (provider === 'google') {
-        const grpcGoogleDriveClient = new GoogleDriveGrpcSyncClient("http://0.0.0.0:8081", null, null); // Initialize GoogleDrive gRPC client
+        const grpcGoogleDriveClient = new GoogleDriveGrpcSyncClient("http://127.0.0.1:8081", null, null); // Initialize GoogleDrive gRPC client
 
         const hash = to.hash.substring(1); // Remove the '#' from the start of the hash
         const params = new URLSearchParams(hash); // Parse the hash into parameters
