@@ -20,7 +20,7 @@ module.exports = defineConfig({
     },
   },
   devServer: {
-    proxy: "http://localhost:7001",
+    proxy: "http://0.0.0.0:7001",
     historyApiFallback: true,
   },
 });
