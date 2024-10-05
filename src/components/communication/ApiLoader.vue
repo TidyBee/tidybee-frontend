@@ -63,7 +63,7 @@ export default {
   methods: {
     setupWebSocket() {
       this.connection = new signalR.HubConnectionBuilder()
-        .withUrl("http://0.0.0.0:7003/widgetHub")
+        .withUrl("http://prod.tidybee.fr:7003/widgetHub")
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
