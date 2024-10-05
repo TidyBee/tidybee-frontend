@@ -2,7 +2,7 @@ import MainPage from "@/pages/MainPage.vue";
 import SettingsPage from "@/pages/SettingsPage.vue";
 import { createRouter, createWebHistory } from "vue-router";
 import { GoogleDriveGrpcSyncClient } from './grpc/proto/google_drive_grpc_web_pb';
-import { SyncDriveRequest } from './grpc/proto/google_drive_pb';
+import { SyncFilesRequest } from './grpc/proto/google_drive_pb';
 
 const routes = [
   {
@@ -33,7 +33,7 @@ const routes = [
         console.log(code);
         if (code) {
           console.log("CODE");
-          const request = new SyncDriveRequest();
+          const request = new SyncFilesRequest();
           request.setDriveid(code);  // Use the code from the callback as the Drive ID
 
           // Call the gRPC SyncDrive method
