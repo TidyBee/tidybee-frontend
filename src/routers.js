@@ -20,7 +20,6 @@ const routes = [
     path: "/callback/:provider",
     redirect: (to) => {
       const { provider } = to.params;
-      const { code } = to.query; // assuming the provider returns a 'code' from the query params
 
       console.log("STARTING");
       // Handle Google Drive provider case
@@ -28,6 +27,10 @@ const routes = [
         console.log("GOOGLE");
         const grpcGoogleDriveClient = new GoogleDriveGrpcSyncClient("http://0.0.0.0:8081", null, null); // Initialize GoogleDrive gRPC client
 
+        const hash = to.hash.substring(1); // Remove the '#' from the start of the hash
+        const params = new URLSearchParams(hash); // Parse the hash into parameters
+        const code = params.get('access_token');
+        console.log(code);
         if (code) {
           console.log("CODE");
           const request = new SyncDriveRequest();
