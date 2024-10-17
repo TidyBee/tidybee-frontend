@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn block class="rounded-rectangle" href="https://accounts.google.com/o/oauth2/v2/auth?client_id=321237974559-ci21viakgst5smup6gk5hhpfbe7sb6r4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/callback/google&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file">Configurer l'intégration Google Drive</v-btn>
+    <v-btn block class="rounded-rectangle" href="https://accounts.google.com/o/oauth2/v2/auth?client_id=321237974559-ci21viakgst5smup6gk5hhpfbe7sb6r4.apps.googleusercontent.com&redirect_uri=http://prod.tidybee.fr:8080/callback/google&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file">Configurer l'intégration Google Drive</v-btn>
 
     <!-- Button to configure Notion integration -->
     <v-btn block class="rounded-rectangle" @click="showDialog = true">Configurer l'intégration Notion</v-btn>
