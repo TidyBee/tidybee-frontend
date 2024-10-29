@@ -1,12 +1,14 @@
 <template>
   <v-container fluid>
-    <div>
+    <div class="mt-20">
       {{ "Home" }}
     </div>
   </v-container>
 </template>
 
 <script>
+
+
 export default {
   name: "HomePage",
 };

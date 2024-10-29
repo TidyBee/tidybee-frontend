@@ -1,12 +1,13 @@
 <template>
   <v-app-bar class="navbar" :elevation="3" app>
     <v-spacer />
-    <v-tabs v-model="activeTab" centered color="grey-darken-2">
       <v-tab 
+        height="80"
         :text="'TidyList'" 
         @click="redirectToRoute('Overview')"
       ></v-tab>
       <v-tab 
+        height="80"
         :text="'Statistique'" 
         @click="redirectToRoute('Overview')"
       ></v-tab>
@@ -23,14 +24,15 @@
         ></v-img>
       </v-tab>
       <v-tab 
+        height="80"
         :text="'TITLE'" 
         @click="redirectToRoute('Overview')"
         ></v-tab>
       <v-tab 
+        height="80"
         :text="'Configuration'" 
         @click="redirectToRoute('Configuration')"
         ></v-tab>
-    </v-tabs>
     <v-spacer />
   </v-app-bar>
 </template>
