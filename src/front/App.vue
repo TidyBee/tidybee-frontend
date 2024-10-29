@@ -3,7 +3,7 @@
     <v-app>
       <NavBar :prop-page="'Home'" />
       <v-container>
-        <slot />
+        <router-view />
       </v-container>
       <ThemeButton />
     </v-app>
