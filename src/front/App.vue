@@ -1,25 +1,28 @@
 <template>
-  <div id="app">
-    <v-app>
-      <NavBar :prop-page="'Home'" />
-      <v-container>
-        <router-view />
-      </v-container>
-      <ThemeButton />
-    </v-app>
-  </div>
+  <v-app>
+    <NavBar :prop-page="'Home'" />
+
+    <div id="app">
+      <router-view />
+    </div>
+  </v-app>
 </template>
 
 <script>
-
-import NavBar from '@/front/components/navbar/NavBar.vue';
-import ThemeButton from '@/front/components/themeButton/ThemeButton.vue'
+import NavBar from "@/front/pages/NavBar.vue";
+import { ref } from "vue";
 
 export default {
   name: "App",
   components: {
     NavBar,
-    ThemeButton
+  },
+  setup() {
+    const isOpen = ref(false);
+
+    return { isOpen };
   },
 };
 </script>
+
+<style src="" scoped></style>
