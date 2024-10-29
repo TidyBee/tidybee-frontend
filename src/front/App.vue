@@ -1,28 +1,22 @@
 <template>
-  <v-app>
-    <NavBar :prop-page="'Home'" />
-
-    <div id="app">
-      <router-view />
-    </div>
-  </v-app>
+  <div id="app">
+    <v-app>
+      <NavBar :prop-page="'Home'" />
+      <v-container>
+        <slot />
+      </v-container>
+    </v-app>
+  </div>
 </template>
 
 <script>
-import NavBar from "@/front/pages/NavBar.vue";
-import { ref } from "vue";
+
+import NavBar from '@/front/pages/NavBar.vue';
 
 export default {
   name: "App",
   components: {
     NavBar,
   },
-  setup() {
-    const isOpen = ref(false);
-
-    return { isOpen };
-  },
 };
 </script>
-
-<style src="" scoped></style>
