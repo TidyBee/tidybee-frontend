@@ -14,13 +14,14 @@
 <script>
 
 export default {
-  name: "ApiLoaderError",
+  name: ApiLoaderError,
   props: {
     widgetName: {
       type: String,
       required: true,
     },
   },
+
 };
 </script>
 
