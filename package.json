@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
+    "@microsoft/signalr": "^8.0.7",
     "core-js": "^3.8.3",
     "crypto": "^1.0.1",
     "crypto-browserify": "^3.12.0",

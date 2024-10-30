@@ -14,10 +14,14 @@
 
 <script>
 import * as signalR from '@microsoft/signalr';
-import ApiLoaderError from './requestStatus/ApiLoaderError.vue';
-import ApiLoaderLoading from './requestStatus/ApiLoaderLoading.vue';
+import ApiLoaderError from './requeststatus/ApiLoaderError.vue';
+import ApiLoaderLoading from './requeststatus/ApiLoaderLoading.vue';
 
 export default {
+  components: {
+    ApiLoaderError,
+    ApiLoaderLoading,
+  },
   props: {
     widgetName: {
       type: String,
@@ -59,12 +63,16 @@ export default {
           const parsedData = JSON.parse(data);
           if (parsedData) {
             this.apiData = parsedData;
+            this.isLoading = false;
+            this.hasError = false;
           } else {
             throw new Error("Les données reçues ne sont pas un tableau.");
           }
         } catch (error) {
           console.error(error.toString());
           this.hasError = true;
+          this.isLoading = false;
+          this.error = error.message;
         }
       });
 
@@ -76,6 +84,8 @@ export default {
         .catch(err => {
           console.error(err.toString());
           this.hasError = true;
+          this.isLoading = false;
+          this.error = err.message;
         });
     },
     requestWidgetData(url) {
@@ -86,7 +96,7 @@ export default {
     handleRefresh(url) {
       this.requestWidgetData(url);
     },
-  },
+  }
 };
 </script>
 

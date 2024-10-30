@@ -33,7 +33,7 @@
 import ApiLoader from "./../../../../../../utils/websockets/ApiLoader.vue";
 
 export default {
-  name: "WidgetTextSmall",
+  name: "TextWidget",
   components: {
     ApiLoader,
   },

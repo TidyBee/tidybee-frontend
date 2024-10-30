@@ -8,13 +8,13 @@
 <script>
 
 export default {
-  name: ApiLoaderLoading,
+  name: "ApiLoaderLoading",
   props: {
     widgetName: {
       type: String,
       required: true,
     },
-  };
+  }
 };
 </script>
 
