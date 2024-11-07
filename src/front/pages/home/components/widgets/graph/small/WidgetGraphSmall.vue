@@ -1,41 +1,33 @@
-
 <template>
   <v-card class="rounded-rectangle" elevation="10">
-    <ApiLoader :api-url="tidyHubApi" :widget-name="widgetTitle" class="full-height">
+    <ApiLoader 
+      :api-url="tidyHubApi" 
+      :widget-name="widgetTitle" >
       <template #default="{ data }">
-        <div v-if="data" class="full-height">
-          <v-container fluid class="full-height">
             <v-row>
               <v-span
-                v-if="data.title"
+                v-if="data && data.title"
                 class="widget-title"
-                :data-cy="`textwidget-title`"
               >
                 {{ $t(`dashboard.widgets.text.title.${data.title}`) }}
               </v-span>
             </v-row>
-            <v-row v-if="data.data" class="widget-text-center">
-              <v-span
-                :class="{ 'green-text': data.data.status, 'red-text': !data.data.status }"
-                :data-cy="`textwidget-number`"
-              >
-                {{ data.data.value }}
-              </v-span>
-            </v-row>
-          </v-container>
-        </div>
+          
       </template>
     </ApiLoader>
+    <GraphChart :pie-data="formatSeries(data)" /> 
   </v-card>
 </template>
 
 <script>
 import ApiLoader from "./../../../../../../utils/websockets/ApiLoader.vue";
+import GraphChart from "./GraphChart.vue";
 
 export default {
-  name: "WidgetTextSmall",
+  name: "WidgetGraphSmall",
   components: {
     ApiLoader,
+    GraphChart,
   },
   props: {
     widgetTitle: {
@@ -47,10 +39,24 @@ export default {
       required: true,
     },
   },
+  methods: {
+    formatSeries(data) {
+      try {
+        return [];
+      } catch (error) {
+        console.error('Erreur lors du traitement des séries JSON :', error);
+        return [];
+      }
+    },
+  }
 };
 </script>
 
 <style scoped>
+.v-progress-circular {
+  margin: 1rem;
+}
+
 .rounded-rectangle {
   border-radius: 15px;
   background-color: white;
@@ -69,7 +75,7 @@ export default {
   color: #515151;
 }
 
-.widget-text-center {
+.widget-graph-center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -79,11 +85,13 @@ export default {
   color: red;
 }
 
-.green-text {
-  color: green;
+
+.widget-graph-center {
+  font-size: 15px;
+  color: red;
 }
 
-.red-text {
-  color: red;
+.grey-text {
+  color: #515151;
 }
 </style>
