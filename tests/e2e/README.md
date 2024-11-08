@@ -1,6 +1,6 @@
 # End-to-End Tests (E2E)
 
-This folder contains the scripts and documentation necessary to create and launch end-to-end tests for the TidyBee front-end.
+This folder contains the scripts and documentation necessary to create and launch end-to-end tests for the Tidybee front-end.
 
 ## Objective
 

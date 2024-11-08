@@ -1,6 +1,6 @@
 <template>
   <v-app-bar-icon class="logo">
-    <img src="@/assets/tidybee-logo.svg" alt="TidyBee Logo" height="150" @click="redirectToRoute('Home')" />
+    <img src="@/assets/tidybee-logo.svg" alt="Tidybee Logo" height="150" @click="redirectToRoute('Home')" />
   </v-app-bar-icon>
   <v-app-bar class="px-3" density="compact" :elevation="5" :height="80">
     <v-spacer />

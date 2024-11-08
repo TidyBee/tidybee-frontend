@@ -1,5 +1,5 @@
-# TidyBee Front-End Tests
-This directory contains both unit tests and E2E (End-to-End) tests for TidyBee. Unit tests are essential to ensure that the various parts of the application function correctly in isolation. E2E tests, on the other hand, simulate real user behavior, verifying the end-to-end interaction between the various application components.
+# Tidybee Front-End Tests
+This directory contains both unit tests and E2E (End-to-End) tests for Tidybee. Unit tests are essential to ensure that the various parts of the application function correctly in isolation. E2E tests, on the other hand, simulate real user behavior, verifying the end-to-end interaction between the various application components.
 
 ## Available commands
 
