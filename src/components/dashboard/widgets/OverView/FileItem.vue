@@ -1,37 +1,12 @@
 <template>
   <v-row>
-    <v-col cols="1">
-      <img
-        v-if="file.provenance === 'agent'"
-        src="./assets/intern-icon.svg"
-        style="width: 20px; height: 20px; vertical-align: middle; margin-top: -3px;"
-        alt="Intern Icon"
-        class="icon"
-      />
-      <img
-        v-else-if="file.provenance === 'notion'"
-        src="./assets/notion-icon.svg"
-        alt="Notion Icon"
-        class="icon"
-      />
-      <img
-        v-else-if="file.provenance === 'googleDrive'"
-        src="./assets/gdrive-icon.svg"
-        alt="Google Drive Icon"
-        class="icon"
-      />
-    </v-col>
-    <v-col cols="2">
-      <div
-        class="text-left"
-        :data-cy="(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
-      >
+    <v-col cols="3">
+      <div class="text-left"
+        :data-cy="(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ parseFileName(file.pretty_path) }}
       </div>
-      <div
-        v-if="isOpen" class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption"
-        data-cy="tidyscore-information"
-      >
+      <div v-if="isOpen" class="text-left pt-2 pb-4 text-grey-darken-1 text-no-wrap text-caption"
+        data-cy="tidyscore-information">
         {{ $t("fileView.general") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.type") + parseFileType(file.pretty_path) }}
@@ -42,46 +17,34 @@
           $t("fileView.ago") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.placement") + parseFilePlace(file.pretty_path) }}
-        <br>
-        &nbsp;&nbsp;{{ $t("Provenance : ") + parseFilePlace(file.provenance) }}
       </div>
     </v-col>
     <v-col cols="3">
-      <span
-        v-if="!isOpen"
-        :data-cy="(`overviewwidget-fileitem-size-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
-      >
+      <span v-if="!isOpen"
+        :data-cy="(`overviewwidget-fileitem-size-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ formatFileSize(file.size) }}
       </span>
     </v-col>
     <v-col cols="3">
-      <span
-        v-if="!isOpen"
-        :data-cy="(`overviewwidget-fileitem-date-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
-      >
+      <span v-if="!isOpen"
+        :data-cy="(`overviewwidget-fileitem-date-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ calculateElapsedTime(file.last_modified.secs_since_epoch) }}
       </span>
     </v-col>
     <v-col cols="2">
-      <span
-        v-if="!isOpen"
-        :data-cy="(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
-      >
+      <span v-if="!isOpen"
+        :data-cy="(`overviewwidget-fileitem-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`)">
         {{ file.tidy_score.grade }}
       </span>
-      <TidyScore
-        v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)"
+      <TidyScore v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)"
         :series-data="getSeriesData(file.tidy_score, tab)" :pie-color="getGradeColor(file?.tidy_score?.grade)"
-        :score="file.tidy_score.grade" :t="$t" :tab="tab"
-      >
+        :score="file.tidy_score.grade" :t="$t" :tab="tab">
       </TidyScore>
     </v-col>
     <v-col cols="1">
-      <v-icon
-        class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'"
+      <v-icon class="redirect-icon" :icon="isOpen ? 'mdi-chevron-up' : 'mdi-chevron-down'"
         :data-cy="`overviewwidget-fileitem-toggle-tidyscore-${replaceSpecificChar(parseFileName(file.pretty_path))}`"
-        @click="isOpen = !isOpen"
-      />
+        @click="isOpen = !isOpen" />
     </v-col>
   </v-row>
   <v-divider></v-divider>
