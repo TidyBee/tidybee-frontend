@@ -1,12 +1,6 @@
 <template>
   <div>
-    <v-tab
-      block class="integrate-button"
-      href="https://accounts.google.com/o/oauth2/v2/auth?client_id=321237974559-ci21viakgst5smup6gk5hhpfbe7sb6r4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/callback/google&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file"
-    >
-      Configurer
-      l'intégration Google Drive
-    </v-tab>
+    <v-tab block class="integrate-button" href="https://accounts.google.com/o/oauth2/v2/auth?client_id=321237974559-ci21viakgst5smup6gk5hhpfbe7sb6r4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/callback/google&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file">Configurer l'intégration Google Drive</v-tab>
 
     <!-- Button to configure Notion integration -->
     <v-tab block class="integrate-button" @click="showDialog = true">Configurer l'intégration Notion</v-tab>
@@ -20,12 +14,12 @@
         <v-card-text>
           <p>
             Veuillez ajouter l'application TidyBee à votre page Notion
+            <v-btn small color="primary" href="your-tuto-link" target="_blank">Tuto pour ajouter</v-btn>
           </p>
-          <br>
           <p>
             Veuillez récupérer l'ID de la base de données que vous souhaitez lier à votre compte
+            <v-btn small color="primary" href="your-tuto-link" target="_blank">Tuto pour récupérer l'ID</v-btn>
           </p>
-          <br>
           <v-text-field v-model="databaseId" label="Database ID" outlined></v-text-field>
         </v-card-text>
         <v-card-actions>
@@ -54,7 +48,7 @@ export default {
   },
   created() {
     // Initialize the gRPC client
-    this.grpcClient = new NotionSyncClient("http://prod.tidybee.fr:8081", null, null); /// DID NOT SUCESS TO USE THE .ENV WEIRD
+    this.grpcClient = new NotionSyncClient("http://localhost:8081", null, null); /// DID NOT SUCESS TO USE THE .ENV WEIRD
   },
   methods: {
     linkDatabase() {

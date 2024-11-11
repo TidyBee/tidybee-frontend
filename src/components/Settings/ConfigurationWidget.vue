@@ -2,17 +2,12 @@
   <v-card class="rounded-rectangle" elevation="10" :data-cy="`settings-container`">
     <ApiLoader :api-url="tidyHubApi" class="full-height">
       <template #default="{ data }">
-        <div v-if="data" class="full-height">
-          <v-card class="rounded-rectangle-settings-title full-height" :data-cy="`settings-title-container`">
-            <v-tabs direction="vertical" :hide-slider="true" class="full-height">
+        <div v-if="data">
+          <v-card class="rounded-rectangle-settings-title" :data-cy="`settings-title-container`">
+            <v-tabs v-model="tab" direction="vertical" :hide-slider="true" class="full-height">
               <div class="upper-tab-border">
-                <v-tab v-for="(rule, index) in data.rules" :key="index" class="rule-tab" :class="{'rule-active': isRuleSelected(rule.name)}" @click="tab = rule.name">
-                  {{ $t('settings.rule.' + rule.name) }}
-                </v-tab>
-              </div>
-              <div class="upper-tab-border">
-                <v-tab class="rule-tab" @click="severityDialog = true">
-                  Sévérité des règles
+                <v-tab v-for="(rule, index) in data.rules" :key="index" :value="rule.name">
+                  {{ rule.name }}
                 </v-tab>
               </div>
               <div class="bottom-tab-border">
@@ -23,16 +18,10 @@
           <v-card class="rounded-rectangle-settings-content" :data-cy="`settings-content-container`">
             <div v-if="selectedRule(data)">
               <v-row>
-                <v-col v-if="selectedRule(data).name == 'misnamed'" class="text-left mt-4 mx-3 text-wrap" cols="12">
-                  {{ selectedRule(data).description }}
-                </v-col>
-                <v-divider></v-divider>
-                <v-divider></v-divider>
-                <v-divider></v-divider>
-                <v-virtual-scroll :height="600" style="margin-top: 10px" :items="selectedRule(data).configurations">
+                <v-virtual-scroll :height="650" style="margin-top: 15px" :items="selectedRule(data).configurations">
                   <template #default="{ item: config }">
                     <v-list-item cols="12">
-                      <SettingItem :config="config" :translate-name="selectedRule(data).name != 'misnamed'" />
+                      <SettingItem :config="config" />
                     </v-list-item>
                   </template>
                 </v-virtual-scroll>
@@ -40,63 +29,6 @@
             </div>
           </v-card>
         </div>
-        <v-dialog v-model="severityDialog" max-width="600px">
-          <SeverityWidget :rules="data.rules" @close="severityDialog = false" />
-        </v-dialog>
-        <!-- <v-dialog v-model="severityDialog" max-width="600px">
-          <v-card class="rounded-dialog">
-            <v-card-title>
-              Sévérité des règles
-            </v-card-title>
-            <v-card-text>
-              <p>
-                Veuillez choisir le degré de sévérité des règles.
-              </p>
-              <p>
-                La sévérité a impact direct sur le score de vos fichiers.
-              </p>
-              <br />
-              <br />
-              <br />
-              <v-container>
-                <v-row>
-                  <v-col />
-                  <v-col class="text-center">
-                    Faible
-                  </v-col>
-                  <v-col class="text-center">
-                    Moyen
-                  </v-col>
-                  <v-col class="text-center">
-                    Elevé
-                  </v-col>
-                </v-row>
-                <br />
-                <v-radio-group v-for="(rule, index) in data.rules" :key="index" v-model="rule.weight">
-                  <v-row>
-                    <v-col class="text-center grid-items">
-                      {{ $t('settings.rule.' + rule.name) }}
-                    </v-col>
-                    <v-col class="text-center grid-items">
-                      <v-radio :value="1" />
-                    </v-col>
-                    <v-col class="text-center grid-items">
-                      <v-radio :value="2" />
-                    </v-col>
-                    <v-col class="text-center grid-items">
-                      <v-radio :value="3" />
-                    </v-col>
-                  </v-row>
-                </v-radio-group>
-              </v-container>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn text @click="severityDialog = false">Annuler</v-btn>
-              <v-btn text @click="severityDialog = false">Soumettre</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog> -->
       </template>
     </ApiLoader>
   </v-card>
@@ -105,8 +37,7 @@
 <script>
 import ApiLoader from "@/components/communication/ApiLoader.vue";
 import SettingItem from "@/components/Settings/SettingItem.vue";
-import IntegrationWidget from "./IntegrationWidget.vue";
-import SeverityWidget from "./SeverityWidget.vue";
+import IntegrationWidget from "@/components/Settings/IntegrationWidget.vue";
 
 export default {
   name: "ConfigurationWidget",
@@ -114,7 +45,6 @@ export default {
     ApiLoader,
     SettingItem,
     IntegrationWidget,
-    SeverityWidget
   },
   props: {
     tidyHubApi: {
@@ -126,8 +56,6 @@ export default {
     return {
       tab: "misnamed",
       selectedTabLabel: "MISNAMED",
-      severityDialog: false,
-
     };
   },
   computed: {
@@ -138,13 +66,8 @@ export default {
         }
         return null;
       };
-    },
-  },
-  methods: {
-    isRuleSelected(name) {
-      return this.tab === name;
     }
-  }
+  },
 };
 </script>
 

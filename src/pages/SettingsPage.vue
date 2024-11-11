@@ -1,5 +1,8 @@
 <template>
   <v-container fluid>
+    <div class="info"> 
+      {{ $t(`settings.title`) }} 
+    </div> 
     <v-row justify="center">
       <ConfigurationWidget class="widget-top-container" :tidy-hub-api="'SendTidyRules'" />
     </v-row>
@@ -13,6 +16,7 @@ export default {
   name: "SettingsPage",
   components: {
     ConfigurationWidget,
+
   },
   data() {
     return {
