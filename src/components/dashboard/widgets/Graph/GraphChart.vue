@@ -23,14 +23,16 @@ const option = ref({
   tooltip: {
     trigger: 'item',
     formatter: '{b}: {c}%',
-    position: 'left'
+    position: 'top'
   },
   legend: {
-    top: '30%',
+    bottom: '5%',
     orient: 'vertical',
+    formatter: '{name} %',
     selectedMode: false,
     left: 'left',
   },
+  width: '420px',
   series: [
     {
       type: 'pie',

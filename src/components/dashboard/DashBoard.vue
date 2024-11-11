@@ -11,7 +11,6 @@
     <v-row justify="center" class="widget-bottom-container">
       <v-col class="no-flex-grow">
         <GraphWidget :tidy-hub-api="'SendGraphWidget'" />
-        <GradeWidget :tidy-hub-api="'SendGradeWidget'" />
       </v-col>
       <v-col class="no-flex-grow">
         <OverViewWidget :tidy-hub-api="'SendOverview'" />
@@ -23,7 +22,6 @@
 <script>
 import TextWidget from "@/components/dashboard/widgets/Text/TextWidget.vue";
 import GraphWidget from "@/components/dashboard/widgets/Graph/GraphWidget.vue";
-import GradeWidget from "@/components/dashboard/widgets/Grade/GradeWidget.vue";
 import OverViewWidget from "@/components/dashboard/widgets/OverView/OverViewWidget.vue";
 
 export default {
@@ -32,7 +30,6 @@ export default {
     TextWidget,
     OverViewWidget,
     GraphWidget,
-    GradeWidget,
   },
   data() {
     return {

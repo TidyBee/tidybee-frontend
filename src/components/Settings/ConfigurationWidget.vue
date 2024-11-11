@@ -4,10 +4,15 @@
       <template #default="{ data }">
         <div v-if="data">
           <v-card class="rounded-rectangle-settings-title" :data-cy="`settings-title-container`">
-            <v-tabs v-model="tab" direction="vertical" :hide-slider="true">
-              <v-tab v-for="(rule, index) in data.rules" :key="index" :value="rule.name">
-                {{ rule.name }}
-              </v-tab>
+            <v-tabs v-model="tab" direction="vertical" :hide-slider="true" class="full-height">
+              <div class="upper-tab-border">
+                <v-tab v-for="(rule, index) in data.rules" :key="index" :value="rule.name">
+                  {{ rule.name }}
+                </v-tab>
+              </div>
+              <div class="bottom-tab-border">
+                <IntegrationWidget />
+              </div>
             </v-tabs>
           </v-card>
           <v-card class="rounded-rectangle-settings-content" :data-cy="`settings-content-container`">
@@ -32,12 +37,14 @@
 <script>
 import ApiLoader from "@/components/communication/ApiLoader.vue";
 import SettingItem from "@/components/Settings/SettingItem.vue";
+import IntegrationWidget from "@/components/Settings/IntegrationWidget.vue";
 
 export default {
   name: "ConfigurationWidget",
   components: {
     ApiLoader,
     SettingItem,
+    IntegrationWidget,
   },
   props: {
     tidyHubApi: {
@@ -57,11 +64,11 @@ export default {
         if (data && data.rules) {
           return data.rules.find(rule => rule.name === this.tab);
         }
-        return null; 
+        return null;
       };
     }
   },
 };
 </script>
 
-<style scoped src="@/../css/components/Settings/ConfigurationWidget.css"> </style>
+<style scoped src="@/../css/components/Settings/ConfigurationWidget.css"></style>

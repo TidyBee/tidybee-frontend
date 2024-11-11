@@ -1,5 +1,5 @@
 <template>
-  <v-card class="rounded-rectangle" elevation="10">
+  <v-card class="full-height rounded-rectangle" elevation="10">
     <ApiLoader :api-url="tidyHubApi" widget-name="graph.title" class="full-height w-100">
       <template #default="{ data }">
         <div v-if="data" class="full-height">
