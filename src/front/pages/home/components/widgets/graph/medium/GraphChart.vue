@@ -52,7 +52,7 @@ const option = ref({
         { value: 1, name: 'TidyScore A' },
         { value: 2, name: 'TidyScore B' },
         { value: 2, name: 'TidyScore C' },
-        { value: 95, name: 'TidyScore D' },
+        { value: 94, name: 'TidyScore D' },
         { value: 1, name: 'TidyScore E' }
       ],
       emphasis: {
