@@ -20,7 +20,8 @@
 </template>
 
 <script>
-import ApiLoader from "./../../../../../../utils/websockets/ApiLoader.vue";
+
+import ApiLoader from "@/front/utils/websockets/ApiLoader.vue";
 import GraphChart from "./GraphChart.vue";
 
 export default {
@@ -52,46 +53,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.v-progress-circular {
-  margin: 1rem;
-}
-
-.rounded-rectangle {
-  border-radius: 15px;
-  background-color: white;
-  height: 160px;
-  width: 230px;
-  display: flex; 
-  flex-direction: column;
-  justify-content: center;
-}
-
-.widget-title {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  font-size: 14px;
-  color: #515151;
-}
-
-.widget-graph-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 120%;
-  font-size: 43px;
-  color: red;
-}
-
-
-.widget-graph-center {
-  font-size: 15px;
-  color: red;
-}
-
-.grey-text {
-  color: #515151;
-}
-</style>
+<style scoped src="./WidgetGraphSmall.css"> </style>

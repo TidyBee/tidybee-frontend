@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import ApiLoader from "./../../../../../../utils/websockets/ApiLoader.vue";
+import ApiLoader from "@/front/utils/websockets/ApiLoader.vue";
 
 export default {
   name: "WidgetTextSmall",
@@ -50,40 +50,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.rounded-rectangle {
-  border-radius: 15px;
-  background-color: white;
-  height: 160px;
-  width: 230px;
-  display: flex; 
-  flex-direction: column;
-  justify-content: center;
-}
-
-.widget-title {
-  position: absolute;
-  top: 10px;
-  left: 12px;
-  font-size: 14px;
-  color: #515151;
-}
-
-.widget-text-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 120%;
-  font-size: 43px;
-  color: red;
-}
-
-.green-text {
-  color: green;
-}
-
-.red-text {
-  color: red;
-}
-</style>
+<style scoped src="./WidgetTextSmall.css"> </style>
