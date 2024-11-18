@@ -18,7 +18,13 @@ const props = defineProps({
 });
 
 const option = ref({
-  color: [getGradeColor('A'), getGradeColor('B'), getGradeColor('C'), getGradeColor('D'), getGradeColor('E')],
+  color: [
+    getGradeColor('A'),
+    getGradeColor('B'),
+    getGradeColor('C'),
+    getGradeColor('D'),
+    getGradeColor('E')
+  ],
   tooltip: {
     trigger: 'item',
     formatter: '{b}: {c}%',
