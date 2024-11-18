@@ -14,8 +14,8 @@
 
 <script>
 import * as signalR from '@microsoft/signalr';
-import ApiLoaderError from '@/front/utils/websockets/requeststatus/ApiLoaderError.vue';
-import ApiLoaderLoading from '@/front/utils/websockets/requeststatus/ApiLoaderLoading.vue';
+import ApiLoaderError from '@/front/utils/websockets/requestStatus/ApiLoaderError.vue';
+import ApiLoaderLoading from '@/front/utils/websockets/requestStatus/ApiLoaderLoading.vue';
 
 export default {
   components: {
