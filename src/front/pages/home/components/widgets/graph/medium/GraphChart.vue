@@ -47,7 +47,16 @@ const option = ref({
         formatter: '{c}%',
         position: 'inside'
       },
-      data: props.pieData,
+      labelLine: {
+        show: false
+      },
+      data: props.pieData.length ? props.pieData : [
+        { value: 1, name: 'TidyScore A' },
+        { value: 2, name: 'TidyScore B' },
+        { value: 2, name: 'TidyScore C' },
+        { value: 94, name: 'TidyScore D' },
+        { value: 1, name: 'TidyScore E' }
+      ],
       emphasis: {
         itemStyle: {
           shadowBlur: 10,

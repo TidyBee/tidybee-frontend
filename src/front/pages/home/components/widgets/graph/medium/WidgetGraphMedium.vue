@@ -16,8 +16,9 @@
 </template>
 
 <script>
+
 import GraphChart from "./GraphChart.vue"
-import ApiLoader from "./../../../../../../utils/websockets/ApiLoader.vue";
+import ApiLoader from "@/front/utils/websockets/ApiLoader.vue";
 
 export default {
   name: "WidgetGraphMedium",
@@ -117,33 +118,4 @@ export default {
 </script>
 
 
-<style scoped>
-.rounded-rectangle {
-  border-radius: 15px;
-  background-color: white;
-  max-height: 550px;
-  width: 500px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.centered-container-graph {
-  margin: 10px !important;
-}
-
-.widget-title {
-  position: absolute;
-  top: 5px;
-  left: 8px;
-  font-size: 14px;
-  color: #515151;
-}
-
-.centered-text {
-  text-align: center;
-  margin-top: 30px;
-}
-</style>
+<style scoped src="./WidgetGraphMedium.css"> </style>

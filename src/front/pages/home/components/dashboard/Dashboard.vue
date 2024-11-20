@@ -33,19 +33,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.widget-top-container {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-  margin-top: 40px !important;
-}
-
-.widget-bottom-container {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 40px !important;
-}
-
-</style>
+<style scoped src="./Dashboard.css"> </style>
