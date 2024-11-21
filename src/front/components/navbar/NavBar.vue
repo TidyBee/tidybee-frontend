@@ -4,11 +4,11 @@
     <v-tabs v-model="activeTab" centered color="grey-darken-2">
       <v-tab 
         :text="'TidyList'" 
-        @click="redirectToRoute('Overview')"
+        @click="redirectToRoute('TidyListe')"
       ></v-tab>
       <v-tab 
         :text="'Statistique'" 
-        @click="redirectToRoute('Overview')"
+        @click="redirectToRoute('TidyListe')"
       ></v-tab>
       <v-tab
         :text="'Home'"
@@ -24,7 +24,7 @@
       </v-tab>
       <v-tab 
         :text="'TITLE'" 
-        @click="redirectToRoute('Overview')"
+        @click="redirectToRoute('TidyListe')"
         ></v-tab>
       <v-tab 
         :text="'Configuration'" 
@@ -56,7 +56,7 @@ export default {
   data() {
     return {
       availableLocales: [],
-      links: ["Home", "Configuration", "Overview"],
+      links: ["Home", "Configuration", "TidyListe"],
     };
   },
   mounted() {
