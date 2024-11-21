@@ -6,8 +6,8 @@
           <v-row>
             <v-progress-circular
               :model-value="100"
-              :size="160"
-              :width="20"
+              :size="177.5"
+              :width="35"
               align="center"
               class="grade-pos"
               :style="{

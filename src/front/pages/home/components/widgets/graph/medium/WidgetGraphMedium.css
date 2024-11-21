@@ -1,7 +1,7 @@
 .rounded-rectangle {
   border-radius: 15px;
   background-color: white;
-  max-height: 550px;
+  height: 210px;
   width: 500px;
   display: flex;
   flex-direction: column;
