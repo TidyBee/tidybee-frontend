@@ -1,5 +1,5 @@
 <template>
-  <v-chart :option="option" autoresize style="height: 500px;"></v-chart>
+  <v-chart :option="option" autoresize style="height: 100vh;"></v-chart>
 </template>
 
 <script setup>
@@ -28,21 +28,19 @@ const option = ref({
   tooltip: {
     trigger: 'item',
     formatter: '{b}: {c}%',
-    position: 'top'
+    position: 'left'
   },
   legend: {
-    bottom: '5%',
+    top: '45%',
     orient: 'vertical',
-    formatter: '{name} %',
-    selectedMode: false,
     left: 'left',
+    selectedMode: false
   },
-  width: '420px',
   series: [
     {
       type: 'pie',
-      radius: ['40%', '80%'],
-      minShowLabelAngle: 20,
+      radius: ['20%', '36%'],
+      center: ['74.5%', '51.5%'],
       label: {
         formatter: '{c}%',
         position: 'inside'
@@ -63,8 +61,7 @@ const option = ref({
           shadowOffsetX: 0,
           shadowColor: 'rgba(0, 0, 0, 0.5)'
         }
-      },
-      center: ['72.5%', '57%']
+      }
     }
   ]
 });

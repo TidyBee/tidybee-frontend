@@ -8,7 +8,10 @@
       <WidgetGraphSmall :tidy-hub-api="'SendTextWidgetstorage'" widget-title="text.title.storage" />
     </v-row>
     <v-row justify="center" class="widget-bottom-container">
-      <WidgetGraphMedium class="full-height" :tidy-hub-api="'SendGraphWidget'" />
+      <v-col class="no-flex-grow">
+        <WidgetGraphMedium :tidy-hub-api="'SendGraphWidget'" />
+        <WidgetGrade :tidy-hub-api="'SendGradeWidget'" />
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -17,6 +20,7 @@
 import WidgetTextSmall from "./../widgets/text/small/WidgetTextSmall.vue";
 import WidgetGraphSmall from "./../widgets/graph/small/WidgetGraphSmall.vue";
 import WidgetGraphMedium from "./../widgets/graph/medium/WidgetGraphMedium.vue";
+import WidgetGrade from "./../widgets/grade//WidgetGrade.vue";
 
 export default {
   name: "Dashboard",
@@ -24,6 +28,7 @@ export default {
     WidgetTextSmall,
     WidgetGraphSmall,
     WidgetGraphMedium,
+    WidgetGrade
   },
   data() {
     return {
