@@ -34,7 +34,7 @@
                             {{ $t('settings.rule.' + rule.name) }}
                         </v-col>
                         <v-col class="text-center grid-items">
-                            <v-radio :value='1' />
+                            <v-radio :value='1.5' />
                         </v-col>
                         <v-col class="text-center grid-items">
                             <v-radio :value='2' />
