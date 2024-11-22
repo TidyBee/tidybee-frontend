@@ -50,22 +50,28 @@ export const calculateElapsedTime = (lastUsed) => {
   else return seconds + " " + (seconds > 1 ? "secondes" : "seconde");
 }
 
-export const getGradeColor = (grade) => {
-  switch (grade) {
-    case 'A':
-      return '#2196F3';
-    case 'B':
-      return '#4CAF50';
-    case 'C':
-      return '#FAB239';
-    case 'D':
-      return '#EA4335';
-    case 'E':
-      return '#546E7A';
-    default:
-      return '';
-  }
+export const getGradeColor = (grade) => { 
+  if (grade == 'A') {
+    console.log("#2196F3");
+    return "#2196F3";
+  } else if (grade == 'B') {
+    console.log("#4CAF50");
+    return "#4CAF50";
+  } else if (grade == 'C') {
+    console.log("#FAB239");
+    return "#FAB239";
+  } else if (grade == 'D') {
+    console.log("#ea4335");
+    return "#ea4335";
+  } else if (grade == 'E') {
+    console.log("#546E7A");
+    return "#546E7A";
+  } 
+  return '';
 };
+
+
+
 
 export const parseFileName = (pretty_path) => {
   if (pretty_path.includes('/')) {

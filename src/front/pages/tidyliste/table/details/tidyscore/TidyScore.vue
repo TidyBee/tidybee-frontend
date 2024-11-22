@@ -1,61 +1,55 @@
 <template>
-  <v-chart data-cy="overviewwidget-fileitem-toggle-tidyscore-graph" class="grade-graph" :option="option"></v-chart>
+  <v-chart :option="option" autoresize style="height: 100vh;"></v-chart>
 </template>
 
 <script setup>
+import { ref, defineProps } from 'vue';
 import { use } from 'echarts/core';
 import { PieChart } from 'echarts/charts';
-import { TitleComponent, TooltipComponent } from 'echarts/components';
+import { TooltipComponent, LegendComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import VChart from 'vue-echarts';
-import { ref, defineProps } from 'vue';
+import { TitleComponent } from 'echarts/components';
 
-use([TitleComponent, TooltipComponent, PieChart, CanvasRenderer]);
+use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer, TitleComponent]);
 
 const props = defineProps({
-  pieData: { type: Array, required: true, default: () => ([]) },
-  pieColor: { type: String, required: true, default: '#fff'  },
-  seriesData: { type: Array, required: true, default: () => ([]) },
-  score: { type: String, required: true, default: 'A' },
-  t: { type: Function, required: true, },
-})
+  pieData: { type: Object, required: true, default: () => ({}) },
+  color: { type: String, required: true, default: [] }, 
+  tidyscore: { type: String, required: true, default: 'A' },
+});
 
 const option = ref({
-  color: [props.pieColor],
+  tooltip: {
+    trigger: 'item'
+  },
   title: {
-    text: props.score,
-    right: '13%',
-    top: 'center',
+    top: '48%',
+    text: props.tidyscore,
+    left: 'center',
     textStyle: {
       fontSize: 30,
       color: '#757575',
     }
   },
-  tooltip: {
-    trigger: 'item',
-    formatter: function(value) {
-      return props.t(value.name) + " : " + props.pieData[value.dataIndex];
-    },
-    position: 'left',
-  },
   series: [
     {
-      name: 'TidyScore',
       type: 'pie',
+      radius: ['16%', '24%'],
       padAngle: 5,
-      radius: ['45%', '80%'],
-      data: props.seriesData,
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)',
-        },
+      itemStyle: {
+        borderRadius: 10,
+        color: props.color
       },
-      center: ['85%', '50%']
-    },
-  ],
+      emphasis: {
+        label: {
+          show: true,
+          fontSize: 40,
+          fontWeight: 'bold'
+        }
+      },
+      data: props.pieData
+    }
+  ]
 });
 </script>
-
-<style src="@/../css/components/dashboard/TidyScore.css" scoped></style>

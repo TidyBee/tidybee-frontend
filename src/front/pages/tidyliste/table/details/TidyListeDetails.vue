@@ -1,6 +1,10 @@
 <template>
   <v-container fluid class="container">
     <v-card class="rounded-rectangle" elevation="10">
+      <div class="back-arrow" @click="goBack">
+        <v-icon>mdi-arrow-left</v-icon>
+      </div>
+      
       <div>
         <h1>Détails de {{ currentItem.name }}</h1>
         <p>
@@ -9,10 +13,10 @@
               alt="Weight Icon"
               class="icon"
           />
-          <strong>Autres informations :</strong> {{ currentItem.size }}
+          <strong>Taille du fichier :</strong> {{ currentItem.size }}
         </p>
         <p>
-          <strong>Autres informations :</strong> 
+          <strong>Dernière utilisation :</strong> 
           {{ currentItem.lastUsed }}
           <img
               src="./assets/last-used-icon.svg"
@@ -26,11 +30,11 @@
               alt="Note Icon"
               class="icon"
           />
-          <strong>Autres informations :</strong> 
+          <strong>TidyScore :</strong> 
           {{ currentItem.tidyscore }}
         </p>
         <p>
-          <strong>Autres informations :</strong> 
+          <strong>Espace :</strong> 
           {{ currentItem.location }}
           <img
               src="./assets/location-icon.svg"
@@ -44,39 +48,28 @@
               alt="path Icon"
               class="icon"
           />
-          <strong>Autres informations :</strong> 
+          <strong>Localisation :</strong> 
           {{ currentItem.fileDetails?.path }}
         </p>
-        <p><strong>Autres informations :</strong> {{ currentItem.fileDetails?.tidyscore }}</p>
-        <TidyScore
-          v-if="isOpen" :pie-data="getPieData(currentItem?.tidy_score)" :series-data="getSeriesData(currentItem?.tidy_score, tab)"
-          :pie-color="getGradeColor(file?.tidy_score?.grade)" :score="file.tidy_score.grade" :t="$t" :tab="tab"
-        >
-        </TidyScore>
-        <TidyScore
-          v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)" :series-data="getSeriesData(file.tidy_score, tab)"
-          :pie-color="getGradeColor(file?.tidy_score?.grade)" :score="file.tidy_score.grade" :t="$t" :tab="tab"
-        >
-        </TidyScore>
-        <TidyScore
-          v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)" :series-data="getSeriesData(file.tidy_score, tab)"
-          :pie-color="getGradeColor(file?.tidy_score?.grade)" :score="file.tidy_score.grade" :t="$t" :tab="tab"
-        >
-        </TidyScore>
-        <TidyScore
-          v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)" :series-data="getSeriesData(file.tidy_score, tab)"
-          :pie-color="getGradeColor(file?.tidy_score?.grade)" :score="file.tidy_score.grade" :t="$t" :tab="tab"
-        >
-        </TidyScore>
+        <div class="tidyscore-container">
+          <TidyScore
+            class="tidyscoreAll"
+            :pie-data="globalPieData(currentItem.fileDetails?.tidyscore)"
+            :color="getGradeColor(currentItem.tidyscore)"
+            :tidyscore="currentItem.tidyscore"
+          />
+          <div class="tidyscore-text">
+            <strong>Ici le TidyScore Global de votre fichier.</strong> 
+          </div>
+        </div>
       </div>
     </v-card>
   </v-container>
 </template>
 
 <script>
-
-import { getGrade, formatFileSize, calculateElapsedTime, parseFileName, getGradeColor } from "../utils";
-import TidyScore from "./details/tidyscore/TidyScore.vue";
+import { getGrade, getGradeColor } from "../utils";
+import TidyScore from "./tidyscore/TidyScore.vue";
 export default {
   name: "TidyListeDetails",
   components: {
@@ -91,79 +84,41 @@ export default {
   data() {
     return {
       currentItem: this.item,
+      globaltidyscore : []
     };
   },
   mounted() {
     if (!this.currentItem.file_path) {
-      // Récupérer l'objet depuis localStorage si les props sont vides
       const storedItem = localStorage.getItem("currentItem");
       if (storedItem) {
         this.currentItem = JSON.parse(storedItem);
       }
     }
-
-    console.log("Item utilisé :", this.currentItem);
   },
   methods: {
-    getPieData(tidyScore, tab) {
-      if (tab == 'all') {
-        return ([
-          tidyScore?.misnamed?.grade,
-          tidyScore?.duplicated?.grade,
-          tidyScore?.unused?.grade
-        ])
-      }
+    getGradeColor,
+    goBack() {
+      this.$router.go(-1);
+    },
+    globalPieData(tidyScore) {
       let data = [];
-      const configurations = this.getConfigurations(tidyScore, tab);
-      if (configurations != null && configurations.length > 0) {
-        for (let i = 0; i < configurations.length; i++) {
-          data.push(configurations[i].grade);
-        }
-      }
+      data.push({ value: 33.33, name: `Mal nommé: ${tidyScore?.misnamed?.grade}`, label: { show: false } });
+      data.push({ value: 33.33, name: `Dupliqué: ${tidyScore?.duplicated?.grade}`, label: { show: false } });
+      data.push({ value: 33.33, name: `Inutilisé: ${tidyScore?.unused?.grade}`, label: { show: false } });
+      console.log(data);
       return data;
     },
-    getSeriesData(tidyScore, tab) {
-        if (tab == 'all') {
-          return ([
-            { value: 1, name: 'fileView.misnamed', label: { show: false } },
-            { value: 1, name: 'fileView.duplicated', label: { show: false } },
-            { value: 1, name: 'fileView.unused', label: { show: false } },
-          ])
-        }
+    getSeriesData(tidyScore) {
         let data = [];
-        const configurations = this.getConfigurations(tidyScore, tab);
-        if (configurations != null && configurations.length > 0) {
-          for (let i = 0; i < configurations.length; i++) {
-            data.push({ value: 1, name: configurations[i].name, label: { show: false } });
+        if (tidyScore != null && tidyScore.length > 0) {
+          for (let i = 0; i < tidyScore.length; i++) {
+            data.push({ value: 1, name: tidyScore[i].name, label: { show: false } });
           }
         }
         return data;
-    },
-    getConfigurations(tidyScore, tab) {
-      switch (tab) {
-        case 'misnamed':
-          return (tidyScore?.misnamed?.configurations);
-        case 'duplicated':
-          return (tidyScore?.duplicated?.configurations);
-        case 'unused':
-          return (tidyScore?.unused?.configurations);
-        default:
-          return;
-      }
-    },
+    }
   },
 };
 </script>
 
-<style scoped>
-.container {
-  display: flex;
-  margin-top: 40px !important;
-}
-.rounded-rectangle {
-  border-radius: 15px;
-  height: 800px;
-  width: 1600px;
-  margin-top: 40px;
-}
-</style>
+<style scoped src="./TidyListeDetails.css"></style>
