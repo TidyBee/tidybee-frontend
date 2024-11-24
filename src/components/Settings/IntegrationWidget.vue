@@ -1,9 +1,15 @@
 <template>
   <div>
-    <v-btn block class="rounded-rectangle" href="https://accounts.google.com/o/oauth2/v2/auth?client_id=321237974559-ci21viakgst5smup6gk5hhpfbe7sb6r4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/callback/google&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file">Configurer l'intégration Google Drive</v-btn>
+    <v-tab
+      block class="integrate-button"
+      href="https://accounts.google.com/o/oauth2/v2/auth?client_id=321237974559-ci21viakgst5smup6gk5hhpfbe7sb6r4.apps.googleusercontent.com&redirect_uri=http://localhost:8080/callback/google&response_type=token&scope=https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/drive.file"
+    >
+      Configurer
+      l'intégration Google Drive
+    </v-tab>
 
     <!-- Button to configure Notion integration -->
-    <v-btn block class="rounded-rectangle" @click="showDialog = true">Configurer l'intégration Notion</v-btn>
+    <v-tab block class="integrate-button" @click="showDialog = true">Configurer l'intégration Notion</v-tab>
 
     <!-- Dialog popup for Notion integration -->
     <v-dialog v-model="showDialog" max-width="600px">
@@ -18,9 +24,12 @@
           </p>
           <p>
             Veuillez récupérer l'ID de la base de données que vous souhaitez lier à votre compte
-            <v-btn small color="primary" href="your-tuto-link" target="_blank">Tuto pour récupérer l'ID</v-btn>
+            <v-btn small color="primary" href="your-tuto-link" target="_blank">
+              Tuto pour récupérer
+              l'ID
+            </v-btn>
           </p>
-          <v-text-field label="Database ID" v-model="databaseId" outlined></v-text-field>
+          <v-text-field v-model="databaseId" label="Database ID" outlined></v-text-field>
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -77,3 +86,5 @@ export default {
   }
 };
 </script>
+
+<style scoped src="@/../css/components/Settings/IntegrationWidget.css"></style>

@@ -16,7 +16,12 @@
     "weight" : "Poids :",
     "regex" : "Regex :",
     "limitISO" : "limiteISO :",
-    "limitInt" : "limiteInt :"
+    "limitInt" : "limiteInt :",
+    "rule" : {
+      "misnamed" : "Mal nommé",
+      "perished" : "Inutilisé",
+      "duplicated" : "Dupliqué"
+    }
   },
   "navbar": {
     "Home": "TidyBee",
