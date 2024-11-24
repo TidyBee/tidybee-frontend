@@ -15,7 +15,7 @@ use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer, TitleComponent
 
 const props = defineProps({
   pieData: { type: Object, required: true, default: () => ({}) },
-  color: { type: String, required: true, default: [] }, 
+  color: { type: String, required: true, default: '' }, 
   tidyscore: { type: String, required: true, default: 'A' },
 });
 
