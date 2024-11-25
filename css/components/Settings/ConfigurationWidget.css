@@ -4,7 +4,18 @@
   height: 650px;
   width: 1200px;
   margin-top: 40px !important;
-  position: relative; 
+  position: relative;
+}
+
+.upper-tab-border {
+  border-bottom: solid 1px #d9d9d9;
+}
+
+.bottom-tab-border {
+  border-top: solid 1px #d9d9d9;
+  position: fixed;
+  bottom: 0;
+  max-width: 100%;
 }
 
 .rounded-rectangle-settings-title {
@@ -18,5 +29,15 @@
   width: 1000px;
   position: absolute;
   top: 0;
-  left: 200px; 
+  left: 200px;
+}
+
+.v-tabs.v-slide-group--vertical {
+  height: 100%;
+}
+
+.rule-tab {
+  width: 100%;
+  display: flex;
+  justify-content: center !important;
 }

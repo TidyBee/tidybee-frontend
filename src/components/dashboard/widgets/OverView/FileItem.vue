@@ -47,8 +47,9 @@
         {{ file.tidy_score.grade }}
       </span>
       <TidyScore
-        v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)" :series-data="getSeriesData(file.tidy_score, tab)"
-        :pie-color="getGradeColor(file?.tidy_score?.grade)" :score="file.tidy_score.grade" :t="$t" :tab="tab"
+        v-if="isOpen" :pie-data="getPieData(file.tidy_score, tab)"
+        :series-data="getSeriesData(file.tidy_score, tab)" :pie-color="getGradeColor(file?.tidy_score?.grade)"
+        :score="file.tidy_score.grade" :t="$t" :tab="tab"
       >
       </TidyScore>
     </v-col>
@@ -61,19 +62,16 @@
     </v-col>
   </v-row>
   <v-divider></v-divider>
-  <HelpButton v-if="isOpen" :text="getDescriptions(file.tidy_score, tab)" :overview="true" />
 </template>
 
 <script>
 import TidyScore from "@/components/dashboard/widgets/OverView/TidyScore.vue";
-import HelpButton from "@/components/widgets/HelpButton.vue";
 import { getGrade, formatFileSize, calculateElapsedTime, parseFileName, getGradeColor } from "@/utils";
 
 export default {
   name: "FileItem",
   components: {
     TidyScore,
-    HelpButton,
   },
   props: {
     file: {
@@ -113,21 +111,6 @@ export default {
           return;
       }
     },
-    getDescriptions(tidyScore, tab) {
-      if (tab == 'all')
-        return 'fileView.help';
-      let desc = '';
-      const configurations = this.getConfigurations(tidyScore, tab);
-      if (configurations != null && configurations.length > 0) {
-        for (let i = 0; i < configurations.length; i++) {
-          if (configurations[i].description != null)
-            desc += (desc != '' ? '\n' : '') + configurations[i].description;
-        }
-      }
-      if (desc == '')
-        desc = 'fileView.goodFile';
-      return desc;
-    },
     getPieData(tidyScore, tab) {
       if (tab == 'all') {
         return ([
@@ -136,14 +119,18 @@ export default {
           tidyScore?.unused?.grade
         ])
       }
-      let data = [];
-      const configurations = this.getConfigurations(tidyScore, tab);
-      if (configurations != null && configurations.length > 0) {
-        for (let i = 0; i < configurations.length; i++) {
-          data.push(configurations[i].grade);
-        }
+      if (!!tidyScore[tab] && !!tidyScore[tab].grade) {
+        return ([tidyScore[tab].grade]);
       }
-      return data;
+      return([]);
+      // let data = [];
+      // const configurations = this.getConfigurations(tidyScore, tab);
+      // if (configurations != null && configurations.length > 0) {
+      //   for (let i = 0; i < configurations.length; i++) {
+      //     data.push(configurations[i].grade);
+      //   }
+      // }
+      // return data;
     },
     getSeriesData(tidyScore, tab) {
       if (tab == 'all') {
@@ -153,14 +140,15 @@ export default {
           { value: 1, name: 'fileView.unused', label: { show: false } },
         ])
       }
-      let data = [];
-      const configurations = this.getConfigurations(tidyScore, tab);
-      if (configurations != null && configurations.length > 0) {
-        for (let i = 0; i < configurations.length; i++) {
-          data.push({ value: 1, name: configurations[i].name, label: { show: false } });
-        }
-      }
-      return data;
+      return ([{ value: 1, name: 'fileView.' + tab, label: { show: false } }]);
+      // let data = [];
+      // const configurations = this.getConfigurations(tidyScore, tab);
+      // if (configurations != null && configurations.length > 0) {
+      //   configurations.forEach((config) => {
+      //     data.push({ value: 1, name: config.name, label: { show: false } });
+      //   })
+      // }
+      // return data;
     },
     openDialog() {
       this.isOpen = true;

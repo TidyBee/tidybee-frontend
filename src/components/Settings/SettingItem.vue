@@ -1,13 +1,13 @@
 <template>
   <v-row>
     <v-col cols="12">
-      <div
-        class="text-left ml-2"
-        :data-cy="(`config.${config.name}`)"
-      >
+      <div class="text-left ml-2" :data-cy="(`config.${config.name}`)">
         {{ config.name }}
       </div>
-      <div class="text-left pt-2 pb-4 ml-2 text-grey-darken-1 text-no-wrap text-caption ml-2" data-cy="tidyscore-description">
+      <div
+        class="text-left pt-2 pb-4 ml-2 text-grey-darken-1 text-no-wrap text-caption ml-2"
+        data-cy="tidyscore-description"
+      >
         {{ $t(`settings.description`) + config.description }}
         <!-- <br v-if="config.weight"> &nbsp;&nbsp;
         <a v-if="config.weight"> {{ $t(`settings.weight`) + config.weight }} </a>
@@ -40,6 +40,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
