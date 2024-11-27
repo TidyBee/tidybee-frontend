@@ -23,7 +23,16 @@
           <v-card class="rounded-rectangle-settings-content" :data-cy="`settings-content-container`">
             <div v-if="selectedRule(data)">
               <v-row>
-                <v-virtual-scroll :height="650" style="margin-top: 15px" :items="selectedRule(data).configurations">
+                <v-col class="text-left mt-4 mx-3 text-wrap" cols="12">
+                  <b>{{ $t('settings.rule.' + tab) }}</b>
+                  <br>
+                  <br>
+                  {{ $t('settings.descriptions.' + tab) }}
+                </v-col>
+                <v-divider></v-divider>
+                <v-divider></v-divider>
+                <v-divider></v-divider>
+                <v-virtual-scroll :height="540" style="margin-top: 10px" :items="selectedRule(data).configurations">
                   <template #default="{ item: config }">
                     <v-list-item cols="12">
                       <SettingItem :config="config" />

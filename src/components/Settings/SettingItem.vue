@@ -5,7 +5,7 @@
         {{ config.name }}
       </div>
       <div
-        class="text-left pt-2 pb-4 ml-2 text-grey-darken-1 text-no-wrap text-caption ml-2"
+        class="text-left pt-2 pb-4 ml-2 text-grey-darken-1 text-wrap text-caption ml-2"
         data-cy="tidyscore-description"
       >
         {{ $t(`settings.description`) + config.description }}

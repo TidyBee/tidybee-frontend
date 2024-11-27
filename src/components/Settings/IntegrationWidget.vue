@@ -20,15 +20,12 @@
         <v-card-text>
           <p>
             Veuillez ajouter l'application TidyBee à votre page Notion
-            <v-btn small color="primary" href="your-tuto-link" target="_blank">Tuto pour ajouter</v-btn>
           </p>
+          <br>
           <p>
             Veuillez récupérer l'ID de la base de données que vous souhaitez lier à votre compte
-            <v-btn small color="primary" href="your-tuto-link" target="_blank">
-              Tuto pour récupérer
-              l'ID
-            </v-btn>
           </p>
+          <br>
           <v-text-field v-model="databaseId" label="Database ID" outlined></v-text-field>
         </v-card-text>
         <v-card-actions>

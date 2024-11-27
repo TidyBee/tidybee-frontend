@@ -21,6 +21,11 @@
       "misnamed" : "Mal nommé",
       "perished" : "Inutilisé",
       "duplicated" : "Dupliqué"
+    },
+    "descriptions" : {
+      "misnamed" : "Ci-dessous ce trouve les sous-règles impliqué dans l'évaluation de la nommenclature des fichiers sur vos espaces partagés.",
+      "perished" : "Ci-dessous ce trouve les sous-règles impliqué dans l'évaluation de la fréquence d'utilisation des fichiers sur vos espaces partagés.",
+      "duplicated" : "Ci-dessous ce trouve les sous-règles impliqué dans la détection des duplicatas sur vos espaces partagés."
     }
   },
   "navbar": {
