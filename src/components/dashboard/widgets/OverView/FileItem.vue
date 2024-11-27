@@ -16,7 +16,7 @@
       />
       <img
         v-else-if="file.location === 'googleDrive'"
-        src="./assets/google-drive-icon.svg"
+        src="./assets/gdrive-icon.svg"
         alt="Google Drive Icon"
         class="icon"
       />
