@@ -42,6 +42,8 @@
           $t("fileView.ago") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.placement") + parseFilePlace(file.pretty_path) }}
+        <br>
+        &nbsp;&nbsp;{{ $t("Provenance : ") + parseFilePlace(file.provenance) }}
       </div>
     </v-col>
     <v-col cols="3">
