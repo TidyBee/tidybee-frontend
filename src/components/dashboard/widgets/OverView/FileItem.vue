@@ -1,6 +1,27 @@
 <template>
   <v-row>
-    <v-col cols="3">
+    <v-col cols="1">
+      <img
+        v-if="file.provenance === 'agent'"
+        src="./assets/intern-icon.svg"
+        style="width: 20px; height: 20px; vertical-align: middle; margin-top: -3px;"
+        alt="Intern Icon"
+        class="icon"
+      />
+      <img
+        v-else-if="file.location === 'notion'"
+        src="./assets/notion-icon.svg"
+        alt="Notion Icon"
+        class="icon"
+      />
+      <img
+        v-else-if="file.location === 'googleDrive'"
+        src="./assets/google-drive-icon.svg"
+        alt="Google Drive Icon"
+        class="icon"
+      />
+    </v-col>
+    <v-col cols="2">
       <div
         class="text-left"
         :data-cy="(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
