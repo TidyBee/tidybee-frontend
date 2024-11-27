@@ -40,7 +40,7 @@ const option = ref({
     {
       type: 'pie',
       radius: ['20%', '36%'],
-      center: ['72.5%', '51.5%'],
+      center: ['74.5%', '51.5%'],
       label: {
         formatter: '{c}%',
         position: 'inside'
