@@ -41,3 +41,11 @@
   display: flex;
   justify-content: center !important;
 }
+
+.rule-tab:hover {
+  background-color: #cecece;
+}
+
+.rule-active {
+  background-color: #cecece;
+}
