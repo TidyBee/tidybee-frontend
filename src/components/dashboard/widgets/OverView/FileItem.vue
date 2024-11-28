@@ -9,13 +9,13 @@
         class="icon"
       />
       <img
-        v-else-if="file.location === 'notion'"
+        v-else-if="file.provenance === 'notion'"
         src="./assets/notion-icon.svg"
         alt="Notion Icon"
         class="icon"
       />
       <img
-        v-else-if="file.location === 'googleDrive'"
+        v-else-if="file.provenance === 'googleDrive'"
         src="./assets/gdrive-icon.svg"
         alt="Google Drive Icon"
         class="icon"
