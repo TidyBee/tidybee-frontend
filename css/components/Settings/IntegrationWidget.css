@@ -1,0 +1,8 @@
+.integrate-button>>>.v-btn__content {
+  white-space: normal !important;
+}
+
+.integrate-button {
+  padding: 26px 0;
+  text-align: center;
+}

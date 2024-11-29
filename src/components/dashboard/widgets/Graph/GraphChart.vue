@@ -35,6 +35,7 @@ const option = ref({
     {
       type: 'pie',
       radius: ['40%', '80%'],
+      minShowLabelAngle: 20,
       label: {
         formatter: '{c}%',
         position: 'inside'
