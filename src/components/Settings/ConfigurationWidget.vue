@@ -6,7 +6,7 @@
           <v-card class="rounded-rectangle-settings-title full-height" :data-cy="`settings-title-container`">
             <v-tabs direction="vertical" :hide-slider="true" class="full-height">
               <div class="upper-tab-border">
-                <v-tab v-for="(rule, index) in data.rules" :key="index" class="rule-tab" @click="tab = rule.name">
+                <v-tab v-for="(rule, index) in data.rules" :key="index" class="rule-tab" :class="{'rule-active': isRuleSelected(rule.name)}" @click="tab = rule.name">
                   {{ $t('settings.rule.' + rule.name) }}
                 </v-tab>
               </div>
@@ -23,10 +23,16 @@
           <v-card class="rounded-rectangle-settings-content" :data-cy="`settings-content-container`">
             <div v-if="selectedRule(data)">
               <v-row>
-                <v-virtual-scroll :height="650" style="margin-top: 15px" :items="selectedRule(data).configurations">
+                <v-col v-if="selectedRule(data).name == 'misnamed'" class="text-left mt-4 mx-3 text-wrap" cols="12">
+                  {{ selectedRule(data).description }}
+                </v-col>
+                <v-divider></v-divider>
+                <v-divider></v-divider>
+                <v-divider></v-divider>
+                <v-virtual-scroll :height="600" style="margin-top: 10px" :items="selectedRule(data).configurations">
                   <template #default="{ item: config }">
                     <v-list-item cols="12">
-                      <SettingItem :config="config" />
+                      <SettingItem :config="config" :translate-name="selectedRule(data).name != 'misnamed'" />
                     </v-list-item>
                   </template>
                 </v-virtual-scroll>
@@ -132,8 +138,13 @@ export default {
         }
         return null;
       };
-    }
+    },
   },
+  methods: {
+    isRuleSelected(name) {
+      return this.tab === name;
+    }
+  }
 };
 </script>
 
