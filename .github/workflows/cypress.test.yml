@@ -22,7 +22,7 @@ jobs:
           node-version: 19.4.0
 
       - name: Install Dependencies
-        run: yarn install
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: yarn build
