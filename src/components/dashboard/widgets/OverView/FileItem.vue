@@ -1,6 +1,27 @@
 <template>
   <v-row>
-    <v-col cols="3">
+    <v-col cols="1">
+      <img
+        v-if="file.provenance === 'agent'"
+        src="./assets/intern-icon.svg"
+        style="width: 20px; height: 20px; vertical-align: middle; margin-top: -3px;"
+        alt="Intern Icon"
+        class="icon"
+      />
+      <img
+        v-else-if="file.provenance === 'notion'"
+        src="./assets/notion-icon.svg"
+        alt="Notion Icon"
+        class="icon"
+      />
+      <img
+        v-else-if="file.provenance === 'googleDrive'"
+        src="./assets/gdrive-icon.svg"
+        alt="Google Drive Icon"
+        class="icon"
+      />
+    </v-col>
+    <v-col cols="2">
       <div
         class="text-left"
         :data-cy="(`overviewwidget-fileitem-${replaceSpecificChar(parseFileName(file.pretty_path))}`)"
@@ -21,6 +42,8 @@
           $t("fileView.ago") }}
         <br>
         &nbsp;&nbsp;{{ $t("fileView.placement") + parseFilePlace(file.pretty_path) }}
+        <br>
+        &nbsp;&nbsp;{{ $t("Provenance : ") + parseFilePlace(file.provenance) }}
       </div>
     </v-col>
     <v-col cols="3">
