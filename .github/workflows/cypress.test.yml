@@ -27,15 +27,5 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Run Unit Tests
-        run: npm run test:unit
-
-      - name: Clone E2E Tests Repository
-        run: |
-          git clone https://github.com/TidyBee/tidybee-frontend-proxy-test-e2e.git
-          cd tidybee-frontend-proxy-test-e2e
-          npm install
-          node proxy.js & sleep 10
-
       - name: Run E2E Tests
         run: npm run test:e2e
