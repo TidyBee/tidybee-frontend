@@ -2,14 +2,6 @@
   <v-app-bar class="navbar" :elevation="3" app>
     <v-spacer />
     <v-tabs v-model="activeTab" centered color="grey-darken-2">
-      <v-tab 
-        :text="'TidyList'" 
-        @click="redirectToRoute('TidyListe')"
-      ></v-tab>
-      <v-tab 
-        :text="'Statistique'" 
-        @click="redirectToRoute('TidyListe')"
-      ></v-tab>
       <v-tab
         :text="'Home'"
         @click="redirectToRoute('Home')"
@@ -22,10 +14,6 @@
           contain
         ></v-img>
       </v-tab>
-      <v-tab 
-        :text="'TITLE'" 
-        @click="redirectToRoute('TidyListe')"
-        ></v-tab>
       <v-tab 
         :text="'Configuration'" 
         @click="redirectToRoute('Configuration')"

@@ -5,13 +5,10 @@
       <WidgetTextSmall :tidy-hub-api="'SendTextWidgetbadname'" widget-title="text.title.badname" />
       <WidgetTextSmall :tidy-hub-api="'SendTextWidgetduplicate'" widget-title="text.title.duplicate" />
       <WidgetTextSmall :tidy-hub-api="'SendTotalMonitored'" widget-title="text.title.total" />
-      <WidgetGraphSmall :tidy-hub-api="'SendTextWidgetstorage'" widget-title="text.title.storage" />
     </v-row>
-    <v-row justify="center" class="widget-bottom-container">
-      <v-col class="no-flex-grow">
+    <v-row justify="center"  class="widget-top-container">
         <WidgetGraphMedium :tidy-hub-api="'SendGraphWidget'" />
         <WidgetGrade :tidy-hub-api="'SendGradeWidget'" />
-      </v-col>
     </v-row>
   </v-container>
 </template>
