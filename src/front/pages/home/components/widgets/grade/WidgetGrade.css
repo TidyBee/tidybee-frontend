@@ -1,0 +1,40 @@
+.rounded-rectangle {
+  border-radius: 15px;
+  background-color: white;
+  height: 210px;
+  width: 500px;
+}
+
+.grade {
+  font-size: 30px;
+  font-weight: bold;
+  color: #515151 !important;
+}
+
+.grade-pos {
+  top: 30px;
+  left: 295px;
+}
+
+.grade-text {
+  font-size: 14px;
+  height: fit-content;
+  color: #515151 !important;
+}
+
+.grade-text-pos {
+  position: absolute;
+  height: 100%;
+  color: #515151 !important;
+  top: 0 !important;
+  left: 70px;
+  width: 160px !important;
+  align-content: center;
+  margin: 0;
+  text-align: left;
+}
+
+.divider-pos {
+  top: 0px !important;
+  position: absolute;
+}
