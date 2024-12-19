@@ -1,0 +1,21 @@
+.tidyscore-img {
+  width: 50px;
+  height: 50px;
+}
+
+.file-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icons {
+  width: 20px;
+  height: 20px;
+}
+
+.grade-graph {
+  position: absolute;
+  right: 0;
+  top: -2%;
+}
