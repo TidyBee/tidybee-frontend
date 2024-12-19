@@ -57,7 +57,7 @@ export default {
         size: file.size,
         lastUsed: this.calculateElapsedTime(file.last_modified.secs_since_epoch),
         tidyscore: file.tidy_score.grade,
-        location: "intern",
+        location: file.provenance,
         fileDetails: {
           tidyscore: file.tidy_score,
           path: file.pretty_path

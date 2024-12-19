@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid fill-height width="100vw">
+  <v-container fluid full-height width="100vw">
     <v-row>
       <v-col>
         <v-data-table-server
@@ -15,7 +15,7 @@
         >
           <template v-slot:[`item.espaceSurveillee`]="{ item }">
             <img
-              v-if="item.location === 'intern'"
+              v-if="item.location === 'agent'"
               src="./assets/intern-icon.svg"
               alt="Intern Icon"
               class="icon"
@@ -27,7 +27,9 @@
               class="icon"
             />
             <img
-              v-else-if="item.location === 'googledrive'"
+              v-else-if="item.location === 'googleDrive'"
+
+
               src="./assets/google-drive-icon.svg"
               alt="Google Drive Icon"
               class="icon"
@@ -101,7 +103,6 @@ export default {
     },
     loadItems({ page, itemsPerPage }) {
       this.loading = true;
-
       this.getFiles({
         page,
         itemsPerPage,
