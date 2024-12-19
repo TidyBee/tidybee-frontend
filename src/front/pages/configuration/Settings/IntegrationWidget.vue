@@ -30,7 +30,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" @click="linkDatabase">Lier à votre base de données</v-btn>
+          <v-btn color="primary" @click="linkNotionDatabase">Lier à votre base de données</v-btn>
           <v-btn text @click="showDialog = false">Annuler</v-btn>
         </v-card-actions>
       </v-card>
@@ -39,9 +39,6 @@
 </template>
 
 <script>
-// Import gRPC client
-import { NotionSyncClient } from '@/grpc/proto/notion_sync_grpc_web_pb';
-import { SyncDatabaseRequest } from '@/grpc/proto/notion_sync_pb';
 
 export default {
   name: "IntegrationWidget",
@@ -49,31 +46,15 @@ export default {
     return {
       showDialog: false,  // Controls the dialog visibility
       databaseId: '',     // Stores the input Database ID
-      grpcClient: null,   // gRPC client for NotionSync
     };
   },
-  created() {
-    // Initialize the gRPC client
-    this.grpcClient = new NotionSyncClient("http://prod.tidybee.fr:8081", null, null); /// DID NOT SUCESS TO USE THE .ENV WEIRD
-  },
   methods: {
-    linkDatabase() {
+    async linkNotionDatabase() {
       if (this.databaseId) {
-        const request = new SyncDatabaseRequest();
-        request.setDatabaseid(this.databaseId);
-
-        // Call the gRPC SyncDatabase method
-        this.grpcClient.syncDatabase(request, {}, (err, response) => {
-          if (err) {
-            console.error('gRPC Error:', err.message);
-            alert('Failed to link the database. Please try again.');
-          } else if (response.getSuccess()) {
-            console.log('Database linked successfully:', response.getMessage());
-            alert('Database linked successfully.');
-            this.showDialog = false;
-          } else {
-            console.error('Failed:', response.getMessage());
-            alert('Failed to link the database: ' + response.getMessage());
+        const req = await fetch(`${process.env.VUE_APP_HUB}/auth/SyncNotion`, {
+          method: 'POST',
+          body: {
+            "DatabaseId": this.databaseId
           }
         });
       } else {
