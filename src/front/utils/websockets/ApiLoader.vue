@@ -38,6 +38,7 @@ export default {
       isLoading: false,
       hasError: false,
       connection: null,
+      hubUrl: process.env.HUB_URL
     };
   },
   created() {

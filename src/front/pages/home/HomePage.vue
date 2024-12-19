@@ -18,7 +18,7 @@ export default {
   },
   data() {
     return {
-      tidyHubApi: process.env.VUE_APP_HUB,
+      tidyHubApi: process.env.HUB_URL,
     };
   },
 };
