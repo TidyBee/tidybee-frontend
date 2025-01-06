@@ -16,11 +16,6 @@ export default {
     TidyListe,
     Dashboard,
   },
-  data() {
-    return {
-      tidyHubApi: process.env.HUB_URL,
-    };
-  },
 };
 </script>
 

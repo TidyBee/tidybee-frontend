@@ -8,7 +8,7 @@
         class="d-flex align-center justify-center"
       >
         <v-img
-          src="https://tidybee.fr/images/logo-bookmark.svg"
+          :src="this.tidybeeLogo"
           height="80"
           width="120"
           contain
