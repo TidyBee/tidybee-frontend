@@ -38,7 +38,7 @@ export default {
       isLoading: false,
       hasError: false,
       connection: null,
-      hubUrl: process.env.HUB_URL
+      hubUrl: process.env.VUE_APP_TIDYBEE_HUB_URL
     };
   },
   created() {
@@ -55,7 +55,7 @@ export default {
   methods: {
     setupWebSocket() {
       this.connection = new signalR.HubConnectionBuilder()
-        .withUrl("http://localhost:7003/widgetHub")
+        .withUrl(this.hubUrl)
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
