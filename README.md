@@ -21,17 +21,14 @@ To install and use **tidybee-front**, follow these simple steps:
    ```
    cd tidybee-front
    ```
-
-4. Install dependencies using [Yarn](https://yarnpkg.com/). If you haven't already installed it, you can do so by following the instructions [here](https://yarnpkg.com/getting-started/install).
-
+4. Build & Run project
    ```
-   yarn install
+   npm install
    ```
-
-5. Once the dependencies are successfully installed, start the application in development mode with the command:
-
+   npm run build
    ```
-   yarn serve
+   ```
+   npm run start
    ```
 
 6. Open your web browser and access the application at [http://localhost:8080](http://localhost:8080).
@@ -39,25 +36,3 @@ To install and use **tidybee-front**, follow these simple steps:
 This is where you can use the **tidybee-front** interface to interact with the tool and enjoy its features.
 
 Thank you for your interest in **tidybee-front**!
-
-## Installer
-
-If you wish to build the installer from the source code, follow the installation steps and then do the following :
-
-1. Build the distribution version of the front-end
-
-   ```
-   yarn run build
-   ```
-
-2. Build the installer with electron
-
-   ```
-   yarn run electron:build
-   ```
-
-3. Launch the setup.exe from the **build** folder and open the newly installed application
-
-## Contributing
-
- Please refer to the CONTRIBUTING.md document for any participation in the project.
