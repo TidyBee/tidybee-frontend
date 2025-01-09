@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-row justify="center mt-12">
-      <ConfigurationWidget class="setting-container" :tidy-hub-api="'SendTidyRules'" />
+      <ConfigurationWidget class="setting-container" :tidy-hub-api="this.settings" />
     </v-row>
   </v-container>
 </template>
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      tidyHubApi: process.env.VUE_APP_HUB,
+      settings: process.env.VUE_APP_WEBSOCKET_SETTINGS,
     };
   },
 };

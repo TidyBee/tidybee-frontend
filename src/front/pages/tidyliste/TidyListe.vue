@@ -1,5 +1,5 @@
 <template>
-    <ApiLoader :api-url="'SendOverviewAll'" widget-name="Widget aperçu" width="100vw">
+    <ApiLoader :api-url="this.tidyliste" widget-name="Widget aperçu" width="100vw">
       <template #default="{ data }">
         <div v-if="data">
           <v-row justify="center" class="table-container" width="100vw">
@@ -23,6 +23,11 @@ export default {
   components: {
     TidyListeTable,
     ApiLoader,
+  },
+  data() {
+    return {
+      tidyliste: process.env.VUE_APP_WEBSOCKET_TIDYLISTE,
+    };
   },
   methods: {
     calculateElapsedTime(lastUsed) {
@@ -57,14 +62,12 @@ export default {
         size: file.size,
         lastUsed: this.calculateElapsedTime(file.last_modified.secs_since_epoch),
         tidyscore: file.tidy_score.grade,
-        location: "intern",
+        location: file.provenance,
         fileDetails: {
           tidyscore: file.tidy_score,
           path: file.pretty_path
         }
       }));
-
-      console.log(filesList);
       return filesList
     },
   }
