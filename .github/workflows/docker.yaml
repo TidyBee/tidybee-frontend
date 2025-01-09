@@ -3,7 +3,7 @@ name: Build and push tidybee-frontend image to ghcr.io
 on:
   push:
     branches:
-      - prod
+      - main
   workflow_dispatch:
 
 env:
