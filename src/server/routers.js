@@ -32,7 +32,7 @@ const routes = [
     redirect: async to => {
       if (to.params.provider == "google") {
         const Oauth2Token = to.hash.split('=')[1];
-        const req = await fetch(`${process.env.VUE_APP_HUB_AUTH}/SyncGoogle`, {
+        const req = await fetch(`${process.env.VUE_APP_HUB_AUTH}/Cloud/SyncGoogle`, {
           method: 'POST',
           body: {
             Oauth2Token
