@@ -65,6 +65,9 @@ export default {
       if (this.databaseId) {
         const req = await fetch(`${process.env.VUE_APP_HUB_AUTH}/Cloud/SyncNotion`, {
           method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          }
           body: {
             "DatabaseId": this.databaseId
           }

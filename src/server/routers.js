@@ -34,6 +34,9 @@ const routes = [
         const Oauth2Token = to.hash.split('=')[1];
         const req = await fetch(`${process.env.VUE_APP_HUB_AUTH}/Cloud/SyncGoogle`, {
           method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          }
           body: {
             Oauth2Token
           }
