@@ -36,7 +36,7 @@ const routes = [
           method: 'POST',
           headers: {
             "Content-Type": "application/json"
-          }
+          },
           body: {
             Oauth2Token
           }

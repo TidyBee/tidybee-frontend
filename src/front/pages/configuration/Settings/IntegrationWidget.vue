@@ -67,7 +67,7 @@ export default {
           method: 'POST',
           headers: {
             "Content-Type": "application/json"
-          }
+          },
           body: {
             "DatabaseId": this.databaseId
           }
