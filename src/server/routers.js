@@ -29,7 +29,19 @@ const routes = [
   {
     name: "Callback",
     path: "/callback/:provider",
-    redirect: "/settings",
+    redirect: async to => {
+      if (to.params.provider == "google") {
+        const Oauth2Token = to.hash.split('=')[1];
+        const req = await fetch(`${process.env.VUE_APP_HUB_AUTH}/SyncGoogle`, {
+          method: 'POST',
+          body: {
+            Oauth2Token
+          }
+        });
+      }
+
+      return {path: "/"}
+    },
   },
 ];
 

@@ -63,7 +63,7 @@ export default {
   methods: {
     async linkNotionDatabase() {
       if (this.databaseId) {
-        const req = await fetch(`${process.env.VUE_APP_HUB}/auth/SyncNotion`, {
+        const req = await fetch(`${process.env.VUE_APP_HUB_AUTH}/SyncNotion`, {
           method: 'POST',
           body: {
             "DatabaseId": this.databaseId
