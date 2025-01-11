@@ -51,6 +51,7 @@
 
 <script>
 import { sortBy } from "./sortBy.js";
+import { getGradeColor } from "./utils.js"
 
 export default {
   name: "TidyListeTable",
@@ -83,6 +84,7 @@ export default {
     },
   },
   methods: {
+    getGradeColor,
     getFiles({ page, itemsPerPage, search }) {
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -115,9 +117,15 @@ export default {
     },
     redirectToDetails(item) {
       console.log("Redirection triggered with item:", item);
-
+      const gradeColor = this.getGradeColor(item.tidyscore);
+      console.log("color", gradeColor);
+      const filedata = { 
+        ...item,
+        gradeColor,
+      }
+      console.log("filedata", filedata);
       if (item.fileDetails.path) {
-        localStorage.setItem("currentItem", JSON.stringify(item));
+        localStorage.setItem("currentItem", JSON.stringify(filedata));
         this.$router.push({
           name: "TidyListeDetails",
           params: { file_path: item.fileDetails.path },

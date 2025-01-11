@@ -1,79 +1,40 @@
 <template>
-  <v-container fluid class="container">
-    <v-card class="rounded-rectangle" elevation="10">
+  <div class="file-info-container">
+    <div class="file-info">
       <div class="back-arrow" @click="goBack">
         <v-icon>mdi-arrow-left</v-icon>
       </div>
-      
-      <div>
-        <h1>Détails de {{ currentItem.name }}</h1>
-        <p>
-          <img
-              src="./assets/weight-icon.svg"
-              alt="Weight Icon"
-              class="icon"
-          />
-          <strong>Taille du fichier :</strong> {{ currentItem.size }}
-        </p>
-        <p>
-          <strong>Dernière utilisation :</strong> 
-          {{ currentItem.lastUsed }}
-          <img
-              src="./assets/last-used-icon.svg"
-              alt="LastUsed Icon"
-              class="icon"
-          />
-        </p>
-        <p>
-          <img
-              src="./assets/note-icon.svg"
-              alt="Note Icon"
-              class="icon"
-          />
-          <strong>TidyScore :</strong> 
-          {{ currentItem.tidyscore }}
-        </p>
-        <p>
-          <strong>Espace :</strong> 
-          {{ currentItem.location }}
-          <img
-              src="./assets/location-icon.svg"
-              alt="location Icon"
-              class="icon"
-          />
-        </p>
-        <p>
-          <img
-              src="./assets/path-icon.svg"
-              alt="path Icon"
-              class="icon"
-          />
-          <strong>Localisation :</strong> 
-          {{ currentItem.fileDetails?.path }}
-        </p>
-        <div class="tidyscore-container">
-          <TidyScore
-            class="tidyscoreAll"
-            :pie-data="globalPieData(currentItem.fileDetails?.tidyscore)"
-            :color="getGradeColor(currentItem.tidyscore)"
-            :tidyscore="currentItem.tidyscore"
-          />
-          <div class="tidyscore-text">
-            <strong>Ici le TidyScore Global de votre fichier.</strong> 
-          </div>
+      <h1 class="file-title">Détails du fichier : {{ option.name }}</h1>
+      <div class="content-wrapper">
+        <div class="text-content">
+          <p><strong>Emplacement :</strong> {{ option.fileDetails.path }}</p>
+          <p><strong>Poids :</strong> {{ formatFileSize(option.size) }}</p>
+          <p><strong>Dernière utilisation :</strong> {{ option.lastUsed }}</p>
+          <p><strong>Espace de stockage :</strong> {{ option.location }}</p>
+        </div>
+        <div class="v-chart-container">
+          <v-chart :option="option" autoresize style="height: 40vh;"></v-chart>
         </div>
       </div>
-    </v-card>
-  </v-container>
+    </div>
+  </div>
 </template>
 
+
 <script>
-import { getGrade, getGradeColor } from "../utils";
-import TidyScore from "./tidyscore/TidyScore.vue";
+import { ref, reactive, onMounted } from "vue";
+import { use } from "echarts/core";
+import { PieChart } from "echarts/charts";
+import { TooltipComponent, LegendComponent } from "echarts/components";
+import { CanvasRenderer } from "echarts/renderers";
+import VChart from "vue-echarts";
+
+use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer]);
+
 export default {
   name: "TidyListeDetails",
   components: {
-    TidyScore,
+    VChart,
   },
   props: {
     item: {
@@ -81,43 +42,92 @@ export default {
       default: () => ({}),
     },
   },
-  data() {
-    return {
-      currentItem: this.item,
-      globaltidyscore : []
-    };
-  },
-  mounted() {
-    if (!this.currentItem.file_path) {
+  setup(props) {
+    const currentItem = ref(props.item);
+    if (!currentItem.value.file_path) {
       const storedItem = localStorage.getItem("currentItem");
       if (storedItem) {
-        this.currentItem = JSON.parse(storedItem);
+        currentItem.value = JSON.parse(storedItem);
       }
     }
+    console.log(currentItem);
+    const option = reactive({
+      ...currentItem.value,
+      color: currentItem.value.gradeColor,
+      series: [
+        {
+          type: "pie",
+          radius: ["20%", "36%"],
+          center: ["80%", "50%"],
+          labelLine: {
+            show: false,
+          },
+          data: currentItem.value.pieData?.length
+            ? currentItem.value.pieData
+            : [
+                { value: 33.33, name: "Mal nommée" },
+                { value: 33.33, name: "Inutilisé" },
+                { value: 33.33, name: "Dupliqué" },
+              ],
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: "rgba(0, 0, 0, 0.5)",
+            },
+          },
+          label: {
+            show: true,
+            position: "center",
+            formatter: currentItem.value.tidyscore,
+            fontSize: 15,
+            bold: true
+          },
+        },
+      ],
+    });
+
+    onMounted(() => {
+      if (!currentItem.value.file_path) {
+        const storedItem = localStorage.getItem("currentItem");
+        if (storedItem) {
+          currentItem.value = JSON.parse(storedItem);
+        }
+      }
+    });
+
+    return {
+      option,
+    };
   },
   methods: {
-    getGradeColor,
     goBack() {
       this.$router.go(-1);
     },
-    globalPieData(tidyScore) {
-      let data = [];
-      data.push({ value: 33.33, name: `Mal nommé: ${tidyScore?.misnamed?.grade}`, label: { show: false } });
-      data.push({ value: 33.33, name: `Dupliqué: ${tidyScore?.duplicated?.grade}`, label: { show: false } });
-      data.push({ value: 33.33, name: `Inutilisé: ${tidyScore?.unused?.grade}`, label: { show: false } });
-      console.log(data);
-      return data;
-    },
-    getSeriesData(tidyScore) {
-        let data = [];
-        if (tidyScore != null && tidyScore.length > 0) {
-          for (let i = 0; i < tidyScore.length; i++) {
-            data.push({ value: 1, name: tidyScore[i].name, label: { show: false } });
-          }
+    formatFileSize(fileSize) {
+      const sizeThresholds = [
+        [1024, "B"],
+        [Math.pow(1024, 2), "KB"],
+        [Math.pow(1024, 3), "MB"],
+        [Math.pow(1024, 4), "GB"],
+      ];
+      if (typeof fileSize != "number") return "NaN";
+      let fixed = 0;
+      for (const [threshold, unit] of sizeThresholds) {
+        if (fileSize < threshold) {
+          return (fileSize / (threshold / 1024)).toFixed(fixed) + " " + unit;
         }
-        return data;
+        fixed = 2;
+      }
+      return (
+        (fileSize / (sizeThresholds[sizeThresholds.length - 1][0] / 1024)).toFixed(
+          2,
+        ) +
+        " " +
+        sizeThresholds[sizeThresholds.length - 1][1]
+      );
     }
-  },
+  }
 };
 </script>
 

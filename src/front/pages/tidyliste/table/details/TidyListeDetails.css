@@ -1,15 +1,20 @@
-.container {
+.file-info-container {
   display: flex;
-  flex-direction: column;
-  margin: 40px auto;
-  max-width: 1200px;
+  justify-content: center;
+  margin-top: 60px;
+  position: relative;
 }
 
-.rounded-rectangle {
-  border-radius: 15px;
+.file-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 1200px;
+  max-height: 300px;
   position: relative;
 }
 
@@ -18,58 +23,33 @@
   top: 20px;
   left: 20px;
   cursor: pointer;
-  color: #555;
   font-size: 1.5rem;
-  z-index: 10;
 }
 
-.back-arrow:hover {
-  color: #000;
-  transition: color 0.2s ease-in-out;
-}
-
-h1 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #333;
+.file-title {
+  font-size: 1.8rem;
   text-align: center;
+  margin-bottom: -65px;
 }
 
-p {
-  font-size: 1rem;
-  margin: 10px 0;
-  color: #555;
-  text-align: center;
-}
-
-.icon {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.icon:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease-in-out;
-}
-
-.tidyscore-container {
+.content-wrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.tidyscoreAll {
-  margin-left: -250px;
-  margin-top: -370px;
-  z-index: 1;
+.text-content {
+  flex: 2;
 }
 
-.tidyscore-text {
-  font-size: 1rem;
-  color: #333;
-  max-width: 50%;
-  margin-top: -370px;
-  margin-left: -200px;
-  text-align: left; 
+.v-chart-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.text-content p {
+  text-align: left;
+  margin: 5px 0;
 }

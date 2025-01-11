@@ -9,47 +9,48 @@ import { PieChart } from 'echarts/charts';
 import { TooltipComponent, LegendComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import VChart from 'vue-echarts';
-import { TitleComponent } from 'echarts/components';
 
-use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer, TitleComponent]);
+use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer]);
 
 const props = defineProps({
-  pieData: { type: Object, required: true, default: () => ({}) },
-  color: { type: String, required: true, default: '' }, 
-  tidyscore: { type: String, required: true, default: 'A' },
+  item: { type: Object, required: true, default: () => ({}) },
 });
 
 const option = ref({
-  tooltip: {
-    trigger: 'item'
-  },
-  title: {
-    top: '48%',
-    text: props.tidyscore,
-    left: 'center',
-    textStyle: {
-      fontSize: 30,
-      color: '#757575',
-    }
+  color: props.item.gradeColor,
+  legend: {
+    top: '0%',
+    orient: 'vertical',
+    left: 'left',
+    selectedMode: false,
   },
   series: [
     {
       type: 'pie',
-      radius: ['16%', '24%'],
-      padAngle: 5,
-      itemStyle: {
-        borderRadius: 10,
-        color: props.color
+      radius: ['20%', '36%'],
+      center: ['5%', '5%'],
+      label: {
+        formatter: '{c}%',
+        position: 'inside',
       },
+      labelLine: {
+        show: false,
+      },
+      data: props.item.pieData?.length
+        ? props.item.pieData
+        : [
+            { value: 33.33, name: 'Mal nommée' },
+            { value: 33.33, name: 'Inutilisé' },
+            { value: 33.33, name: 'Dupliqué' },
+          ],
       emphasis: {
-        label: {
-          show: true,
-          fontSize: 40,
-          fontWeight: 'bold'
-        }
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)',
+        },
       },
-      data: props.pieData
-    }
-  ]
+    },
+  ],
 });
 </script>
