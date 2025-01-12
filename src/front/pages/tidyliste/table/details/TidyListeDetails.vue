@@ -65,9 +65,7 @@ export default {
           data: currentItem.value.pieData?.length
             ? currentItem.value.pieData
             : [
-                { value: 33.33, name: "Mal nommée" },
-                { value: 33.33, name: "Inutilisé" },
-                { value: 33.33, name: "Dupliqué" },
+                { value: 100, name: "file" },
               ],
           emphasis: {
             itemStyle: {

@@ -44,7 +44,7 @@ export default {
   data() {
     return {
       availableLocales: [],
-      links: ["Home", "Configuration", "TidyListe"],
+      links: ["Home", "Configuration"],
       tidybeeLogo: process.env.VUE_APP_TIDYBEE_LOGO_URL
     };
   },
