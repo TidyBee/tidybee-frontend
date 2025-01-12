@@ -40,6 +40,7 @@ const option = ref({
   series: [
     {
       type: 'pie',
+      minShowLabelAngle: 20,
       radius: ['20%', '36%'],
       center: ['74.5%', '51.5%'],
       label: {
