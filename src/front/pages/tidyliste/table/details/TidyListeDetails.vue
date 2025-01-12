@@ -8,7 +8,7 @@
       <div class="content-wrapper">
         <div class="text-content">
           <p><strong>Emplacement :</strong> {{ option.fileDetails.path }}</p>
-          <p><strong>Poids :</strong> {{ formatFileSize(option.size) }}</p>
+          <p><strong>Poids :</strong> {{ option.size }}</p>
           <p><strong>Dernière utilisation :</strong> {{ option.lastUsed }}</p>
           <p><strong>Espace de stockage :</strong> {{ option.location }}</p>
         </div>
@@ -65,9 +65,7 @@ export default {
           data: currentItem.value.pieData?.length
             ? currentItem.value.pieData
             : [
-                { value: 33.33, name: "Mal nommée" },
-                { value: 33.33, name: "Inutilisé" },
-                { value: 33.33, name: "Dupliqué" },
+                { value: 100, name: "file" },
               ],
           emphasis: {
             itemStyle: {
@@ -80,7 +78,7 @@ export default {
             show: true,
             position: "center",
             formatter: currentItem.value.tidyscore,
-            fontSize: 15,
+            fontSize: 30,
             bold: true
           },
         },
@@ -103,29 +101,6 @@ export default {
   methods: {
     goBack() {
       this.$router.go(-1);
-    },
-    formatFileSize(fileSize) {
-      const sizeThresholds = [
-        [1024, "B"],
-        [Math.pow(1024, 2), "KB"],
-        [Math.pow(1024, 3), "MB"],
-        [Math.pow(1024, 4), "GB"],
-      ];
-      if (typeof fileSize != "number") return "NaN";
-      let fixed = 0;
-      for (const [threshold, unit] of sizeThresholds) {
-        if (fileSize < threshold) {
-          return (fileSize / (threshold / 1024)).toFixed(fixed) + " " + unit;
-        }
-        fixed = 2;
-      }
-      return (
-        (fileSize / (sizeThresholds[sizeThresholds.length - 1][0] / 1024)).toFixed(
-          2,
-        ) +
-        " " +
-        sizeThresholds[sizeThresholds.length - 1][1]
-      );
     }
   }
 };

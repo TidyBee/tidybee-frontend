@@ -59,7 +59,7 @@ export default {
     parseFileList(data) {
       const filesList = data.map(file => ({
         name: this.parseFileName(file.pretty_path),
-        size: file.size,
+        size: this.formatFileSize(file.size),
         lastUsed: this.calculateElapsedTime(file.last_modified.secs_since_epoch),
         tidyscore: file.tidy_score.grade,
         location: file.provenance,
@@ -70,6 +70,29 @@ export default {
       }));
       return filesList
     },
+    formatFileSize(fileSize) {
+      const sizeThresholds = [
+        [1024, "B"],
+        [Math.pow(1024, 2), "KB"],
+        [Math.pow(1024, 3), "MB"],
+        [Math.pow(1024, 4), "GB"],
+      ];
+      if (typeof fileSize != "number") return "NaN";
+      let fixed = 0;
+      for (const [threshold, unit] of sizeThresholds) {
+        if (fileSize < threshold) {
+          return (fileSize / (threshold / 1024)).toFixed(fixed) + " " + unit;
+        }
+        fixed = 2;
+      }
+      return (
+        (fileSize / (sizeThresholds[sizeThresholds.length - 1][0] / 1024)).toFixed(
+          2,
+        ) +
+        " " +
+        sizeThresholds[sizeThresholds.length - 1][1]
+      );
+    }
   }
 };
 </script>

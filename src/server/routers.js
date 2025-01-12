@@ -1,6 +1,5 @@
 import HomePage from "@/front/pages/home/HomePage.vue";
 import ConfigurationPage from "@/front/pages/configuration/ConfigurationPage.vue";
-import TidyListe from "@/front/pages/tidyliste/TidyListe.vue";
 import TidyListeDetails from "@/front/pages/tidyliste/table/details/TidyListeDetails.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -9,22 +8,26 @@ const routes = [
     name: "Home",
     component: HomePage,
     path: "/",
+    meta: {
+      title: 'Tidybee',
+    }
   },
   {
     name: "Configuration",
     component: ConfigurationPage,
     path: "/configuration",
-  },
-  {
-    name: "TidyListe",
-    component: TidyListe,
-    path: "/TidyListe",
+    meta: {
+      title: 'Configuration',
+    }
   },
   {
     name: "TidyListeDetails",
     component: TidyListeDetails,
     path: "/TidyListe/:file_path",
     props: (route) => ({ item: route.state?.item || {} }),
+    meta: {
+      title: 'TidyListe',
+    }
   },
   {
     name: "Callback",
