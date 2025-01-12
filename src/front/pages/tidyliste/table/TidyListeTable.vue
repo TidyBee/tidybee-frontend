@@ -12,36 +12,49 @@
           item-value="name"
           width="100vw"
           @update:options="loadItems"
+          class="custom-table"
         >
-          <template v-slot:[`item.espaceSurveillee`]="{ item }">
-            <img
-              v-if="item.location === 'agent'"
-              src="./assets/intern-icon.svg"
-              alt="Intern Icon"
-              class="icon"
-            />
-            <img
-              v-else-if="item.location === 'notion'"
-              src="./assets/notion-icon.svg"
-              alt="Notion Icon"
-              class="icon"
-            />
-            <img
-              v-else-if="item.location === 'googleDrive'"
+          <!-- Slot pour les lignes -->
+          <template v-slot:item="{ item }">
+            <tr @click="redirectToDetails(item)" class="clickable-row">
+              <!-- Cellule espace surveillé -->
+              <td class="text-center">
+                <img
+                  v-if="item.location === 'agent'"
+                  src="./assets/intern-icon.svg"
+                  alt="Intern Icon"
+                  class="icon"
+                />
+                <img
+                  v-else-if="item.location === 'notion'"
+                  src="./assets/notion-icon.svg"
+                  alt="Notion Icon"
+                  class="icon"
+                />
+                <img
+                  v-else-if="item.location === 'googleDrive'"
+                  src="./assets/google-drive-icon.svg"
+                  alt="Google Drive Icon"
+                  class="icon"
+                />
+              </td>
 
+              <!-- Autres colonnes -->
+              <td class="text-center">{{ item.name }}</td>
+              <td class="text-center">{{ item.size }}</td>
+              <td class="text-center">{{ item.lastUsed }}</td>
+              <td class="text-center">{{ item.tidyscore }}</td>
 
-              src="./assets/google-drive-icon.svg"
-              alt="Google Drive Icon"
-              class="icon"
-            />
-          </template>
-          <template v-slot:[`item.filedetails`]="{ item }">
-            <img
-              src="./assets/redirect-icon.png"
-              alt="Redirect Icon"
-              class="icon clickable"
-              @click="redirectToDetails(item)"
-            />
+              <!-- Cellule avec icône cliquable -->
+              <td class="text-center">
+                <img
+                  src="./assets/redirect-icon.png"
+                  alt="Redirect Icon"
+                  class="icon clickable"
+                  @click.stop="redirectToDetails(item)"
+                />
+              </td>
+            </tr>
           </template>
         </v-data-table-server>
       </v-col>
@@ -65,10 +78,10 @@ export default {
     itemsPerPage: 15,
     headers: [
       { text: "Espace surveillé", value: "espaceSurveillee", align: "center" },
-      { title: 'Nom du Fichier', align: 'start', sortable: false, key: 'name' },
-      { title: 'Taille', key: 'size', align: 'end', sortable: false },
-      { title: "Date d'utilisation", key: 'lastUsed', align: 'end', sortable: false },
-      { title: 'TidyScore', key: 'tidyscore', align: 'end', sortable: false },
+      { title: 'Nom du Fichier', align: 'center', sortable: false, key: 'name' },
+      { title: 'Taille', key: 'size', align: 'center', sortable: false },
+      { title: "Date d'utilisation", key: 'lastUsed', align: 'center', sortable: false },
+      { title: 'TidyScore', key: 'tidyscore', align: 'center', sortable: false },
       { text: "Détails du fichier", value: "filedetails", align: "center" },
     ],
     serverItems: [],
@@ -139,5 +152,16 @@ export default {
 </script>
 
 <style scoped>
+.clickable-row {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.clickable-row:hover {
+  background-color: #f5f5f5;
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
 </style>
-
