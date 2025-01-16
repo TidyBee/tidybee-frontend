@@ -8,6 +8,11 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  transition: all 400ms ease-in-out;
+}
+
+.rounded-rectangle:hover {
+  transform: scale(1.05);
 }
 
 .centered-container-graph {

@@ -77,8 +77,8 @@ export default {
   data: () => ({
     itemsPerPage: 15,
     headers: [
-      { text: "Espace surveillé", value: "espaceSurveillee", align: "center" },
-      { title: 'Nom du Fichier', align: 'start', sortable: false, key: 'name' },
+      { text: "Espace surveillé", value: "espaceSurveillee", align: "start" },
+      { title: 'Nom du Fichier', align: 'center', sortable: false, key: 'name' },
       { title: 'Taille', key: 'size', align: 'center', sortable: false },
       { title: "Date d'utilisation", key: 'lastUsed', align: 'center', sortable: false },
       { title: 'TidyScore', key: 'tidyscore', align: 'center', sortable: false },

@@ -10,6 +10,11 @@
   display: flex; 
   flex-direction: column;
   justify-content: center;
+  transition: all 400ms ease-in-out;
+}
+
+.rounded-rectangle:hover {
+  transform: scale(1.05);
 }
 
 .widget-title {
