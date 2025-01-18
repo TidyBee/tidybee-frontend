@@ -3,6 +3,11 @@
   background-color: white;
   height: 210px;
   width: 500px;
+  transition: all 400ms ease-in-out;
+}
+
+.rounded-rectangle:hover {
+  transform: scale(1.05);
 }
 
 .grade {
