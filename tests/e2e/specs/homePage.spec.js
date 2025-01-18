@@ -17,7 +17,7 @@ describe("Component from Home Page exist", () => {
   it("Visits Home Page & check existence of text widget count all files", () => {
     cy.visit("/");
     cy.wait(1000);
-    cy.contains("Fichier surveillés par TidyBee").should("exist");
+    cy.contains("Fichiers surveillés").should("exist");
   });
   it("Visits Home Page & check existence of text widget graph", () => {
     cy.visit("/");
