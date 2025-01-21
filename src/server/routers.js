@@ -40,9 +40,9 @@ const routes = [
           headers: {
             "Content-Type": "application/json"
           },
-          body: {
+          body: JSON.stringify({
             Oauth2Token
-          }
+          })
         });
       }
 
