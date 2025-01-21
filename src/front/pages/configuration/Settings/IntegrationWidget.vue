@@ -71,7 +71,7 @@ export default {
           body: JSON.stringify({
             "DatabaseId": this.databaseId
           })
-          );
+        });
       } else {
         alert('Please enter a valid Database ID');
       }
