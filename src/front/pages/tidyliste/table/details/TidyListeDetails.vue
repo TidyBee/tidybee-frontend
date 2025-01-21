@@ -28,6 +28,8 @@ import { PieChart } from "echarts/charts";
 import { TooltipComponent, LegendComponent } from "echarts/components";
 import { CanvasRenderer } from "echarts/renderers";
 import VChart from "vue-echarts";
+import { getGradeColor } from "../utils.js"
+
 
 use([TooltipComponent, LegendComponent, PieChart, CanvasRenderer]);
 
@@ -50,36 +52,41 @@ export default {
         currentItem.value = JSON.parse(storedItem);
       }
     }
-    console.log(currentItem);
     const option = reactive({
       ...currentItem.value,
-      color: currentItem.value.gradeColor,
+      color: [getGradeColor(currentItem.value.fileDetails.tidyscore.misnamed.grade), getGradeColor(currentItem.value.fileDetails.tidyscore.unused.grade), getGradeColor(currentItem.value.fileDetails.tidyscore.duplicated.grade) ],
+      tooltip: {
+        formatter: function (value) {
+          return value.name;
+        },
+        trigger: 'item'
+      },
       series: [
         {
+          name: "TidyScore",
           type: "pie",
+          padAngle: 5,
           radius: ["20%", "36%"],
           center: ["80%", "50%"],
-          labelLine: {
-            show: false,
-          },
-          data: currentItem.value.pieData?.length
-            ? currentItem.value.pieData
-            : [
-                { value: 100, name: "file" },
-              ],
-          emphasis: {
-            itemStyle: {
-              shadowBlur: 10,
-              shadowOffsetX: 0,
-              shadowColor: "rgba(0, 0, 0, 0.5)",
-            },
-          },
+
+          data: [
+            { value: 1, name: 'Mal nommée : ' + currentItem.value.fileDetails.tidyscore.misnamed.grade },
+            { value: 1, name: 'Inutilisé : ' + currentItem.value.fileDetails.tidyscore.unused.grade },
+            { value: 1, name: 'Dupliqué : ' + currentItem.value.fileDetails.tidyscore.duplicated.grade },
+          ],
           label: {
             show: true,
             position: "center",
             formatter: currentItem.value.tidyscore,
             fontSize: 30,
             bold: true
+          },
+          emphasis: {
+            itemStyle: {
+              shadowBlur: 10,
+              shadowOffsetX: 0,
+              shadowColor: "rgba(0, 0, 0, 0.5)",
+            },
           },
         },
       ],
@@ -99,6 +106,7 @@ export default {
     };
   },
   methods: {
+    getGradeColor,
     goBack() {
       this.$router.go(-1);
     }
