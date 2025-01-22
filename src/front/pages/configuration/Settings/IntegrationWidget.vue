@@ -68,9 +68,9 @@ export default {
           headers: {
             "Content-Type": "application/json"
           },
-          body: {
+          body: JSON.stringify({
             "DatabaseId": this.databaseId
-          }
+          })
         });
       } else {
         alert('Please enter a valid Database ID');
