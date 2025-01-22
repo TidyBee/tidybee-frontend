@@ -8,16 +8,14 @@
           :items="serverItems"
           :items-length="totalItems"
           :loading="loading"
-          :search="selectedRule"
+          :search="search"
           item-value="name"
           width="100vw"
           @update:options="loadItems"
           class="custom-table"
         >
-          <!-- Slot pour les lignes -->
           <template v-slot:item="{ item }">
             <tr @click="redirectToDetails(item)" class="clickable-row">
-              <!-- Cellule espace surveillé -->
               <td class="text-center">
                 <img
                   v-if="item.location === 'agent'"
@@ -76,7 +74,9 @@ export default {
   },
   data: () => ({
     itemsPerPage: 15,
+    search:'all',
     selectedRule: 'all',
+    selectedLocation: 'all',
     headers: [
       { text: "Espace surveillé", value: "espaceSurveillee", align: "start" },
       { title: 'Nom du Fichier', align: 'center', sortable: true, key: 'name' },
@@ -106,6 +106,19 @@ export default {
             }
             return true;
           });
+          filteredItems = filteredItems.filter((item) => {
+            if (this.selectedLocation == 'googledrive' && item.location =='googleDrive') {
+              return true;
+            } else if (this.selectedLocation == 'agent' && item.location =='agent') {
+              return true;
+            } else if (this.selectedLocation == 'notion' && item.location =='notion') {
+              return true;
+            } else if(this.selectedLocation == 'all') {
+              return true;
+            } else {
+              return false;
+            }
+          })
           let sortedItems = (sortBy.length ? sort(filteredItems, sortBy[0].key, sortBy[0].order) : filteredItems)
 
           const paginated = sortedItems.slice(start, end);
@@ -115,6 +128,11 @@ export default {
     },
     updateSelectedRule(selectedRule) {
       this.selectedRule = selectedRule;
+      this.search = selectedRule;
+    },
+    updateSelectedLocation(location) {
+      this.selectedLocation = location;
+      this.search = location;
     },
     loadItems({ page, itemsPerPage, sortBy }) {
       this.loading = true;
@@ -130,14 +148,11 @@ export default {
       });
     },
     redirectToDetails(item) {
-      console.log("Redirection triggered with item:", item);
       const gradeColor = this.getGradeColor(item.tidyscore);
-      console.log("color", gradeColor);
       const filedata = { 
         ...item,
         gradeColor,
       }
-      console.log("filedata", filedata);
       if (item.fileDetails.path) {
         localStorage.setItem("currentItem", JSON.stringify(filedata));
         this.$router.push({

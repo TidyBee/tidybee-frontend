@@ -1,22 +1,40 @@
 <template>
-    <ApiLoader :api-url="this.tidyliste" widget-name="Widget aperçu" width="100vw">
-      <template #default="{ data }">
-        <div v-if="data">
-          <v-row justify="center" class="table-container" width="100vw">
-            <div class="selector">
-              <a class="selection" @click="changeSelectedRule('unused')" :class="(selectedRule != 'all' && selectedRule != 'unused' ? 'grey' : '')" >Inutilisé</a>
-              <a class="selection" @click="changeSelectedRule('duplicated')" :class="(selectedRule != 'all' && selectedRule != 'duplicated' ? 'grey' : '')">Dupliqué</a>
-              <a class="selection" @click="changeSelectedRule('misnamed')" :class="(selectedRule != 'all' && selectedRule != 'misnamed' ? 'grey' : '')">Mal nommé</a>
-            </div>
-            <TidyListeTable ref="tidyList" :filesList="parseFileList(data)" />  
-          </v-row>
-        </div>
-      </template>
-    </ApiLoader>
+  <ApiLoader :api-url="this.tidyliste" widget-name="Widget aperçu" width="100vw">
+    <template #default="{ data }">
+      <div v-if="data && data.length > 0">
+        <v-row justify="center" class="table-container" width="100vw">
+          <v-select
+            v-model="selectedRules"
+            :items="rules"
+            label="Sélectionner des règles"
+            chips
+            width="20px"
+            :menu-props="{ maxHeight: '400' }"
+            class="selector"
+            @update:model-value="onRuleChange" 
+          />
+          <v-select
+            v-model="selectedLocations"
+            :items="locations"
+            label="Sélectionner l'espace surveillé"
+            chips
+            width="20px"
+            :menu-props="{ maxHeight: '400' }"
+            class="selector"
+            @update:model-value="onLocationChange" 
+          />
+          <TidyListeTable ref="tidyList" :filesList="parseFileList(data)" />
+        </v-row>
+      </div>
+      <div v-else>
+        <p>Chargement des données...</p>
+      </div>
+    </template>
+  </ApiLoader>
 </template>
 
-<script>
 
+<script>
 import TidyListeTable from "./table/TidyListeTable.vue"
 import ApiLoader from "@/front/utils/websockets/ApiLoader.vue";
 
@@ -29,18 +47,63 @@ export default {
   data() {
     return {
       selectedRule: 'all',
+      selectedRules: ['Tout les fichiers'],
+      selected:'',
+      rules: [
+        'Tout les fichiers',
+        'Inutilisé',
+        'Dupliqué',
+        'Mal nommée'
+      ],
+      selectedLocation: 'Tout les espaces',
+      selectedLocations: ['Tout les espaces'],
+      locationSelected:'',
+      locations: [
+        'Tout les espaces',
+        'Google Drive',
+        'Notion',
+        'Agent'
+      ],
       tidyliste: process.env.VUE_APP_WEBSOCKET_TIDYLISTE,
     };
   },
   methods: {
-    changeSelectedRule(newFocus) {
+    onRuleChange() {
+      if ( this.selectedRules == 'Tout les fichiers') {
+        this.selected = "all"
+      } else if ( this.selectedRules == 'Inutilisé') {
+        this.selected = "unused"
+      } else if ( this.selectedRules == 'Dupliqué') {
+        this.selected = "duplicated"
+      } else if ( this.selectedRules == 'Mal nommée') {
+        this.selected = "misnamed"
+      }else {
+        return;
+      }
+      const newFocus = this.selectedRules.length === 0 ? 'all' : this.selected;
       if (this.selectedRule == newFocus) {
         this.selectedRule = 'all';
         this.$refs.tidyList.updateSelectedRule(this.selectedRule);
         return;
       }
       this.selectedRule = newFocus;
-      this.$refs.tidyList.updateSelectedRule(this.selectedRule);
+      this.$refs.tidyList.updateSelectedRule(this.selectedRule);;
+    },
+    onLocationChange() {
+      if ( this.selectedLocations == 'Tout les Espaces') {
+        this.locationSelected = "all"
+      } else if ( this.selectedLocations == 'Notion') {
+        this.locationSelected = "notion"
+      } else if ( this.selectedLocations == 'Google Drive') {
+        this.locationSelected = "googledrive"
+      } else if ( this.selectedLocations == 'Agent') {
+        this.locationSelected = "agent"
+      }else {
+        return;
+      }
+      const newlocation = this.selectedRules.length === 0 ? 'all' : this.locationSelected;
+      this.selectedLocation = newlocation;
+      this.$refs.tidyList.updateSelectedLocation(this.selectedLocation);;
     },
     calculateElapsedTime(lastUsed) {
       const now = new Date();
@@ -117,31 +180,15 @@ export default {
 }
 
 .selector {
-  display: grid;
-  width: 50%;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.selection {
-  text-align: center;
-  font-weight: bolder;
-  font-size: 28px;
-  line-height: 30px;
-  border-right: solid 1px black;
-  transition: all 400ms ease-in-out;
-}
-
-.selection:last-child {
-  border-right: 0;
+  width: 20%;
 }
 
 .grey {
   color: grey;
 }
 
-.selection:hover {
-  font-size: 30px;
+.v-chip {
+  font-size: 16px;
+  margin: 5px;
 }
 </style>
-
-
