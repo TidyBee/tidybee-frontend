@@ -8,7 +8,7 @@
           :items="serverItems"
           :items-length="totalItems"
           :loading="loading"
-          :search="search"
+          :search="selectedRule"
           item-value="name"
           width="100vw"
           @update:options="loadItems"
@@ -76,6 +76,7 @@ export default {
   },
   data: () => ({
     itemsPerPage: 15,
+    selectedRule: 'all',
     headers: [
       { text: "Espace surveillé", value: "espaceSurveillee", align: "start" },
       { title: 'Nom du Fichier', align: 'center', sortable: true, key: 'name' },
@@ -91,11 +92,6 @@ export default {
     search: '',
   }),
 
-  watch: {
-    name() {
-      this.search = String(Date.now());
-    },
-  },
   methods: {
     sort,
     getGradeColor,
@@ -105,7 +101,7 @@ export default {
           const start = (page - 1) * itemsPerPage;
           const end = start + itemsPerPage;
           let filteredItems = this.filesList.filter((item) => {
-            if (search.name && !item.name.toLowerCase().includes(search.name.toLowerCase())) {
+            if (this.selectedRule != 'all' && item.fileDetails.tidyscore[this.selectedRule].grade == 'A') {
               return false;
             }
             return true;
@@ -116,6 +112,9 @@ export default {
           resolve({ items: paginated, total: filteredItems.length });
         }, 500);
       });
+    },
+    updateSelectedRule(selectedRule) {
+      this.selectedRule = selectedRule;
     },
     loadItems({ page, itemsPerPage, sortBy }) {
       this.loading = true;

@@ -3,10 +3,12 @@
       <template #default="{ data }">
         <div v-if="data">
           <v-row justify="center" class="table-container" width="100vw">
-            <div>
-              {{ "La TidyListe vous permet de visualiser l'ensemble des fichiers disponibles dans votre espace partagé." }}
+            <div class="selector">
+              <a class="selection" @click="changeSelectedRule('unused')" :class="(selectedRule != 'all' && selectedRule != 'unused' ? 'grey' : '')" >Inutilisé</a>
+              <a class="selection" @click="changeSelectedRule('duplicated')" :class="(selectedRule != 'all' && selectedRule != 'duplicated' ? 'grey' : '')">Dupliqué</a>
+              <a class="selection" @click="changeSelectedRule('misnamed')" :class="(selectedRule != 'all' && selectedRule != 'misnamed' ? 'grey' : '')">Mal nommé</a>
             </div>
-            <TidyListeTable :filesList="parseFileList(data)" />  
+            <TidyListeTable ref="tidyList" :filesList="parseFileList(data)" />  
           </v-row>
         </div>
       </template>
@@ -26,10 +28,20 @@ export default {
   },
   data() {
     return {
+      selectedRule: 'all',
       tidyliste: process.env.VUE_APP_WEBSOCKET_TIDYLISTE,
     };
   },
   methods: {
+    changeSelectedRule(newFocus) {
+      if (this.selectedRule == newFocus) {
+        this.selectedRule = 'all';
+        this.$refs.tidyList.updateSelectedRule(this.selectedRule);
+        return;
+      }
+      this.selectedRule = newFocus;
+      this.$refs.tidyList.updateSelectedRule(this.selectedRule);
+    },
     calculateElapsedTime(lastUsed) {
       const now = new Date();
       const lastUsedTime = lastUsed * 1000;
@@ -102,6 +114,33 @@ export default {
   margin-top: 50px !important;
   width: 90vw !important;
   max-width: 100% !important;
+}
+
+.selector {
+  display: grid;
+  width: 50%;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.selection {
+  text-align: center;
+  font-weight: bolder;
+  font-size: 28px;
+  line-height: 30px;
+  border-right: solid 1px black;
+  transition: all 400ms ease-in-out;
+}
+
+.selection:last-child {
+  border-right: 0;
+}
+
+.grey {
+  color: grey;
+}
+
+.selection:hover {
+  font-size: 30px;
 }
 </style>
 
