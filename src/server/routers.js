@@ -46,7 +46,7 @@ const routes = [
         });
       }
 
-      return '/'
+      return 'Home'
     },
   },
 ];
