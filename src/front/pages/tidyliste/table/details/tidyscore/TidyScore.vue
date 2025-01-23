@@ -39,7 +39,7 @@ const option = ref({
       data: props.item.pieData?.length
         ? props.item.pieData
         : [
-            { value: 33.33, name: 'Mal nommée' },
+            { value: 33.33, name: 'Mal nommé' },
             { value: 33.33, name: 'Inutilisé' },
             { value: 33.33, name: 'Dupliqué' },
           ],

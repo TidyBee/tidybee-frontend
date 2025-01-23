@@ -70,7 +70,7 @@ export default {
           center: ["80%", "50%"],
 
           data: [
-            { value: 1, name: 'Mal nommée : ' + currentItem.value.fileDetails.tidyscore.misnamed.grade },
+            { value: 1, name: 'Mal nommé : ' + currentItem.value.fileDetails.tidyscore.misnamed.grade },
             { value: 1, name: 'Inutilisé : ' + currentItem.value.fileDetails.tidyscore.unused.grade },
             { value: 1, name: 'Dupliqué : ' + currentItem.value.fileDetails.tidyscore.duplicated.grade },
           ],

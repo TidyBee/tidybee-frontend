@@ -10,6 +10,8 @@ export const getGradeColor = (grade) => {
       return '#EA4335';
     case 'E':
       return '#546E7A';
+    case 'F':
+      return '#546E7A';
     default:
       return '';
   }

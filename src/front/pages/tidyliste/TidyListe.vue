@@ -53,7 +53,7 @@ export default {
         'Tous les fichiers',
         'Inutilisé',
         'Dupliqué',
-        'Mal nommée'
+        'Mal nommé'
       ],
       selectedLocation: 'Tous les espaces',
       selectedLocations: ['Tous les espaces'],
@@ -75,7 +75,7 @@ export default {
         this.selected = "unused"
       } else if ( this.selectedRules == 'Dupliqué') {
         this.selected = "duplicated"
-      } else if ( this.selectedRules == 'Mal nommée') {
+      } else if ( this.selectedRules == 'Mal nommé') {
         this.selected = "misnamed"
       }else {
         return;
