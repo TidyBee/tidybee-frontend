@@ -14,10 +14,8 @@
           @update:options="loadItems"
           class="custom-table"
         >
-          <!-- Slot pour les lignes -->
           <template v-slot:item="{ item }">
             <tr @click="redirectToDetails(item)" class="clickable-row">
-              <!-- Cellule espace surveillé -->
               <td class="text-center">
                 <img
                   v-if="item.location === 'agent'"
@@ -63,7 +61,7 @@
 </template>
 
 <script>
-import { sortBy } from "./sortBy.js";
+import { sort } from "./sort.js";
 import { getGradeColor } from "./utils.js"
 
 export default {
@@ -76,12 +74,15 @@ export default {
   },
   data: () => ({
     itemsPerPage: 15,
+    search:'all',
+    selectedRule: 'all',
+    selectedLocation: 'all',
     headers: [
       { text: "Espace surveillé", value: "espaceSurveillee", align: "start" },
-      { title: 'Nom du Fichier', align: 'center', sortable: false, key: 'name' },
-      { title: 'Taille', key: 'size', align: 'center', sortable: false },
-      { title: "Date d'utilisation", key: 'lastUsed', align: 'center', sortable: false },
-      { title: 'TidyScore', key: 'tidyscore', align: 'center', sortable: false },
+      { title: 'Nom du Fichier', align: 'center', sortable: true, key: 'name' },
+      { title: 'Taille', key: 'size', align: 'center', sortable: true },
+      { title: "Date d'utilisation", key: 'lastUsed', align: 'center', sortable: true },
+      { title: 'TidyScore', key: 'tidyscore', align: 'center', sortable: true },
       { text: "Détails du fichier", value: "filedetails", align: "center" },
     ],
     serverItems: [],
@@ -91,36 +92,54 @@ export default {
     search: '',
   }),
 
-  watch: {
-    name() {
-      this.search = String(Date.now());
-    },
-  },
   methods: {
+    sort,
     getGradeColor,
-    getFiles({ page, itemsPerPage, search }) {
+    getFiles({ page, itemsPerPage, sortBy, search }) {
       return new Promise((resolve) => {
         setTimeout(() => {
           const start = (page - 1) * itemsPerPage;
           const end = start + itemsPerPage;
-
           let filteredItems = this.filesList.filter((item) => {
-            if (search.name && !item.name.toLowerCase().includes(search.name.toLowerCase())) {
+            if (this.selectedRule != 'all' && item.fileDetails.tidyscore[this.selectedRule].grade == 'A') {
               return false;
             }
             return true;
           });
+          filteredItems = filteredItems.filter((item) => {
+            if (this.selectedLocation == 'googledrive' && item.location =='googleDrive') {
+              return true;
+            } else if (this.selectedLocation == 'agent' && item.location =='agent') {
+              return true;
+            } else if (this.selectedLocation == 'notion' && item.location =='notion') {
+              return true;
+            } else if(this.selectedLocation == 'all') {
+              return true;
+            } else {
+              return false;
+            }
+          })
+          let sortedItems = (sortBy.length ? sort(filteredItems, sortBy[0].key, sortBy[0].order) : filteredItems)
 
-          const paginated = filteredItems.slice(start, end);
+          const paginated = sortedItems.slice(start, end);
           resolve({ items: paginated, total: filteredItems.length });
         }, 500);
       });
     },
-    loadItems({ page, itemsPerPage }) {
+    updateSelectedRule(selectedRule) {
+      this.selectedRule = selectedRule;
+      this.search = selectedRule;
+    },
+    updateSelectedLocation(location) {
+      this.selectedLocation = location;
+      this.search = location;
+    },
+    loadItems({ page, itemsPerPage, sortBy }) {
       this.loading = true;
       this.getFiles({
         page,
         itemsPerPage,
+        sortBy,
         search: { name: this.name },
       }).then(({ items, total }) => {
         this.serverItems = items;
@@ -129,14 +148,11 @@ export default {
       });
     },
     redirectToDetails(item) {
-      console.log("Redirection triggered with item:", item);
       const gradeColor = this.getGradeColor(item.tidyscore);
-      console.log("color", gradeColor);
       const filedata = { 
         ...item,
         gradeColor,
       }
-      console.log("filedata", filedata);
       if (item.fileDetails.path) {
         localStorage.setItem("currentItem", JSON.stringify(filedata));
         this.$router.push({

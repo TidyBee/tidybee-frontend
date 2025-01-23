@@ -1,9 +1,9 @@
-export const sortBy = (responses, sortByParam, sortOrder) => {
+export const sort = (responses, sortByParam, sortOrder) => {
   const sortFunctions = {
     name: sortByName,
-    weight: sortByWeight,
+    size: sortByWeight,
     lastUsed: sortByLastUsed,
-    TidyScore: sortByTidyScore,
+    tidyscore: sortByTidyScore,
   };
 
   const sortFunction = sortFunctions[sortByParam];
@@ -31,8 +31,8 @@ const sortByWeight = (responses, sortOrder) => {
   };
 
   return responses.slice().sort((a, b) => {
-    const sizeA = parseSize(a.weight);
-    const sizeB = parseSize(b.weight);
+    const sizeA = parseSize(a.size);
+    const sizeB = parseSize(b.size);
     return sortOrder === 'desc' ? sizeB - sizeA : sizeA - sizeB;
   });
 };
@@ -55,8 +55,8 @@ const sortByTidyScore = (responses, sortOrder) => {
   const tidyScoreOrder = { A: 1, B: 2, C: 3, D: 4, E: 5 };
 
   return responses.slice().sort((a, b) => {
-    const scoreA = tidyScoreOrder[(a.TidyScore)];
-    const scoreB = tidyScoreOrder[(b.TidyScore)];
+    const scoreA = tidyScoreOrder[(a.tidyscore)];
+    const scoreB = tidyScoreOrder[(b.tidyscore)];
     return sortOrder === 'desc' ? scoreB - scoreA : scoreA - scoreB;
   });
 };

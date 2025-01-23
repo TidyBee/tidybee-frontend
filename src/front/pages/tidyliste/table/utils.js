@@ -52,19 +52,14 @@ export const calculateElapsedTime = (lastUsed) => {
 
 export const getGradeColor = (grade) => { 
   if (grade == 'A') {
-    console.log("#2196F3");
     return "#2196F3";
   } else if (grade == 'B') {
-    console.log("#4CAF50");
     return "#4CAF50";
   } else if (grade == 'C') {
-    console.log("#FAB239");
     return "#FAB239";
   } else if (grade == 'D') {
-    console.log("#ea4335");
     return "#ea4335";
   } else if (grade == 'E') {
-    console.log("#546E7A");
     return "#546E7A";
   } 
   return '';
