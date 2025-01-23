@@ -9,14 +9,6 @@
         data-cy="tidyscore-description"
       >
         {{ config.description }}
-        <!-- <br v-if="config.weight"> &nbsp;&nbsp;
-        <a v-if="config.weight"> {{ $t(`settings.weight`) + config.weight }} </a>
-        <br v-if="config.regex"> &nbsp;&nbsp;
-        <a v-if="config.regex"> {{ $t(`settings.regex`) + config.regex }} </a>
-        <br v-if="config.limitISO"> &nbsp;&nbsp;
-        <a v-if="config.limitISO"> {{ $t(`settings.limitISO`) + config.limitISO }} </a>
-        <br v-if="config.limitInt"> &nbsp;&nbsp;
-        <a v-if="config.limitInt"> {{ $t(`settings.limitInt`) + config.limitInt }} </a> -->
       </div>
     </v-col>
   </v-row>

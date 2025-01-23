@@ -4,6 +4,12 @@
       block class="integrate-button"
       :href="GD_href"    
       >
+      Epitech Expérience Challenge
+    </v-tab>
+    <v-tab
+      block class="integrate-button"
+      :href="GD_href"    
+      >
       Configurer
       l'intégration Google Drive
     </v-tab>
