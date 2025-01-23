@@ -47,19 +47,19 @@ export default {
   data() {
     return {
       selectedRule: 'all',
-      selectedRules: ['Tout les fichiers'],
+      selectedRules: ['Tous les fichiers'],
       selected:'',
       rules: [
-        'Tout les fichiers',
+        'Tous les fichiers',
         'Inutilisé',
         'Dupliqué',
         'Mal nommée'
       ],
-      selectedLocation: 'Tout les espaces',
-      selectedLocations: ['Tout les espaces'],
+      selectedLocation: 'Tous les espaces',
+      selectedLocations: ['Tous les espaces'],
       locationSelected:'',
       locations: [
-        'Tout les espaces',
+        'Tous les espaces',
         'Google Drive',
         'Notion',
         'Agent'
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     onRuleChange() {
-      if ( this.selectedRules == 'Tout les fichiers') {
+      if ( this.selectedRules == 'Tous les fichiers') {
         this.selected = "all"
       } else if ( this.selectedRules == 'Inutilisé') {
         this.selected = "unused"
@@ -90,7 +90,7 @@ export default {
       this.$refs.tidyList.updateSelectedRule(this.selectedRule);;
     },
     onLocationChange() {
-      if ( this.selectedLocations == 'Tout les Espaces') {
+      if ( this.selectedLocations == 'Tous les espaces') {
         this.locationSelected = "all"
       } else if ( this.selectedLocations == 'Notion') {
         this.locationSelected = "notion"
