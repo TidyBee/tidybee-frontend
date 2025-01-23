@@ -1,5 +1,6 @@
 import HomePage from "@/front/pages/home/HomePage.vue";
 import ConfigurationPage from "@/front/pages/configuration/ConfigurationPage.vue";
+import confPage from "@/front/pages/configuration/ConfPage.vue";
 import TidyListeDetails from "@/front/pages/tidyliste/table/details/TidyListeDetails.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -14,7 +15,7 @@ const routes = [
   },
   {
     name: "Configuration",
-    component: ConfigurationPage,
+    component: confPage,
     path: "/configuration",
     meta: {
       title: 'Configuration',
