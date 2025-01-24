@@ -116,7 +116,7 @@ export default {
       const days = Math.floor(hours / 24);
       const years = Math.floor(days / 365);
 
-      if (years > 0) return years + " " + (years > 1 ? 'an' : 'années');
+      if (years > 0) return years + " " + (years > 1 ? "années" : "an");
       else if (days > 0) return days + " "  + (days > 1 ? "jours" : "jour");
       else if (hours > 0) return hours + " " +  (hours > 1 ? "heures" : "heure");
       else if (minutes > 0) return minutes + " " + (minutes > 1 ? "minutes" : "minute");
