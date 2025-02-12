@@ -25,7 +25,8 @@
 
 <script>
 import VueCookies from "vue-cookies";
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { useRouter, useRoute } from 'vue-router'
 
 export default {
   name: "NavBar",
@@ -34,11 +35,20 @@ export default {
       VueCookies.set("locale", "fr");
     }
     const locale = VueCookies.get("locale");
-    const activeTab = ref(2);
+    const activeTab = ref(0);
+    const route = useRoute()
 
+    watch(route, (newValue, oldValue) => {
+      if (newValue.name == 'Configuration') {
+        activeTab.value = 1;
+      } else {
+        activeTab.value = 0;
+      }
+    })
     return {
       locale,
       activeTab,
+      route,
     };
   },
   data() {
